@@ -10,6 +10,8 @@ const verify = require("../middleware/verify");
 
 //1 createUser
 //localhost:4000/users/createUser
-router.post("/createUser", multer("user"), userControllers.createUser);
+router.post("/createUser", userControllers.createUser);
+
+
 
 module.exports = router;
