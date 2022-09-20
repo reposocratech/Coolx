@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container } from 'react-bootstrap'
+import { Button, Container, Row, Col } from 'react-bootstrap'
 import { AdminUsers } from './AdminUsers'
 
 export const Admin = () => {
