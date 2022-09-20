@@ -1,0 +1,29 @@
+.fondo-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../../../public/images/fondo.jpg");
+    background-position: center;
+    background-size: cover;
+    color: white;
+
+
+}
+
+.texto {
+
+    width: 864px;
+    height: 106px;
+
+    p {
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 110%;
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+}
