@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./contactForm.scss";
-
 import {
   Col,
   Row,
@@ -18,6 +17,16 @@ export const ContactForm = () => {
     userMessage: "",
   });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSend = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="fondo-contact">
       <Container fluid>
@@ -32,15 +41,33 @@ export const ContactForm = () => {
               </div>
 
               <Form.Group controlId="contactForm">
-                <Form className="d-flex flex-column" encType="multipart/form">
+                <Form className="d-flex flex-column">
                   <Form.Label className="labels">Nombre</Form.Label>
-                  <Form.Control type="text" name="name" autoComplete="off" />
+                  <Form.Control
+                    type="text"
+                    name="userName"
+                    autoComplete="off"
+                    value={user.username}
+                    onChange={handleChange}
+                  />
 
                   <Form.Label className="labels mt-3 mb-2">Email</Form.Label>
-                  <Form.Control type="email" name="email" autoComplete="off" />
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    autoComplete="off"
+                    value={user.email}
+                    onChange={handleChange}
+                  />
 
                   <Form.Label className="labels mt-3 mb-2">Teléfono</Form.Label>
-                  <Form.Control type="text" name="tel" autoComplete="off" />
+                  <Form.Control
+                    type="text"
+                    name="phone"
+                    autoComplete="off"
+                    value={user.phone}
+                    onChange={handleChange}
+                  />
 
                   <Form.Label className="labels mt-3 mb-2">Mensaje</Form.Label>
                   <FloatingLabel controlId="mensaje" label="">
@@ -48,12 +75,17 @@ export const ContactForm = () => {
                       className="textarea"
                       as="textarea"
                       placeholder="mensaje"
+                      name="userMessage"
+                      value={user.userMessage}
+                      onChange={handleChange}
                       style={{ height: "100px" }}
                     />
                   </FloatingLabel>
 
                   <div>
-                    <Button className="button">Enviar</Button>
+                    <Button className="button" onClick={handleSend}>
+                      Enviar
+                    </Button>
                   </div>
                 </Form>
               </Form.Group>
