@@ -1,6 +1,6 @@
 import React from 'react'
-
 import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { ContactForm } from '../components/forms/ContactForm'
 import { NavBarMain } from '../components/navBar/NavBarMain'
 import { Home } from '../pages/home/Home'
 
@@ -11,7 +11,7 @@ export const AppRoutes = () => {
             <NavBarMain/>
             <Routes>
                 <Route path='/' element={<Home/>}/>
-
+                <Route path='/contact' element={<ContactForm/>}/>
                
             </Routes>
         </BrowserRouter>

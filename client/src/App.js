@@ -1,15 +1,11 @@
-import { AppRoutes } from './routes/AppRoutes';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { ContactForm } from './components/forms/ContactForm';
-
+import { AppRoutes } from "./routes/AppRoutes";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./app.scss";
 
 function App() {
-
   return (
     <div>
-      <AppRoutes/>
-      <ContactForm/>
-  
+      <AppRoutes />
     </div>
   );
 }
