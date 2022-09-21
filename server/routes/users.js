@@ -1,6 +1,7 @@
 var express = require('express');
 const userControllers = require("../controllers/userControllers");
 var router = express.Router();
+
 const multer = require("../middleware/multer");
 const multerSingle = require("../middleware/multerSingle");
 const verify = require("../middleware/verify");
@@ -11,22 +12,31 @@ const verify = require("../middleware/verify");
 //localhost:4000/users/registrocoolx
 router.post("registrocoolx", userControllers.createUser);
 
+// 2. User login
+// localhost:4000/users/login
+router.post("/login", userControllers.login);
 
-//2 Trae infromación de un usuario
+
+
+
+//3 Trae infromación de un usuario
 //localhost:40000/users/oneUser/:user_id
 router.get("/oneUser/:user_id", userControllers.selectOneUser);
 
 
 
 
-
-
-
-
-
-
-
-
-
-
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
