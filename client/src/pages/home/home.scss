@@ -59,20 +59,14 @@
             line-height: 140%;
         }
 
-        img {
-            fill: currentColor;
-            width: 20px;
-            height: 10.75px;
-        }
     }
 }
 
-.fondoRegProject {
+.fondoRegProject,
+.bloqueGarantizar {
     background-image: url("../../../public/images/bosque1.png");
-
     background-size: cover;
-    // width: 1152px;
-    height: 100vh;
+    height: 70vh;
     left: 0px;
     top: 0px;
 }
@@ -81,6 +75,7 @@
     backdrop-filter: blur(8px);
     padding-right: 0px !important;
     padding-left: 0px !important;
+    height: 70vh;
 }
 
 .info {
@@ -115,8 +110,183 @@
 
 }
 
-.bloqueProces {
+.bloqueProceso {
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
+
+    h1 {
+        font-size: 40px;
+        font-weight: bold;
+        color: #09427D;
+    }
+
+}
+
+.titulo {
+    margin: 80px 56px 56px 56px;
+}
+
+.addProject,
+.satelite,
+.carbono,
+.vision,
+.sencillex,
+.medidas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    img {
+        margin-bottom: 24px;
+    }
+}
+
+.iconsProceso {
+    margin-top: 56px !important;
+    margin-bottom: 80px;
+
+    h4 {
+        font-weight: bold;
+    }
+
+    p,
+    h4 {
+        color: #09427D;
+        text-align: center;
+
+    }
+}
+
+.bloqueGarantizar {
+    text-align: center;
+    color: white;
+
+
+    h1 {
+        font-size: 40px;
+        font-weight: bold;
+
+    }
+
+
+
+    .iconsGarantizar {
+        margin-top: 56px;
+
+    }
+
+    .button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boton {
+
+        margin-top: 40px;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 24px;
+        width: 137px;
+        height: 44px;
+        background: #70BFCB;
+        border-radius: 80px;
+        border: none;
+        font-family: 'Manrope';
+
+
+    }
+}
+
+.bloqueColabs {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    height: 30vh;
+    margin-top: 56px !important;
+    margin-bottom: 56px !important;
+
+    h4 {
+        color: #09427D;
+        font-weight: bold;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #09427D;
+    padding: 56px;
+
+    .footer_logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+
+        img {
+            width: 153px;
+            margin-bottom: 16px;
+        }
+    }
+
+    .footer_contacto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+
+
+
+        img {
+            height: 20px;
+        }
+
+        .mail {
+            display: flex;
+            margin-top: 6px;
+
+            p {
+                margin-left: 8px;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .footer_rrss {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+
+        img {
+            height: 24px;
+            margin-left: 6px;
+        }
+    }
+
+    .legacy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 390px;
+    }
+
+    .legal {
+        display: flex;
+        color: white;
+        justify-content: space-evenly;
+        margin-top: 65.5px;
+        font-size: 10px;
+        font-weight: lighter;
+    }
 }
