@@ -28,9 +28,13 @@ class userController {
              });
            });
          });
-        };
+
+        }; 
+
+  
          
-         
+
+        
     // 2. User login
     // localhost:4000/users/login
     login = (req, res) => {
@@ -105,13 +109,17 @@ class userController {
             res.status(200).json({ resultUser, resultProject });
           });
         });
-        
+      };
 
 
 
 
-   
-    };
+
+
+
+
+
+      
 };
 
 module.exports = new userController();
