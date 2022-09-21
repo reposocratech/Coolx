@@ -34,6 +34,28 @@ class userController {
 
 
 
+    selectOneUser = (req, res) => {
+      console.log( req.params.user_id , "EL ID");
+      const user_id = req.params.user_id;
+      console.log(req, "======")
+    
+      let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
+        let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`;
+        connection.query(sqlUser, (error, resultUser) => {
+          if (error) {
+            res.status(400).json({ error });
+          }
+          connection.query(sqlProject, (error2, resultProject) => {
+            if (error2) {
+              res.status(400).json({ error2 });
+            }
+            res.status(200).json({ resultUser, resultProject });
+          });
+        });
+      };  
+
+
+
 
 }
 

@@ -8,8 +8,24 @@ const verify = require("../middleware/verify");
 
 
 //1 createUser
-//localhost:4000/users/createUser
-router.post("/createUser", userControllers.createUser);
+//localhost:4000/users/registrocoolx
+router.post("registrocoolx", userControllers.createUser);
+
+
+//2 Trae infromación de un usuario
+//localhost:40000/users/oneUser/:user_id
+router.get("/oneUser/:user_id", userControllers.selectOneUser);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
