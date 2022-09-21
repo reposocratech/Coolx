@@ -1,6 +1,5 @@
 var express = require('express');
-const userControllers = require('../../../../Bootcamp We Will Code You/Clases Santiago/travels/server/controllers/userControllers');
-const userController = require("../controllers/userControllers");
+const userControllers = require("../controllers/userControllers");
 var router = express.Router();
 const multer = require("../middleware/multer");
 const multerSingle = require("../middleware/multerSingle");
