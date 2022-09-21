@@ -1,9 +1,14 @@
 import React from 'react'
-import {Navbar, Container, Nav} from "react-bootstrap"
+import {Navbar, Container, Nav, Button} from "react-bootstrap"
+import { useNavigate } from 'react-router-dom'
 import "./navbar.scss"
 
 
 export const NavBarMain = () => {
+
+  const navigate = useNavigate();
+
+
   return (
    <> 
    <Navbar className='nav-color'  expand="lg">
@@ -17,7 +22,7 @@ export const NavBarMain = () => {
         </Nav>
         </Navbar.Collapse>
 
-         <button className='boton-sesion'>Iniciar sesion</button>
+         <Button className='boton-sesion' onClick={()=>navigate("/login")}>Iniciar sesion</Button>
            
         </Container>
     </Navbar>
