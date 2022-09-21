@@ -1,9 +1,16 @@
 var express = require('express');
+const userControllers = require("../controllers/userControllers");
 var router = express.Router();
+const multer = require("../middleware/multer");
+const multerSingle = require("../middleware/multerSingle");
+const verify = require("../middleware/verify");
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
+
+//1 createUser
+//localhost:4000/users/createUser
+router.post("/createUser", userControllers.createUser);
+
+
 
 module.exports = router;
