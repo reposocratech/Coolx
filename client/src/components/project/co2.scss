@@ -1,0 +1,36 @@
+.cardCo2{
+    background-color: white;
+    margin-top: 16px !important;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0px 2px 2px 0px #00000052;
+
+    .tituloVerific{
+        font-size: 16px;
+        color: #09427D;
+        font-weight: bold;
+    }
+
+    .adicional{
+        display: flex;
+
+        .icon{
+            display: flex;
+            justify-content: center;
+        }
+
+       
+        .check{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            p{
+                margin: 0;
+            }
+            img{
+                margin-left: 10px;
+                height: 14px;
+            }
+        }
+    }
+}

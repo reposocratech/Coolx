@@ -1,3 +1,4 @@
+import { Project } from "../pages/project/Project";
 import React, {useEffect, useState} from 'react'
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import { NavBarMain } from '../components/navBar/NavBarMain'
@@ -10,7 +11,6 @@ import { Tarjeta } from '../components/card/Tarjeta'
 import { Tarjetamas } from '../components/card/Tarjetamas'
 import { Vegetation } from '../components/vegetation/Vegetation'
 import {ContactForm} from '../components/forms/ContactForm'
-
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
 
@@ -65,6 +65,7 @@ export const AppRoutes = () => {
                 <Route path='/vegetation'  element = {<Vegetation/>} />
                 <Route path="/contact" element={<ContactForm />} />
                 <Route path="/registrocoolx" element={<Register />} />
+                 <Route path="/project" element={<Project />} />
 
             </Routes>
         </BrowserRouter>
