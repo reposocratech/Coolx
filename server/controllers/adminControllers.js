@@ -6,9 +6,9 @@ require("dotenv").config();
 class adminControllers {
 
     // Admin
-    // localhost:4000/admin
+    // localhost:4000/admin/:adminId
     showPanel = (req, res) => {
-        
+
     }
 
 }
