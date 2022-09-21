@@ -1,0 +1,41 @@
+.cardStatus{
+    display: flex;
+  
+    .cardRegistrado{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #70BFCB;
+        color: white;
+        border-radius: 8px 0px 0px 8px;
+        box-shadow: 0px 2px 2px 0px #00000052;
+        p {
+            margin-top: 16px;
+         }
+
+    }
+    .cardCalculando{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #FFFFFF;
+        box-shadow: 0px 2px 2px 0px #00000052;
+        p {
+            margin-top: 16px;
+            color: #BCC2CC;
+         }
+
+    }
+    .cardCompletado{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #FFFFFF;
+        border-radius: 0px 8px 8px 0px;
+        box-shadow: 0px 2px 2px 0px #00000052;
+        p {
+            margin-top: 16px;
+            color: #BCC2CC;
+         }
+    }
+}
