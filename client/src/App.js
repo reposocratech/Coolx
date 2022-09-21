@@ -4,12 +4,13 @@ import './app.scss'
 
 
 
-function App() {
 
+function App() {
   return (
     <div>
+    
       <AppRoutes/>
-  
+
     </div>
   );
 }

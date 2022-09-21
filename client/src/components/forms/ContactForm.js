@@ -1,68 +1,98 @@
-import React, { useState } from 'react';
-import {Col, Row, Button, Form, FloatingLabel} from 'react-bootstrap';
+import React, { useState } from "react";
+import "./contactForm.scss";
+import {
+  Col,
+  Row,
+  Button,
+  Form,
+  FloatingLabel,
+  Container,
+} from "react-bootstrap";
 
 export const ContactForm = () => {
+  const [user, setUser] = useState({
+    userName: "",
+    email: "",
+    phone: "",
+    userMessage: "",
+  });
 
-    const [user, setUser] = useState({
-        userName:"",
-        email:"",
-        userMessage:"",
-    })
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSend = (e) => {
+    e.preventDefault();
+  };
 
   return (
-    <>
-        <Row>
-            <Col md={4}>
-                <h1>CONTACTA</h1>
-                <h4>Mándanos un mensaje</h4>
+    <div className="fondo-contact">
+      <Container fluid>
+        <Row className="d-flex justify-content-center">
+          <div className="form-bg d-flex justify-content-center">
+            <Col md={4} className="col">
+              <div className="text-center">
+                <h1>Bienvenido</h1>
+                <h4 className="message">
+                  Contactaremos contigo lo antes posible
+                </h4>
+              </div>
 
-                <Form.Group className="mb-3" controlId="contactForm">
-                    <Form
-                        className='d-flex flex-column'
-                        encType='multipart/form'>
+              <Form.Group controlId="contactForm">
+                <Form className="d-flex flex-column">
+                  <Form.Label className="labels">Nombre</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="userName"
+                    autoComplete="off"
+                    value={user.username}
+                    onChange={handleChange}
+                  />
 
-                        <Form.Label>Nombre</Form.Label>
-                        <Form.Control 
-                            type="text" 
-                            placeholder='nombre'
-                            name='name'                    
-                            autoComplete="off"  
-                        />
+                  <Form.Label className="labels mt-3 mb-2">Email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    autoComplete="off"
+                    value={user.email}
+                    onChange={handleChange}
+                  />
 
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control 
-                            type="email"
-                            placeholder='email'
-                            name='email'                    
-                            autoComplete="off" 
-                        />
+                  <Form.Label className="labels mt-3 mb-2">Teléfono</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="phone"
+                    autoComplete="off"
+                    value={user.phone}
+                    onChange={handleChange}
+                  />
 
-                        <Form.Label>Mensaje</Form.Label>
-                        <FloatingLabel controlId="mensaje" label="">
-                            <Form.Control
-                                className='' 
-                                as="textarea"
-                                placeholder="mensaje"
-                                style={{ height: '100px' }}
-                            />
-                        </FloatingLabel>
+                  <Form.Label className="labels mt-3 mb-2">Mensaje</Form.Label>
+                  <FloatingLabel controlId="mensaje" label="">
+                    <Form.Control
+                      className="textarea"
+                      as="textarea"
+                      placeholder="mensaje"
+                      name="userMessage"
+                      value={user.userMessage}
+                      onChange={handleChange}
+                      style={{ height: "100px" }}
+                    />
+                  </FloatingLabel>
 
-                        <Form.Check 
-                            type='checkbox'
-                            id='default-checkbox'
-                            label='He leído y acepto la política de privacidad'
-                        />
-
-                        <div>
-                            <Button className='m-2' >Enviar</Button>
-                        </div>
-                    </Form>
-                </Form.Group>
-
+                  <div>
+                    <Button className="button" onClick={handleSend}>
+                      Enviar
+                    </Button>
+                  </div>
+                </Form>
+              </Form.Group>
             </Col>
+          </div>
         </Row>
-    </>
-
-  )
-}
+      </Container>
+    </div>
+  );
+};

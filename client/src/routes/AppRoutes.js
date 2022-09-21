@@ -2,9 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import { NavBarMain } from '../components/navBar/NavBarMain'
 import { Login } from '../pages/auth/Login'
-
 import { Home } from '../pages/home/Home'
-
+import { Register } from "../pages/auth/Register";
 import { Admin } from '../pages/admin/Admin'
 import { ErrorPage } from '../pages/home/ErrorPage'
 import { Tarjeta } from '../components/card/Tarjeta'
@@ -52,6 +51,7 @@ export const AppRoutes = () => {
 
   return (
     <div>
+
         <BrowserRouter>
             <NavBarMain/>
             <Routes>
@@ -62,10 +62,12 @@ export const AppRoutes = () => {
                 <Route path='/tarjeta'  element = {<Tarjeta/>} />
                 <Route path='/tarjetamas'  element = {<Tarjetamas/>} />
                 <Route path='/vegetation'  element = {<Vegetation/>} />
+                <Route path="/contact" element={<ContactForm />} />
+                <Route path="/registrocoolx" element={<Register />} />
 
-               
             </Routes>
         </BrowserRouter>
+
     </div>
-  )
-}
+  );
+};
