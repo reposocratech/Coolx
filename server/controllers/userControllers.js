@@ -109,13 +109,17 @@ class userController {
             res.status(200).json({ resultUser, resultProject });
           });
         });
-        
+      };
 
 
 
 
-   
-    };
+
+
+
+
+
+      
 };
 
 module.exports = new userController();
