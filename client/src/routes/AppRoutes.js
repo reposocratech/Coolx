@@ -9,6 +9,7 @@ import { ErrorPage } from '../pages/home/ErrorPage'
 import { Tarjeta } from '../components/card/Tarjeta'
 import { Tarjetamas } from '../components/card/Tarjetamas'
 import { Vegetation } from '../components/vegetation/Vegetation'
+import {ContactForm} from '../components/forms/ContactForm'
 
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
