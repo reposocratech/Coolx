@@ -1,9 +1,9 @@
 @font-face {
-    font-family: 'Manrope';
-    src: local('Manrope'), url(./font/Manrope-VariableFont_wght.ttf) format('truetype');
+  font-family: "Manrope";
+  src: local("Manrope"),
+    url(./font/Manrope-VariableFont_wght.ttf) format("truetype");
 }
 
 body {
-    font-family: Manrope, Arial, serif;
-
+  font-family: Manrope, Arial, serif !important;
 }
