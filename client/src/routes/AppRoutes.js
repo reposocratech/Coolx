@@ -18,6 +18,7 @@ import { Vegetation } from '../components/vegetation/Vegetation'
 import {ContactForm} from '../components/forms/ContactForm'
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
+import { EditUser } from "../pages/user/EditUser";
 
 
 export const AppRoutes = () => {
@@ -77,7 +78,10 @@ export const AppRoutes = () => {
                   <Route path="reports" element={<Reports />} />
                   <Route path="messages" element={<Messages />} />
                   <Route path="myaccount" element={<MyAccount />} />
+                
+                  
                 </Route>
+                <Route path="/edituser" element={<EditUser />}/>
             </Routes>
         </BrowserRouter>
 

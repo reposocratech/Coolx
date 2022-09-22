@@ -1,0 +1,58 @@
+body {
+    background-color: white !important;
+}
+
+.tituloEdit {
+    padding: 27px 56px !important;
+
+    h1 {
+        color: #09427D;
+        font-weight: bold;
+    }
+
+    .iconEditUser {
+
+        margin-top: 24px;
+
+        p {
+            margin-left: 8px;
+            margin-right: 8px;
+            margin-bottom: 0;
+            font-weight: bold;
+            color: #09427D;
+        }
+
+    }
+}
+
+.contPpal {
+    .divBoton {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .button {
+
+        background-color: rgb(184, 219, 225);
+        color: white;
+        border: none;
+        border-radius: 80px;
+        padding: 12px 24px;
+
+    }
+}
+
+.editUserForm {
+    background-color: #E0ECF8;
+    padding: 30px;
+    border-radius: 24px;
+
+    input {
+        border: none;
+
+    }
+}
+
+.labels {
+    font-weight: bold;
+}
