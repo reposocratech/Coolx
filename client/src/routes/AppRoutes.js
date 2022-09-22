@@ -1,9 +1,9 @@
 import { Project } from "../pages/project/Project";
-import React, {useEffect, useState} from 'react'
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-import { NavBarMain } from '../components/navBar/NavBarMain'
-import { Login } from '../pages/auth/Login'
-import { Home } from '../pages/home/Home'
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { NavBarMain } from "../components/navBar/NavBarMain";
+import { Login } from "../pages/auth/Login";
+import { Home } from "../pages/home/Home";
 import { Register } from "../pages/auth/Register";
 import { Messages } from "../pages/user/Messages";
 import { MyAccount } from "../pages/user/MyAccount";
@@ -21,16 +21,16 @@ import axios from 'axios'
 import { EditUser } from "../pages/user/EditUser";
 
 
-export const AppRoutes = () => {
 
+
+export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
 
-  const [user, setUser] = useState ();
+  const [user, setUser] = useState();
 
   const [resetUser, setResetUser] = useState(false);
 
   const [project, setProject] = useState(false);
-
 
   // useEffect(()=> {
   //   const token = window.localStorage.getItem("token");
@@ -40,11 +40,11 @@ export const AppRoutes = () => {
 
   //     const {id} = jwtDecode(token).user;
 
-  //     axios 
+  //     axios
   //       .get(`http://localhost:4000/users/oneUser/${id}`)
   //       .then((res)=>{
   //         setUser(res.data.resultUser[0])
-         
+
   //         console.log(res, "soyyyy reeeeesss")
   //       })
   //       .catch((err)=>{})
@@ -55,7 +55,6 @@ export const AppRoutes = () => {
   // }, [isLogged, resetUser])
 
   // console.log(project, "Esto es project");
-
 
   return (
     <div>
@@ -78,8 +77,7 @@ export const AppRoutes = () => {
                   <Route path="reports" element={<Reports />} />
                   <Route path="messages" element={<Messages />} />
                   <Route path="myaccount" element={<MyAccount />} />
-                
-                  
+               
                 </Route>
                 <Route path="/edituser" element={<EditUser />}/>
             </Routes>
