@@ -8,9 +8,8 @@ import './app.scss'
 function App() {
   return (
     <div>
-
+    
       <AppRoutes/>
-  
 
     </div>
   );
