@@ -25,10 +25,8 @@ export const NavBarMain = () => {
 
          <Button className='boton-sesion' onClick={()=>navigate("/login")}>Iniciar sesion</Button>
 
-           
         </Container>
-    </Navbar>
-   
-   </>
-  )
-}
+      </Navbar>
+    </>
+  );
+};
