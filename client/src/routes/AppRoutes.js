@@ -16,8 +16,13 @@ import { Tarjeta } from '../components/card/Tarjeta'
 import { Tarjetamas } from '../components/card/Tarjetamas'
 import { Vegetation } from '../components/vegetation/Vegetation'
 import {ContactForm} from '../components/forms/ContactForm'
+
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
+import { ProjectForm } from "../components/forms/ProjectForm";
+import { Succes1 } from "../pages/home/Succes1";
+import { Succes2 } from "../pages/home/Sucess2";
+import { AllUsers } from "../pages/user/AllUsers";
 
 
 export const AppRoutes = () => {
@@ -70,7 +75,11 @@ export const AppRoutes = () => {
                 <Route path='/vegetation'  element = {<Vegetation/>} />
                 <Route path="/contact" element={<ContactForm />} />
                 <Route path="/registrocoolx" element={<Register />} />
+                <Route path= "/projectform" element ={<ProjectForm/>} />
                 <Route path="/project" element={<Project />} />
+                <Route path="/succes1" element={<Succes1 />} />
+                <Route path="/succes2" element={<Succes2 />} />
+                <Route path="/allusers" element={<AllUsers/>} />
                 <Route path="/user" element={<User />}>
                   <Route path="" element={<MyProjects />} />
                   <Route path="myprojects" element={<MyProjects />} />
