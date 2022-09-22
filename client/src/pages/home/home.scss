@@ -72,18 +72,29 @@
 .bloqueGarantizar {
     background-image: url("../../../public/images/bosque1.png");
     background-size: cover;
-    height: 70vh;
+    // height: 70vh;
     left: 0px;
     top: 0px;
 }
 
-.fondoBlur {
+.fondoBlur1 {
     display: flex;
     flex-direction: column;
     backdrop-filter: blur(8px);
     padding-right: 0px !important;
     padding-left: 0px !important;
-    height: 70vh;
+
+
+}
+
+.fondoBlur2 {
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(8px);
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .info {
@@ -92,6 +103,8 @@
     align-items: center;
     justify-content: center;
     margin-top: 80px;
+    margin-bottom: 80px;
+    padding: 35px;
 
 
     p {
@@ -115,9 +128,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 605px;
-
-
 
 }
 
@@ -126,7 +136,7 @@
     .topInfo,
     .bottomInfo {
         img {
-            height: 200px;
+            // height: 200px;
         }
     }
 }
@@ -137,7 +147,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 605px;
+    justify-content: center;
 
 }
 
@@ -240,9 +250,9 @@
     align-items: center;
     text-align: center;
     justify-content: space-around;
-    height: 30vh;
-    margin-top: 56px !important;
-    margin-bottom: 56px !important;
+    padding: 20px;
+    margin: 20px !important;
+
 
     h4 {
         color: #09427D;

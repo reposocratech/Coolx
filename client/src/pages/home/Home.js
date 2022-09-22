@@ -13,7 +13,7 @@ export const Home = () => {
     <>
     <Container fluid>
       <Row >
-        <Col md={12} lg={12} xs={12} className='fondo-home' >
+        <Col md={12} lg={12} sm={1} className='fondo-home' >
 
           <div className='texto'>
             <p>Optimizamos el registro y la evaluación de tus proyectos forestales</p>
@@ -34,16 +34,16 @@ export const Home = () => {
 
       <Row className="fondoRegProject" id="regProject">
         
-        <div className='fondoBlur'>
+        <div className='fondoBlur1'>
 
         <Col md={12} className ="p-0" >
           <NavBarProject/>
         </Col>
 
-        <Col md={12} xs={1} className='info'>
+        <Col md={12} sm={1} className='info'>
           <div className='wrapper_2'>
             <Row>
-              <Col md={6} sm={12} className="topInfo text-white">
+              <Col md={6} sm={12} className="topInfo img">
                 <img src='/assets/icons/info_top.svg'/>
               </Col>
 
@@ -54,7 +54,7 @@ export const Home = () => {
             </Row>
             
             <Row>
-              <Col md={6} sm={12} className="topInfo text-white">
+              <Col md={6} sm={12} className="bottomInfo text-white">
                 <p>Esta tecnología nos permite hacer estimaciones más precisas y constantes, generando confianza en cada crédito de carbono</p>
               </Col>
 
@@ -114,9 +114,9 @@ export const Home = () => {
       </Row>
 
       <Row className='bloqueGarantizar'>
-      <div className='fondoBlur'>
+      <div className='fondoBlur2'>
 
-      <Col md={12} >
+      <Col md={12} sm={12}>
 
         <div className='titulo'>
           <h1>Garantizamos</h1>
@@ -126,7 +126,7 @@ export const Home = () => {
 
       <Row className='iconsGarantizar p-0 mx-2'>
      
-        <Col md={4} className="vision px-5">
+        <Col md={4} sm={12} className="vision px-5">
           <img src='/assets/icons/visibility_white.svg' />
 
           <h4>Viabilidad de tu proyecto</h4>
@@ -160,26 +160,26 @@ export const Home = () => {
 
       <Row className='bloqueColabs'>
 
-      <Col md={12}>
+      <Col md={12} className="py-4">
         <h4>Respaldados y colaborando con</h4>
       </Col>
 
-      <Col md={2}>
+      <Col md={2} className="py-4">
       <img src='/assets/colabs/verra.svg'/>
       </Col>
-      <Col md={2}>
+      <Col md={2} className="py-4">
       <img src='/assets/colabs/gold_standard.svg'/>
       </Col>
-      <Col md={2}>
+      <Col md={2} className="py-4">
       <img src='/assets/colabs/aenor.svg'/>
       </Col>
-      <Col md={2}>
+      <Col md={2} className="py-4">
       <img src='/assets/colabs/miteco.svg'/>
       </Col>
-      <Col md={2}>
+      <Col md={2} className="py-4">
       <img src='/assets/colabs/demium.svg'/>
       </Col>
-      <Col md={2}>
+      <Col md={2} className="py-4">
       <img src='/assets/colabs/university.svg'/>
       </Col>
 
