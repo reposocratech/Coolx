@@ -111,11 +111,8 @@ class userController {
         });
       };
 
-    //4. Editar un usuario
-    //localhost:40000/users/editUser/:userId
-    editUser = (req, res) => {
-        
-    }
+
+
 
 
 
