@@ -1,4 +1,4 @@
-.cardCost{
+.cardCost {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,22 +7,22 @@
     padding: 24px;
     box-shadow: 0px 2px 2px 0px #00000052;
 
-    .tituloCost{
+    .tituloCost {
         display: flex;
         font-size: 12px;
         margin-top: 24px;
         color: #09427D;
-        img{
+        img {
             height: 16px;
         }
     }
-    .coste, .ganancias{
+    .coste, 
+    .ganancias {
         display: flex;
-        p{
-          
+        p {
             font-size: 14px;
         }
-        h4{
+        h4 {
             font-weight: bold;
             font-size: 32px;
         }
@@ -30,7 +30,7 @@
    
         
     button {
-        margin-top: 40px;
+        margin-top: 15px;
         color: white;
         display: flex;
         flex-direction: row;

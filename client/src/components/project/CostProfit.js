@@ -16,25 +16,25 @@ export const CostProfit = () => {
                 </div>
 
                 <div className="coste">
-                  <Col md={2}>
+                  <div>
                     <img src="/assets/icons/pine_tree.svg" />
-                  </Col>
+                  </div>
 
-                  <Col md={10}>
+                  <div className="costeInfo">
                     <p>Coste del proyecto</p>
                     <h4>575.800 €</h4>
-                  </Col>
+                  </div>
                 </div>
 
                 <div className="ganancias">
-                  <Col md={2}>
+                  <div>
                     <img src="/assets/icons/money.svg" />
-                  </Col>
+                  </div>
 
-                  <Col md={10}>
+                  <div className="gananciasInfo">
                     <p>Ganancias Consultoría</p>
                     <h4>86.700 €</h4>
-                  </Col>
+                  </div>
                 </div>
 
                 <div>

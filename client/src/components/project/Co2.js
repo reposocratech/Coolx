@@ -8,20 +8,35 @@ export const Co2 = () => {
       <div className="wrapper">
         <Container fluid>
           <Row>
-            <Col md={12} className="cardCo2">
-              <div className="tituloVerific text-center">
-                <p>Requisitos verificados por Coolx</p>
+            <Col md={12} className="infoCo2">
+              <div className="tituloCo2">
+                <p>Información complementaria</p>
               </div>
 
-              <div className="adicional">
-                <Col md={3} className="icon">
-                  <img src="/assets/icons/circle_tree.svg" />
-                </Col>
+              <div className="infoText">
+                <div>
+                  <img src="/assets/icons/Footprint.svg" />
+                </div>
 
-                <Col md={9} className="check">
-                  <p>Adicional</p>
-                  <img src="/assets/icons/check_mark.svg" />
-                </Col>
+                <div>
+                  <p>C02 a absober</p>
+                  <h4>128.240 tn</h4>
+                </div>
+              </div>
+
+              <div className="smallText">
+                <p>Estimación realizada con tecnología satelital</p>
+                <img src="/assets/icons/info.svg" />
+              </div>
+              <hr />
+
+              <div className="infoPais">
+                <p>
+                  País:<b> Costa Rica</b>
+                </p>
+                <p>
+                  Propuesto Verificador:<b> Verra</b>
+                </p>
               </div>
             </Col>
           </Row>

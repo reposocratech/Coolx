@@ -1,44 +1,15 @@
 import React from "react";
-import { Container, Row, Col, Carousel } from "react-bootstrap";
-import "./projectInfo.scss";
-import { StatusProject } from "./StatusProject";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import "./blocked.scss";
 
-export const ProjectInfo = () => {
+export const BlockedInfo = () => {
   return (
     <>
-      <div>
-        <div className="wrapper">
-          <Container fluid>
-            <Row>
-              <Col md={12} className="cardProjectInfo">
-                <Carousel className="imgCarousel">
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100"
-                      src="/images/bosque1.png"
-                      alt="First slide"
-                    />
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100"
-                      src="/images/bosque1.png"
-                      alt="Second slide"
-                    />
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100"
-                      src="/images/bosque1.png"
-                      alt="Third slide"
-                    />
-                  </Carousel.Item>
-                </Carousel>
-
-                <div className="barraStatus">
-                  <StatusProject />
-                </div>
-
+      <div className="wrapper">
+        <Container fluid>
+          <Row>
+            <Col md={12} className="blockedInfo">
+              <div className="blur">
                 <section className="descripcion">
                   <h4>Descripción</h4>
                   <hr />
@@ -66,10 +37,14 @@ export const ProjectInfo = () => {
                     tCO2e durante el periodo de monitoreo.
                   </p>
                 </section>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+              </div>
+
+              <div className="unblock">
+                <Button>Desbloquear todos los datos</Button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </>
   );
