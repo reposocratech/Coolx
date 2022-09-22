@@ -1,45 +1,127 @@
-import React from 'react'
-import { Button, Container, Row, Col } from 'react-bootstrap'
-import { AdminUsers } from './AdminUsers'
+import React from "react";
+import { Button, Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import "./admin.scss";
+// import { AdminUsers } from './AdminUsers'
 
 export const Admin = () => {
-
-
-
+  const navigate = useNavigate();
 
   return (
+    <div className="wrapper">
+      <Container>
+        <Row>
+          <Col md={12} className="project">
+            <p>Administrador Nombre Apellido</p>
+          </Col>
+        </Row>
 
-    <Container>
-
-      <Row>
-        <Col>
-              <h1>Aministradror</h1>
-        </Col>
-      </Row>
-      <Row>
-              <Col>
+        <Row>
+          <Col md={6} lg={4} className="d-flex flex-column align-items-center">
+            <Button className="admin-tools" onClick={() => navigate("/")}>
+              <div className="blue-circle">
+                <img
+                  src="/assets/icons/add_project.svg"
+                  alt="Add project icon"
+                />
+              </div>
               <h4>Añadir proyecto</h4>
-              <Button>Añadir proyecto</Button>
-              </Col>
+              <div className="tool-text">
+                <p>
+                  Localiza tu proyecto forestal o elige los proyectos que
+                  necesitan un desarrollador de nuestra plataforma.
+                </p>
+              </div>
+            </Button>
+          </Col>
 
-              <Col>
+          <Col md={6} lg={4} className="d-flex flex-column align-items-center">
+            <Button className="admin-tools" onClick={() => navigate("/")}>
+              <div className="blue-circle">
+                <img src="/assets/icons/all_users.svg" alt="All users icon" />
+              </div>
               <h4>Administrar usuario</h4>
-              <Button>Administrar usuario</Button>
-              </Col>
+              <div className="tool-text">
+                <p>
+                  Procesamos dichos datos para que puedas utilizarlos de forma
+                  rápida y sencilla para generar créditos de carbono.
+                </p>
+              </div>
+            </Button>
+          </Col>
 
-              <Col>
+          <Col md={6} lg={4} className="d-flex flex-column align-items-center">
+            <Button className="admin-tools" onClick={() => navigate("/")}>
+              <div className="blue-circle">
+                <img src="/assets/icons/co2.svg" alt="Add project icon" />
+              </div>
               <h4>Modificar estado de proyecto</h4>
-              <Button>Modificar estado de proyecto</Button>
-              </Col>
-              
-              <Col>
+              <div className="tool-text">
+                <p>
+                  Tus créditos serán verificados por los mejores estándares y
+                  monitoreados constantemente, facilitando así su venta.
+                </p>
+              </div>
+            </Button>
+          </Col>
+
+          <Col md={6} lg={4} className="d-flex flex-column align-items-center">
+            <Button className="admin-tools" onClick={() => navigate("/")}>
+              <div className="blue-circle">
+                <img
+                  src="/assets/icons/tree_solid_white.svg"
+                  alt="Add project icon"
+                />
+              </div>
               <h4>Administrar árboles</h4>
-              <Button>Administrar árboles</Button>
-              </Col>
-            
+              <div className="tool-text">
+                <p className="tool-text">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et
+                  dolorum ipsam, maiores officiis quibusdam aut!.
+                </p>
+              </div>
+            </Button>
+          </Col>
 
-      </Row>
-     </Container>
+          <Col md={6} lg={4} className="d-flex flex-column align-items-center">
+            <Button
+              className="admin-tools"
+              onClick={() => navigate("/")}
+              disabled
+            >
+              <div className="blue-circle">
+                <img src="/assets/icons/a.svg" alt="Add project icon" />
+              </div>
+              <h4>Otra herramienta</h4>
+              <div className="tool-text">
+                <p className="tool-text">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Recusandae ducimus sit aut enim eaque laboriosam.
+                </p>
+              </div>
+            </Button>
+          </Col>
 
-  )
-}
+          <Col md={6} lg={4} className="d-flex flex-column align-items-center">
+            <Button
+              className="admin-tools"
+              onClick={() => navigate("/")}
+              disabled
+            >
+              <div className="blue-circle">
+                <img src="/assets/icons/a.svg" alt="Add project icon" />
+              </div>
+              <h4>Otra herramienta</h4>
+              <div className="tool-text">
+                <p className="tool-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nesciunt soluta officia a quod repellendus rerum!.
+                </p>
+              </div>
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+};

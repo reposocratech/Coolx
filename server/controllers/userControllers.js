@@ -112,6 +112,51 @@ class userController {
       };
 
 
+      //4 editar Usuario
+      //localhost:4000/users/editUser/u:user_id
+      editUser = (req, res) =>{
+
+        let user_id = req.params.user_id;
+
+        const {user_name, surname, company, nif, position, phone, country, currency} = JSON.parse(
+          req.body.register);
+        
+        let sql = `UPDATE user SET user_name = "${user_name}", surname = "${surname}", company = "${company}", nif = "${nif}", position = "${position}", phone = "${phone}", country = "${country}", currency = "${currency}" WHERE user_id = "${user_id}"`;
+
+        connection.query(sql, (error, result) => {
+          if (error) throw error;
+          error ? res.status(400).json({ error }) : res.status(200).json(result);
+        });
+      };
+
+      //5 traer informacion de Usuario para editarlo
+      //localhost:4000/users/editUser/:user_id
+      getEditOneUser = (req, res) => {
+        let user_id = req.params.user_id;
+        let sql = `SELECT * FROM user WHERE user_id = "${user_id}"`;
+        connection.query(sql, (error, result) =>{
+          error ? res.status(400).json({ error }) : res.status(200).json(result); 
+        });
+      };
+
+
+
+
+
+
+
+      //6 Borrado lógico de un usuario
+      //localhost:4000/users/deleteUser/:user_id
+
+      deleteUser = (req, res) => {
+        let user_id = req.params.user_id;
+        let sql = `UPDATE user SET is_deleted = 1 WHERE user_id = "${user_id}"`;
+        connection.query(sql, (error, result) => {
+          error ? res.status(400).json({ error }) : res.status(200).json(result);
+        });
+      };
+
+
 
 
 

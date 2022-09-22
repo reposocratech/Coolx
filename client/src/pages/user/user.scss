@@ -11,6 +11,7 @@
   padding-inline-end: 16px; /*debe mantener esa distancia siempre*/
   padding-inline-start: 16px;
   margin: auto;
+  // border: 1px solid red;
 }
 
 // Barra lateral
@@ -66,12 +67,12 @@
     width: 245px;
     height: 245px;
     padding: 25px 15px 10px;
-    gap: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: sticky;
+    transition: transform 0.5s ease;
   }
   .circle {
     width: 162px;
@@ -87,6 +88,8 @@
       font-size: 96px;
       line-height: 110%;
       margin: 0;
+      padding: 0;
+      transition: opacity 0.5s ease;
     }
   }
   p {
@@ -97,5 +100,18 @@
     line-height: 140%;
     opacity: 0.5;
     letter-spacing: -0.01em;
+    padding-top: 10px;
+    transition: opacity 0.5s ease;
+  }
+  .add-button:hover {
+    transform: scale(1.03);
+    p {
+      opacity: 1;
+    }
+    .circle {
+      h2 {
+        color: #09427d;
+      }
+    }
   }
 }

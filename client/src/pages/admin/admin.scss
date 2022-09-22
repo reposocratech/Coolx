@@ -1,0 +1,50 @@
+.admin-tools {
+  background-color: transparent !important;
+  border: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 7px 0px 50px 0px !important;
+  width: 100% !important;
+  .blue-circle {
+    width: 162px;
+    height: 162px;
+    background: #09427d;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    margin-bottom: 24px;
+    img {
+      width: auto;
+      height: 95px;
+    }
+  }
+  h4 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    color: #09427d;
+    transition: transform 0.5s ease;
+  }
+  .tool-text {
+    width: 267px;
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 140%;
+      text-align: center;
+      color: #09427d;
+      margin: 0px;
+      transition: transform 0.5s ease;
+    }
+  }
+}
+
+.admin-tools:hover {
+  background: #e0ecf8 !important;
+  h4,
+  p {
+    transform: scale(1.05);
+  }
+}
