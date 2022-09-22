@@ -12,19 +12,19 @@ export const StatusProject = () => {
           <Container fluid>
             <Row>
               <div className="cardStatus">
-                <Col md={3}>
+                <Col md={4}>
                   <div className="cardRegistrado">
                     <img src="/assets/icons/status1.svg" />
                     <p>Registrado</p>
                   </div>
                 </Col>
-                <Col md={3}>
+                <Col md={4}>
                   <div className="cardCalculando">
                     <img src="/assets/icons/status2.svg" />
                     <p>Calculando</p>
                   </div>
                 </Col>
-                <Col md={3}>
+                <Col md={4}>
                   <div className="cardCompletado">
                     <img src="/assets/icons/status3.svg" />
                     <p>Completado</p>
