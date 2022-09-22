@@ -5,8 +5,8 @@
 
 
 .boton-sesion {
-    background-color: transparent;
-    color: white;
+    background-color: transparent !important;
+    color: white !important;
     border: 1px solid white;
     border-radius: 80px;
     padding: 12px 24px;
@@ -20,7 +20,6 @@
 
 .boton-proyecto {
     background-color: #70BFCB;
-    ;
     color: white;
     border: none;
     border-radius: 80px;
