@@ -35,6 +35,23 @@ class adminControllers {
 
     }
 
+    // Mostrar un proyecto
+    // localhost:4000/admin/:adminId/:project_id
+    showOneProject = (req, res) => {
+
+    }
+
+    // Mostrar un usuario
+    // localhost:4000/admin/:adminId/:user_id
+    showOneUser = (req, res) => {
+
+    }
+
+    // Mostrar un árbol
+    // localhost:4000/admin/:adminId/:tree_id
+    showOneTree = (req, res) => {
+
+    }
 
 }
 
