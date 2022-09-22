@@ -145,7 +145,7 @@ class userController {
 
 
 
-      //6 Boorado lógico de un usuario
+      //6 Borrado lógico de un usuario
       //localhost:4000/users/deleteUser/:user_id
 
       deleteUser = (req, res) => {
