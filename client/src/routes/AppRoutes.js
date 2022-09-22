@@ -10,14 +10,18 @@ import { MyAccount } from "../pages/user/MyAccount";
 import { MyProjects } from "../pages/user/MyProjects";
 import { Reports } from "../pages/user/Reports";
 import { User } from "../pages/user/User";
-import { Admin } from "../pages/admin/Admin";
-import { ErrorPage } from "../pages/home/ErrorPage";
-import { Tarjeta } from "../components/card/Tarjeta";
-import { Tarjetamas } from "../components/card/Tarjetamas";
-import { Vegetation } from "../components/vegetation/Vegetation";
-import { ContactForm } from "../components/forms/ContactForm";
-import jwtDecode from "jwt-decode";
-import axios from "axios";
+import { Admin } from '../pages/admin/Admin'
+import { ErrorPage } from '../pages/home/ErrorPage'
+import { Tarjeta } from '../components/card/Tarjeta'
+import { Tarjetamas } from '../components/card/Tarjetamas'
+import { Vegetation } from '../components/vegetation/Vegetation'
+import {ContactForm} from '../components/forms/ContactForm'
+import jwtDecode from 'jwt-decode'
+import axios from 'axios'
+import { EditUser } from "../pages/user/EditUser";
+
+
+
 
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -54,28 +58,31 @@ export const AppRoutes = () => {
 
   return (
     <div>
-      <BrowserRouter>
-        <NavBarMain />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/error" element={<ErrorPage />} />
-          <Route path="/tarjeta" element={<Tarjeta />} />
-          <Route path="/tarjetamas" element={<Tarjetamas />} />
-          <Route path="/vegetation" element={<Vegetation />} />
-          <Route path="/contact" element={<ContactForm />} />
-          <Route path="/registrocoolx" element={<Register />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/user" element={<User />}>
-            <Route path="" element={<MyProjects />} />
-            <Route path="myprojects" element={<MyProjects />} />
-            <Route path="reports" element={<Reports />} />
-            <Route path="messages" element={<Messages />} />
-            <Route path="myaccount" element={<MyAccount />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+            <NavBarMain/>
+            <Routes>
+                <Route path='/' element={<Home/>}/>
+                <Route path='/login' element = {<Login/>} />
+                <Route path='/admin' element = {<Admin/>} />
+                <Route path='/error' element = {<ErrorPage/>} />
+                <Route path='/tarjeta'  element = {<Tarjeta/>} />
+                <Route path='/tarjetamas'  element = {<Tarjetamas/>} />
+                <Route path='/vegetation'  element = {<Vegetation/>} />
+                <Route path="/contact" element={<ContactForm />} />
+                <Route path="/registrocoolx" element={<Register />} />
+                <Route path="/project" element={<Project />} />
+                <Route path="/user" element={<User />}>
+                  <Route path="" element={<MyProjects />} />
+                  <Route path="myprojects" element={<MyProjects />} />
+                  <Route path="reports" element={<Reports />} />
+                  <Route path="messages" element={<Messages />} />
+                  <Route path="myaccount" element={<MyAccount />} />
+               
+                </Route>
+                <Route path="/edituser" element={<EditUser />}/>
+            </Routes>
+        </BrowserRouter>
+
     </div>
   );
 };
