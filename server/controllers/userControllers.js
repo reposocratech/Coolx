@@ -118,14 +118,8 @@ class userController {
 
 
 
-<<<<<<< HEAD
-   
-    }
-}
-=======
 
       
 };
->>>>>>> master
 
 module.exports = new userController();
