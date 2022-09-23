@@ -7,8 +7,8 @@ export const Vegetation = () => {
     <div className='base-vegetacion'>
         <Container fluid>
 
-            <div className='titulo-vegetacion p-5'>
-                <h2>Análisis Vegetación</h2>
+            <div className='projectCard'>
+                <p>Análisis Vegetación</p>
             </div>
             
             <Row className='tarjetas-vegetacion'>
@@ -39,10 +39,10 @@ export const Vegetation = () => {
                     </div>
                 </Col>
 
-                 <Col className='col-2'>
+                <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
-                    <div className='dividir'>
+                    <div className='dividir-vegetacion'>
                         <div>
                             <img src='images/icono_arbol_azul.png'/>
                         </div>
@@ -65,10 +65,10 @@ export const Vegetation = () => {
                     </div>
                 </Col>
 
-                 <Col className='col-2'>
+                <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
-                    <div className='dividir'>
+                    <div className='dividir-vegetacion'>
                         <div>
                             <img src='images/icono_arbol_azul.png'/>
                         </div>
@@ -91,10 +91,10 @@ export const Vegetation = () => {
                     </div>
                 </Col>
 
-                 <Col className='col-2'>
+                <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
-                    <div className='dividir'>
+                    <div className='dividir-vegetacion'>
                         <div>
                             <img src='images/icono_arbol_azul.png'/>
                         </div>
@@ -125,7 +125,7 @@ export const Vegetation = () => {
             <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
-                    <div className='dividir'>
+                    <div className='dividir-vegetacion'>
                         <div>
                             <img src='images/icono_arbol_azul.png'/>
                         </div>
@@ -151,7 +151,7 @@ export const Vegetation = () => {
                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
-                    <div className='dividir'>
+                    <div className='dividir-vegetacion'>
                         <div>
                             <img src='images/icono_arbol_azul.png'/>
                         </div>
@@ -177,7 +177,7 @@ export const Vegetation = () => {
                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
-                    <div className='dividir'>
+                    <div className='dividir-vegetacion'>
                         <div>
                             <img src='images/icono_arbol_azul.png'/>
                         </div>
@@ -203,7 +203,7 @@ export const Vegetation = () => {
                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
-                    <div className='dividir'>
+                    <div className='dividir-vegetacion'>
                         <div>
                             <img src='images/icono_arbol_azul.png'/>
                         </div>

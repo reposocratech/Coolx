@@ -8,6 +8,8 @@ import './login.scss'
 
 export const Login = () => {
 
+  const [message, setMessage] = useState();
+
   const [login,setLogin] = useState({
     email:"",
     password:"",
@@ -28,7 +30,7 @@ export const Login = () => {
     {
 
       axios
-      .post("//localhost:4000/users/login", login)
+      .post("http://localhost:4000/users/login", login)
 
       .then((res)=>{
         console.log(res);
@@ -43,7 +45,7 @@ export const Login = () => {
       //console.log("Este es el tipo del usuario: ",type);
 
       type === 0
-        ? navigate('/allusers', {replace:true})
+        ? navigate('/project', {replace:true})
         : type === 1
         ? navigate('/admin', {replace:true})
         : navigate('/')
