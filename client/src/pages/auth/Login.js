@@ -21,34 +21,36 @@ export const Login = () => {
     setLogin({...login, [name]:value})
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    // e.preventDefault();
     if(login.email === "" || login.password === ""){
      
     }else
     {
 
       axios
-      .post("//localhost:4000/users/login", login)
+      .post("http://localhost:4000/users/login", login)
 
       .then((res)=>{
         console.log(res);
       
 
       const token = res.data.token;
-      window.localStorage.setItem("token", token)
+      window.localStorage.setItem("infocoolx", token)
 
       console.log("Esto es la decoficacion del token", jwtDecode(token));
 
-      const type = jwtDecode(token).user.type;
+      const type = jwtDecode(token).user.user_type;
+      console.log(type);
       //console.log("Este es el tipo del usuario: ",type);
 
       type === 0
-        ? navigate('/allusers', {replace:true})
+        ? navigate('/user', {replace:true})
         : type === 1
         ? navigate('/admin', {replace:true})
         : navigate('/')
 
-
+      // replace: true para evitar volver atras al estar logueado
       //redireccionar a home
       //evitar login y registro
       //mostrar el button de logout
@@ -90,6 +92,7 @@ export const Login = () => {
                     className='pt-2'
                     autoComplete='off'
                     name='email'
+                    type="email"
                     value={login.email}
                     onChange={handleChange}
                 />
@@ -100,6 +103,7 @@ export const Login = () => {
                     className='pt-2'
                     autoComplete='off'
                     name='password'
+                    type="password"
                     value={login.password}
                     onChange={handleChange}
                 />

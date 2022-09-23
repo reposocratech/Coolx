@@ -8,9 +8,7 @@ class userController {
   //localhost:4000/users/registrocoolx
 
   createUser = (req, res) => {
-    // const { user_name, passwrod, type, surname, company, nif, position, phone, email, country, currency, create date, last mod date, last connection } = JSON.parse(
-    //   req.body.register
-    // );
+   
     const { user_name, email, password, surname, company, nif, phone } =
       req.body;
     console.log("esto es el req.body del controlador", req.body);
@@ -18,7 +16,7 @@ class userController {
     let saltRounds = 8;
     bcrypt.genSalt(saltRounds, function (err, saltRounds) {
       bcrypt.hash(password, saltRounds, function (err, hash) {
-        let sql = `INSERT INTO user (user_name, password, type, surname, company, nif, position, phone, email, currency, create_date, last_mod_date, last_connection) VALUES ( '${user_name}',"${surname}", "${company}", "${nif}", "${phone} '${email}', '${hash}')`;
+        let sql = `INSERT INTO user (user_name, password, surname, company, nif, phone, email) VALUES ( '${user_name}','${hash}' , "${surname}", "${company}", "${nif}", "${phone}", '${email}')`;
 
         connection.query(sql, (error, result) => {
           console.log(error);
@@ -63,9 +61,9 @@ class userController {
               {
                 user: {
                   email: user.email,
-                  name: user.name,
+                  name: user.user_name,
                   id: user_id,
-                  type: user.type,
+                  type: user.user_type,
                 },
               },
               process.env.SECRET,
