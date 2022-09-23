@@ -31,14 +31,14 @@ export const ProjectForm = () => {
 
         <Container fluid >
           <Row>
-            <Col className='espacio'>
+            <Col className='espacio-create'>
                 <div>
                   <h1>Inserte los datos de su nuevo proyecto</h1>
                 </div>
                 <div className='create-icono'>
                   <img src='./assets/icons/permanence_solid.svg'/>
                   <p>Introduzca los datos</p>
-                  <img src=''/>
+                  <img src='./assets/icons/arrow_right.svg'/>
                 </div>
                 </Col>
 
@@ -47,7 +47,7 @@ export const ProjectForm = () => {
             
             <div className="d-flex justify-content-center pt-5">
                 
-            <Col md={5} className="col">
+            <Col md={5} className="col-create">
 
   
               <Form.Group controlId="projectForm">
@@ -152,7 +152,7 @@ export const ProjectForm = () => {
           </Row>
 
           <Row>
-            <Col className='colocar'>
+            <Col className='colocar-create'>
                 <button className="button" onClick={handleSubmit}>
                         Crear proyecto
                 </button>

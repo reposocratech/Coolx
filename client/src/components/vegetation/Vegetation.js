@@ -4,18 +4,21 @@ import './vegetation.scss'
 
 export const Vegetation = () => {
   return (
-    <div className='base'>
+    <div className='base-vegetacion'>
         <Container fluid>
+
+            <div className='titulo-vegetacion p-5'>
+                <h2>Análisis Vegetación</h2>
+            </div>
             
-            <h2>Análisis Vegetación</h2>
-            
-            <Row className='tarjetas'>
+            <Row className='tarjetas-vegetacion'>
+
                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
-                    <div className='dividir'>
+                    <div className='dividir-vegetacion'>
                         <div>
-                            <img src='assets/icons/tree.svg'/>
+                            <img src='images/icono_arbol_azul.png'/>
                         </div>
                         <div>
                             <h6>Corresponde a árboles</h6>
@@ -28,20 +31,20 @@ export const Vegetation = () => {
                         <img/>
                     </div>
 
-                    <div className='botones'>
+                    <div className='botones-vegetacion'>
                         <button className='buton-1'>Ver mas</button>
                         <button className='buton-2'>
                             <img src='assets/icons/upload_file.svg'/>
                         </button>
                     </div>
-                
                 </Col>
-                <Col className='col-2'>
+
+                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
                     <div className='dividir'>
                         <div>
-                            <img src='assets/icons/tree.svg'/>
+                            <img src='images/icono_arbol_azul.png'/>
                         </div>
                         <div>
                             <h6>Corresponde a árboles</h6>
@@ -54,20 +57,20 @@ export const Vegetation = () => {
                         <img/>
                     </div>
 
-                    <div className='botones'>
+                    <div className='botones-vegetacion'>
                         <button className='buton-1'>Ver mas</button>
                         <button className='buton-2'>
                             <img src='assets/icons/upload_file.svg'/>
                         </button>
                     </div>
-                
                 </Col>
-                <Col className='col-2'>
+
+                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
                     <div className='dividir'>
                         <div>
-                            <img src='assets/icons/tree.svg'/>
+                            <img src='images/icono_arbol_azul.png'/>
                         </div>
                         <div>
                             <h6>Corresponde a árboles</h6>
@@ -80,20 +83,20 @@ export const Vegetation = () => {
                         <img/>
                     </div>
 
-                    <div className='botones'>
+                    <div className='botones-vegetacion'>
                         <button className='buton-1'>Ver mas</button>
                         <button className='buton-2'>
                             <img src='assets/icons/upload_file.svg'/>
                         </button>
                     </div>
-                
                 </Col>
-                <Col className='col-2'>
+
+                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
                     <div className='dividir'>
                         <div>
-                            <img src='assets/icons/tree.svg'/>
+                            <img src='images/icono_arbol_azul.png'/>
                         </div>
                         <div>
                             <h6>Corresponde a árboles</h6>
@@ -106,25 +109,25 @@ export const Vegetation = () => {
                         <img/>
                     </div>
 
-                    <div className='botones'>
+                    <div className='botones-vegetacion'>
                         <button className='buton-1'>Ver mas</button>
                         <button className='buton-2'>
                             <img src='assets/icons/upload_file.svg'/>
                         </button>
                     </div>
-                
                 </Col>
 
                
             </Row>
             <br/>
-            <Row className='tarjetas'>
+            <Row className='tarjetas-vegetacion'>
+
             <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
                     <div className='dividir'>
                         <div>
-                            <img src='assets/icons/tree.svg'/>
+                            <img src='images/icono_arbol_azul.png'/>
                         </div>
                         <div>
                             <h6>Corresponde a árboles</h6>
@@ -137,20 +140,20 @@ export const Vegetation = () => {
                         <img/>
                     </div>
 
-                    <div className='botones'>
+                    <div className='botones-vegetacion'>
                         <button className='buton-1'>Ver mas</button>
                         <button className='buton-2'>
                             <img src='assets/icons/upload_file.svg'/>
                         </button>
                     </div>
-                
                 </Col>
+
                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
                     <div className='dividir'>
                         <div>
-                            <img src='assets/icons/tree.svg'/>
+                            <img src='images/icono_arbol_azul.png'/>
                         </div>
                         <div>
                             <h6>Corresponde a árboles</h6>
@@ -163,20 +166,20 @@ export const Vegetation = () => {
                         <img/>
                     </div>
 
-                    <div className='botones'>
+                    <div className='botones-vegetacion'>
                         <button className='buton-1'>Ver mas</button>
                         <button className='buton-2'>
                             <img src='assets/icons/upload_file.svg'/>
                         </button>
                     </div>
-                
                 </Col>
+
                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
                     <div className='dividir'>
                         <div>
-                            <img src='assets/icons/tree.svg'/>
+                            <img src='images/icono_arbol_azul.png'/>
                         </div>
                         <div>
                             <h6>Corresponde a árboles</h6>
@@ -189,20 +192,20 @@ export const Vegetation = () => {
                         <img/>
                     </div>
 
-                    <div className='botones'>
+                    <div className='botones-vegetacion'>
                         <button className='buton-1'>Ver mas</button>
                         <button className='buton-2'>
                             <img src='assets/icons/upload_file.svg'/>
                         </button>
                     </div>
-                
                 </Col>
+
                 <Col className='col-2'>
                     <h4>Altura Promedio de la vegetacion</h4>
 
                     <div className='dividir'>
                         <div>
-                            <img src='assets/icons/tree.svg'/>
+                            <img src='images/icono_arbol_azul.png'/>
                         </div>
                         <div>
                             <h6>Corresponde a árboles</h6>
@@ -215,14 +218,14 @@ export const Vegetation = () => {
                         <img/>
                     </div>
 
-                    <div className='botones'>
+                    <div className='botones-vegetacion'>
                         <button className='buton-1'>Ver mas</button>
                         <button className='buton-2'>
                             <img src='assets/icons/upload_file.svg'/>
                         </button>
                     </div>
-                
                 </Col>
+
             </Row>
         </Container>
 
