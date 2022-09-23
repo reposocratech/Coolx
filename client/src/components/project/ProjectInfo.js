@@ -7,7 +7,7 @@ export const ProjectInfo = () => {
   return (
     <>
       <div>
-        <div className="wrapper">
+        <div className="wrapperProjectInfo">
           <Container fluid>
             <Row>
               <Col md={12} className="cardProjectInfo">
@@ -39,7 +39,7 @@ export const ProjectInfo = () => {
                   <StatusProject />
                 </div>
 
-                <section className="descripcion">
+                <section className="descripcionProjectInfo">
                   <h4>Descripción</h4>
                   <hr />
                   <p>

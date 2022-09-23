@@ -5,7 +5,7 @@ import "./co2.scss";
 export const Co2 = () => {
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapperCardCo2">
         <Container fluid>
           <Row>
             <Col md={12} className="infoCo2">
@@ -13,7 +13,7 @@ export const Co2 = () => {
                 <p>Información complementaria</p>
               </div>
 
-              <div className="infoText">
+              <div className="infoTextCo2">
                 <div>
                   <img src="/assets/icons/Footprint.svg" />
                 </div>
@@ -24,13 +24,13 @@ export const Co2 = () => {
                 </div>
               </div>
 
-              <div className="smallText">
+              <div className="smallTextCo2">
                 <p>Estimación realizada con tecnología satelital</p>
                 <img src="/assets/icons/info.svg" />
               </div>
               <hr />
 
-              <div className="infoPais">
+              <div className="infoPaisCo2">
                 <p>
                   País:<b> Costa Rica</b>
                 </p>

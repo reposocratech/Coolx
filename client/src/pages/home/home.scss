@@ -12,7 +12,7 @@
 
 }
 
-.texto {
+.textoHome {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,29 +69,42 @@
 }
 
 .fondoRegProject,
-.bloqueGarantizar {
+.bloqueGarantizarHome {
     background-image: url("../../../public/images/bosque1.png");
     background-size: cover;
-    height: 70vh;
+    // height: 70vh;
     left: 0px;
     top: 0px;
 }
 
-.fondoBlur {
+.fondoBlur1 {
     display: flex;
     flex-direction: column;
     backdrop-filter: blur(8px);
     padding-right: 0px !important;
     padding-left: 0px !important;
-    height: 70vh;
+
+
 }
 
-.info {
+.fondoBlur2 {
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(8px);
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.infoRegProject {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 80px;
+    margin-bottom: 80px;
+    padding: 35px;
 
 
     p {
@@ -101,7 +114,7 @@
         font-weight: bold;
     }
 
-    .wrapper_2 {
+    .wrapperRegProject {
         max-width: 1400px;
         padding-inline-end: 20px;
         padding-inline-start: 20px;
@@ -110,14 +123,11 @@
 
 }
 
-.topInfo {
+.topInfoRegProject {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 605px;
-
-
 
 }
 
@@ -131,33 +141,37 @@
     }
 }
 
-.bottomInfo {
+.bottomInfoRegProject {
     margin-top: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 605px;
+    justify-content: center;
 
 }
 
-.bloqueProceso {
+.bloqueProcesoHome {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 
-    h1 {
-        font-size: 40px;
-        font-weight: bold;
-        color: #09427D;
+    .tituloProceso {
+        margin: 80px 56px 56px 56px;
+
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            color: #09427D;
+        }
     }
 
+
+
 }
 
-.tituloProceso {
-    margin: 80px 56px 56px 56px;
-}
+
 
 .addProject,
 .satelite,
@@ -191,15 +205,16 @@
     }
 }
 
-.bloqueGarantizar {
+.bloqueGarantizarHome {
     text-align: center;
     color: white;
 
+    .tituloBloqGarant {
 
-    h1 {
-        font-size: 40px;
-        font-weight: bold;
-
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+        }
     }
 
 
@@ -209,13 +224,13 @@
 
     }
 
-    .button {
+    .buttonBloqGarant {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .boton {
+    .botonBloqGarant {
 
         margin-top: 40px;
         color: white;
@@ -229,7 +244,7 @@
         background: #70BFCB;
         border-radius: 80px;
         border: none;
-        font-family: 'Manrope';
+
 
 
     }
@@ -240,9 +255,9 @@
     align-items: center;
     text-align: center;
     justify-content: space-around;
-    height: 30vh;
-    margin-top: 56px !important;
-    margin-bottom: 56px !important;
+    padding: 20px;
+    margin: 20px !important;
+
 
     h4 {
         color: #09427D;

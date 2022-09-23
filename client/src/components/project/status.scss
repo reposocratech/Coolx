@@ -1,7 +1,14 @@
-.cardStatus{
+.wrapperCardStatus {
+    max-inline-size: 1400px;
+    // padding-inline-end: 16px;
+    // padding-inline-start: 16px;
+    margin: auto;
+}
+
+.cardStatus {
     display: flex;
-  
-    .cardRegistrado{
+
+    .cardRegistrado {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -9,33 +16,51 @@
         color: white;
         border-radius: 8px 0px 0px 8px;
         box-shadow: 0px 2px 2px 0px #00000052;
+
         p {
             margin-top: 16px;
-         }
+        }
 
     }
-    .cardCalculando{
+
+    .cardCalculando {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         background-color: #FFFFFF;
         box-shadow: 0px 2px 2px 0px #00000052;
+
         p {
             margin-top: 16px;
             color: #BCC2CC;
-         }
+        }
 
     }
-    .cardCompletado{
+
+    .cardCompletado {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         background-color: #FFFFFF;
         border-radius: 0px 8px 8px 0px;
         box-shadow: 0px 2px 2px 0px #00000052;
+
         p {
             margin-top: 16px;
             color: #BCC2CC;
-         }
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .cardStatus {
+
+        .cardRegistrado,
+        .cardCalculando,
+        .cardCompletado {
+            img {
+                display: none;
+            }
+        }
     }
 }
