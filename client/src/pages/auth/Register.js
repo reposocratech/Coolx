@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./register.scss";
 import { Col, Row, Button, Form, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Register = () => {
   const [newUser, setNewUser] = useState({
@@ -13,15 +15,46 @@ export const Register = () => {
     nif: "",
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
 
     setNewUser({ ...newUser, [name]: value });
+
+    console.log(newUser);
   };
 
-  const handleSUbmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
+    axios
+      .post("http://localhost:4000/users/registrocoolx", newUser)
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          navigate("/succes1");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response.status === 404) {
+          navigate("/error");
+        }
+        if (err.response.data.error.errno === 1062) {
+          alert("Email already exist");
+        }
+      });
   };
+
+  // PARA MENSAJE
+  // const { name, email, password } = register;
+
+  //   if (name === "" || email === "" || password === "") {
+  //     setMessage(true);
+  //   } else {
+  //     setMessage(false);
 
   return (
     <div className="register-bg">
@@ -51,8 +84,8 @@ export const Register = () => {
                     Apellido
                   </Form.Label>
                   <Form.Control
-                    type="email"
-                    name="email"
+                    type="text"
+                    name="surname"
                     autoComplete="off"
                     value={newUser.surname}
                     onChange={handleChange}
@@ -74,7 +107,7 @@ export const Register = () => {
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    name="tel"
+                    name="phone"
                     autoComplete="off"
                     value={newUser.phone}
                     onChange={handleChange}
@@ -84,17 +117,17 @@ export const Register = () => {
                     Contraseña
                   </Form.Label>
                   <Form.Control
-                    type="text"
+                    type="password"
                     name="password"
                     autoComplete="off"
                     value={newUser.password}
                     onChange={handleChange}
                   />
 
-                  <Form.Label className="labels-form mt-3 mb-2">
+                  {/* <Form.Label className="labels-form mt-3 mb-2">
                     Repite la contraseña
                   </Form.Label>
-                  <Form.Control type="text" name="pass" autoComplete="off" />
+                  <Form.Control type="text" name="pass" autoComplete="off" /> */}
 
                   <Form.Label className="labels-form mt-3 mb-2">
                     Nombre de la empresa
@@ -119,7 +152,7 @@ export const Register = () => {
                   />
 
                   <div>
-                    <Button className="button-form" onClick={handleSUbmit}>
+                    <Button className="button-form" onClick={handleSubmit}>
                       Enviar
                     </Button>
                   </div>
