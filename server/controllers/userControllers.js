@@ -8,15 +8,19 @@ class userController {
   //localhost:4000/users/registrocoolx
 
   createUser = (req, res) => {
-   
+
+    // console.log("hola estoy en el controlador");
+    console.log(req.body);
+
+
     const { user_name, email, password, surname, company, nif, phone } =
       req.body;
-    console.log("esto es el req.body del controlador", req.body);
 
     let saltRounds = 8;
     bcrypt.genSalt(saltRounds, function (err, saltRounds) {
       bcrypt.hash(password, saltRounds, function (err, hash) {
-        let sql = `INSERT INTO user (user_name, password, surname, company, nif, phone, email) VALUES ( '${user_name}','${hash}' , "${surname}", "${company}", "${nif}", "${phone}", '${email}')`;
+
+        let sql = `INSERT INTO user (user_name, password, surname, company, nif, phone, email) VALUES ('${user_name}', '${hash}', "${surname}", "${company}", "${nif}", "${phone}", '${email}')`;
 
         connection.query(sql, (error, result) => {
           console.log(error);
@@ -33,6 +37,8 @@ class userController {
   login = (req, res) => {
     let { email, password } = req.body;
     let sql = `SELECT * FROM user WHERE email = '${email}'`;
+
+    console.log("login req body " + req.body);
 
     connection.query(sql, (error, result) => {
       //en caso de error en la consulta
