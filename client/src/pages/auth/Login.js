@@ -63,22 +63,27 @@ export const Login = () => {
 
 
   return (
-    <Container fluid className='fondo'>
+
+    <div>
+
+    <Container fluid className='fondo-login'>
       
-      <Row className='contAuth'>
+      <Row className='contAuth-login'>
+
+        <Col>
 
         <div>
-          <div className='tituloLogin'>
+          <div className='titulo-Login'>
             <p >Bienvenido de vuelta</p>
           </div>
-          <div className='subtitulo'>
+          <div className='subtitulo-login'>
             <p>Para iniciar sesion introduce tus credenciales a continuación</p>
           </div>
           
         </div>
 
         
-        <div className='formAuth'>
+        <div className='formAuth-login'>
                 
                 <label>Dirección de correo electronico</label>
                 <input
@@ -107,12 +112,17 @@ export const Login = () => {
             <label for="remember">Recordar contraseña</label>
           </div>
       
-          <div className='final'>
-            <button className='boton' onClick={handleSubmit}>Iniciar sesión</button>
-            <p>¿No tienes cuenta? Contáctanos</p>
+          <div>
+            <button className='boton-login' onClick={handleSubmit}>Iniciar sesión</button>
+          </div>
+          <div className='nada-juntos'>
+            <button className='nada-nada'onClick={()=>navigate("/contact")}>¿No tienes cuenta?  Contáctanos</button>
           </div>
 
+          </Col>
       </Row>
   </Container>
+
+  </div>
   )
 }

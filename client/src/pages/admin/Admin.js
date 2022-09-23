@@ -18,7 +18,7 @@ export const Admin = () => {
 
         <Row>
           <Col md={6} lg={4} className="d-flex flex-column align-items-center">
-            <Button className="admin-tools" onClick={() => navigate("/")}>
+            <Button className="admin-tools" onClick={() => navigate("/projectform")}>
               <div className="blue-circle">
                 <img
                   src="/assets/icons/add_project.svg"
