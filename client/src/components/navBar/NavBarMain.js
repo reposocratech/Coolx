@@ -4,9 +4,9 @@ import { useNavigate, Link } from 'react-router-dom'
 import "./navbar.scss"
 
 
-export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
-
+export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
   const navigate = useNavigate();
+
 
   const handleLogout = () => {
     window.localStorage.removeItem("infocoolx")
@@ -18,8 +18,6 @@ export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
   console.log(user);
 
 
-
-
   return (
    <> 
    <Navbar className='nav-color'  expand="lg">
@@ -28,8 +26,7 @@ export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
         <Navbar.Toggle  aria-controls ="basic-navbar-nav"/>
         <Navbar.Collapse>
         <Nav className="me-auto">
-    
-         
+             
         </Nav>
         </Navbar.Collapse>
 
@@ -60,12 +57,8 @@ export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
               Logout
             </Button>
           </>
-        )} 
-         
-    
-
-         
-         
+        )}         
+        
 
         </Container>
       </Navbar>

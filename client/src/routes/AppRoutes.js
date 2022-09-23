@@ -10,23 +10,20 @@ import { MyAccount } from "../pages/user/MyAccount";
 import { MyProjects } from "../pages/user/MyProjects";
 import { Reports } from "../pages/user/Reports";
 import { User } from "../pages/user/User";
-import { Admin } from '../pages/admin/Admin'
-import { ErrorPage } from '../pages/home/ErrorPage'
-import { Tarjeta } from '../components/card/Tarjeta'
-import { Tarjetamas } from '../components/card/Tarjetamas'
-import { Vegetation } from '../components/vegetation/Vegetation'
-import {ContactForm} from '../components/forms/ContactForm'
+import { Admin } from "../pages/admin/Admin";
+import { ErrorPage } from "../pages/home/ErrorPage";
+import { Tarjeta } from "../components/card/Tarjeta";
+import { Tarjetamas } from "../components/card/Tarjetamas";
+import { Vegetation } from "../components/vegetation/Vegetation";
+import { ContactForm } from "../components/forms/ContactForm";
 
-import jwtDecode from 'jwt-decode'
-import axios from 'axios'
+import jwtDecode from "jwt-decode";
+import axios from "axios";
 import { ProjectForm } from "../components/forms/ProjectForm";
 import { Succes1 } from "../pages/home/Succes1";
 import { Succes2 } from "../pages/home/Sucess2";
 import { AllUsers } from "../pages/user/AllUsers";
 import { EditUser } from "../pages/user/EditUser";
-
-
-
 
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -77,7 +74,7 @@ export const AppRoutes = () => {
                 <Route path='/' element={<Home/>}/>
                 <Route path='/login' element = {<Login isLogged={isLogged} setIsLogged={setIsLogged}/>} />
                 <Route path='/admin' element = {<Admin/>} />
-                <Route path='/error' element = {<ErrorPage/>} />
+                <Route path='/*' element = {<ErrorPage/>} />
                 <Route path='/tarjeta'  element = {<Tarjeta/>} />
                 <Route path='/tarjetamas'  element = {<Tarjetamas/>} />
                 <Route path='/vegetation'  element = {<Vegetation/>} />
@@ -99,6 +96,7 @@ export const AppRoutes = () => {
                 <Route path="/edituser" element={<EditUser />}/>
             </Routes>
         </BrowserRouter>
+
 
     </div>
   );
