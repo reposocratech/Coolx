@@ -32,7 +32,7 @@ router.get("/getEditUser/:user_id", userControllers.getEditOneUser);
 
 //6 borrado logico usuario
 //localhost:4000/users/deleteUser/:user_id
-router.delete("/deleteUser/:user:id", userControllers.deleteUser);
+router.delete("/deleteUser/:user_id", userControllers.deleteUser);
 
 //
 
