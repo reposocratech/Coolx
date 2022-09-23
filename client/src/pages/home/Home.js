@@ -1,10 +1,14 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { NavBarProject } from '../../components/navBar/NavBarProject'
+import { useNavigate, Link} from "react-router-dom"
 import "./home.scss"
 
 
 export const Home = () => {
+
+  const navigate = useNavigate();
+
   return (
     <>
     <Container fluid>
@@ -14,18 +18,21 @@ export const Home = () => {
           <div className='texto'>
             <p>Optimizamos el registro y la evaluación de tus proyectos forestales</p>
 
-            <button>Contáctanos</button>
+            <button onClick={() => navigate("/contact")}>Contáctanos</button>
 
-              <div className='leerMas'>
+              <a href='#regProject'>
+                <div className='leerMas'>
+                
                   <p>Leer más</p>
                   <img src='/assets/icons/arrow.svg' alt='arrow_down'/>
-              </div>
-
+                  
+                </div>
+            </a>
           </div>
         </Col>
       </Row>
 
-      <Row className="fondoRegProject">
+      <Row className="fondoRegProject" id="regProject">
         
         <div className='fondoBlur'>
 
@@ -33,24 +40,30 @@ export const Home = () => {
           <NavBarProject/>
         </Col>
 
-        <Col className='info'>
+        <Col md={12} xs={1} className='info'>
+          <div className='wrapper_2'>
+            <Row>
+              <Col md={6} sm={12} className="topInfo text-white">
+                <img src='/assets/icons/info_top.svg'/>
+              </Col>
 
-            <Col md={12} className="topInfo text-white">
-
-              <img src='/assets/icons/info_top.svg'/>
-
+              <Col md={6} sm={12} className="topInfo text-white">
               <p>Mediante teledetección y big data, disminuimos el tiempo necesario para que tu consultoría medioambiental genere créditos de carbono</p>
+              </Col>
 
-            </Col>
-
-            <Col md={12} className="bottomInfo text-white">
-
+            </Row>
             
-              <p>Esta tecnología nos permite hacer estimaciones más precisas y constantes, generando confianza en cada crédito de carbono</p>
+            <Row>
+              <Col md={6} sm={12} className="topInfo text-white">
+                <p>Esta tecnología nos permite hacer estimaciones más precisas y constantes, generando confianza en cada crédito de carbono</p>
+              </Col>
 
-              <img src='/assets/icons/info_bottom.svg'/>
+              <Col md={6} sm={12} className="bottomInfo text-white">
+                <img src='/assets/icons/info_bottom.svg'/>
+              </Col>
+            </Row>
             
-            </Col>
+            </div>
         
         </Col>
         </div>
@@ -59,7 +72,7 @@ export const Home = () => {
       <Row className='bloqueProceso'>
       <Col md={12} >
 
-        <div className='titulo'>
+        <div className='tituloProceso'>
           <h1>¿Como será el proceso?</h1>
         </div>
       
@@ -138,7 +151,7 @@ export const Home = () => {
         </Col>
 
         <div className='button'>
-          <Button className='boton'>¿Hablamos?</Button>
+          <Button className='boton' onClick={() => navigate("/contact")}>¿Hablamos?</Button>
         </div>
        
       </Row>

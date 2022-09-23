@@ -1,6 +1,6 @@
 import React from 'react'
 import {Navbar, Container, Nav, Button} from "react-bootstrap"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import "./navbar.scss"
 
 
@@ -13,7 +13,7 @@ export const NavBarMain = () => {
    <> 
    <Navbar className='nav-color'  expand="lg">
         <Container >
-        <Navbar.Brand className='navbar-logo'> <img src='/assets/branding/logo_white.svg'/></Navbar.Brand>
+        <Navbar.Brand className='navbar-logo' as={Link} to="/"> <img src='/assets/branding/logo_white.svg'/></Navbar.Brand>
         <Navbar.Toggle  aria-controls ="basic-navbar-nav"/>
         <Navbar.Collapse>
         <Nav className="me-auto">

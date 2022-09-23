@@ -68,7 +68,7 @@ export const Login = () => {
       <Row className='contAuth'>
 
         <div>
-          <div className='titulo'>
+          <div className='tituloLogin'>
             <p >Bienvenido de vuelta</p>
           </div>
           <div className='subtitulo'>
@@ -109,7 +109,7 @@ export const Login = () => {
       
           <div className='final'>
             <button className='boton' onClick={handleSubmit}>Iniciar sesión</button>
-            <p>¿No tienes cuenta?¿Contactanos?</p>
+            <p>¿No tienes cuenta? Contáctanos</p>
           </div>
 
       </Row>
