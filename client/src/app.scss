@@ -4,6 +4,13 @@
     url(./font/Manrope-VariableFont_wght.ttf) format("truetype");
 }
 
+// Tipografía
 body {
   font-family: Manrope, Arial, serif !important;
+}
+
+// Color de inputs
+input,
+textarea {
+  background-color: rgb(242, 244, 246) !important;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Outlet, useNavigate } from "react-router-dom";
-import "./user.scss";
+import "./myprojects.scss";
 
 export const User = () => {
   const [radioValue, setRadioValue] = useState("1");
@@ -21,7 +21,7 @@ export const User = () => {
   ];
 
   return (
-    <div className="bg">
+    <div className="user-bg">
       <div className="wrapper">
         <Container fluid>
           <Row>

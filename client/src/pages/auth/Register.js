@@ -24,19 +24,21 @@ export const Register = () => {
   };
 
   return (
-    <div className="fondo-register">
+    <div className="register-bg">
       <Container fluid>
         <Row className="d-flex justify-content-center">
           <div className="form-bg d-flex justify-content-center">
-            <Col md={4} className="col">
+            <Col md={4} className="col-form">
               <div className="text-center">
                 <h1>Registro</h1>
-                <h4 className="message">Por favor, completa el formulario</h4>
+                <h4 className="message-form">
+                  Por favor, completa el formulario
+                </h4>
               </div>
 
               <Form.Group controlId="contactForm">
                 <Form className="d-flex flex-column">
-                  <Form.Label className="labels">Nombre</Form.Label>
+                  <Form.Label className="labels-form">Nombre</Form.Label>
                   <Form.Control
                     type="text"
                     name="user_name"
@@ -45,7 +47,9 @@ export const Register = () => {
                     onChange={handleChange}
                   />
 
-                  <Form.Label className="labels mt-3 mb-2">Apellido</Form.Label>
+                  <Form.Label className="labels-form mt-3 mb-2">
+                    Apellido
+                  </Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
@@ -54,7 +58,9 @@ export const Register = () => {
                     onChange={handleChange}
                   />
 
-                  <Form.Label className="labels mt-3 mb-2">Email</Form.Label>
+                  <Form.Label className="labels-form mt-3 mb-2">
+                    Email
+                  </Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
@@ -63,7 +69,9 @@ export const Register = () => {
                     onChange={handleChange}
                   />
 
-                  <Form.Label className="labels mt-3 mb-2">Teléfono</Form.Label>
+                  <Form.Label className="labels-form mt-3 mb-2">
+                    Teléfono
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="tel"
@@ -72,7 +80,7 @@ export const Register = () => {
                     onChange={handleChange}
                   />
 
-                  <Form.Label className="labels mt-3 mb-2">
+                  <Form.Label className="labels-form mt-3 mb-2">
                     Contraseña
                   </Form.Label>
                   <Form.Control
@@ -83,12 +91,12 @@ export const Register = () => {
                     onChange={handleChange}
                   />
 
-                  <Form.Label className="labels mt-3 mb-2">
+                  <Form.Label className="labels-form mt-3 mb-2">
                     Repite la contraseña
                   </Form.Label>
                   <Form.Control type="text" name="pass" autoComplete="off" />
 
-                  <Form.Label className="labels mt-3 mb-2">
+                  <Form.Label className="labels-form mt-3 mb-2">
                     Nombre de la empresa
                   </Form.Label>
                   <Form.Control
@@ -99,7 +107,9 @@ export const Register = () => {
                     onChange={handleChange}
                   />
 
-                  <Form.Label className="labels mt-3 mb-2">N.I.F</Form.Label>
+                  <Form.Label className="labels-form mt-3 mb-2">
+                    N.I.F
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="nif"
@@ -109,7 +119,7 @@ export const Register = () => {
                   />
 
                   <div>
-                    <Button className="button" onClick={handleSUbmit}>
+                    <Button className="button-form" onClick={handleSUbmit}>
                       Enviar
                     </Button>
                   </div>

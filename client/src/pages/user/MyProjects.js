@@ -14,7 +14,7 @@ export const MyProjects = () => {
           <Col md={4} className="add-container">
             <button className="add-button">
               <div>
-                <div className="circle">
+                <div className="add-circle">
                   <h2>+</h2>
                 </div>
                 <p>Añadir proyecto</p>
