@@ -5,12 +5,12 @@ import "./blocked.scss";
 export const BlockedInfo = () => {
   return (
     <>
-      <div className="wrapper">
+      <div >
         <Container fluid>
           <Row>
             <Col md={12} className="blockedInfo">
               <div className="blur">
-                <section className="descripcion">
+                <section className="descripcionBlocked">
                   <h4>Descripción</h4>
                   <hr />
                   <p>
@@ -40,7 +40,7 @@ export const BlockedInfo = () => {
               </div>
 
               <div className="unblock">
-                <Button>Desbloquear todos los datos</Button>
+                <Button className="buttonBlock">Desbloquear todos los datos</Button>
               </div>
             </Col>
           </Row>

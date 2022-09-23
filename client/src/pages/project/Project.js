@@ -1,6 +1,5 @@
 import React from "react";
 import { ProjectInfo } from "../../components/project/ProjectInfo";
-import { StatusProject } from "../../components/project/StatusProject";
 import { Col, Container, Row } from "react-bootstrap";
 import { CostProfit } from "../../components/project/CostProfit";
 import "./projectMain.scss";
@@ -11,11 +10,11 @@ import { BlockedInfo } from "../../components/project/BlockedInfo";
 export const Project = () => {
   return (
     <>
-      <div>
-        <div className="wrapper">
+      <div className="contenedorProject">
+        <div className="wrapperProject">
           <Container fluid>
             <Row>
-              <Col md={12} className="project">
+              <Col md={12} className="projectCard">
                 <p>Proyecto Santa Elena</p>
               </Col>
               <Col md={9}>

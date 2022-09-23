@@ -1,11 +1,22 @@
-body{
-    background-color: #F2F4F6 !important;
+.contenedorProject {
+    background-color: #F2F4F6;
 }
-.project{
-   padding: 24px 15px;
-    p{
+
+.wrapperProject {
+    max-inline-size: 1400px;
+    padding-inline-end: 16px;
+    padding-inline-start: 16px;
+    margin: auto;
+
+}
+
+.projectCard {
+    padding: 24px 15px;
+
+
+    p {
         font-size: 24px;
         color: #09427D;
-        font-weight: bold
-    };
+        font-weight: bold;
+    }
 }

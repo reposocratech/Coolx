@@ -15,7 +15,7 @@ export const Home = () => {
       <Row >
         <Col md={12} lg={12} sm={1} className='fondo-home' >
 
-          <div className='texto'>
+          <div className='textoHome'>
             <p>Optimizamos el registro y la evaluación de tus proyectos forestales</p>
 
             <button onClick={() => navigate("/contact")}>Contáctanos</button>
@@ -40,25 +40,25 @@ export const Home = () => {
           <NavBarProject/>
         </Col>
 
-        <Col md={12} sm={1} className='info'>
-          <div className='wrapper_2'>
+        <Col md={12} sm={1} className='infoRegProject'>
+          <div className='wrapperRegProject'>
             <Row>
-              <Col md={6} sm={12} className="topInfo img">
+              <Col md={6} sm={12} className="topInfoRegProject">
                 <img src='/assets/icons/info_top.svg'/>
               </Col>
 
-              <Col md={6} sm={12} className="topInfo text-white">
+              <Col md={6} sm={12} className="topInfoRegProject text-white">
               <p>Mediante teledetección y big data, disminuimos el tiempo necesario para que tu consultoría medioambiental genere créditos de carbono</p>
               </Col>
 
             </Row>
             
             <Row>
-              <Col md={6} sm={12} className="bottomInfo text-white">
+              <Col md={6} sm={12} className="bottomInfoRegProject text-white">
                 <p>Esta tecnología nos permite hacer estimaciones más precisas y constantes, generando confianza en cada crédito de carbono</p>
               </Col>
 
-              <Col md={6} sm={12} className="bottomInfo text-white">
+              <Col md={6} sm={12} className="bottomInfoRegProject text-white">
                 <img src='/assets/icons/info_bottom.svg'/>
               </Col>
             </Row>
@@ -69,7 +69,7 @@ export const Home = () => {
         </div>
       </Row>
 
-      <Row className='bloqueProceso'>
+      <Row className='bloqueProcesoHome'>
       <Col md={12} >
 
         <div className='tituloProceso'>
@@ -113,12 +113,12 @@ export const Home = () => {
 
       </Row>
 
-      <Row className='bloqueGarantizar'>
+      <Row className='bloqueGarantizarHome'>
       <div className='fondoBlur2'>
 
       <Col md={12} sm={12}>
 
-        <div className='titulo'>
+        <div className='tituloBloqGarant'>
           <h1>Garantizamos</h1>
         </div>
       </Col>
@@ -150,8 +150,8 @@ export const Home = () => {
           <p>Mediante tecnología satelital realizaremos un seguimiento de tu proyecto con exactitud y rapidez</p>
         </Col>
 
-        <div className='button'>
-          <Button className='boton' onClick={() => navigate("/contact")}>¿Hablamos?</Button>
+        <div className='buttonBloqGarant'>
+          <Button className='botonBloqGarant' onClick={() => navigate("/contact")}>¿Hablamos?</Button>
         </div>
        
       </Row>

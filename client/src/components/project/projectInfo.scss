@@ -1,33 +1,39 @@
-.wrapper {
-    max-inline-size: 1400px; /*espacio máximo de trabajo*/
-    // padding-inline-end: 16px; /*debe mantener esa distancia siempre*/
-    // padding-inline-start: 16px;
-    margin: auto;
-    
-  }
-  .cardProjectInfo{
-   
-    padding: 15px;
+.wrapperProjectInfo {
+  max-inline-size: 1400px;
+  // padding-inline-end: 16px;
+  // padding-inline-start: 16px;
+  margin: auto;
+
+}
+
+.cardProjectInfo {
+
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 2px 2px 0px #00000052;
+
+
+
+  img {
     border-radius: 10px;
-    background-color: white;
-    box-shadow: 0px 2px 2px 0px #00000052;
-    // margin-bottom: 200px;
-    img{
-        border-radius: 10px;
-    }
-    .imgCarousel{
-      margin: 23px 16px;
-    }
-  }
-  .barraStatus,.descripcion{
-    margin-top: 23px;
-  }
-  .descripcion{
-      margin: 23px 15px;
-    p{
- 
-       word-wrap: break-word;
-    }
-        
   }
 
+  .imgCarousel {
+    margin: 23px 16px;
+  }
+}
+
+.barraStatus,
+.descripcionProjectInfo {
+  margin-top: 23px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+@media screen and (max-width: 520px) {
+  .descripcionProjectInfo {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
