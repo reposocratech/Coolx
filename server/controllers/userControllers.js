@@ -91,7 +91,7 @@ class userController {
   selectOneUser = (req, res) => {
     console.log(req.params.user_id, "EL ID");
     const user_id = req.params.user_id;
-    console.log(req, "======");
+    // console.log(req, "======");
 
     let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
     let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`;

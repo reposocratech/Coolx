@@ -5,7 +5,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
 
-export const Login = () => {
+export const Login = ({isLogged, setIsLogged}) => {
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -22,7 +22,6 @@ export const Login = () => {
   const handleSubmit = (e) => {
     // e.preventDefault();
 
-
     if (login.email === "" || login.password === "") {
       // if (email === "" || password === "") {
       //   setMessage(true);
@@ -35,20 +34,16 @@ export const Login = () => {
         .then((res) => {
           console.log(res);
 
-
           const token = res.data.token;
           window.localStorage.setItem("infocoolx", token);
 
-
           console.log("Esto es la decoficacion del token ", jwtDecode(token));
-
 
           const type = jwtDecode(token).user.type;
           console.log("Este es el tipo del usuario: ", type);
 
           // Para indicar que está conectado con un promp
-          // setIsLogged(true);
-
+           setIsLogged(true);
 
           // replace:true para evitar volver atrás al estar logueado
           type === 0
@@ -110,46 +105,15 @@ export const Login = () => {
               <p>¿Has olvidado tu contraseña?</p>
             </div>
 
-        
-        <div className='formAuth-login'>
-                
-                <label>Dirección de correo electronico</label>
-                <input
-                    className='pt-2'
-                    autoComplete='off'
-                    name='email'
-                    type="email"
-                    value={login.email}
-                    onChange={handleChange}
-                />
-                <br/>
-
-                <label>Contraseña</label>
-                <input
-                    className='pt-2'
-                    autoComplete='off'
-                    name='password'
-                    type="password"
-                    value={login.password}
-                    onChange={handleChange}
-                />
-
-                <p>¿Has olvidado tu contraseña?</p>
-          </div> 
-
-          <div>
-            <input type="checkbox" name="remember" id="remember" class="form-check-input"/>
-            <label for="remember">Recordar contraseña</label>
-          </div>
-      
-          <div>
-            <button className='boton-login' onClick={handleSubmit}>Iniciar sesión</button>
-          </div>
-          <div className='nada-juntos'>
-            <button className='nada-nada'onClick={()=>navigate("/contact")}>¿No tienes cuenta?  Contáctanos</button>
-          </div>
-
-        
+            <div>
+              <input
+                type="checkbox"
+                name="remember"
+                id="remember"
+                class="form-check-input"
+              />
+              <label for="remember">Recordar contraseña</label>
+            </div>
 
             <div>
               <button className="boton-login" onClick={handleSubmit}>

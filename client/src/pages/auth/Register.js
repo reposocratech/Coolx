@@ -32,14 +32,12 @@ export const Register = () => {
     axios
       .post("http://localhost:4000/users/registrocoolx", newUser)
       .then((res) => {
-
         console.log(res);
         navigate("/succes1");
       })
       .catch((err) => {
         // console.log(err);
         if (err.response.data.error.errno === 1062) {
-
           alert("Email already exist");
         } else {
           navigate("/error");

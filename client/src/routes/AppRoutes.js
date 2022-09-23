@@ -37,37 +37,45 @@ export const AppRoutes = () => {
 
   const [project, setProject] = useState(false);
 
-  // useEffect(()=> {
-  //   const token = window.localStorage.getItem("token");
+    useEffect(()=> {
+      const token = window.localStorage.getItem("infocoolx");
 
-  //   if(token){
-  //     setIsLogged(true)
+      if(token){
+        setIsLogged(true)
 
-  //     const {id} = jwtDecode(token).user;
+        const {id} = jwtDecode(token).user;
+        console.log(id);
 
-  //     axios
-  //       .get(`http://localhost:4000/users/oneUser/${id}`)
-  //       .then((res)=>{
-  //         setUser(res.data.resultUser[0])
+        axios
+          .get(`http://localhost:4000/users/oneUser/${id}`)
+          .then((res)=>{
+            setUser(res.data.resultUser[0])
+            
+            console.log(res, "soyyyy reeeeesss")
+          })
+          .catch((err)=>{
+             console.log(err);
+          })
+          
 
-  //         console.log(res, "soyyyy reeeeesss")
-  //       })
-  //       .catch((err)=>{})
+      }
+    }, [isLogged, resetUser])
 
-  //       console.log(id, "Este es el id desustrucutrado");
-
-  //   }
-  // }, [isLogged, resetUser])
-
-  // console.log(project, "Esto es project");
+    // console.log(project, "Esto es project");
+    console.log("esto es user", user);
 
   return (
     <div>
         <BrowserRouter>
-            <NavBarMain/>
+            <NavBarMain
+            isLogged={isLogged}
+            setIsLogged={setIsLogged}
+            user={user}
+            setUser={setUser}
+            />
             <Routes>
                 <Route path='/' element={<Home/>}/>
-                <Route path='/login' element = {<Login/>} />
+                <Route path='/login' element = {<Login isLogged={isLogged} setIsLogged={setIsLogged}/>} />
                 <Route path='/admin' element = {<Admin/>} />
                 <Route path='/error' element = {<ErrorPage/>} />
                 <Route path='/tarjeta'  element = {<Tarjeta/>} />
