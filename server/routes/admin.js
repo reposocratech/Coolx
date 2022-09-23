@@ -23,16 +23,5 @@ router.post("/:userId/allProjects", adminControllers.getAllProjects);
 // localhost:4000/admin/:userId/allTrees
 router.post("/:userId/allTrees", adminControllers.getAllTrees);
 
-// Mostrar un proyecto
-// localhost:4000/admin/:userId/:project_id
-router.post("/:userId/:project_id", adminControllers.getOneProject);
-
-// Mostrar un usuario **** A LA RUTA DE USUARIOS
-// localhost:4000/admin/:user_id
-//router.post("/:user_id", adminControllers.getOneUser);
-
-// Mostrar un árbol **** A LA RUTA DE ÁRBOLES
-// localhost:4000/admin/:userId/:tree_id
-// router.post("/:userId/:tree_id", adminControllers.getOneTree);
 
 module.exports = router;

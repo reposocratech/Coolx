@@ -35,7 +35,7 @@ class userController {
          
 
         
-    // 2. User login
+    // 2. User login **** AÑADIR VERIFICACIÓN TIPO USUARIO
     // localhost:4000/users/login
     login = (req, res) => {
 
@@ -88,7 +88,7 @@ class userController {
      };
     
 
-    //3 traer informacion de un usuario
+    //3 traer informacion de un usuario **** SOLO EL PROPIO USUARIO O UN ADMIN
     //localhost:4000/users/:user_id
     
     selectOneUser = (req, res) => {
@@ -112,8 +112,8 @@ class userController {
       };
 
 
-      //4 editar Usuario
-      //localhost:4000/users/editUser/u:user_id
+      // 4 editar Usuario **** SOLO EL PROPIO USUARIO (EL ADMIN TAMBIÉN?)
+      // localhost:4000/users/editUser/u:user_id
       editUser = (req, res) =>{
 
         let user_id = req.params.user_id;
@@ -129,7 +129,7 @@ class userController {
         });
       };
 
-      //5 traer informacion de Usuario para editarlo
+      //5 traer informacion de Usuario para editarlo **** SOLO EL PROPIO USUARIO (EL ADMIN TAMBIÉN?)
       //localhost:4000/users/editUser/:user_id
       getEditOneUser = (req, res) => {
         let user_id = req.params.user_id;
@@ -139,13 +139,7 @@ class userController {
         });
       };
 
-
-
-
-
-
-
-      //6 Borrado lógico de un usuario
+      //6 Borrado lógico de un usuario **** OJO: SOLO LO PUEDE HACER EL PROPIO USUARIO
       //localhost:4000/users/deleteUser/:user_id
 
       deleteUser = (req, res) => {
