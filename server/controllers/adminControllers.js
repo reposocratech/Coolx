@@ -47,44 +47,7 @@ class adminControllers {
         });
     };
 
-    // Mostrar un proyecto
-    // localhost:4000/admin/:userId/:project_id
-    getOneProject = (req, res) => {
-        let project_id = req.params.project_id;
-        let sql = `SELECT * FROM project WHERE project_id = ${project_id} and is_deleted = 0`;
-        connection.query(sql, (error, result) => {
-            if (error){
-                res.status(400).json({error});
-            }
-            res.status(200).json(result);
-        });
-    };
-
-    // Mostrar un usuario
-    // localhost:4000/admin/:user_id
-    // getOneUser = (req, res) => {
-    //     let user_id = req.params.user_id;
-    //     let sql = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
-    //     connection.query(sql, (error, result) => {
-    //         if (error){
-    //             res.status(400).json({error});
-    //         }
-    //         res.status(200).json(result);
-    //     });
-    // };
-
-    // Mostrar un árbol
-    // localhost:4000/admin/:userId/:tree_id
-    // getOneTree = (req, res) => {
-    //     let tree_id = req.params.tree_id;
-    //     let sql = `SELECT * FROM tree WHERE tree_id = ${tree_id} and is_deleted = 0`;
-    //     connection.query(sql, (error, result) => {
-    //         if (error){
-    //             res.status(400).json({error});
-    //         }
-    //         res.status(200).json(result);
-    //     });
-    // };
+    
 
 }
 
