@@ -34,40 +34,70 @@ export const AppRoutes = () => {
 
   const [project, setProject] = useState(false);
 
+    useEffect(()=> {
+      const token = window.localStorage.getItem("infocoolx");
+
+      if(token){
+        setIsLogged(true)
+
+        const {id} = jwtDecode(token).user;
+        console.log(id);
+
+        axios
+          .get(`http://localhost:4000/users/oneUser/${id}`)
+          .then((res)=>{
+            setUser(res.data.resultUser[0])
+            
+            console.log(res, "soyyyy reeeeesss")
+          })
+          .catch((err)=>{
+             console.log(err);
+          })
+          
+
+      }
+    }, [isLogged, resetUser])
+
+    // console.log(project, "Esto es project");
+    console.log("esto es user", user);
+
   return (
     <div>
-      <BrowserRouter>
-        <NavBarMain
-          setIsLogged={setIsLogged}
-          isLogged={isLogged}
-          setUser={setUser}
-          user={user}
-        />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/*" element={<ErrorPage />} />
-          <Route path="/tarjeta" element={<Tarjeta />} />
-          <Route path="/tarjetamas" element={<Tarjetamas />} />
-          <Route path="/vegetation" element={<Vegetation />} />
-          <Route path="/contact" element={<ContactForm />} />
-          <Route path="/registrocoolx" element={<Register />} />
-          <Route path="/projectform" element={<ProjectForm />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/succes1" element={<Succes1 />} />
-          <Route path="/succes2" element={<Succes2 />} />
-          <Route path="/allusers" element={<AllUsers />} />
-          <Route path="/user" element={<User />}>
-            <Route path="" element={<MyProjects />} />
-            <Route path="myprojects" element={<MyProjects />} />
-            <Route path="reports" element={<Reports />} />
-            <Route path="messages" element={<Messages />} />
-            <Route path="myaccount" element={<MyAccount />} />
-          </Route>
-          <Route path="/edituser" element={<EditUser />} />
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+            <NavBarMain
+            isLogged={isLogged}
+            setIsLogged={setIsLogged}
+            user={user}
+            setUser={setUser}
+            />
+            <Routes>
+                <Route path='/' element={<Home/>}/>
+                <Route path='/login' element = {<Login isLogged={isLogged} setIsLogged={setIsLogged}/>} />
+                <Route path='/admin' element = {<Admin/>} />
+                <Route path='/*' element = {<ErrorPage/>} />
+                <Route path='/tarjeta'  element = {<Tarjeta/>} />
+                <Route path='/tarjetamas'  element = {<Tarjetamas/>} />
+                <Route path='/vegetation'  element = {<Vegetation/>} />
+                <Route path="/contact" element={<ContactForm />} />
+                <Route path="/registrocoolx" element={<Register />} />
+                <Route path= "/projectform" element ={<ProjectForm/>} />
+                <Route path="/project" element={<Project />} />
+                <Route path="/succes1" element={<Succes1 />} />
+                <Route path="/succes2" element={<Succes2 />} />
+                <Route path="/allusers" element={<AllUsers/>} />
+                <Route path="/user" element={<User />}>
+                  <Route path="" element={<MyProjects />} />
+                  <Route path="myprojects" element={<MyProjects />} />
+                  <Route path="reports" element={<Reports />} />
+                  <Route path="messages" element={<Messages />} />
+                  <Route path="myaccount" element={<MyAccount />} />
+               
+                </Route>
+                <Route path="/edituser" element={<EditUser />}/>
+            </Routes>
+        </BrowserRouter>
+
+
     </div>
   );
 };

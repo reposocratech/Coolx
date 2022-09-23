@@ -5,7 +5,9 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
 
-export const Login = ({ setIsLogged }) => {
+
+export const Login = ({isLogged, setIsLogged}) => {
+
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -43,7 +45,9 @@ export const Login = ({ setIsLogged }) => {
           console.log("Este es el tipo del usuario: ", type);
 
           // Para indicar que está conectado con un promp
-          setIsLogged(true);
+
+           setIsLogged(true);
+
 
           // replace:true para evitar volver atrás al estar logueado
           type === 0
