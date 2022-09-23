@@ -1,22 +1,17 @@
-var express = require('express');
+var express = require("express");
 const userControllers = require("../controllers/userControllers");
 var router = express.Router();
 const multer = require("../middleware/multer");
 const multerSingle = require("../middleware/multerSingle");
 const verify = require("../middleware/verify");
 
-
-
 //1 createUser
 //localhost:4000/users/registrocoolx
-router.post("registrocoolx", userControllers.createUser);
+router.post("/registrocoolx", userControllers.createUser);
 
 // 2. User login
 // localhost:4000/users/login
 router.post("/login", userControllers.login);
-
-
-
 
 //3 Trae infromación de un usuario
 //localhost:40000/users/oneUser/:user_id
@@ -36,20 +31,4 @@ router.delete("/deleteUser/:user_id", userControllers.deleteUser);
 
 //
 
-
-
-
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-

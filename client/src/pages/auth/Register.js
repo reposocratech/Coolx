@@ -19,11 +19,11 @@ export const Register = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
+    // console.log(name, value);
 
     setNewUser({ ...newUser, [name]: value });
 
-    console.log(newUser);
+    // console.log(newUser);
   };
 
   const handleSubmit = (e) => {
@@ -33,17 +33,14 @@ export const Register = () => {
       .post("http://localhost:4000/users/registrocoolx", newUser)
       .then((res) => {
         console.log(res);
-        if (res.status === 200) {
-          navigate("/succes1");
-        }
+        navigate("/succes1");
       })
       .catch((err) => {
-        console.log(err);
-        if (err.response.status === 404) {
-          navigate("/error");
-        }
+        // console.log(err);
         if (err.response.data.error.errno === 1062) {
           alert("Email already exist");
+        } else {
+          navigate("/error");
         }
       });
   };
