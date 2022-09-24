@@ -10,23 +10,20 @@ import { MyAccount } from "../pages/user/MyAccount";
 import { MyProjects } from "../pages/user/MyProjects";
 import { Reports } from "../pages/user/Reports";
 import { User } from "../pages/user/User";
-import { Admin } from '../pages/admin/Admin'
-import { ErrorPage } from '../pages/home/ErrorPage'
-import { Tarjeta } from '../components/card/Tarjeta'
-import { Tarjetamas } from '../components/card/Tarjetamas'
-import { Vegetation } from '../components/vegetation/Vegetation'
-import {ContactForm} from '../components/forms/ContactForm'
+import { Admin } from "../pages/admin/Admin";
+import { ErrorPage } from "../pages/home/ErrorPage";
+import { Tarjeta } from "../components/card/Tarjeta";
+import { Tarjetamas } from "../components/card/Tarjetamas";
+import { Vegetation } from "../components/vegetation/Vegetation";
+import { ContactForm } from "../components/forms/ContactForm";
 
-import jwtDecode from 'jwt-decode'
-import axios from 'axios'
+import jwtDecode from "jwt-decode";
+import axios from "axios";
 import { ProjectForm } from "../components/forms/ProjectForm";
 import { Succes1 } from "../pages/home/Succes1";
 import { Succes2 } from "../pages/home/Sucess2";
 import { AllUsers } from "../pages/user/AllUsers";
 import { EditUser } from "../pages/user/EditUser";
-
-
-
 
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -37,41 +34,47 @@ export const AppRoutes = () => {
 
   const [project, setProject] = useState(false);
 
-  
+    useEffect(()=> {
+      const token = window.localStorage.getItem("infocoolx");
 
-  // useEffect(()=> {
-  //   const token = window.localStorage.getItem("token");
+      if(token){
+        setIsLogged(true)
 
-  //   if(token){
-  //     setIsLogged(true)
+        const {id} = jwtDecode(token).user;
+        console.log(id);
 
-  //     const {id} = jwtDecode(token).user;
+        axios
+          .get(`http://localhost:4000/users/oneUser/${id}`)
+          .then((res)=>{
+            setUser(res.data.resultUser[0])
+            
+            console.log(res, "soyyyy reeeeesss")
+          })
+          .catch((err)=>{
+             console.log(err);
+          })
+          
 
-  //     axios
-  //       .get(`http://localhost:4000/users/oneUser/${id}`)
-  //       .then((res)=>{
-  //         setUser(res.data.resultUser[0])
+      }
+    }, [isLogged, resetUser])
 
-  //         console.log(res, "soyyyy reeeeesss")
-  //       })
-  //       .catch((err)=>{})
-
-  //       console.log(id, "Este es el id desustrucutrado");
-
-  //   }
-  // }, [isLogged, resetUser])
-
-  // console.log(project, "Esto es project");
+    // console.log(project, "Esto es project");
+    console.log("esto es user", user);
 
   return (
     <div>
         <BrowserRouter>
-            <NavBarMain/>
+            <NavBarMain
+            isLogged={isLogged}
+            setIsLogged={setIsLogged}
+            user={user}
+            setUser={setUser}
+            />
             <Routes>
                 <Route path='/' element={<Home/>}/>
-                <Route path='/login' element = {<Login/>} />
+                <Route path='/login' element = {<Login isLogged={isLogged} setIsLogged={setIsLogged}/>} />
                 <Route path='/admin' element = {<Admin/>} />
-                <Route path='/error' element = {<ErrorPage/>} />
+                <Route path='/*' element = {<ErrorPage/>} />
                 <Route path='/tarjeta'  element = {<Tarjeta/>} />
                 <Route path='/tarjetamas'  element = {<Tarjetamas/>} />
                 <Route path='/vegetation'  element = {<Vegetation/>} />
@@ -82,7 +85,7 @@ export const AppRoutes = () => {
                 <Route path="/succes1" element={<Succes1 />} />
                 <Route path="/succes2" element={<Succes2 />} />
                 <Route path="/allusers" element={<AllUsers/>} />
-                <Route path="/user" element={<User />}>
+                <Route path="/user" element={<User user={user}/>}>
                   <Route path="" element={<MyProjects />} />
                   <Route path="myprojects" element={<MyProjects />} />
                   <Route path="reports" element={<Reports />} />
@@ -93,6 +96,7 @@ export const AppRoutes = () => {
                 <Route path="/edituser" element={<EditUser />}/>
             </Routes>
         </BrowserRouter>
+
 
     </div>
   );

@@ -24,6 +24,7 @@ export const ProjectForm = () => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
+
     };
   
     return (
