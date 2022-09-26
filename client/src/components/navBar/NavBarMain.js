@@ -13,6 +13,7 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
     navigate("/");
     setIsLogged(false);
     setUser(false)
+  
   }
 
   console.log(user);
@@ -49,7 +50,7 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
             <Button
               className="me-2"
               variant="warning"
-              onClick={() => navigate("/profile")}
+              onClick={() => navigate("/user")}
             >
               Perfil de: {user && user.user_name}
             </Button>

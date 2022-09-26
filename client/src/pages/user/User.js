@@ -25,7 +25,7 @@ export const User = ({user}) => {
       <div className="wrapper">
         <Container fluid>
 
-         {user && <Row>
+         {<Row>
             <Col md={2} className="p-0">
               <div className="left-bar d-flex flex-column">
                 {radios.map((radio, idx) => (

@@ -1,8 +1,12 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import './errorpage.scss'
 
 export const Succes2 = () => {
+
+  const navigate = useNavigate();
+  
     return (
         <div >
         <Container fluid className='fondo-error pt-5'>
@@ -14,7 +18,7 @@ export const Succes2 = () => {
     
               <h1 className='pb-2'>Tu proyecto se ha registrado con éxito</h1>
               <h4 className='pb-5'>Para observar el estado de tu proyecto y obtener todos los datos, registrate.</h4>
-              <button className='button-error'>Acceder al proyecto</button>
+              <button className='button-error' onClick={() => navigate("/project")}>Acceder al proyecto</button>
             
             </Col>
           </Row>

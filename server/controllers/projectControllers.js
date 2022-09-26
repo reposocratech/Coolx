@@ -4,37 +4,41 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 class projectControllers {
-
     // Crear nuevo proyecto
-    // localhost:4000/projects/newProject/:user_id
+    // localhost:4000/project/newProject/:user_id
+
     createNewProject = (req, res) => {
-        const userId = req.params.user_id;
-        const { name, description, location, altitude, latitude, area, status, profit, cost, yearPlanting, isDeleted } = req.body;
 
-        let img = [""];
+        console.log(req.body);
 
-        if (req.files != undefined) {
-        img = req.files;
-        console.log("************************", img);
-        }
+        const { projectName, projectDescription, location, altitude, latitude, area, profit, projectCost, yearPlanting , user_id } = req.body;
 
-        let sql = `INSERT INTO project (project_name, project_description, location, altitude, latitude, area, status, profit, project_cost, year_planting, user_id, is_deleted) VALUES ( '${name}','${description}', '${location}', '${altitude}', '${latitude}', ${area}, ${status}, ${profit}, ${cost}, '${yearPlanting}', ${userId}, 0s)`;
+
+        // let img = [""];
+
+        // if (req.files != undefined) {
+        // img = req.files;
+        // console.log("************************", img);
+        // }
+
+        let sql = `INSERT INTO project (project_name, project_description, location, altitude, latitude, area, profit, project_cost, year_Planting, user_id) VALUES ('${projectName}','${projectDescription}', '${location}', '${altitude}', '${latitude}', "${area}", '${profit}', '${projectCost}', '${yearPlanting}','${user_id}')`;
+
 
         connection.query(sql, (error, result) => {
-            // console.log(error);
-            // error
-            //     ? res.status(400).json({ error })
-            //     : res.status(200).json(result);
+            console.log(error);
+            error
+                ? res.status(400).json({ error })
+                : res.status(200).json(result);
 
-            if (error) throw error;
-            console.log(result);
-            let project_id = result.insertId;
-            this.saveProjectImages(img, project_id);
+            // if (error) throw error;
+            // console.log(result);
+            // let project_id = result.insertId;
+            // this.saveProjectImages(img, project_id);
 
-            connection.query(sqlProject, (err, resultProject) => {
-                if (err) throw err;
-                res.status(200).json(resultProject);
-            });
+            // connection.query(sqlProject, (err, resultProject) => {
+            //     if (err) throw err;
+            //     res.status(200).json(resultProject);
+            // });
 
         });
 

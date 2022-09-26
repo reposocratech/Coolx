@@ -1,8 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./user.scss";
 
 export const MyProjects = () => {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <Container>
@@ -12,7 +16,7 @@ export const MyProjects = () => {
           </Col>
 
           <Col md={4} className="add-container">
-            <button className="add-button">
+            <button className="add-button" onClick={() => navigate("/projectform")}>
               <div>
                 <div className="add-circle">
                   <h2>+</h2>
