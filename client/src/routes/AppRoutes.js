@@ -32,13 +32,14 @@ export const AppRoutes = () => {
 
   const [resetUser, setResetUser] = useState(false);
 
-  const [project, setProject] = useState(false);
+  const [projects, setProjects] = useState(false);
 
     useEffect(()=> {
       const token = window.localStorage.getItem("infocoolx");
 
       if(token){
         setIsLogged(true)
+        
 
         const {id} = jwtDecode(token).user;
         console.log(id);
@@ -47,6 +48,7 @@ export const AppRoutes = () => {
           .get(`http://localhost:4000/users/oneUser/${id}`)
           .then((res)=>{
             setUser(res.data.resultUser[0])
+            setProjects(res.data.resultProject)
             
             console.log(res, "soyyyy reeeeesss")
           })
@@ -58,8 +60,8 @@ export const AppRoutes = () => {
       }
     }, [isLogged, resetUser])
 
-    // console.log(project, "Esto es project");
-    console.log("esto es user", user);
+    console.log(projects, "Esto es project");
+    // console.log("esto es user", user);
 
   return (
     <div>
@@ -75,17 +77,17 @@ export const AppRoutes = () => {
                 <Route path='/login' element = {<Login isLogged={isLogged} setIsLogged={setIsLogged}/>} />
                 <Route path='/admin' element = {<Admin/>} />
                 <Route path='/*' element = {<ErrorPage/>} />
-                <Route path='/tarjeta'  element = {<Tarjeta/>} />
-                <Route path='/tarjetamas'  element = {<Tarjetamas/>} />
+                <Route path='/tarjeta'  element = {<Tarjeta user={user} projects={projects}/>} />
+                <Route path='/tarjetamas'  element = {<Tarjetamas projects={projects}/>} />
                 <Route path='/vegetation'  element = {<Vegetation/>} />
                 <Route path="/contact" element={<ContactForm />} />
                 <Route path="/registrocoolx" element={<Register />} />
-                <Route path= "/projectform" element ={<ProjectForm/>} />
+                <Route path= "/projectform" element ={<ProjectForm user={user} />}  />
                 <Route path="/project" element={<Project />} />
                 <Route path="/succes1" element={<Succes1 />} />
                 <Route path="/succes2" element={<Succes2 />} />
                 <Route path="/allusers" element={<AllUsers/>} />
-                <Route path="/user" element={<User />}>
+                <Route path="/user" element={<User user={user}/>}>
                   <Route path="" element={<MyProjects />} />
                   <Route path="myprojects" element={<MyProjects />} />
                   <Route path="reports" element={<Reports />} />

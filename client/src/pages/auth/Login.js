@@ -44,29 +44,39 @@ export const Login = ({isLogged, setIsLogged}) => {
           const type = jwtDecode(token).user.type;
           console.log("Este es el tipo del usuario: ", type);
 
+          
           // Para indicar que está conectado con un promp
 
            setIsLogged(true);
 
 
           // replace:true para evitar volver atrás al estar logueado
+
           type === 0
-            ? navigate("/user", { replace: true })
-            : type === 1
-            ? navigate("/admin", { replace: true })
-            : navigate("/error");
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.status === 401) {
-            alert("Usuario no registrado");
-          } else {
-            navigate("/error");
-          }
-          // setMessageOut("Incorrect user or password");
-        });
-    }
-  };
+          ? navigate("/user", { replace: true })
+          : type === 1
+          ? navigate("/admin", { replace: true })
+          : navigate("/error");
+
+
+      //redireccionar a home
+      //evitar login y registro
+      //mostrar el button de logout
+      //guardarlo en localstore
+    })
+    .catch((err) => {
+      console.log(err);
+      if (err.response.status === 401) {
+        alert("Usuario no registrado");
+      } else {
+        navigate("/error");
+      }
+      // setMessageOut("Incorrect user or password");
+    });
+  }
+}
+       
+    
 
   return (
     <div>

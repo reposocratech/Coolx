@@ -86,7 +86,7 @@ class userController {
   };
 
   //3 traer informacion de un usuario **** SOLO EL PROPIO USUARIO O UN ADMIN
-  //localhost:4000/users/:user_id
+  //localhost:4000/users/oneUser/:user_id
 
   selectOneUser = (req, res) => {
     console.log(req.params.user_id, "EL ID");

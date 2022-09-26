@@ -6,9 +6,13 @@ import './tarjeta.scss'
 
 
 
-export const Tarjetamas = () => {
+export const Tarjetamas = ({}) => {
+
   return (
-    <Container fluid className='bg' >
+    <div className='bg'>
+
+    
+    <Container className='bage' >
       
       <Row className='contenedor' >
 
@@ -108,7 +112,7 @@ export const Tarjetamas = () => {
 
       </Row>
     </Container>
-    
+    </div>
   )
 }
 
