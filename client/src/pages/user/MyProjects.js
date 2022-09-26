@@ -1,7 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { Tarjeta } from "../../components/card/Tarjeta";
 import "./user.scss";
+
 
 export const MyProjects = () => {
 
@@ -13,7 +15,12 @@ export const MyProjects = () => {
         <Row>
           <Col md={8} className="card-container">
             {/* CARD DE PROYECTOS */}
+
+            <Tarjeta/>
+
           </Col>
+
+        
 
           <Col md={4} className="add-container">
             <button className="add-button" onClick={() => navigate("/projectform")}>
