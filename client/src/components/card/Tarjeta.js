@@ -1,102 +1,86 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { Col, Container, Row, Button } from 'react-bootstrap'
-import './tarjeta.scss'
+import axios from "axios";
+import React from "react";
+import { Col, Container, Row, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import "./tarjeta.scss";
 
+export const Tarjeta = ({ projects }) => {
+  const navigate = useNavigate();
 
+  // console.log(projects);
 
-
-
-export const Tarjeta = ({projects}) => {
-
-  const [project, setProject] = useState();
-
-  const handleSend = () => {
-
-    const {projects_id} = projects
-
+  const handleSend = (id) => {
     axios
-      .get(`http://localhost:4000/project/${projects_id}`)
-      .then((res)=> {
+      .get(`http://localhost:4000/project/${id}`)
+      .then((res) => {
         console.log(res);
-        setProject(res.data.result);
+        navigate(`/project/${id}`);
       })
-    
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
-    <div className='bg' >
+    <Container>
+      {projects &&
+        projects.map((project, index) => {
+          return (
+            <div className="bage">
+              <Row className="contenedor " key={project.project_id}>
+                <Col className="img">
+                  <img src="/images/Bosque.jpg" />
+                </Col>
 
-    {projects && 
+                <Col className="letras">
+                  <div>
+                    <h4>{project.project_name}</h4>
+                  </div>
 
-    projects.map((projects, index)=> {
-      return(
-        <Container className='bage' >
-      
-        <Row className='contenedor' >
-  
-          <Col className='img'>
-            <img src='/images/Bosque.jpg' />
-          </Col>
-  
-          <Col className='letras'>
-  
-            <div>
-              <h4>{projects.project_name}</h4>
+                  <div className="division">
+                    <div>
+                      <img src="/assets/icons/location.svg" />
+                    </div>
+
+                    <div>
+                      <p>{project.location}</p>
+                    </div>
+                  </div>
+
+                  <div className="division">
+                    <div>
+                      <img src="/assets/icons/location.svg" />
+                    </div>
+
+                    <div>
+                      <p>{project.area}</p>
+                    </div>
+                  </div>
+
+                  <div className="division">
+                    <div className="prueba">
+                      <img src="/assets/icons/location.svg" />
+                    </div>
+
+                    <div>
+                      <h5>Ganacias consultora</h5>
+                      <h4>{project.profit} $</h4>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button
+                      className="butun"
+                      onClick={() => handleSend(project.project_id)}
+                    >
+                      Ver más
+                    </button>
+                  </div>
+                </Col>
+              </Row>
             </div>
-  
-            <div className='division'>
-  
-              <div>
-                <img src='/assets/icons/location.svg'/>
-              </div>
-  
-              <div>
-                <p>{projects.location}</p>
-              </div>
-  
-            </div>
-  
-            <div className='division'>
-  
-              <div >
-                <img src='/assets/icons/location.svg'/>
-              </div>
-  
-              <div>
-                <p>{projects.area}</p>
-              </div>
-               
-            </div>
-  
-            <div className='division'>
-  
-                <div className='prueba'>
-                  <img src='/assets/icons/location.svg'/>
-                </div>
-  
-                <div>
-                  <h5>Ganacias consultora</h5>
-                  <h4>{projects.profit} $</h4> 
-                </div>
-                
-            </div>
-  
-            <div>
-              <button className='butun' onClick={handleSend}>Ver mas</button>
-            </div>
-  
-          </Col>
-        </Row>
-      </Container>
-  
-      )
-    })}
-    
-    
-    
-    
-    </div>
-    
-  )
-}
+          );
+        })}
+    </Container>
+  );
+};
