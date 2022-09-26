@@ -31,7 +31,7 @@ export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
     
          
         </Nav>
-        </Navbar.Collapse>
+        
 
         {!isLogged ?  (<div>
                         <Button className='me-3' onClick={() => navigate(`/login`)}>Iniciar Sesion</Button>
@@ -66,7 +66,7 @@ export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
 
          
          
-
+         </Navbar.Collapse>
         </Container>
       </Navbar>
     </>

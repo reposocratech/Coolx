@@ -13,7 +13,7 @@ export const Home = () => {
     <>
     <Container fluid>
       <Row >
-        <Col md={12} lg={12} sm={1} className='fondo-home' >
+        <Col md={12} lg={12} sm={12} className='fondo-home' >
 
           <div className='textoHome'>
             <p>Optimizamos el registro y la evaluación de tus proyectos forestales</p>
