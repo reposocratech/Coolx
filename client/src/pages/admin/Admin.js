@@ -9,7 +9,7 @@ export const Admin = () => {
 
   return (
     <div className="wrapper">
-      <Container>
+      <Container className="getdown">
         <Row>
           <Col md={12} className="projectCard">
             <p>Administrador Nombre Apellido</p>

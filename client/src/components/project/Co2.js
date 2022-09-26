@@ -4,44 +4,44 @@ import "./co2.scss";
 
 export const Co2 = () => {
   return (
-    <>
-      <div className="wrapperCardCo2">
-        <Container fluid>
+    <Container fluid>
+      <Row>
+        <Col md={12} className="infoCo2">
           <Row>
-            <Col md={12} className="infoCo2">
-              <div className="tituloCo2">
-                <p>Información complementaria</p>
-              </div>
+            <div className="tituloCo2">
+              <p>Información complementaria</p>
+            </div>
+          </Row>
 
-              <div className="infoTextCo2">
-                <div>
-                  <img src="/assets/icons/Footprint.svg" />
-                </div>
+          <Row className="coste2">
+            <Col lg={3} className="p-0">
+              <img src="/assets/icons/Footprint.svg" />
+            </Col>
 
-                <div>
-                  <p>C02 a absober</p>
-                  <h4>128.240 tn</h4>
-                </div>
-              </div>
-
-              <div className="smallTextCo2">
-                <p>Estimación realizada con tecnología satelital</p>
-                <img src="/assets/icons/info.svg" />
-              </div>
-              <hr />
-
-              <div className="infoPaisCo2">
-                <p>
-                  País:<b> Costa Rica</b>
-                </p>
-                <p>
-                  Propuesto Verificador:<b> Verra</b>
-                </p>
+            <Col lg={9} className="p-0 d-flex align-items-end">
+              <div className="d-flex flex-column justify-content-center">
+                <p>C02 a absober</p>
+                <h4>128.240 tn</h4>
               </div>
             </Col>
           </Row>
-        </Container>
-      </div>
-    </>
+
+          <div className="smallTextCo2">
+            <p>Estimación realizada con tecnología satelital</p>
+            <img src="/assets/icons/info.svg" />
+          </div>
+          <hr />
+
+          <div className="infoPaisCo2">
+            <p>
+              País:<b> Costa Rica</b>
+            </p>
+            <p>
+              Propuesto Verificador:<b> Verra</b>
+            </p>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };

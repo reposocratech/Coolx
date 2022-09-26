@@ -1,53 +1,53 @@
-    .fondo-error {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 95vh;
-        background-image: url("../../../public/images/fondo.jpg");
-        background-position: center;
-        background-size: cover;
-        color: white;
-    }
+.fondo-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 95vh;
+  background-image: url("../../../public/images/fondo.jpg");
+  background-position: center;
+  background-size: cover;
+  color: white;
+  padding-top: 4rem;
+}
 
-    .error {
-        background-color: white;
-        height: 60%;
-        width: 50%;
-        padding: 40px;
-        gap: 24px;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
-        border-radius: 24px;
-    }
+.error {
+  background-color: white;
+  height: 60%;
+  width: 50%;
+  padding: 40px;
+  gap: 24px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
+  border-radius: 24px;
+}
 
-    .columna {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+.columna {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-        img {
-            width: 100px;
-        }
+  img {
+    width: 100px;
+  }
 
-        h1 {
-            font-family: 'Manrope';
-            color: #09427D;
-        }
+  h1 {
+    font-family: "Manrope";
+    color: #09427d;
+  }
 
-        h4 {
-            font-family: 'Manrope';
-            color: #09427D;
-            text-align: center;
-        }
-    }
+  h4 {
+    font-family: "Manrope";
+    color: #09427d;
+    text-align: center;
+  }
+}
 
-    .button-error {
-        width: 20%;
-        height: 10%;
-        color: #FFFFFF;
-        background-color: #70BFCB;
-        border-radius: 80px;
-        border: none;
-        font-weight: bold;
-
-    }
+.button-error {
+  width: 20%;
+  height: 10%;
+  color: #ffffff;
+  background-color: #70bfcb;
+  border-radius: 80px;
+  border: none;
+  font-weight: bold;
+}

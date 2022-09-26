@@ -1,101 +1,91 @@
 .fondo-login {
-    background-image: url("../../../public/images/fondo.jpg");
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: white;
+  background-image: url("../../../public/images/fondo.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  padding-top: 4rem;
 }
 
 .contAuth-login {
-    display: flex;
-    flex-direction: column;
-    background: rgba(255, 255, 255, 0.4);
-    height: 70%;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
-    border-radius: 24px;
-    gap: 24px;
-    padding: 40px;
-
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.4);
+  height: 70%;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
+  border-radius: 24px;
+  gap: 24px;
+  padding: 40px;
 }
 
 .titulo-Login {
+  p {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
 
+    text-align: center;
+    letter-spacing: -0.02em;
 
-    p {
-        font-family: 'Manrope';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 120%;
-
-        text-align: center;
-        letter-spacing: -0.02em;
-
-        color: #FFFFFF;
-    }
-
+    color: #ffffff;
+  }
 }
 
 .subtitulo-login {
-
-    p {
-        font-family: 'Manrope';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 140%;
-        text-align: center;
-        color: #FFFFFF !important;
-    }
+  p {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    text-align: center;
+    color: #ffffff !important;
+  }
 }
-
 
 .formAuth-login {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    .m-2 {
-        border-radius: 4px;
-    }
+  .m-2 {
+    border-radius: 4px;
+  }
 
-    p {
-        text-align: right;
-        padding-top: 5%;
-    }
+  p {
+    text-align: right;
+    padding-top: 5%;
+  }
 
-    input {
-        border-radius: 4px;
-        border: none;
-        margin-top: 8px;
-    }
-
+  input {
+    border-radius: 4px;
+    border: none;
+    margin-top: 8px;
+  }
 }
-
 
 .boton-login {
-    background-color: #B8DBE1;
-    color: white;
-    border-radius: 24px;
-    font-size: 14px;
-    font-weight: bold;
-    width: 100%;
-    padding-block: 12px;
-    border: none;
+  background-color: #b8dbe1;
+  color: white;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%;
+  padding-block: 12px;
+  border: none;
 }
 
-
-
 .nada-juntos {
-    padding-top: 5%;
-    text-align: center;
+  padding-top: 5%;
+  text-align: center;
 
-    .nada-nada {
-        border: none;
-        background-color: transparent;
-        color: #FFFFFF;
-    }
+  .nada-nada {
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+  }
 }
