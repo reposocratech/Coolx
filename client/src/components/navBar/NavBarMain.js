@@ -4,20 +4,20 @@ import { useNavigate, Link } from 'react-router-dom'
 import "./navbar.scss"
 
 
-export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
-
+export const NavBarMain = ({ isLogged, setIsLogged, setUser, user ,setResetUser, resetUser}) => {
   const navigate = useNavigate();
+
 
   const handleLogout = () => {
     window.localStorage.removeItem("infocoolx")
     navigate("/");
     setIsLogged(false);
-    setUser(false)
+    setUser(null);
+    setResetUser(!resetUser);
+  
   }
 
   console.log(user);
-
-
 
 
   return (
@@ -28,8 +28,7 @@ export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
         <Navbar.Toggle  aria-controls ="basic-navbar-nav"/>
         <Navbar.Collapse>
         <Nav className="me-auto">
-    
-         
+             
         </Nav>
         
 
@@ -52,7 +51,7 @@ export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
             <Button
               className="me-2"
               variant="warning"
-              onClick={() => navigate("/profile")}
+              onClick={() => navigate("/user")}
             >
               Perfil de: {user && user.user_name}
             </Button>
@@ -60,13 +59,9 @@ export const NavBarMain = ({user, setUser, isLogged, setIsLogged}) => {
               Logout
             </Button>
           </>
-        )} 
-         
-    
-
-         
-         
-         </Navbar.Collapse>
+        )}         
+        
+        </Navbar.Collapse>
         </Container>
       </Navbar>
     </>

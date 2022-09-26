@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import { Container, Row,  Col, Button, Form, FloatingLabel} from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 import './projectform.scss'
+import axios from 'axios';
 
-export const ProjectForm = () => {
-    const [project, setProject] = useState({
+
+export const ProjectForm = ({user}) => {
+    const [newProject, setNewProject] = useState({
       projectName: "",
       projectDescription: "",
       location: "",
@@ -13,17 +16,38 @@ export const ProjectForm = () => {
       profit: "",
       projectCost: "",
       yearPlanting:"",
-      
+      user_id: user.user_id
     });
+
+    const navigate = useNavigate();
   
     const handleChange = (e) => {
       const { name, value } = e.target;
-  
-      setProject({ ...project, [name]: value });
+      setNewProject({ ...newProject, [name]: value });
     };
   
     const handleSubmit = (e) => {
       e.preventDefault();
+
+      axios
+      .post(`http://localhost:4000/project/newProject/${user.user_id}`, newProject)
+
+      .then((res) => {
+        console.log(res);
+        navigate("/succes2");
+      })
+
+      .catch((err) => {
+        console.log(err);
+        // if (err.response.data.error.errno === 1062) {
+        //   alert("El proyecto ya existe");
+        // } else {
+        //   navigate("/error");
+        // }
+      
+      });
+
+
     };
   
     return (
@@ -59,7 +83,7 @@ export const ProjectForm = () => {
                   placeholder='Reforestación en Nicaragua'
                   name="projectName"
                   autoComplete="off"
-                  value={project.projectName}
+                  value={newProject.projectName}
                   onChange={handleChange}
                   />
 
@@ -68,7 +92,7 @@ export const ProjectForm = () => {
                 <Form.Control
                   type='text'
                   name="projectDescription"
-                  value={project.projectDescription}
+                  value={newProject.projectDescription}
                   onChange={handleChange}
                   style={{ height: "100px" }}
                   />
@@ -79,9 +103,9 @@ export const ProjectForm = () => {
                 <Form.Control
                   type="text"
                   placeholder='Guatemala'
-                  name="projectDescription"
+                  name="location"
                   autoComplete="off"
-                  value={project.location}
+                  value={newProject.location}
                   onChange={handleChange}
                   />
 
@@ -91,7 +115,7 @@ export const ProjectForm = () => {
                   placeholder='Ej. 36.694071'
                   name="altitude"
                   autoComplete="off"
-                  value={project.altitude}
+                  value={newProject.altitude}
                   onChange={handleChange}
                   />
 
@@ -101,47 +125,47 @@ export const ProjectForm = () => {
                   placeholder='Ej.-4.4457159'
                   name="latitude"
                   autoComplete="off"
-                  value={project.latitude}
+                  value={newProject.latitude}
                   onChange={handleChange}
                   />
 
                 <Form.Label className="labels mt-3 mb-2">Area en hectareas del terreno </Form.Label>
                 <Form.Control
-                  type="text"
-                  placeholder='5800 hectareas '
+                  type="number"
+                  placeholder='5800'
                   name="area"
                   autoComplete="off"
-                  value={project.area}
+                  value={newProject.area}
                   onChange={handleChange}
                   />
 
                 <Form.Label className="labels mt-3 mb-2">Ganancias del proyecto</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="number"
                   placeholder='86.000 euros'
                   name="profit"
                   autoComplete="off"
-                  value={project.profit}
+                  value={newProject.profit}
                   onChange={handleChange}
                   />
   
                   <Form.Label className="labels mt-3 mb-2">Coste del proyecto</Form.Label>
                   <Form.Control
-                  type="text"
+                  type="number"
                   placeholder='Ej. 215.000 euros'
                   name="projectCost"
                   autoComplete="off"
-                  value={project.projectCost}
+                  value={newProject.projectCost}
                   onChange={handleChange}
                   />
 
                   <Form.Label className="labels mt-3 mb-2">Año de plantación</Form.Label>
                   <Form.Control
-                  type="numb"
+                  type="date"
                   placeholder='Ej. 1987'
                   name="yearPlanting"
                   autoComplete="off"
-                  value={project.yearPlanting}
+                  value={newProject.yearPlanting}
                   onChange={handleChange}
                   />
 

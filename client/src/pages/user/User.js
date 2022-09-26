@@ -3,7 +3,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./myprojects.scss";
 
-export const User = () => {
+export const User = ({user}) => {
   const [radioValue, setRadioValue] = useState("1");
 
   const navigate = useNavigate();
@@ -24,7 +24,8 @@ export const User = () => {
     <div className="user-bg">
       <div className="wrapper">
         <Container fluid>
-          <Row>
+
+         {<Row>
             <Col md={2} className="p-0">
               <div className="left-bar d-flex flex-column">
                 {radios.map((radio, idx) => (
@@ -53,7 +54,8 @@ export const User = () => {
             <Col md={10} className="sheet">
               <Outlet />
             </Col>
-          </Row>
+          </Row>}
+
         </Container>
       </div>
     </div>
