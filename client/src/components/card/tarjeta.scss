@@ -1,34 +1,23 @@
-.bg {
-    background-color: #F2F4F7;
-    width: 100vw;
-
-}
-
 .bage {
     padding-top: 5%;
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
+    gap: 50px !important;
 }
-
 
 .contenedor {
     padding: 15px;
     gap: 23px;
     display: flex;
     flex-direction: row;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
     border-radius: 8px;
 
     .img {
         width: 50%;
 
-
         .d-block {
             height: 230px;
         }
-
 
         img {
             width: 100%;
@@ -37,19 +26,16 @@
         }
     }
 
-
-
     .letras {
         width: 50%;
 
-
         h4 {
-            color: #09427D;
+            color: #09427d;
             font-weight: bold;
         }
 
         p {
-            font-family: 'Manrope';
+            font-family: "Manrope";
             font-style: normal;
             font-weight: 500;
             font-size: 14px;
@@ -61,7 +47,7 @@
         width: 100%;
         height: 44px;
         border-radius: 80px;
-        background-color: #70BFCB;
+        background-color: #70bfcb;
         color: white;
         border: none;
     }
