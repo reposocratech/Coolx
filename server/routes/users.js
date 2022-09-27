@@ -30,6 +30,10 @@ router.get("/getEditUser/:user_id", userControllers.getEditOneUser);
 //localhost:4000/users/deleteUser/:user_id
 router.delete("/deleteUser/:user_id", userControllers.deleteUser);
 
-//
+//7 mostrar todos los usuarios
+//localhost:4000/users/allUsers
+router.get("/allUsers", verify, userControllers.selectAllUsers);
+
+
 
 module.exports = router;
