@@ -9,7 +9,7 @@ router.post("/:userId", adminControllers.showPanel);
 
 // Mostrar todos los usuarios
 // localhost:4000/admin/:userId/allUsers
-router.get("/:userId/allUsers", adminControllers.getAllUsers);
+router.post("/:userId/allUsers", adminControllers.getAllUsers);
 
 // Mostrar todos los proyectos
 // localhost:4000/admin/:userId/allProjects
