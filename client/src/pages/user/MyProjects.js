@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Tarjeta } from "../../components/card/Tarjeta";
 import "./user.scss";
@@ -20,10 +20,8 @@ export const MyProjects = ({ projects, user }) => {
             </div>
           </Col>
 
-        
-
           <Col md={4} className="add-container">
-            <button
+            <Button
               className="add-button"
               onClick={() => navigate(`/projectform/${user.user_id}`)}
             >
@@ -33,7 +31,7 @@ export const MyProjects = ({ projects, user }) => {
                 </div>
                 <p>Añadir proyecto</p>
               </div>
-            </button>
+            </Button>
           </Col>
         </Row>
       </Container>

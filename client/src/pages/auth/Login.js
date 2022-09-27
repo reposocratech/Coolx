@@ -117,9 +117,9 @@ export const Login = ({ isLogged, setIsLogged }) => {
                 type="checkbox"
                 name="remember"
                 id="remember"
-                class="form-check-input"
+                className="form-check-input"
               />
-              <label for="remember">Recordar contraseña</label>
+              <label htmlFor="remember">Recordar contraseña</label>
             </div>
 
             <div>
