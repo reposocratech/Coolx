@@ -116,9 +116,8 @@ class projectControllers {
   // Eliminar un proyecto
   // localhost:4000/project/deleteProject/:project_id
   deleteProject = (req, res) => {
-    console.log("es req " + req);
     let project_id = req.params.project_id;
-    console.log("id = " + project_id);
+    // console.log("id = " + project_id);
     let sql = `UPDATE project SET is_deleted = 1 WHERE project_id = "${project_id}"`;
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
