@@ -85,10 +85,8 @@ export const AppRoutes = () => {
           <Route path="/vegetation" element={<Vegetation />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
-          <Route
-            path="/projectform/:id"
-            element={<ProjectForm user={user} />}
-          />
+          <Route path="/projectform/:id" element={<ProjectForm user={user} projects={projects} setProjects={setProjects}/>} />
+
           <Route path={`/project/:id`} element={<Project />} />
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2" element={<Succes2 projects={projects} />} />

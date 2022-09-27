@@ -20,6 +20,8 @@ export const MyProjects = ({ projects, user }) => {
             </div>
           </Col>
 
+        
+
           <Col md={4} className="add-container">
             <button
               className="add-button"
