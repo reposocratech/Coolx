@@ -6,8 +6,12 @@ import "./projectMain.scss";
 import { Co2 } from "../../components/project/Co2";
 import { Requirements } from "../../components/project/Requirements";
 import { BlockedInfo } from "../../components/project/BlockedInfo";
+import { useNavigate } from "react-router-dom";
 
 export const Project = () => {
+
+  const navigate = useNavigate();
+  
   return (
     <>
       <div className="contenedorProject">
@@ -15,7 +19,12 @@ export const Project = () => {
           <Container fluid>
             <Row>
               <Col md={12} className="projectCard">
-                <p>Proyecto Santa Elena</p>
+
+                <div className="title-project">
+                  <a onClick={()=> navigate(-1)}><img src="/assets/icons/arrow_left.svg"/></a>
+                  <p>Proyecto Santa Elena</p>
+                </div>
+                
               </Col>
               <Col md={9}>
                 <ProjectInfo />
