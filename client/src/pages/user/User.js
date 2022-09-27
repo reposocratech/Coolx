@@ -3,7 +3,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./myprojects.scss";
 
-export const User = ({ user }) => {
+export const User = () => {
   const [radioValue, setRadioValue] = useState("1");
 
   const navigate = useNavigate();

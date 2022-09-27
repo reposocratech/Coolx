@@ -27,10 +27,17 @@
   }
 }
 
-/*
-    .iconEditUser {
+.deleteUser {
+  padding-top: 1rem;
 
-        margin-top: 24px;
+}
+
+.iconEditUser {
+
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+
 
   h1 {
     color: #09427d;
@@ -38,17 +45,14 @@
   }
 
 
-  .iconEditUser {
-    margin-top: 24px;
-
-    p {
-      margin-left: 8px;
-      margin-right: 8px;
-      margin-bottom: 0;
-      font-weight: bold;
-      color: #09427d;
-    }
+  p {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 0;
+    font-weight: bold;
+    color: #09427d;
   }
+
 }
 
 .contPpalEditUser {
@@ -81,5 +85,3 @@
 .labels {
   font-weight: bold;
 }
-
-*/

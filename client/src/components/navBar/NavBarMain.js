@@ -21,7 +21,7 @@ export const NavBarMain = ({
     setResetUser(!resetUser);
   };
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <>
@@ -57,13 +57,17 @@ export const NavBarMain = ({
               <Button
                 className="me-2"
                 variant="warning"
-                onClick={() => navigate(`/user/${user.user_id}`)}
+                onClick={() => navigate(`/user`)}
               >
                 Perfil de: {user && user.user_name}
               </Button>
               <Button variant="warning" onClick={handleLogout}>
                 Logout
               </Button>
+              <Button variant="warning" onClick={()=> navigate("/edituser")}>
+                Editar
+              </Button>
+             
               
             </>
           )}

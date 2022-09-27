@@ -25,6 +25,7 @@ import { AllUsers } from "../pages/user/AllUsers";
 import { EditUser } from "../pages/user/EditUser";
 import { AdminTree } from "../pages/admin/AdminTree";
 
+
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
 
@@ -92,7 +93,7 @@ export const AppRoutes = () => {
           <Route path="/succes2" element={<Succes2 projects={projects} />} />
           <Route path="/allusers" element={<AllUsers />} />
 
-          <Route path="/user/:id" element={<User user={user} />}>
+          <Route path="/user" element={<User />}>
             <Route
               path=""
               element={<MyProjects projects={projects} user={user} />}
@@ -106,7 +107,7 @@ export const AppRoutes = () => {
             <Route path="myaccount" element={<MyAccount />} />
           </Route>
 
-          <Route path="/edituser" element={<EditUser user={user} setUser={setUser} />} />
+          <Route path="/edituser" element={<EditUser user={user} setUser={setUser} setIsLogged={setIsLogged}/>} />
         </Routes>
       </BrowserRouter>
     </div>
