@@ -7,9 +7,6 @@ var router = express.Router();
 // localhost:4000/admin/:userId
 router.post("/:userId", adminControllers.showPanel);
 
-// Crear nuevo proyecto
-// localhost:4000/admin/:userId/newProject
-router.post("/:userId/newProject", adminControllers);
 
 // Mostrar todos los usuarios
 // localhost:4000/admin/:userId/allUsers
