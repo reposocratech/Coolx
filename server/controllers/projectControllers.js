@@ -153,7 +153,6 @@ class projectControllers {
     });
   };
 
-};
 
   //Mostrar informacion del Project_info
   //localhost:4000/project/:project_id
@@ -170,7 +169,7 @@ class projectControllers {
 
 
 
-}
+};
 
 
 module.exports = new projectControllers();
