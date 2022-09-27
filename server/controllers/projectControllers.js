@@ -44,18 +44,17 @@ class projectControllers {
     let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`
 
     connection.query(sql, (error, result) => {
-      console.log(error);
-      error ? res.status(400).json({ error }) : res.status(200).json(result);
+     
+      // error && res.status(400).json({ error }) 
+      // : res.status(200).json(result);
 
-      if (error) throw error;
-      console.log(result);
       let project_id = result.insertId;
       this.saveProjectImages(img, project_id);
 
-      // connection.query(sqlProject, (err, resultProject) => {
-      //     if (err) throw err;
-      //     res.status(200).json(resultProject);
-      // });
+      connection.query(sqlProject, (err, resultProject) => {
+          if (err) throw err;
+          res.status(200).json({resultProject, result});
+      });
     });
   };
 

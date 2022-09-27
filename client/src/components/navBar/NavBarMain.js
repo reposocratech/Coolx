@@ -7,10 +7,9 @@ export const NavBarMain = ({
   isLogged,
   setIsLogged,
   setUser,
-  user,
-  resetUser,
-  setResetUser,
+  user
 }) => {
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -18,10 +17,8 @@ export const NavBarMain = ({
     navigate("/");
     setIsLogged(false);
     setUser(null);
-    setResetUser(!resetUser);
   };
 
-  console.log(user);
 
   return (
     <>
@@ -57,7 +54,7 @@ export const NavBarMain = ({
               <Button
                 className="me-2"
                 variant="warning"
-                onClick={() => navigate(`/user/${user.user_id}`)}
+                onClick={() => navigate(`/user`)}
               >
                 Perfil de: {user && user.user_name}
               </Button>
