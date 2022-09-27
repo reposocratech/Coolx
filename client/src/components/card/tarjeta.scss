@@ -1,65 +1,85 @@
-.bage {
-    padding-top: 5%;
-    gap: 50px !important;
-}
 
-.contenedor {
-    padding: 15px;
-    gap: 23px;
-    display: flex;
-    flex-direction: row;
-    background: #ffffff;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
-    border-radius: 8px;
-
-    .img {
-        width: 50%;
-
-        .d-block {
-            height: 230px;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-        }
-    }
-
-    .letras {
-        width: 50%;
-
-        h4 {
-            color: #09427d;
-            font-weight: bold;
-        }
-
-        p {
-            font-family: "Manrope";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 140%;
-        }
-    }
-
-    .butun {
-        width: 100%;
-        height: 44px;
-        border-radius: 80px;
-        background-color: #70bfcb;
-        color: white;
-        border: none;
-    }
-
-    .division {
-        display: flex;
-        flex-direction: row;
-    }
-}
-
-.prueba {
+.project-card-container {
+  margin-bottom: 24px;
+  padding: 15px;
+  background: #ffffff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  min-height: 245px;
+  .card-img {
+    padding: 0px;
+    width: 214px;
+    height: 214px;
     img {
-        height: 60px;
+      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+
     }
+
+  .card-information {
+    // padding-left: 23px;
+    .p-card-title {
+      padding-left: 23px;
+      h4 {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 140%;
+        letter-spacing: -0.02em;
+        color: #09427d;
+      }
+    }
+    .p-card-text {
+      display: flex;
+      align-items: center;
+      padding-left: 23px;
+      p {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+        color: #000000;
+        margin: 0px;
+      }
+      img {
+        width: 24px;
+        height: 24px;
+        margin-right: 4px;
+      }
+    }
+    .p-card-profit {
+      width: 100%;
+      padding-left: 23px;
+      p {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+        margin: 0px;
+      }
+      h4 {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 120%;
+        letter-spacing: -0.02em;
+        margin-bottom: 10px;
+      }
+      .project-pic {
+        width: 55px !important;
+      }
+    }
+
+    .p-card-button {
+      width: 100%;
+      padding-block: 12px;
+      border-radius: 80px;
+      background-color: #70bfcb;
+      color: white;
+      border: none;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 140%;
+      text-align: center;
+    }
+  }
 }

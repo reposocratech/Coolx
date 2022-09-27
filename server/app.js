@@ -7,6 +7,7 @@ var cors = require("cors");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var projectRouter = require("./routes/project");
+var treeRouter = require("./routes/tree");
 
 var app = express();
 app.use(
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/project", projectRouter);
+app.use("/tree", treeRouter);
 
 // Santi no lo tiene
 /*

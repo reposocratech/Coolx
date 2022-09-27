@@ -9,7 +9,7 @@ const verify = require("../middleware/verify");
 
 //1 create tree
 //localhost:4000/tree/createTree
-router.post("createTree", treeControllers.createTree);
+router.post("/createTree", treeControllers.createTree);
 
 //2 borrado logico arbol
 //localhost:4000/tree/deleteTree/:tree_id

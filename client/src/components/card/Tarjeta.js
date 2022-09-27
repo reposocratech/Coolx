@@ -9,12 +9,17 @@ export const Tarjeta = ({ projects }) => {
 
   // console.log(projects);
 
-  const handleSend = (id) => {
+  const handleSend = (project) => {
     axios
-      .get(`http://localhost:4000/project/${id}`)
+      .get(`http://localhost:4000/project/${project.project_id}`)
       .then((res) => {
         console.log(res);
-        navigate(`/project/${id}`);
+
+        if (project.status === 0 || project.status === 1) {
+          navigate(`/project/${project.project_id}`);
+        } else if (project.status === 3) {
+          navigate(`/project/${project.project_id}`);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -22,65 +27,72 @@ export const Tarjeta = ({ projects }) => {
   };
 
   return (
-    <Container>
+    <>
       {projects &&
         projects.map((project, index) => {
           return (
-            <div className="bage">
-              <Row className="contenedor " key={project.project_id}>
-                <Col className="img">
+            <Container fluid key={project.project_id}>
+              <Row className="project-card-container ">
+                <Col lg={5} className="card-img">
                   <img src="/images/Bosque.jpg" />
                 </Col>
 
-                <Col className="letras">
-                  <div>
-                    <h4>{project.project_name}</h4>
-                  </div>
+                <Col lg={7} className="card-information">
+                  <Row>
+                    <Col className="p-card-title">
+                      <h4>{project.project_name}</h4>
+                    </Col>
+                  </Row>
 
-                  <div className="division">
-                    <div>
+                  <Row>
+                    <Col lg={12} className="p-card-text">
                       <img src="/assets/icons/location.svg" />
-                    </div>
 
-                    <div>
-                      <p>{project.location}</p>
-                    </div>
-                  </div>
+                      <p>
+                        <b>{project.location}</b>
+                      </p>
+                    </Col>
 
-                  <div className="division">
-                    <div>
-                      <img src="/assets/icons/location.svg" />
-                    </div>
+                    <Col lg={12} className="p-card-text">
+                      <img src="/assets/icons/area.svg" />
 
-                    <div>
-                      <p>{project.area}</p>
-                    </div>
-                  </div>
+                      <p>
+                        <b>{project.area}</b>, área del terreno
+                      </p>
+                    </Col>
+                  </Row>
 
-                  <div className="division">
-                    <div className="prueba">
-                      <img src="/assets/icons/location.svg" />
-                    </div>
+                  <Row className="p-card-profit">
+                    <Col lg={2} className="p-0 ">
+                      <img
+                        className="project-pic"
+                        src="/assets/icons/money.svg"
+                      />
+                    </Col>
 
-                    <div>
-                      <h5>Ganacias consultora</h5>
-                      <h4>{project.profit} $</h4>
-                    </div>
-                  </div>
+                    <Col lg={10} className="p-0 d-flex align-items-end">
+                      <div>
+                        <p>Ganacias consultora</p>
+                        <h4>{project.profit} $</h4>
+                      </div>
+                    </Col>
+                  </Row>
 
-                  <div>
-                    <button
-                      className="butun"
-                      onClick={() => handleSend(project.project_id)}
-                    >
-                      Ver más
-                    </button>
-                  </div>
+                  <Row>
+                    <Col>
+                      <Button
+                        className="p-card-button"
+                        onClick={() => handleSend(project)}
+                      >
+                        Ver más
+                      </Button>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
-            </div>
+            </Container>
           );
         })}
-    </Container>
+    </>
   );
 };

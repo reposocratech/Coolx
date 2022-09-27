@@ -25,9 +25,10 @@ export const ProjectForm = ({ user, setProjects }) => {
     profit: "",
     projectCost: "",
     yearPlanting: "",
-    user_id: user.user_id,
+    user_id: user.user_id
   });
 
+  // console.log(user.user_id);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -85,14 +86,14 @@ export const ProjectForm = ({ user, setProjects }) => {
               <h1>Inserte los datos de su nuevo proyecto</h1>
             </div>
             <div className="create-icono">
-              <img src="./assets/icons/permanence_solid.svg" />
+              <img src="/assets/icons/permanence_solid.svg" />
               <p>Introduzca los datos</p>
-              <img src="./assets/icons/arrow_right.svg" />
+              <img src="/assets/icons/arrow_right.svg" />
             </div>
           </Col>
         </Row>
         <Row>
-          <div className="d-flex justify-content-center pt-5">
+          <div className="d-flex justify-content-center">
             <Col md={5} className="col-create">
               <Form.Group controlId="projectForm">
                 <Form className="projectForm d-flex flex-column">
@@ -113,7 +114,8 @@ export const ProjectForm = ({ user, setProjects }) => {
                   </Form.Label>
                   <FloatingLabel controlId="projectForm" label="">
                     <Form.Control
-                      type="text"
+                      className="textarea-form"
+                      as="textarea"
                       name="projectDescription"
                       value={newProject.projectDescription}
                       onChange={handleChange}

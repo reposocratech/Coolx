@@ -12,7 +12,6 @@ import { Reports } from "../pages/user/Reports";
 import { User } from "../pages/user/User";
 import { Admin } from "../pages/admin/Admin";
 import { ErrorPage } from "../pages/home/ErrorPage";
-import { Tarjeta } from "../components/card/Tarjeta";
 import { Tarjetamas } from "../components/card/Tarjetamas";
 import { Vegetation } from "../components/vegetation/Vegetation";
 import { ContactForm } from "../components/forms/ContactForm";
@@ -24,6 +23,7 @@ import { Succes1 } from "../pages/home/Succes1";
 import { Succes2 } from "../pages/home/Sucess2";
 import { AllUsers } from "../pages/user/AllUsers";
 import { EditUser } from "../pages/user/EditUser";
+import { AdminTree } from "../pages/admin/AdminTree";
 
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -57,9 +57,6 @@ export const AppRoutes = () => {
     }
   }, [isLogged, resetUser]);
 
-  // console.log("user: " + user);
-  // console.log("project: " + projects);
-
   return (
     <div>
       <BrowserRouter>
@@ -78,6 +75,7 @@ export const AppRoutes = () => {
             element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
           />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/admintree" element={<AdminTree />}/>
           <Route path="/*" element={<ErrorPage />} />
           {/* <Route path="/tarjeta" element={<Tarjeta />} /> */}
           <Route
@@ -87,14 +85,18 @@ export const AppRoutes = () => {
           <Route path="/vegetation" element={<Vegetation />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
-          <Route path="/projectform" element={<ProjectForm user={user} projects={projects} setProjects={setProjects}/>} />
+          <Route path="/projectform/:id" element={<ProjectForm user={user} projects={projects} setProjects={setProjects}/>} />
+
           <Route path={`/project/:id`} element={<Project />} />
           <Route path="/succes1" element={<Succes1 />} />
-          <Route path="/succes2" element={<Succes2 />} />
+          <Route path="/succes2" element={<Succes2 projects={projects} />} />
           <Route path="/allusers" element={<AllUsers />} />
 
-          <Route path="/user" element={<User user={user} />}>
-            <Route path="" element={<MyProjects projects={projects} />} />
+          <Route path="/user/:id" element={<User user={user} />}>
+            <Route
+              path=""
+              element={<MyProjects projects={projects} user={user} />}
+            />
             <Route
               path="myprojects"
               element={<MyProjects projects={projects} />}
@@ -104,7 +106,7 @@ export const AppRoutes = () => {
             <Route path="myaccount" element={<MyAccount />} />
           </Route>
 
-          <Route path="/edituser" element={<EditUser />} />
+          <Route path="/edituser" element={<EditUser user={user} setUser={setUser} />} />
         </Routes>
       </BrowserRouter>
     </div>

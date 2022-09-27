@@ -9,7 +9,7 @@ export const Admin = () => {
 
   return (
     <div className="wrapper">
-      <Container>
+      <Container className="getdown">
         <Row>
           <Col md={12} className="projectCard">
             <p>Administrador Nombre Apellido</p>
@@ -69,7 +69,7 @@ export const Admin = () => {
           </Col>
 
           <Col md={6} lg={4} className="d-flex flex-column align-items-center">
-            <Button className="admin-tools" onClick={() => navigate("/")}>
+            <Button className="admin-tools" onClick={() => navigate("/admintree")}>
               <div className="blue-circle">
                 <img
                   src="/assets/icons/tree_solid_white.svg"

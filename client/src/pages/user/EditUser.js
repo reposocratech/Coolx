@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState} from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import "./edituser.scss"
+import axios from 'axios'
+import {useNavigate} from "react-router-dom"
+
 
 export const EditUser = ({user, setUser}) => {
 
     const [editUser, setEditUser] = useState({
-        name:"",
+        user_name:"",
         surname:"",
         company:"",
         nif:"",
@@ -15,6 +18,9 @@ export const EditUser = ({user, setUser}) => {
         currency:""
     })
 
+    const navigate = useNavigate();
+
+  
     const handleChange = (e) => {
         const {name, value} = e.target;
         setEditUser({...editUser, [name] : value})
@@ -22,7 +28,25 @@ export const EditUser = ({user, setUser}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        axios
+              .put(`http://localhost:4000/users/editUser/${user.user_id}`, {register: {...editUser}})
+
+              .then(({data})=> {
+                setEditUser({...data})
+                setUser({...data})
+                navigate("/user")
+              })
+
+              .catch((err) => {
+                console.log(err);
+              })
     }
+
+    useEffect(() => {
+      setEditUser({...editUser, ...user})
+    }, [])
+    
 
 
   return (
@@ -31,9 +55,13 @@ export const EditUser = ({user, setUser}) => {
             <Container fluid>
                 <Row className="d-flex justify-content-center">
                     <Col md ={12} className="tituloEditUser">
-                        <div>
+
+                        <div className='titleEdit'>
+                          <Button onClick={()=>navigate(-1)}><img src="/assets/icons/arrow_left.svg"/></Button>
+                          
                             <h1>Edición de usuario</h1>
                         </div>
+
                         <div className='iconEditUser d-flex align-items-center'>
                             <img src='/assets/icons/user.svg' />
                             <p>Editar datos</p>
@@ -49,10 +77,9 @@ export const EditUser = ({user, setUser}) => {
                       <Form.Label className="labels">Nombre</Form.Label>
                       <Form.Control
                         type="text"
-                        name="name"
+                        name="user_name"
                         autoComplete="off"
-                        placeholder='Ej. Francisco'
-                        value={editUser.name}
+                        value={editUser.user_name}
                         onChange={handleChange}
 
                       />
@@ -62,7 +89,6 @@ export const EditUser = ({user, setUser}) => {
                         type="text"
                         name="surname"
                         autoComplete="off"
-                        placeholder='Ej. Benítez García'
                         value={editUser.surname}
                         onChange={handleChange}
 
@@ -74,7 +100,6 @@ export const EditUser = ({user, setUser}) => {
                         type="text"
                         name="company"
                         autoComplete="off"
-                        placeholder='Ej. Coolx'
                         value={editUser.company}
                         onChange={handleChange}
 
@@ -86,7 +111,6 @@ export const EditUser = ({user, setUser}) => {
                         type="text"
                         name="nif"
                         autoComplete="off"
-                        placeholder='Ej. 56089651 G'
                         value={editUser.nif}
                         onChange={handleChange}
 
@@ -97,7 +121,6 @@ export const EditUser = ({user, setUser}) => {
                         type="text"
                         name="position"
                         autoComplete="off"
-                        placeholder='Ej. CEO'
                         value={editUser.position}
                         onChange={handleChange}
 
@@ -109,7 +132,6 @@ export const EditUser = ({user, setUser}) => {
                         type="text"
                         name="phone"
                         autoComplete="off"
-                        placeholder='Ej. +34 000 000 000'
                         value={editUser.phone}
                         onChange={handleChange}
 
@@ -120,7 +142,6 @@ export const EditUser = ({user, setUser}) => {
                         type="text"
                         name="country"
                         autoComplete="off"
-                        placeholder='Ej. Benítez García'
                         value={editUser.country}
                         onChange={handleChange}
 
@@ -131,14 +152,13 @@ export const EditUser = ({user, setUser}) => {
                         type="text"
                         name="currency"
                         autoComplete="off"
-                        placeholder='Ej. €€€'
                         value={editUser.currency}
                         onChange={handleChange}
 
 
                       />
 
-                     
+
                             </Form>
                          </Form.Group>
 
@@ -156,3 +176,4 @@ export const EditUser = ({user, setUser}) => {
     </>
   )
 }
+

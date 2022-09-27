@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Tarjeta } from "../../components/card/Tarjeta";
 import "./user.scss";
+import "./myprojects.scss";
 
-export const MyProjects = ({ projects }) => {
+export const MyProjects = ({ projects, user }) => {
   const navigate = useNavigate();
 
-  console.log(projects);
+  useEffect(() => {}, [projects]);
 
   return (
     <>
       <Container>
         <Row>
           <Col md={8} className="card-container">
-            <Tarjeta projects={projects} />
+            <div>
+              <Tarjeta projects={projects} />
+            </div>
           </Col>
 
         
@@ -22,7 +25,7 @@ export const MyProjects = ({ projects }) => {
           <Col md={4} className="add-container">
             <button
               className="add-button"
-              onClick={() => navigate("/projectform")}
+              onClick={() => navigate(`/projectform/${user.user_id}`)}
             >
               <div>
                 <div className="add-circle">
