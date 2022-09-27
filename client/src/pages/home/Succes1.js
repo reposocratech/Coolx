@@ -1,17 +1,14 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./errorpage.scss";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export const Succes1 = () => {
-
   const navigate = useNavigate();
-
-
 
   return (
     <div>
-      <Container fluid className="fondo-error pt-5">
+      <Container fluid className="fondo-error">
         <Row className="error">
           <Col className="columna pb-5">
             <div className="emoticono pb-5">
@@ -22,7 +19,9 @@ export const Succes1 = () => {
             <h4 className="pb-5">
               Te hemos enviado un email para que puedas verificar tu cuenta.
             </h4>
-            <button className="button-error" onClick={() => navigate("/login")}>Ir a mi cuenta</button>
+            <button className="button-error" onClick={() => navigate("/login")}>
+              Ir a mi cuenta
+            </button>
           </Col>
         </Row>
       </Container>
