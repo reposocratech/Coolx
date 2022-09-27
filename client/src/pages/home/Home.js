@@ -9,19 +9,21 @@ export const Home = () => {
 
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Col md={12} lg={12} sm={1} className="fondo-home">
-            <div className="textoHome">
-              <p>
-                Optimizamos el registro y la evaluación de tus proyectos
-                forestales
-              </p>
 
-              <button onClick={() => navigate("/contact")}>Contáctanos</button>
+    <Container fluid>
+      <Row >
+        <Col md={12} lg={12} sm={12} className='fondo-home' >
 
-              <a href="#regProject">
-                <div className="leerMas">
+          <div className='textoHome'>
+            <p>Optimizamos el registro y la evaluación de tus proyectos forestales</p>
+
+            <button onClick={() => navigate("/contact")}>Contáctanos</button>
+
+              <a href='#regProject'>
+                <div className='leerMas'>
+                
+
+
                   <p>Leer más</p>
                   <img src="/assets/icons/arrow.svg" alt="arrow_down" />
                 </div>

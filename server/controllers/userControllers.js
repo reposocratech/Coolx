@@ -89,7 +89,7 @@ class userController {
   //localhost:4000/users/oneUser/:user_id
 
   selectOneUser = (req, res) => {
-    console.log(req.params.user_id, "EL ID");
+    console.log(req.params.user_id, "EL ID ");
     const user_id = req.params.user_id;
     // console.log(req, "======");
 
@@ -109,10 +109,10 @@ class userController {
   };
 
   // 4 editar Usuario **** SOLO EL PROPIO USUARIO (EL ADMIN TAMBIÉN?)
-  // localhost:4000/users/editUser/u:user_id
+  // localhost:4000/users/editUser/:user_id
   editUser = (req, res) => {
     let user_id = req.params.user_id;
-
+    
     const {
       user_name,
       surname,
@@ -122,13 +122,13 @@ class userController {
       phone,
       country,
       currency,
-    } = JSON.parse(req.body.register);
+    } = req.body.register;
 
     let sql = `UPDATE user SET user_name = "${user_name}", surname = "${surname}", company = "${company}", nif = "${nif}", position = "${position}", phone = "${phone}", country = "${country}", currency = "${currency}" WHERE user_id = "${user_id}"`;
 
     connection.query(sql, (error, result) => {
       if (error) throw error;
-      error ? res.status(400).json({ error }) : res.status(200).json(result);
+      error ? res.status(400).json({ error }) : res.status(200).json(req.body.register);
     });
   };
 

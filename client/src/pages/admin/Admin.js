@@ -69,7 +69,7 @@ export const Admin = () => {
           </Col>
 
           <Col md={6} lg={4} className="d-flex flex-column align-items-center">
-            <Button className="admin-tools" onClick={() => navigate("/")}>
+            <Button className="admin-tools" onClick={() => navigate("/admintree")}>
               <div className="blue-circle">
                 <img
                   src="/assets/icons/tree_solid_white.svg"

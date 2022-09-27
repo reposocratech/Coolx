@@ -22,9 +22,10 @@ export const ProjectForm = ({ user }) => {
     profit: "",
     projectCost: "",
     yearPlanting: "",
-    user_id: user.user_id,
+    user_id: user.user_id
   });
 
+  // console.log(user.user_id);
   const navigate = useNavigate();
 
   const handleChange = (e) => {

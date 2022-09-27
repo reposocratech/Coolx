@@ -16,11 +16,11 @@ export const NavBarProject = () => {
             <Navbar.Collapse>
             <Nav className="me-auto">
         </Nav>
-        </Navbar.Collapse>
+        
 
         <button className='boton-proyecto me-3'>Registra tu proyecto</button>
         <button className='boton-sesion' onClick={()=> navigate("/login")}>Iniciar sesión</button>
-           
+           </Navbar.Collapse>
         </Container>
     </Navbar>
    

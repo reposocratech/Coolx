@@ -34,7 +34,7 @@ export const NavBarMain = ({
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse>
             <Nav className="me-auto"></Nav>
-          </Navbar.Collapse>
+          
 
           {!isLogged ? (
             <div>
@@ -64,8 +64,10 @@ export const NavBarMain = ({
               <Button variant="warning" onClick={handleLogout}>
                 Logout
               </Button>
+              
             </>
           )}
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
