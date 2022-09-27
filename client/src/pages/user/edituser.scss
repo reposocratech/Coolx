@@ -4,27 +4,30 @@
 
 .tituloEditUser {
   padding: 27px 56px !important;
+  padding-top: 4rem;
 
 
-    .titleEdit {
-        display: flex;
+  .titleEdit {
+    display: flex;
+    padding-top: 4rem;
 
-        button {
-            background-color: transparent;
-            border: none;
-        }
-
-        button:hover {
-            background-color: white;
-        }
-
-        h1 {
-            color: #09427D;
-            font-weight: bold;
-        }
+    button {
+      background-color: transparent;
+      border: none;
     }
 
-*/
+    button:hover {
+      background-color: white;
+    }
+
+    h1 {
+      color: #09427D;
+      font-weight: bold;
+    }
+  }
+}
+
+/*
     .iconEditUser {
 
         margin-top: 24px;
@@ -79,4 +82,4 @@
   font-weight: bold;
 }
 
-/*
+*/
