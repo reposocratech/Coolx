@@ -1,6 +1,13 @@
+@mixin add-button {
+  @media only screen and (max-width: 1123px) {
+    @content;
+  }
+}
+
 // Boton "Añadir proyecto" HAY QUE HACERLO STICKY
 .add-container {
   padding-top: 44px;
+  padding-inline: 0px !important;
   .add-button {
     background-color: white;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
@@ -15,6 +22,10 @@
     align-items: center;
     position: sticky;
     transition: transform 0.5s ease;
+    @include add-button {
+      width: 150px;
+      height: 150px;
+    }
   }
   .add-circle {
     width: 162px;
@@ -57,4 +68,20 @@
       }
     }
   }
+}
+
+// CARDS AREA
+
+.card-container {
+  padding-top: 44px;
+  padding-inline: 31px !important;
+  height: 920px;
+  overflow: overlay !important;
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.card-container::-webkit-scrollbar {
+  display: none !important;
 }

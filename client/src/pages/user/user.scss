@@ -4,6 +4,7 @@
   background-image: url("../../../public/images/fondo.jpg") !important;
   background-position: center;
   background-size: cover;
+  padding-top: 4rem;
 }
 
 .wrapper {
@@ -12,6 +13,7 @@
   padding-inline-start: 16px;
   margin: auto;
   // border: 1px solid red;
+  height: 100%;
 }
 
 // Barra lateral
@@ -22,7 +24,7 @@
   align-items: flex-start;
   padding: 8px;
   width: auto;
-  height: 545px;
+  height: 100%;
   button {
     background-color: transparent;
     border: none !important;
@@ -55,8 +57,4 @@
 .sheet {
   background-color: rgb(242, 244, 246);
   // border: 1px solid red;
-}
-
-.card-container {
-  height: 90vh;
 }

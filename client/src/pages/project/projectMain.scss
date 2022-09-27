@@ -1,22 +1,21 @@
 .contenedorProject {
-    background-color: #F2F4F6;
+  background-color: #f2f4f6;
+  padding-top: 4rem;
 }
 
 .wrapperProject {
-    max-inline-size: 1400px;
-    padding-inline-end: 16px;
-    padding-inline-start: 16px;
-    margin: auto;
-
+  max-inline-size: 1400px;
+  padding-inline-end: 16px;
+  padding-inline-start: 16px;
+  margin: auto;
 }
 
 .projectCard {
-    padding: 24px 15px;
+  padding: 24px 15px;
 
-
-    p {
-        font-size: 24px;
-        color: #09427D;
-        font-weight: bold;
-    }
+  p {
+    font-size: 24px;
+    color: #09427d;
+    font-weight: bold;
+  }
 }
