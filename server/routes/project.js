@@ -11,7 +11,11 @@ router.post("/newProject/:user_id", multer("images"), projectControllers.createN
 
 // Editar proyecto
 // localhost:4000/project/editProject/:project_id
-router.post("/editProject/:project_id", projectControllers.editProject);
+router.put("/editProject/:project_id", projectControllers.editProject);
+
+//Editar status de proyecto
+//localhost:4000/project/editStatusProject/:project_id
+router.put("/editStatusProject/:project_id", projectControllers.editStatusProject);
 
 // Mostrar la infomación de un proyecto
 // localhost:4000/project/:project_id
@@ -23,7 +27,7 @@ router.get("/:project_id", projectControllers.getProjectInfo);
 
 // Eliminar un proyecto
 // localhost:4000/project/deleteProject/:project_id
-router.post(
+router.delete(
   "/project/deleteProject/:project_id",
   projectControllers.deleteProject
 );
