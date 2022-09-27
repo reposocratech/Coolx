@@ -3,7 +3,6 @@ import {
   Container,
   Row,
   Col,
-  Button,
   Form,
   FloatingLabel,
 } from "react-bootstrap";
@@ -11,7 +10,11 @@ import { useNavigate } from "react-router-dom";
 import "./projectform.scss";
 import axios from "axios";
 
-export const ProjectForm = ({ user }) => {
+export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
+
+  const [projectFiles, setProjectFiles] = useState();
+
+
   const [newProject, setNewProject] = useState({
     projectName: "",
     projectDescription: "",
@@ -22,28 +25,47 @@ export const ProjectForm = ({ user }) => {
     profit: "",
     projectCost: "",
     yearPlanting: "",
-    user_id: user.user_id,
+    user_id: user.user_id
   });
 
+  // console.log(user.user_id);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
+    
   };
+
+  const handleFiles = (e) => {
+    setProjectFiles(e.target.files);
+    
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const newFormData = new FormData();
+
+    newFormData.append("newProject", JSON.stringify(newProject));
+
+    if(projectFiles){
+      for(const elem of projectFiles){
+          newFormData.append("file", elem)
+          }
+      }
+
     axios
       .post(
         `http://localhost:4000/project/newProject/${user.user_id}`,
-        newProject
+        newFormData,
       )
 
       .then((res) => {
         console.log(res);
         navigate("/succes2");
+        setResetUser(!resetUser);
+
       })
 
       .catch((err) => {
@@ -181,6 +203,16 @@ export const ProjectForm = ({ user }) => {
                     value={newProject.yearPlanting}
                     onChange={handleChange}
                   />
+                  <Form.Label className="labels mt-3 mb-2">
+                   Imagenes del proyecto
+                  </Form.Label>
+                  <Form.Control
+                    type="file"
+                    name="files"
+                    multiple
+                    onChange={handleFiles}
+                  />
+
                 </Form>
               </Form.Group>
             </Col>

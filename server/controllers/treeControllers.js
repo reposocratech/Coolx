@@ -15,10 +15,11 @@ class treeController {
         // const { tree_name, latin_name, avg_height_tree, avg_crown_area, avg_biomass, avg_age } = JSON.parse(
         //   req.body.register
         // );
+
         console.log("esto es el req.body del controlador", req.body);
-        const { tree_name, quantity} = req.body;
+        const { tree_name, latin_name, avg_height_tree, avg_crown_area, avg_biomass, avg_age} = req.body;
            
-        let sql = `INSERT INTO tree (tree_name, latin_name, avg_height_tree, avg_crown_area, avg_biomass, avg_age) VALUES ( '${tree_name}',"${latin_name}", "${avg_height_tree}", "${avg_crown_area}", "${avg_biomass} '${email}', '${hash}')`;
+        let sql = `INSERT INTO tree (tree_name, latin_name, avg_height_tree, avg_crown_area, avg_biomass, avg_age) VALUES ( '${tree_name}',"${latin_name}", "${avg_height_tree}", "${avg_crown_area}", "${avg_biomass}", "${avg_age}")`;
     
              connection.query(sql, (error, result) => {
                console.log(error);

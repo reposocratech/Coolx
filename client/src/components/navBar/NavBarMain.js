@@ -7,10 +7,9 @@ export const NavBarMain = ({
   isLogged,
   setIsLogged,
   setUser,
-  user,
-  resetUser,
-  setResetUser,
+  user
 }) => {
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -18,10 +17,8 @@ export const NavBarMain = ({
     navigate("/");
     setIsLogged(false);
     setUser(null);
-    setResetUser(!resetUser);
   };
 
-  console.log(user);
 
   return (
     <>
@@ -34,7 +31,7 @@ export const NavBarMain = ({
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse>
             <Nav className="me-auto"></Nav>
-          </Navbar.Collapse>
+          
 
           {!isLogged ? (
             <div>
@@ -57,15 +54,17 @@ export const NavBarMain = ({
               <Button
                 className="me-2"
                 variant="warning"
-                onClick={() => navigate(`/user/${user.user_id}`)}
+                onClick={() => navigate(`/user`)}
               >
                 Perfil de: {user && user.user_name}
               </Button>
               <Button variant="warning" onClick={handleLogout}>
                 Logout
               </Button>
+              
             </>
           )}
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
