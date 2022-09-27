@@ -15,6 +15,14 @@ router.post("/createTree", treeControllers.createTree);
 //localhost:4000/tree/deleteTree/:tree_id
 router.delete("/deleteUser/:tree_id", treeControllers.deleteTree);
 
+//3 traer para editado de arbol
+//localhost:4000/tree/getEditTree/:tree_id
+router.get("/getEditTree/:tree_id", treeControllers.getEditOneTree);
+
+//4 editar arbol
+//localhost:4000/tree/editTree/:tree_id
+router.put("/editTree/:tree_id", treeControllers.editTree);
+
 
 
 
