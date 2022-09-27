@@ -24,4 +24,8 @@ router.post(
   projectControllers.deleteProject
 );
 
+// Cambiar usuario de un proyecto
+// localhost:4000/project/changeUser/:project_id
+router.post("/changeUser/:project_id", projectControllers.changeUser);
+
 module.exports = router;

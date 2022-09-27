@@ -125,6 +125,21 @@ class projectControllers {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
-}
+
+
+  // Cambiar usuario de un proyecto
+  // localhost:4000/project/changeUser/:project_id
+  changeUser = (req, res) => {
+
+    let project_id = req.params.project_id;
+    const {user_id} = req.body;
+
+    let sql = `UPDATE project SET user_id='${user_id}' WHERE project_id = ${project_id}`;
+    connection.query(sql, (error, result) => {
+      error ? res.status(400).json({ error }) : res.status(200).json(result);
+    });
+  };
+
+};
 
 module.exports = new projectControllers();
