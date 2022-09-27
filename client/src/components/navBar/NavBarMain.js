@@ -25,7 +25,7 @@ export const NavBarMain = ({
 
   return (
     <>
-      <Navbar className="nav-color" expand="lg">
+      <Navbar fixed="top" className="nav-color" expand="lg">
         <Container>
           <Navbar.Brand className="navbar-logo" as={Link} to="/">
             {" "}
@@ -57,7 +57,7 @@ export const NavBarMain = ({
               <Button
                 className="me-2"
                 variant="warning"
-                onClick={() => navigate("/user")}
+                onClick={() => navigate(`/user/${user.user_id}`)}
               >
                 Perfil de: {user && user.user_name}
               </Button>

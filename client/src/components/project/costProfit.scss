@@ -1,48 +1,54 @@
 .cardCost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e0ecf8;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0px 2px 2px 0px #00000052;
+
+  .tituloCost {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #E0ECF8;
-    border-radius: 10px;
-    padding: 24px;
-    box-shadow: 0px 2px 2px 0px #00000052;
+    p {
+      color: #09427d;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 140%;
+    }
+    img {
+      height: 16px;
+    }
+  }
+  .coste,
+  .ganancias {
+    width: 100%;
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 140%;
+      margin: 0px;
+    }
+    h4 {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 120%;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    img {
+      width: 55px !important;
+    }
+  }
 
-    .tituloCost {
-        display: flex;
-        font-size: 12px;
-        margin-top: 24px;
-        color: #09427D;
-        img {
-            height: 16px;
-        }
-    }
-    .coste, 
-    .ganancias {
-        display: flex;
-        p {
-            font-size: 14px;
-        }
-        h4 {
-            font-weight: bold;
-            font-size: 32px;
-        }
-    }
-   
-        
-    button {
-        margin-top: 15px;
-        color: white;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 12px 24px;
-        height: 44px;
-        background: #70BFCB;
-        border-radius: 80px;
-        border: none;
-        font-family: 'Manrope';
-
-    }
-    
+  .more-info {
+    color: white;
+    padding: 12px 24px;
+    background: #70bfcb;
+    border-radius: 80px;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 140%;
+    text-align: center;
+  }
 }

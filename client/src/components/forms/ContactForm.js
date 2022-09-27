@@ -31,7 +31,7 @@ export const ContactForm = () => {
   return (
     <div className="register-bg">
       <Container fluid>
-        <Row className="d-flex justify-content-center">
+        <Row className="d-flex justify-content-center ">
           <div className="form-bg d-flex justify-content-center">
             <Col md={4} className="col-form">
               <div className="text-center">

@@ -1,24 +1,11 @@
-.wrapperProjectInfo {
-  max-inline-size: 1400px;
-  // padding-inline-end: 16px;
-  // padding-inline-start: 16px;
-  margin: auto;
-
-}
-
 .cardProjectInfo {
-
   padding: 15px;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0px 2px 2px 0px #00000052;
-
-
-
   img {
     border-radius: 10px;
   }
-
   .imgCarousel {
     margin: 23px 16px;
   }
@@ -29,6 +16,17 @@
   margin-top: 23px;
   padding-left: 12px;
   padding-right: 12px;
+  h4 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+  }
+  p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 140%;
+  }
 }
 
 @media screen and (max-width: 520px) {
