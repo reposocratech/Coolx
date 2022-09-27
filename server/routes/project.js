@@ -17,6 +17,10 @@ router.post("/editProject/:project_id", projectControllers.editProject);
 // localhost:4000/project/:project_id
 router.get("/:project_id", projectControllers.getProject);
 
+//mostrar la informacion de un proyecto (pago)
+//localhost:4000/project/:project_id
+router.get("/:project_id", projectControllers.getProjectInfo);
+
 // Eliminar un proyecto
 // localhost:4000/project/deleteProject/:project_id
 router.post(

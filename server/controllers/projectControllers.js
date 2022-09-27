@@ -92,7 +92,6 @@ class projectControllers {
       profit,
       cost,
       yearPlanting,
-      isDeleted,
     } = req.body;
     const projectId = req.params.project_id;
 
@@ -125,6 +124,23 @@ class projectControllers {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
+
+  //Mostrar informacion del Project_info
+  //localhost:4000/project/:project_id
+  getProjectInfo = (req, res) => {
+    let project_id = req.params.project_id;
+    let sql = `SELECT * FROM project_info WHERE project_id = ${project_id} and is_deleted = 0`;
+    connection.query(sql, (error, result) => {
+      if (error) {
+        res.status(400).json({ error });
+      }
+      res.status(200).json(result);
+    });
+  };
+
+
+
+
 }
 
 module.exports = new projectControllers();
