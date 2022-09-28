@@ -7,6 +7,9 @@ import "./tarjeta.scss";
 export const Tarjeta = ({ projects }) => {
   const navigate = useNavigate();
 
+  
+
+
   // console.log(projects);
 
   const handleSend = (project) => {
