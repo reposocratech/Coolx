@@ -17,7 +17,7 @@ router.post("/:userId/allProjects", adminControllers.getAllProjects);
 
 // Mostrar todos los árboles
 // localhost:4000/admin/:userId/allTrees
-router.post("/:userId/allTrees", adminControllers.getAllTrees);
+router.get("/:userId/allTrees", adminControllers.getAllTrees);
 
 
 module.exports = router;

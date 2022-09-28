@@ -24,9 +24,12 @@ import { Succes2 } from "../pages/home/Sucess2";
 import { AllUsers } from "../pages/user/AllUsers";
 import { EditUser } from "../pages/user/EditUser";
 import { AdminTree } from "../pages/admin/AdminTree";
+import { TreeForm } from "../pages/admin/TreeForm";
+import { EditTree } from "../pages/admin/EditTree";
 
 
 export const AppRoutes = () => {
+
   const [isLogged, setIsLogged] = useState(false);
 
   const [user, setUser] = useState();
@@ -46,12 +49,13 @@ export const AppRoutes = () => {
 
       axios
         .get(`http://localhost:4000/users/oneUser/${id}`)
+
         .then((res) => {
           setUser(res.data.resultUser[0]);
           setProjects(res.data.resultProject);
-
           console.log(res, "soyyyy reeeeesss");
         })
+        
         .catch((err) => {
           console.log(err);
         });
@@ -66,8 +70,6 @@ export const AppRoutes = () => {
           setIsLogged={setIsLogged}
           user={user}
           setUser={setUser}
-          setResetUser={setResetUser}
-          resetUser={resetUser}
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -76,7 +78,9 @@ export const AppRoutes = () => {
             element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
           />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/admintree" element={<AdminTree />}/>
+          <Route path="/admintree" element={<AdminTree setIsLogged={setIsLogged} user={user}/>}/>
+          <Route path="/treeform" element={<TreeForm />}/>
+          <Route path="/edittree" element={<EditTree />}/>
           <Route path="/*" element={<ErrorPage />} />
           {/* <Route path="/tarjeta" element={<Tarjeta />} /> */}
           <Route
@@ -86,7 +90,7 @@ export const AppRoutes = () => {
           <Route path="/vegetation" element={<Vegetation />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
-          <Route path="/projectform/:id" element={<ProjectForm user={user} projects={projects} setProjects={setProjects}/>} />
+          <Route path="/projectform" element={<ProjectForm user={user} projects={projects} setProjects={setProjects} resetUser={resetUser} setResetUser={setResetUser}/>} />
 
           <Route path={`/project/:id`} element={<Project />} />
           <Route path="/succes1" element={<Succes1 />} />
@@ -100,7 +104,7 @@ export const AppRoutes = () => {
             />
             <Route
               path="myprojects"
-              element={<MyProjects projects={projects} />}
+              element={<MyProjects projects={projects} user={user} />}
             />
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />

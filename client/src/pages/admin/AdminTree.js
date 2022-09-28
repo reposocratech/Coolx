@@ -1,160 +1,150 @@
-import React, { useState } from 'react'
-import {Container, Col, Row, Form, Button} from "react-bootstrap"
+import React, { useState, useEffect } from 'react'
+import {Container, Col, Row, Button, Table} from "react-bootstrap"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
-import "./adminTree.scss"
+import jwtDecode from "jwt-decode";
+import "./admintree.scss"
+import { EditTree } from './EditTree';
 
-export const AdminTree = () => {
+export const AdminTree = ({setIsLogged}) => {
 
-    const [newTree, setNewTree] = useState({
-       tree_name:"" ,
-       latin_name:"",
-       avg_height_tree:"",
-       avg_crown_area:"",
-       avg_biomass:"",
-       avg_age:"",
-     
-    });
+  const [allTrees, setAllTrees]  = useState([]);
 
-    const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setNewTree({...newTree, [name]: value})
-    };
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const [editTree, setEditTree] = useState(false);
 
+  const navigate = useNavigate()
+
+  
+ 
+  useEffect(() => {
+    const token = window.localStorage.getItem("infocoolx");
+
+    if (token) {
+      setIsLogged(true);
+
+      const { id, type } = jwtDecode(token).user;
+
+      if (type === 1) {
         axios
-            .post("http://localhost:4000/tree/createTree", newTree)
-
-            .then((res) => {
-                console.log(res);
-                alert("Datos registrados correctamente")
-                navigate("/admin")
-
-            })
-            .error((err) => {
-                console.log(err, "ESTE ES EL ERROR AXIOS");
-            })
+          .get(`http://localhost:4000/admin/${id}/allTrees`)
+          .then((res) => {
+            console.log(res);
+            setAllTrees(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        alert("No tienes permiso de administrador");
+      }
+    } else {
+      alert("Debes iniciar sección como administrador");
     }
+  }, []);
+
+
+  const deleteTree = (tree_id) => {
+      axios
+          .delete(`http://localhost:4000/tree/deleteTree/${tree_id}`)
+
+          .then((res) => {
+            alert("Arbol eliminado correctamente")
+            console.log(res);
+            navigate("/admintree")
+          })
+
+          .catch((err) => {
+            console.log(err);
+          })      
+  }
+
+  const handleEditTree = (tree) => {
+      setEditTree({...tree})
+      setShowModal(true)
+  }
+
 
   return (
     <>
-    <div className="formCreateTree">
+        <div className="wrapper">
       <Container fluid>
         <Row>
-          <Col className="header-create-tree">
+          <Col className="admin-tree-title">
 
-            <div className='title-and-back'>
-                <Button onClick={()=> navigate(-1)}><img src="./assets/icons/arrow_left.svg" /></Button>
-              
-              <h1>Datos del árbol</h1>
-
+            <div className='admin-title'>
+              <Button onClick={() => navigate(-1)}><img src='/assets/icons/arrow_left.svg'/></Button>
+              <h1>Listado de arboles</h1>
             </div>
-            <div className="create-icono-tree">
-              <img src="./assets/icons/tree_solid.svg" />
-              <p>Introduzca los datos</p>
-              <img src="./assets/icons/arrow_right.svg" />
-            </div>
+            
+            
+            <Button onClick={()=> navigate("/treeform")}>Registrar nuevo árbol</Button>
           </Col>
+          
         </Row>
-        <Row>
-          <div className="d-flex justify-content-center pt-5">
-            <Col md={5} >
-              <Form.Group >
-                <Form className="formTree d-flex flex-column">
-                  <Form.Label className="labels">
-                    Nombre del árbol
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Roble"
-                    name="tree_name"
-                    autoComplete="off"
-                    value={newTree.tree_name}
-                    onChange={handleChange}
-                  />
 
+        <Row className='table-all-trees'>
+        
+        
+       
+            <Table striped>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Id</th>
+                  <th>Nombre del árbol</th>
+                  <th>Nombre en latín</th>
+                  <th>Opcion a</th>
+                  <th>Opcion a</th>
+                 
+                  
+                </tr>
+              </thead>
 
-                  <Form.Label className="labels mt-3 mb-2">
-                   Nombre en Latín
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Quercus"
-                    name="latin_name"
-                    autoComplete="off"
-                    value= {newTree.latin_name}
-                    onChange={handleChange}
-                  />
+              <tbody>
+                {allTrees &&
+                  allTrees.map((tree, index) => (
 
+                    <tr key={tree.tree_id}>
+                      <td>{index + 1}</td>
+                      <td>{tree.tree_id}</td>
+                      <td>{tree.tree_name}</td>
+                      <td>{tree.latin_name}</td>
+                      <td>
+                        <Button onClick={() => deleteTree(tree.tree_id)}>Eliminar</Button>
+                      </td>
+                      <td>
+                        <Button onClick={() => handleEditTree(tree)}>Editar</Button>
+                      </td>
 
-                  <Form.Label className="labels mt-3 mb-2">
-                    Altura media
-                    </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Ej. 40m"
-                    name="avg_height_tree"
-                    autoComplete="off"
-                    value={newTree.avg_height_tree}
-                    onChange={handleChange}
-                  />
-
-                  <Form.Label className="labels mt-3 mb-2">
-                    Área de copa media
-                    </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Ej. 50m"
-                    name="avg_crown_area"
-                    autoComplete="off"
-                    value={newTree.avg_crown_area}
-                    onChange={handleChange}
-                  />
-
-                  <Form.Label className="labels mt-3 mb-2">
-                    Biomasa promedio
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="6.03m"
-                    name="avg_biomass"
-                    autoComplete="off"
-                    value={newTree.avg_biomass}
-                    onChange={handleChange}
-                  />
-
-                
-                  <Form.Label className="labels mt-3 mb-2">
-                    Edad media
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Ej. 100 años"
-                    name="avg_age"
-                    autoComplete="off"
-                    value={newTree.avg_age}
-                    onChange={handleChange}
-                  />
-                </Form>
-              </Form.Group>
-            </Col>
+                     
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          
+           
+          </Row>
+          <div className='modalEditTree'>
+             { showModal &&
+            <EditTree
+             showModal = {showModal}
+             setShowModal={setShowModal}
+             editTree ={editTree}
+             setEditTree= {setEditTree}
+             setAllTrees={setAllTrees}
+             
+          />}
           </div>
-        </Row>
 
-        <Row>
-          <Col className="contenedor-boton-tree">
-            <button className="button-send" onClick={handleSubmit}>
-              Guardar datos
-            </button>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-    
+        
+          
+         
+        
+        </Container>
+
+        </div>
     </>
   )
 }

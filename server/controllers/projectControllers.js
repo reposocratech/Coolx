@@ -44,18 +44,17 @@ class projectControllers {
     let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`
 
     connection.query(sql, (error, result) => {
-      console.log(error);
-      error ? res.status(400).json({ error }) : res.status(200).json(result);
+     
+      // error && res.status(400).json({ error }) 
+      // : res.status(200).json(result);
 
-      if (error) throw error;
-      console.log(result);
       let project_id = result.insertId;
       this.saveProjectImages(img, project_id);
 
-      // connection.query(sqlProject, (err, resultProject) => {
-      //     if (err) throw err;
-      //     res.status(200).json(resultProject);
-      // });
+      connection.query(sqlProject, (err, resultProject) => {
+          if (err) throw err;
+          res.status(200).json({resultProject, result});
+      });
     });
   };
 
@@ -89,19 +88,32 @@ class projectControllers {
       altitude,
       latitude,
       area,
-      status,
       profit,
       cost,
       yearPlanting,
-      isDeleted,
     } = req.body;
     const projectId = req.params.project_id;
 
-    let sql = `UPDATE project SET project_name='${name}', project_description='${description}', location = '${location}', altitude = '${altitude}', latitude = '${latitude}', area = ${area}, status = ${status}, profit = ${profit}, cost = ${cost}, yearPlanting = '${yearPlanting}' WHERE project_id = ${projectId}`;
+    let sql = `UPDATE project SET project_name='${name}', project_description='${description}', location = '${location}', altitude = '${altitude}', latitude = '${latitude}', area = ${area}, profit = ${profit}, cost = ${cost}, yearPlanting = '${yearPlanting}' WHERE project_id = ${projectId}`;
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
+
+  //Editar status de proyecto
+  //localhost:4000/project/editStatusProject/:project_id
+  editStatusProject = (req, res) =>{
+    const {
+      status
+    } =req.body;
+    const project_Id = req.params.project_id;
+
+    let sql = `UPDATE project SET status = "${status}" WHERE project_id = ${project_Id}`;
+    connection.query(sql, (error, result) => {
+      error ? res.status(400).json({ error }) : res.status(200).json(result);
+    })
+  }
+
 
   // Mostrar la infomación de un proyecto
   // localhost:4000/project/:project_id
@@ -126,6 +138,23 @@ class projectControllers {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
+
+  //Mostrar informacion del Project_info
+  //localhost:4000/project/:project_id
+  getProjectInfo = (req, res) => {
+    let project_id = req.params.project_id;
+    let sql = `SELECT * FROM project_info WHERE project_id = ${project_id} and is_deleted = 0`;
+    connection.query(sql, (error, result) => {
+      if (error) {
+        res.status(400).json({ error });
+      }
+      res.status(200).json(result);
+    });
+  };
+
+
+
+
 }
 
 module.exports = new projectControllers();
