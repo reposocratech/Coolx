@@ -114,7 +114,6 @@ export const AppRoutes = () => {
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2" element={<Succes2 projects={projects} />} />
 
-          <Route path="/allusers" element={<AllUsers />} />
           <Route path="/user" element={<User />}>
             <Route
               path=""
