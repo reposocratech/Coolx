@@ -7,6 +7,7 @@ var cors = require("cors");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var projectRouter = require("./routes/project");
+var adminRouter = require("./routes/admin");
 var treeRouter = require("./routes/tree");
 
 var app = express();
@@ -30,6 +31,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/project", projectRouter);
 app.use("/tree", treeRouter);
+app.use("/admin", adminRouter );
 
 // Santi no lo tiene
 /*
