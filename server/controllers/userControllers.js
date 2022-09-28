@@ -152,6 +152,20 @@ class userController {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
+
+  //7 mostrar todos los usuarios
+  //localhost:4000/users/allUsers
+  selectAllUsers = (req, res) => {
+
+    console.log("headers", req.headers.authorization);
+
+    let sql = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
+
+    connection.query(sql, (error, result) => {
+      error ? res.status(400).json({ error }) : res.status(200).json(result);
+
+    })
+  }
 }
 
 module.exports = new userController();
