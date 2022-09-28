@@ -9,8 +9,13 @@ import { BlockedInfo } from "../../components/project/BlockedInfo";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
+
+
+
 export const Project = () => {
   const [projectInfo, setProjectInfo] = useState();
+
 
   const navigate = useNavigate();
 

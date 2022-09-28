@@ -4,20 +4,22 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 import jwtDecode from "jwt-decode";
 import "./admintree.scss"
-import { EditTree } from './EditTree';
+import { TreeDeleteModal } from '../../components/modal/TreeDeleteModal';
+import { TreeEditModal } from '../../components/modal/TreeEditModal';
 
 export const AdminTree = ({setIsLogged}) => {
 
   const [allTrees, setAllTrees]  = useState([]);
-
   const [showModal, setShowModal] = useState(false);
-
   const [editTree, setEditTree] = useState(false);
+  const [resetAllTrees, setResetAllTrees] = useState(false);
+  const [treeModal, setTreeModal] = useState();
+  const [modalDeleteTree, setModalDeleteTree] = useState(false)
+  const [modalEditTree, setModalEdiTree] = useState(false)
 
   const navigate = useNavigate()
 
   
- 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
 
@@ -30,7 +32,6 @@ export const AdminTree = ({setIsLogged}) => {
         axios
           .get(`http://localhost:4000/admin/${id}/allTrees`)
           .then((res) => {
-            console.log(res);
             setAllTrees(res.data);
           })
           .catch((err) => {
@@ -42,33 +43,23 @@ export const AdminTree = ({setIsLogged}) => {
     } else {
       alert("Debes iniciar sección como administrador");
     }
-  }, []);
+  }, [resetAllTrees]);
 
-
-  const deleteTree = (tree_id) => {
-      axios
-          .delete(`http://localhost:4000/tree/deleteTree/${tree_id}`)
-
-          .then((res) => {
-            alert("Arbol eliminado correctamente")
-            console.log(res);
-            navigate("/admintree")
-          })
-
-          .catch((err) => {
-            console.log(err);
-          })      
-  }
 
   const handleEditTree = (tree) => {
-      setEditTree({...tree})
-      setShowModal(true)
+      setEditTree(tree)
+      setModalEdiTree(true)
+  }
+
+  const handleDeleteTree = (tree) => {
+      setTreeModal(tree);
+      setModalDeleteTree(true);
   }
 
 
   return (
     <>
-        <div className="wrapper">
+      <div className="wrapper">
       <Container fluid>
         <Row>
           <Col className="admin-tree-title">
@@ -79,15 +70,13 @@ export const AdminTree = ({setIsLogged}) => {
             </div>
             
             
-            <Button onClick={()=> navigate("/treeform")}>Registrar nuevo árbol</Button>
+            <Button onClick={()=> navigate("/treeform")} className="boton-register-tree">Registrar nuevo árbol</Button>
           </Col>
           
         </Row>
 
         <Row className='table-all-trees'>
         
-        
-       
             <Table striped>
               <thead>
                 <tr>
@@ -95,10 +84,8 @@ export const AdminTree = ({setIsLogged}) => {
                   <th>Id</th>
                   <th>Nombre del árbol</th>
                   <th>Nombre en latín</th>
-                  <th>Opcion a</th>
-                  <th>Opcion a</th>
-                 
-                  
+                  <th>Borrar</th>
+                  <th>Editar</th>
                 </tr>
               </thead>
 
@@ -111,37 +98,40 @@ export const AdminTree = ({setIsLogged}) => {
                       <td>{tree.tree_id}</td>
                       <td>{tree.tree_name}</td>
                       <td>{tree.latin_name}</td>
+                     
                       <td>
-                        <Button onClick={() => deleteTree(tree.tree_id)}>Eliminar</Button>
+                        <Button onClick={() => handleDeleteTree(tree)} className="boton-delete-tree">Eliminar</Button>
                       </td>
                       <td>
-                        <Button onClick={() => handleEditTree(tree)}>Editar</Button>
+                        <Button onClick={() => handleEditTree(tree)} className="boton-edit-tree">Editar</Button>
                       </td>
 
-                     
                     </tr>
                   ))}
               </tbody>
             </Table>
-          
            
           </Row>
-          <div className='modalEditTree'>
-             { showModal &&
-            <EditTree
-             showModal = {showModal}
-             setShowModal={setShowModal}
-             editTree ={editTree}
-             setEditTree= {setEditTree}
-             setAllTrees={setAllTrees}
-             
-          />}
-          </div>
 
-        
-          
-         
-        
+          <TreeDeleteModal
+            onHide={() => setModalDeleteTree(false)}
+            setModalDeleteTree={setModalDeleteTree}
+            showModal={modalDeleteTree}
+            treeModal={treeModal}
+            setResetAllTrees={setResetAllTrees}
+            resetAllTrees={resetAllTrees}
+          />
+
+          <TreeEditModal 
+            onHide={() => setModalEdiTree(false)}
+            setModalEdiTree={setModalEdiTree}
+            showModal={modalEditTree}
+            modalEditTree={modalEditTree}
+            setResetAllTrees={setResetAllTrees}
+            resetAllTrees={resetAllTrees}
+            editTree={editTree}
+            setEditTree={setEditTree}  
+          />
         </Container>
 
         </div>
