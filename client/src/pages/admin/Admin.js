@@ -4,15 +4,18 @@ import { useNavigate } from "react-router-dom";
 import "./admin.scss";
 // import { AdminUsers } from './AdminUsers'
 
-export const Admin = () => {
+export const Admin = ({ user }) => {
   const navigate = useNavigate();
+  // console.log("esto es user: " + user.user_name[0]);
 
   return (
     <div className="wrapper">
       <Container className="getdown">
         <Row>
-          <Col md={12} className="projectCard">
-            <p>Administrador Nombre Apellido</p>
+          <Col md={12} className="admin-name">
+            <p>
+              Administrador {user && user.user_name} {user && user.surname}
+            </p>
           </Col>
         </Row>
 
@@ -54,7 +57,10 @@ export const Admin = () => {
           </Col>
 
           <Col md={6} lg={4} className="d-flex flex-column align-items-center">
-            <Button className="admin-tools" onClick={() => navigate("/")}>
+            <Button
+              className="admin-tools"
+              onClick={() => navigate("/adminprojectstate")}
+            >
               <div className="blue-circle">
                 <img src="/assets/icons/co2.svg" alt="Add project icon" />
               </div>
@@ -69,7 +75,10 @@ export const Admin = () => {
           </Col>
 
           <Col md={6} lg={4} className="d-flex flex-column align-items-center">
-            <Button className="admin-tools" onClick={() => navigate("/admintree")}>
+            <Button
+              className="admin-tools"
+              onClick={() => navigate("/admintree")}
+            >
               <div className="blue-circle">
                 <img
                   src="/assets/icons/tree_solid_white.svg"

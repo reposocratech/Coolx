@@ -26,7 +26,7 @@ class adminControllers {
     // Mostrar todos los proyectos
     // localhost:4000/admin/:userId/allProjects
     getAllProjects = (req, res) => {
-        let sql ="SELECT * FROM project ";
+        let sql ="SELECT * FROM project WHERE is_deleted = 0";
         connection.query(sql, (error, result)=>{
             if (error){
                 res.status(400).json({error});
@@ -45,9 +45,7 @@ class adminControllers {
             }
             res.status(200).json(result);
         });
-    };
-
-    
+    };   
 
 }
 

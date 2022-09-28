@@ -7,7 +7,11 @@ const verify = require("../middleware/verify");
 
 // Crear nuevo proyecto
 // localhost:4000/project/newProject/:user_id
-router.post("/newProject/:user_id", multer("images"), projectControllers.createNewProject);
+router.post(
+  "/newProject/:user_id",
+  multer("images"),
+  projectControllers.createNewProject
+);
 
 // Editar proyecto
 // localhost:4000/project/editProject/:project_id
@@ -27,10 +31,7 @@ router.get("/:project_id", projectControllers.getProjectInfo);
 
 // Eliminar un proyecto
 // localhost:4000/project/deleteProject/:project_id
-router.delete(
-  "/project/deleteProject/:project_id",
-  projectControllers.deleteProject
-);
+router.delete("/deleteProject/:project_id", projectControllers.deleteProject);
 
 // Cambiar usuario de un proyecto
 // localhost:4000/project/changeUser/:project_id
