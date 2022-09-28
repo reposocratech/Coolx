@@ -9,6 +9,8 @@ export const Tarjetamas = ({}) => {
         <Row className="contenedor">
           <Col className="img">
             <Carousel>
+
+
               <Carousel.Item>
                 <img
                   className="d-block w-100"
@@ -17,21 +19,7 @@ export const Tarjetamas = ({}) => {
                 />
               </Carousel.Item>
 
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="/images/Bosque3.jpg"
-                  alt="Second slide"
-                />
-              </Carousel.Item>
 
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="/images/Bosque2.jpg"
-                  alt="Third slide"
-                />
-              </Carousel.Item>
             </Carousel>
           </Col>
 

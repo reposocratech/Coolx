@@ -26,17 +26,30 @@ import { AdminTree } from "../pages/admin/AdminTree";
 import { TreeForm } from "../pages/admin/TreeForm";
 import { EditTree } from "../pages/admin/EditTree";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
+import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
+import { Tarjeta } from "../components/card/Tarjeta";
 
 
 export const AppRoutes = () => {
 
   const [isLogged, setIsLogged] = useState(false);
 
+  //información del usuario que se loguea
   const [user, setUser] = useState();
+
 
   const [resetUser, setResetUser] = useState(false);
 
+  //información de todos los proyectos del usuario que se ha logueado
   const [projects, setProjects] = useState(false);
+
+  //esto es para modificar usuarios
+  const [userModificate, setUserModificate ] =  useState();
+
+  //esto es para la obtener la información de un proyecto
+  const [oneProject, setOneProject] = useState();
+
+
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -65,7 +78,6 @@ export const AppRoutes = () => {
   }, [isLogged, resetUser]);
 
 
- 
 
   return (
     <div>
@@ -93,7 +105,7 @@ export const AppRoutes = () => {
 
           <Route 
             path="/adminusers" 
-            element={<AdminUsers user={user}  resetUser={resetUser}setResetUser={setResetUser} />}/>
+            element={<AdminUsers user={user}  resetUser={resetUser} setResetUser={setResetUser} userModificate={userModificate} setUserModificate={setUserModificate} />}/>
           <Route 
             path="/*" 
             element={<ErrorPage />} />
@@ -107,7 +119,7 @@ export const AppRoutes = () => {
           <Route path="/treeform" element={<TreeForm />}/>
           <Route path="/edittree" element={<EditTree />}/>
           <Route path="/*" element={<ErrorPage />} />
-          {/* <Route path="/tarjeta" element={<Tarjeta />} /> */}
+          <Route path="/tarjeta" element={<Tarjeta oneProject={oneProject} setOneProject={setOneProject}/>} />
 
 
           <Route
@@ -117,6 +129,7 @@ export const AppRoutes = () => {
           <Route 
             path="/vegetation" 
             element={<Vegetation />} />
+
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
           <Route path="/projectform" element={<ProjectForm user={user} projects={projects} setProjects={setProjects} resetUser={resetUser} setResetUser={setResetUser}/>} />
@@ -139,7 +152,7 @@ export const AppRoutes = () => {
           </Route>
 
 
-          <Route path="/edituser" element={<EditUser user={user} setUser={setUser} setIsLogged={setIsLogged}/>} />
+          <Route path="/getEditUser" element={<EditUser user={user} setUser={setUser} setIsLogged={setIsLogged} userModificate={userModificate} setUserModificate={setUserModificate}/>} />
 
 
         </Routes>
