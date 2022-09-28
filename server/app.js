@@ -7,6 +7,7 @@ var cors = require("cors");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var projectRouter = require("./routes/project");
+var adminRouter = require("./routes/admin");
 var treeRouter = require("./routes/tree");
 var adminRouter = require("./routes/admin");
 

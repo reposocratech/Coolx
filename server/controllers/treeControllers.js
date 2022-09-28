@@ -35,10 +35,11 @@ class treeController {
     //localhost:4000/tree/deleteTree/:tree_id
     deleteTree = (req, res) => {
         let tree_id = req.params.tree_id;
-        let sql = `UPDATE tree SET is_deleted = 1 WHERE tree_id = "${tree_id}"`;
-        connection.query(sql, (error, result) =>{
-            error ? res.status(400).json({ error }) : res.status(200).json(result);
-        });
+        console.log(tree_id, "TREEEE ID");
+        // let sql = `UPDATE tree SET is_deleted = 1 WHERE tree_id = ${tree_id}`;
+        // connection.query(sql, (error, result) =>{
+        //     error ? res.status(400).json({ error }) : res.status(200).json(result);
+        // });
     };
 
     //3 traer arbol para su edición
@@ -63,13 +64,14 @@ class treeController {
             avg_crown_area,
             avg_biomass,
             avg_age,
-        } = req.body.register;
+        } = req.body;
 
-        let sql = `UPDATE tree SET tree_name = "${tree_name}", latin_name = "${latin_name}", avg_height_tree = "${avg_height_tree}", avg_crown_area = "${avg_crown_area}", avg_biomass = "${avg_biomass}, avg_age = "${avg_age}" WHERE tree_id = "${tree_id}"`;
+        let sql = `UPDATE tree SET tree_name = "${tree_name}", latin_name = "${latin_name}", avg_height_tree = ${avg_height_tree}, avg_crown_area = ${avg_crown_area}, avg_biomass = ${avg_biomass}, avg_age = ${avg_age} WHERE tree_id = ${tree_id}`;
+        console.log(sql);
 
         connection.query(sql, (error, result) => {
             if (error) throw error;
-            error ? res.status(400).json({ error }) : res.status(200).json(req.body.register);
+            error ? res.status(400).json({ error }) : res.status(200).json(req.body);
         });
 
     }

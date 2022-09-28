@@ -5,7 +5,7 @@ import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 
 
-export const EditUser = ({user, setUser}) => {
+export const EditUser = ({user, setUser, setIsLogged}) => {
 
     const [editUser, setEditUser] = useState({
         user_name:"",
@@ -43,11 +43,31 @@ export const EditUser = ({user, setUser}) => {
               })
     }
 
+    const deleteUser = (e) => {
+
+      console.log(user.user_id);
+          axios
+                .delete(`http://localhost:4000/users/deleteUser/${user.user_id}`)
+
+                .then((res) => {
+                  alert("Usuario eliminado correctamente")
+                  navigate("/admin")
+                  setIsLogged(true)
+                })
+
+                .catch((err) => {
+                  console.log(err);
+                })
+            
+           
+    }
+
     useEffect(() => {
       setEditUser({...editUser, ...user})
     }, [])
     
 
+  
 
   return (
     <>
@@ -60,12 +80,18 @@ export const EditUser = ({user, setUser}) => {
                           <Button onClick={()=>navigate(-1)}><img src="/assets/icons/arrow_left.svg"/></Button>
                           
                             <h1>Edición de usuario</h1>
+                            
                         </div>
 
                         <div className='iconEditUser d-flex align-items-center'>
                             <img src='/assets/icons/user.svg' />
                             <p>Editar datos</p>
                             <img src='/assets/icons/arrow_right.svg'/>
+                        </div>
+
+                        <div className='deleteUser '>
+                          <Button onClick={deleteUser}>Eliminar usuario</Button>
+                          
                         </div>
                     </Col>
 
