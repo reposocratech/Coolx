@@ -10,6 +10,7 @@ var projectRouter = require("./routes/project");
 var adminRouter = require("./routes/admin");
 var treeRouter = require("./routes/tree");
 var adminRouter = require("./routes/admin");
+var contactRouter = require("./routes/contact");
 
 var app = express();
 app.use(
@@ -33,6 +34,7 @@ app.use("/users", usersRouter);
 app.use("/project", projectRouter);
 app.use("/tree", treeRouter);
 app.use("/admin", adminRouter);
+app.use("/contact", contactRouter);
 
 // Santi no lo tiene
 /*

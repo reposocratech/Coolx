@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../pages/auth/register.scss";
+import axios from "axios";
 
 import {
   Col,
@@ -26,6 +27,10 @@ export const ContactForm = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
+    axios.post("http://localhost:4000/contact",user)
+    .then((res) => console.log(res) )
+    .catch((err) => console.log(err))
+
   };
 
   return (
