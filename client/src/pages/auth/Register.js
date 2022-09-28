@@ -38,7 +38,7 @@ export const Register = () => {
       .catch((err) => {
         // console.log(err);
         if (err.response.data.error.errno === 1062) {
-          alert("Email already exist");
+          alert("Email or N.I.F already exist");
         } else {
           navigate("/error");
         }

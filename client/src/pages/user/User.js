@@ -24,38 +24,36 @@ export const User = () => {
     <div className="user-bg">
       <div className="wrapper">
         <Container fluid>
-          {
-            <Row>
-              <Col md={2} className="p-0">
-                <div className="left-bar d-flex flex-column">
-                  {radios.map((radio, idx) => (
-                    <Button
-                      key={idx}
-                      id={`radio-${idx}`}
-                      type="radio"
-                      className={
-                        radioValue === radio.value ? "selected" : "unselected"
-                      }
-                      name="radio"
-                      value={radio.value}
-                      checked={radioValue === radio.value}
-                      onClick={(e) => {
-                        setRadioValue(e.currentTarget.value);
-                        navigate(radio.url);
-                      }}
-                    >
-                      <img src={`/assets/icons/${radio.img}`} alt="icon" />
-                      {radio.name}
-                    </Button>
-                  ))}
-                </div>
-              </Col>
+          <Row>
+            <Col md={2} className="p-0">
+              <div className="left-bar d-flex flex-column">
+                {radios.map((radio, idx) => (
+                  <Button
+                    key={idx}
+                    id={`radio-${idx}`}
+                    type="radio"
+                    className={
+                      radioValue === radio.value ? "selected" : "unselected"
+                    }
+                    name="radio"
+                    value={radio.value}
+                    checked={radioValue === radio.value}
+                    onClick={(e) => {
+                      setRadioValue(e.currentTarget.value);
+                      navigate(radio.url);
+                    }}
+                  >
+                    <img src={`/assets/icons/${radio.img}`} alt="icon" />
+                    {radio.name}
+                  </Button>
+                ))}
+              </div>
+            </Col>
 
-              <Col md={10} className="sheet p-0">
-                <Outlet />
-              </Col>
-            </Row>
-          }
+            <Col md={10} className="sheet p-0">
+              <Outlet />
+            </Col>
+          </Row>
         </Container>
       </div>
     </div>

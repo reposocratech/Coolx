@@ -12,6 +12,14 @@ export const NavBarMain = ({
 
   const navigate = useNavigate();
 
+  const handleNavigate = () => {
+    if (user.user_type === 0) {
+      navigate(`/user`);
+    } else if (user.user_type === 1) {
+      navigate("/admin");
+    }
+  };
+
   const handleLogout = () => {
     window.localStorage.removeItem("infocoolx");
     navigate("/");
@@ -31,25 +39,38 @@ export const NavBarMain = ({
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse>
             <Nav className="me-auto"></Nav>
-          
 
-          {!isLogged ? (
-            <div>
-              <Button className="me-3" onClick={() => navigate(`/login`)}>
-                Iniciar Sesion
-              </Button>
-            </div>
-          ) : (
-            <>
-              {user && (
-                <>
-                  {user && (
-                    <div className="letra me-2">
-                      <h3>{user.user_name[0]}</h3>
-                    </div>
-                  )}
-                </>
-              )}
+            {!isLogged ? (
+              <div>
+                <Button className="me-3" onClick={() => navigate(`/login`)}>
+                  Iniciar Sesion
+                </Button>
+              </div>
+            ) : (
+              <>
+                {user && (
+                  <>
+                    {user && (
+                      <div className="letra me-2">
+                        <h3>{user.user_name[0]}</h3>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                <Button
+                  className="me-2"
+                  variant="warning"
+                  onClick={handleNavigate}
+                >
+                  Perfil de: {user && user.user_name}
+                </Button>
+                <Button variant="warning" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
+            )}
+
 
               <Button
                 className="me-2"
@@ -68,6 +89,7 @@ export const NavBarMain = ({
               
             </>
           )}
+
           </Navbar.Collapse>
         </Container>
       </Navbar>

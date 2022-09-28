@@ -63,7 +63,7 @@ export const Login = ({ setIsLogged }) => {
         .catch((err) => {
           console.log(err);
           if (err.response.status === 401) {
-            alert("Usuario no registrado");
+            alert("Usuario no registrado o eliminado");
           } else {
             navigate("/error");
           }

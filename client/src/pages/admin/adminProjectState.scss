@@ -1,0 +1,38 @@
+.adm-proj-state-header {
+  display: flex;
+  align-items: center;
+  padding-top: 27px;
+  h1 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    color: #09427d;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+  }
+  button:hover {
+    background-color: transparent !important;
+  }
+}
+
+.list-text {
+  p {
+    margin: 0px;
+  }
+}
+.status-col {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  .pen-status {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0px;
+    img {
+      height: 1rem !important;
+    }
+  }
+}

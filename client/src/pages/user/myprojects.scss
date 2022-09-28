@@ -25,6 +25,7 @@
     @include add-button {
       width: 150px;
       height: 150px;
+      padding: 15px;
     }
   }
   .add-circle {
@@ -36,6 +37,10 @@
     display: grid;
     place-content: center;
     transition: opacity 0.5s ease;
+    @include add-button {
+      width: 100px;
+      height: 100px;
+    }
     h2 {
       color: #bfd1e3;
       font-weight: 700;
@@ -56,9 +61,13 @@
     letter-spacing: -0.01em;
     padding-top: 10px;
     transition: opacity 0.5s ease;
+    @include add-button {
+      display: none;
+    }
   }
   .add-button:hover {
     transform: scale(1.03);
+    background-color: white !important;
     p {
       opacity: 1;
     }
@@ -75,7 +84,7 @@
 .card-container {
   padding-top: 44px;
   padding-inline: 31px !important;
-  height: 920px;
+  height: 90vh;
   overflow: overlay !important;
   -ms-overflow-style: none !important; /* IE and Edge */
   scrollbar-width: none !important; /* Firefox */
