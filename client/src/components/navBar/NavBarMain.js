@@ -7,10 +7,9 @@ export const NavBarMain = ({
   isLogged,
   setIsLogged,
   setUser,
-  user,
-  resetUser,
-  setResetUser,
+  user
 }) => {
+
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -26,10 +25,8 @@ export const NavBarMain = ({
     navigate("/");
     setIsLogged(false);
     setUser(null);
-    setResetUser(!resetUser);
   };
 
-  // console.log(user);
 
   return (
     <>
@@ -73,6 +70,7 @@ export const NavBarMain = ({
                 </Button>
               </>
             )}
+
           </Navbar.Collapse>
         </Container>
       </Navbar>

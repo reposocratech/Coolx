@@ -8,7 +8,9 @@ import "./myprojects.scss";
 export const MyProjects = ({ projects, user }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {}, [projects]);
+  useEffect(() => {
+    
+  }, [projects]);
 
   return (
     <>
@@ -23,7 +25,7 @@ export const MyProjects = ({ projects, user }) => {
           <Col md={4} className="add-container">
             <Button
               className="add-button"
-              onClick={() => navigate(`/projectform/${user.user_id}`)}
+              onClick={() => navigate(`/projectform`)}
             >
               <div>
                 <div className="add-circle">

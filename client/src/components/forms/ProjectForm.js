@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import "./projectform.scss";
 import axios from "axios";
 
-export const ProjectForm = ({ user, setProjects }) => {
+export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
 
   const [projectFiles, setProjectFiles] = useState();
 
@@ -64,6 +64,7 @@ export const ProjectForm = ({ user, setProjects }) => {
       .then((res) => {
         console.log(res);
         navigate("/succes2");
+        setResetUser(!resetUser);
 
       })
 

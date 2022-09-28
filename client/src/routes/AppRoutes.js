@@ -26,6 +26,7 @@ import { AdminTree } from "../pages/admin/AdminTree";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
 
 export const AppRoutes = () => {
+
   const [isLogged, setIsLogged] = useState(false);
 
   const [user, setUser] = useState();
@@ -45,12 +46,15 @@ export const AppRoutes = () => {
 
       axios
         .get(`http://localhost:4000/users/oneUser/${id}`)
+
         .then((res) => {
           setUser(res.data.resultUser[0]);
           setProjects(res.data.resultProject);
 
           // console.log(res, "soyyyy reeeeesss");
+
         })
+        
         .catch((err) => {
           console.log(err);
         });
@@ -65,8 +69,6 @@ export const AppRoutes = () => {
           setIsLogged={setIsLogged}
           user={user}
           setUser={setUser}
-          setResetUser={setResetUser}
-          resetUser={resetUser}
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -89,16 +91,7 @@ export const AppRoutes = () => {
           <Route path="/vegetation" element={<Vegetation />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
-          <Route
-            path="/projectform/:id"
-            element={
-              <ProjectForm
-                user={user}
-                projects={projects}
-                setProjects={setProjects}
-              />
-            }
-          />
+          <Route path="/projectform" element={<ProjectForm user={user} projects={projects} setProjects={setProjects} resetUser={resetUser} setResetUser={setResetUser}/>} />
           <Route path={`/project/:id`} element={<Project />} />
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2" element={<Succes2 projects={projects} />} />

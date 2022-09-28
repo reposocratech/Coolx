@@ -5,7 +5,8 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
 
-export const Login = ({ isLogged, setIsLogged }) => {
+export const Login = ({ setIsLogged }) => {
+
   const [login, setLogin] = useState({
     email: "",
     password: "",
