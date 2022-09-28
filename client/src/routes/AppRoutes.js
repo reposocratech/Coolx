@@ -89,7 +89,7 @@ export const AppRoutes = () => {
             element={<Admin />} />
           <Route 
             path="/admintree" 
-            element={<AdminTree />}/>
+            element={<AdminTree setIsLogged={setIsLogged}/>}/>
 
           <Route 
             path="/adminusers" 

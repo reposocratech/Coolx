@@ -68,27 +68,15 @@ export const NavBarMain = ({
                 <Button variant="warning" onClick={handleLogout}>
                   Logout
                 </Button>
+
+                <Button variant="warning" onClick={()=> navigate("/edituser")}>
+                Editar
+              </Button>
               </>
             )}
 
-
-              <Button
-                className="me-2"
-                variant="warning"
-                onClick={() => navigate(`/user`)}
-              >
-                Perfil de: {user && user.user_name}
-              </Button>
-              <Button variant="warning" onClick={handleLogout}>
-                Logout
-              </Button>
-              <Button variant="warning" onClick={()=> navigate("/edituser")}>
-                Editar
-              </Button>
-             
-              
-            </>
-          )}
+          
+          
 
           </Navbar.Collapse>
         </Container>
