@@ -34,7 +34,7 @@ export const TreeForm = () => {
                  navigate("/admintree")
  
              })
-             .error((err) => {
+             .catch((err) => {
                  console.log(err, "ESTE ES EL ERROR AXIOS");
              })
      }
