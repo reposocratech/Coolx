@@ -23,7 +23,10 @@ import { Succes2 } from "../pages/home/Sucess2";
 import { EditUser } from "../pages/user/EditUser";
 import { AdminUsers } from "../pages/admin/AdminUsers";
 import { AdminTree } from "../pages/admin/AdminTree";
+import { TreeForm } from "../pages/admin/TreeForm";
+import { EditTree } from "../pages/admin/EditTree";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
+
 
 export const AppRoutes = () => {
 
@@ -98,7 +101,14 @@ export const AppRoutes = () => {
             path="/adminprojectstate"
             element={<AdminProjectState setIsLogged={setIsLogged} />}
           />
-         
+
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admintree" element={<AdminTree setIsLogged={setIsLogged} user={user}/>}/>
+          <Route path="/treeform" element={<TreeForm />}/>
+          <Route path="/edittree" element={<EditTree />}/>
+          <Route path="/*" element={<ErrorPage />} />
+          {/* <Route path="/tarjeta" element={<Tarjeta />} /> */}
+
 
           <Route
             path="/tarjetamas"
@@ -127,10 +137,11 @@ export const AppRoutes = () => {
             <Route path="messages" element={<Messages />} />
             <Route path="myaccount" element={<MyAccount />} />
           </Route>
-          <Route
-            path="/edituser"
-            element={<EditUser user={user} setUser={setUser} />}
-          />
+
+
+          <Route path="/edituser" element={<EditUser user={user} setUser={setUser} setIsLogged={setIsLogged}/>} />
+
+
         </Routes>
       </BrowserRouter>
     </div>

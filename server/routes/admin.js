@@ -7,7 +7,6 @@ var router = express.Router();
 // localhost:4000/admin/:userId
 router.post("/:userId", adminControllers.showPanel);
 
-
 // Mostrar todos los usuarios
 // localhost:4000/admin/:userId/allUsers
 router.get("/:userId/allUsers", adminControllers.getAllUsers);
