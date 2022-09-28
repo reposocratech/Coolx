@@ -25,9 +25,9 @@ class authController {
         `;
         let maillist = [ // Lista de destinatarios **** CAMBIAR
             'bjgamboa@gmail.com',
-            'sosa813546@gmail.com',
+            'basjgamboa@gmail.com',
           ];
-        let prueba2 = `<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>        <p>Here's a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>`;
+    
          const mailmsg = {
             from: '"Coolx" <coolx.earthproj@gmail.com>', // Remitente
             to: maillist,
