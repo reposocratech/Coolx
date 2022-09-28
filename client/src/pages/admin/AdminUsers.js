@@ -4,12 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import './allusers.scss'
 import Table from "react-bootstrap/Table";
+import { AdminUsersInfo } from "../../components/modal/AdminUsersInfo";
 
-export const AdminUsers = ({user,resetUser, setResetUser}) => {
+export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) => {
+
+  
+  const [allUsers, setAllUsers] = useState();
+  
+  const [busqueda, setBusqueda] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [userInfo, setUserInfo] = useState(false);
 
   const navigate = useNavigate();
-
-  const [allUsers, setAllUsers] = useState();
 
   useEffect(() => {
     const AUTH_TOKEN = window.localStorage.getItem("token");
@@ -23,26 +29,32 @@ export const AdminUsers = ({user,resetUser, setResetUser}) => {
         console.log(res);
       })
 
-      
-      .catch((err) => console.log(err));
+      .catch((err) => {console.log(err)});
   }, []);
 
   console.log(allUsers);
 
-  const eliminarUser = (e) => {
-    
-    axios
-    .delete(`http://localhost:4000/users/deleteUser/${e}`)
-
-    .then((res) => {
-      setResetUser(!resetUser);
-      console.log(res, "soyyyy eliminar");
-    })
-
-    .catch((err) => {
-      console.log(err);
-    });
+  const handleModal = (usuario) =>{
+    setUserInfo(usuario);
+    setOpenModal(true);
   }
+
+
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+    filtrar(e.target.value);
+  }
+
+  const filtrar= (terminoBusqueda) => {
+    let filtrado = allUsers.filter((elemento) => {
+      if(elemento.company.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+        return elemento;
+      }
+    });
+    setAllUsers(filtrado)
+  }
+
+  
 
   return (
     <div className="wrapper">
@@ -54,6 +66,22 @@ export const AdminUsers = ({user,resetUser, setResetUser}) => {
                 <img src="./assets/icons/arrow_left.svg" />
               </Button>
               <h1>Todas nuestras empresas</h1>
+              
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+
+            <input
+                  className="form-control inputBuscar "
+                  type='text'
+                  placeholder='Buscar empresa'
+                  value={busqueda}
+                  onChange={handleChange}
+                  />
+                  <Button className="btn-btn-success" onClick={()=>navigate(-1)}>
+                  Volver
+                  </Button>
             </Col>
           </Row>
 
@@ -63,11 +91,12 @@ export const AdminUsers = ({user,resetUser, setResetUser}) => {
                 <tr>
                   <th>#</th>
                   <th>Empresa</th>
+                  <th>Nombre</th>
                   <th>NIF</th>
                   <th>País</th>
                   <th>Teléfono</th>
                   <th>Email</th>
-                  <th>Eliminar usuario</th>
+                  <th>Mostrar toda la informacion</th>
                   <th>Mas información</th>
                 </tr>
               </thead>
@@ -78,15 +107,25 @@ export const AdminUsers = ({user,resetUser, setResetUser}) => {
                     <tr key={usuario.user_id}>
                       <td>{index + 1}</td>
                       <td>{usuario.company}</td>
+                      <td>{usuario.user_name}</td>
                       <td>{usuario.nif}</td>
                       <td>{usuario.country}</td>
                       <td>{usuario.phone}</td>
                       <td>{usuario.email}</td>
                       <td>
-                        <Button onClick={() => {eliminarUser(usuario.user_id)}} >Eliminar</Button>
+                        <Button onClick={()=>{
+                            handleModal(usuario);
+                        }
+                          } >Información restante</Button>
                       </td>
                       <td>
-                        <Button>Más info</Button>
+                        <Button onClick={()=> {
+                            console.log(usuario);
+                            setUserModificate(usuario)
+                            // navigate(`/getEditUser/${usuario.user_id}`)
+                            navigate(`/getEditUser`)
+                        }  
+                        }>Editar usuario</Button>
                       </td>
                     </tr>
                   ))}
@@ -96,12 +135,17 @@ export const AdminUsers = ({user,resetUser, setResetUser}) => {
           <Row>
             <Col>
               <p>
-                *Estado 0: Registrado - Estado 1: Calculando - Estado 2:
-                Completado
+                *Si tiene algun tipo de anomalia en el registro de sus datos por favor, pongase en contacto con nosotros. Le atenderemos de buena gana...en principio...
               </p>
             </Col>
           </Row>
         </Container>
+
+        <AdminUsersInfo
+           onHide={() => setOpenModal(false)}
+           show={openModal}
+           userInfo={userInfo}
+        />
       </div>
     </div>
   );

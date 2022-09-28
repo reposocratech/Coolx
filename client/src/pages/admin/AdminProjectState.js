@@ -45,7 +45,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
     }
   }, [resetProjects]);
 
-  console.log(allProjects);
+  // console.log(allProjects);
 
   const handleModal = (project) => {
     setProjectModal(project);
@@ -151,6 +151,9 @@ export const AdminProjectState = ({ setIsLogged }) => {
           onHide={() => setModalState(false)}
           show={modalState}
           projectModal={projectModal}
+          setModalState={setModalState}
+          setResetProjects={setResetProjects}
+          resetProjects={resetProjects}
         />
 
         <AdminDeleteModal
