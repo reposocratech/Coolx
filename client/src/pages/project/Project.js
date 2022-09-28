@@ -8,7 +8,8 @@ import { Requirements } from "../../components/project/Requirements";
 import { BlockedInfo } from "../../components/project/BlockedInfo";
 import { useNavigate } from "react-router-dom";
 
-export const Project = () => {
+export const Project = ({ projects }) => {
+
 
   const navigate = useNavigate();
   

@@ -39,7 +39,7 @@ class adminControllers {
     // Mostrar todos los árboles
     // localhost:4000/admin/:userId/allTrees
     getAllTrees = (req, res) => {
-        let sql ="SELECT * FROM tree ";
+        let sql ="SELECT * FROM tree WHERE is_deleted = 0";
         connection.query(sql, (error, result)=>{
             if (error){
                 res.status(400).json({error});

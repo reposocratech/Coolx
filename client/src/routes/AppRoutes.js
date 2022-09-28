@@ -24,8 +24,11 @@ import { EditUser } from "../pages/user/EditUser";
 import { AdminUsers } from "../pages/admin/AdminUsers";
 import { AdminTree } from "../pages/admin/AdminTree";
 import { TreeForm } from "../pages/admin/TreeForm";
-import { EditTree } from "../pages/admin/EditTree";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
+import { SuccesPayment } from "../pages/home/SuccesPayment";
+import { Tarjeta } from "../components/card/Tarjeta";
+import { ProjectCompleted } from "../pages/project/ProjectCompleted";
+
 
 
 export const AppRoutes = () => {
@@ -37,6 +40,8 @@ export const AppRoutes = () => {
   const [resetUser, setResetUser] = useState(false);
 
   const [projects, setProjects] = useState(false);
+
+
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -103,11 +108,10 @@ export const AppRoutes = () => {
           />
 
           <Route path="/admin" element={<Admin />} />
-          <Route path="/admintree" element={<AdminTree setIsLogged={setIsLogged} user={user}/>}/>
+          <Route path="/admintree" element={<AdminTree setIsLogged={setIsLogged} />}/>
           <Route path="/treeform" element={<TreeForm />}/>
-          <Route path="/edittree" element={<EditTree />}/>
           <Route path="/*" element={<ErrorPage />} />
-          {/* <Route path="/tarjeta" element={<Tarjeta />} /> */}
+          <Route path="/tarjeta" element={<Tarjeta />} />
 
 
           <Route
@@ -120,9 +124,11 @@ export const AppRoutes = () => {
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
           <Route path="/projectform" element={<ProjectForm user={user} projects={projects} setProjects={setProjects} resetUser={resetUser} setResetUser={setResetUser}/>} />
-          <Route path={`/project/:id`} element={<Project />} />
+          <Route path={`/project/:id`} element={<Project projects={projects}/>} />
+          <Route path="/projectcompleted" element={<ProjectCompleted/>} />
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2" element={<Succes2 projects={projects} />} />
+          <Route path="/succespayment" element={<SuccesPayment projects={projects} />} />
 
           <Route path="/user" element={<User />}>
             <Route
