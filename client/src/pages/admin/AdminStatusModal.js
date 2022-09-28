@@ -4,28 +4,34 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 
-export const AdminStatusModal = ({ onHide, show, projectModal }) => {
+export const AdminStatusModal = ({
+  onHide,
+  show,
+  projectModal,
+  setModalState,
+  resetProjects,
+  setResetProjects,
+}) => {
   const [newState, setNewState] = useState({
     status: "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleChange = (e) => {
+  //   setNewState({ status: e.target.value });
+  //   // console.log(newState);
+  // };
 
-    console.log("llega PM " + projectModal);
-    // const { id } = projectModal.project_id;
-
-    // axios
-    //   .put(
-    //     `http://localhost:4000/project/editProject/${projectModal.project_id}`,
-    //     newState
-    //   )
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+  const handleSubmit = (id) => {
+    axios
+      .put(`http://localhost:4000/project/editStatusProject/${id}`, newState)
+      .then((res) => {
+        console.log(res);
+        setModalState(false);
+        setResetProjects(!resetProjects);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -48,17 +54,24 @@ export const AdminStatusModal = ({ onHide, show, projectModal }) => {
             </b>
           )}
         </h5>
-        <Form.Select size="sm" defaultValue="3">
-          <option value="1">Registrado</option>
-          <option value="2">Calculando</option>
-          <option value="3">Completado</option>
+        <Form.Select
+          size="sm"
+          defaultValue={projectModal && projectModal.status}
+          onChange={(e) => setNewState({ status: e.target.value })}
+        >
+          <option value="0">Registrado</option>
+          <option value="1">Calculando</option>
+          <option value="2">Completado</option>
         </Form.Select>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide}>
           Cerrar
         </Button>
-        <Button variant="primary" onClick={handleSubmit}>
+        <Button
+          variant="primary"
+          onClick={() => handleSubmit(projectModal.project_id)}
+        >
           Guardar
         </Button>
       </Modal.Footer>
