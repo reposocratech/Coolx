@@ -7,6 +7,7 @@ var router = express.Router();
 // localhost:4000/admin/:userId
 router.post("/:userId", adminControllers.showPanel);
 
+
 // Mostrar todos los usuarios
 // localhost:4000/admin/:userId/allUsers
 router.get("/:userId/allUsers", adminControllers.getAllUsers);
@@ -18,7 +19,6 @@ router.get("/:userId/allProjects", adminControllers.getAllProjects);
 // Mostrar todos los árboles
 // localhost:4000/admin/:userId/allTrees
 router.get("/:userId/allTrees", adminControllers.getAllTrees);
-
 
 module.exports = router;
 

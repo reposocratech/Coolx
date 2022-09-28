@@ -20,8 +20,8 @@ import axios from "axios";
 import { ProjectForm } from "../components/forms/ProjectForm";
 import { Succes1 } from "../pages/home/Succes1";
 import { Succes2 } from "../pages/home/Sucess2";
-import { AllUsers } from "../pages/user/AllUsers";
 import { EditUser } from "../pages/user/EditUser";
+import { AdminUsers } from "../pages/admin/AdminUsers";
 import { AdminTree } from "../pages/admin/AdminTree";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
 
@@ -54,12 +54,15 @@ export const AppRoutes = () => {
           // console.log(res, "soyyyy reeeeesss");
 
         })
-        
+
         .catch((err) => {
           console.log(err);
         });
     }
   }, [isLogged, resetUser]);
+
+
+ 
 
   return (
     <div>
@@ -71,30 +74,46 @@ export const AppRoutes = () => {
           setUser={setUser}
         />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" 
+            element={<Home />} />
           <Route
             path="/login"
-            element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
+            element={<Login isLogged={isLogged} 
+            setIsLogged={setIsLogged} />}
           />
-          <Route path="/admin" element={<Admin user={user} />} />
-          <Route path="/admintree" element={<AdminTree />} />
+          <Route 
+            path="/admin" 
+            element={<Admin />} />
+          <Route 
+            path="/admintree" 
+            element={<AdminTree />}/>
+
+          <Route 
+            path="/adminusers" 
+            element={<AdminUsers user={user}  resetUser={resetUser}setResetUser={setResetUser} />}/>
+          <Route 
+            path="/*" 
+            element={<ErrorPage />} />
           <Route
             path="/adminprojectstate"
             element={<AdminProjectState setIsLogged={setIsLogged} />}
           />
-          <Route path="/*" element={<ErrorPage />} />
-          {/* <Route path="/tarjeta" element={<Tarjeta />} /> */}
+         
+
           <Route
             path="/tarjetamas"
             element={<Tarjetamas projects={projects} />}
           />
-          <Route path="/vegetation" element={<Vegetation />} />
+          <Route 
+            path="/vegetation" 
+            element={<Vegetation />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
           <Route path="/projectform" element={<ProjectForm user={user} projects={projects} setProjects={setProjects} resetUser={resetUser} setResetUser={setResetUser}/>} />
           <Route path={`/project/:id`} element={<Project />} />
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2" element={<Succes2 projects={projects} />} />
+
           <Route path="/allusers" element={<AllUsers />} />
           <Route path="/user" element={<User />}>
             <Route

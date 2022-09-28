@@ -14,7 +14,8 @@ class adminControllers {
     // Mostrar todos los usuarios
     // localhost:4000/admin/:userId/allUsers
     getAllUsers = (req, res) => {
-        let sql ="SELECT * FROM user WHERE is_deleted = 0";
+        let sql ="SELECT * FROM user WHERE is_deleted = 0 and user_type = 0";
+
         connection.query(sql, (error, result)=>{
             if (error){
                 res.status(400).json({error});

@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./admin.scss";
-// import { AdminUsers } from './AdminUsers'
+import { AdminUsers } from './AdminUsers'
 
 export const Admin = ({ user }) => {
   const navigate = useNavigate();
@@ -42,11 +42,11 @@ export const Admin = ({ user }) => {
           </Col>
 
           <Col md={6} lg={4} className="d-flex flex-column align-items-center">
-            <Button className="admin-tools" onClick={() => navigate("/")}>
+            <Button className="admin-tools" onClick={() => navigate("/adminusers")}>
               <div className="blue-circle">
                 <img src="/assets/icons/all_users.svg" alt="All users icon" />
               </div>
-              <h4>Administrar usuario</h4>
+              <h4>Administrar usuarios</h4>
               <div className="tool-text">
                 <p>
                   Procesamos dichos datos para que puedas utilizarlos de forma
