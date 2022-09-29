@@ -37,4 +37,8 @@ router.delete("/deleteProject/:project_id", projectControllers.deleteProject);
 // localhost:4000/project/changeUser/:project_id
 router.post("/changeUser/:project_id", projectControllers.changeUser);
 
+// Generar PDF con información de un proyecto (pago)
+//localhost:4000/project/:project_id/pdf
+router.get("/:project_id/pdf", projectControllers.getProjectPdf);
+
 module.exports = router;
