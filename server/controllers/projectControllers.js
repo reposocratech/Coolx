@@ -146,13 +146,14 @@ class projectControllers {
   };
 
   //Mostrar informacion del Project_info
-  //localhost:4000/project/:project_id
+  //localhost:4000/project/:project_id/info
   getProjectInfo = (req, res) => {
     let project_id = req.params.project_id;
-    let sql = `SELECT * FROM project_info WHERE project_id = ${project_id} and is_deleted = 0`;
+    let sql = `SELECT * FROM project_info WHERE project_id = ${project_id}`;
     connection.query(sql, (error, result) => {
       if (error) {
         res.status(400).json({ error });
+        console.log(error);
       }
       res.status(200).json(result);
     });
