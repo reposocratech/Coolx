@@ -63,7 +63,7 @@ export const Project = () => {
 
           <Row>
             <Col>
-              <BlockedInfo />
+              <BlockedInfo  projectInfo={projectInfo}/>
             </Col>
           </Row>
         </Container>

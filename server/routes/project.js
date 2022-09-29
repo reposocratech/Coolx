@@ -26,8 +26,8 @@ router.put("/editStatusProject/:project_id", projectControllers.editStatusProjec
 router.get("/:project_id", projectControllers.getProject);
 
 //mostrar la informacion de un proyecto (pago)
-//localhost:4000/project/:project_id
-router.get("/:project_id", projectControllers.getProjectInfo);
+//localhost:4000/project/:project_id/info
+router.get("/:project_id/info", projectControllers.getProjectInfo);
 
 // Eliminar un proyecto
 // localhost:4000/project/deleteProject/:project_id
