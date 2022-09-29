@@ -1,8 +1,13 @@
+import axios from "axios";
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./blocked.scss";
 
-export const BlockedInfo = () => {
+export const BlockedInfo = ({ projectInfo }) => {
+
+  const navigate = useNavigate()
+  
   return (
     <Container fluid>
       <Row>
@@ -36,7 +41,7 @@ export const BlockedInfo = () => {
           </div>
 
           <div className="unblock">
-            <Button className="buttonBlock">Desbloquear todos los datos</Button>
+            <Button className="buttonBlock" onClick={() => navigate(`/projectcompleted/${projectInfo[0].project_id}/info`)}>Desbloquear todos los datos</Button>
           </div>
         </Col>
       </Row>

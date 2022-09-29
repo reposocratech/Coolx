@@ -27,7 +27,7 @@ import { TreeForm } from "../pages/admin/TreeForm";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
 
 import { SuccesPayment } from "../pages/home/SuccesPayment";
-/*import { Tarjeta } from "../components/card/Tarjeta";*/
+// /*import { Tarjeta } from "../components/card/Tarjeta";*/
 import { ProjectCompleted } from "../pages/project/ProjectCompleted";
 
 
@@ -127,7 +127,7 @@ export const AppRoutes = () => {
           <Route path="/*" element={<ErrorPage />} />
 
 
-          <Route path="/tarjeta" element={<Tarjeta oneProject={oneProject} setOneProject={setOneProject}/>} />
+          {/* <Route path="/tarjeta" element={<Tarjeta oneProject={oneProject} setOneProject={setOneProject}/>} /> */}
 
 
 
@@ -143,7 +143,7 @@ export const AppRoutes = () => {
           <Route path="/registrocoolx" element={<Register />} />
           <Route path="/projectform" element={<ProjectForm user={user} projects={projects} setProjects={setProjects} resetUser={resetUser} setResetUser={setResetUser}/>} />
           <Route path={`/project/:id`} element={<Project projects={projects}/>} />
-          <Route path="/projectcompleted" element={<ProjectCompleted/>} />
+          <Route path={`/projectcompleted/:id/info`} element={<ProjectCompleted/>} />
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2" element={<Succes2 projects={projects} />} />
           <Route path="/succespayment" element={<SuccesPayment projects={projects} />} />
