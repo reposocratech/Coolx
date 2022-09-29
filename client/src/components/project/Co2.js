@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./co2.scss";
 
-export const Co2 = () => {
+export const Co2 = ({ projectInfo }) => {
   return (
     <Container fluid>
       <Row>
@@ -34,7 +34,7 @@ export const Co2 = () => {
 
           <div className="infoPaisCo2">
             <p>
-              País:<b> Costa Rica</b>
+              País:<b> {projectInfo && projectInfo[0].location}</b>
             </p>
             <p>
               Propuesto Verificador:<b> Verra</b>

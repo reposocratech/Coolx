@@ -24,7 +24,7 @@ export const Project = () => {
       .then((res) => {
         // console.log(res);
         setProjectInfo(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -45,14 +45,14 @@ export const Project = () => {
               </div>
             </Col>
 
-            <Col md={9}>
+            <Col md={8}>
               <ProjectInfo projectInfo={projectInfo} />
             </Col>
 
-            <Col md={3}>
+            <Col md={4}>
               <CostProfit projectInfo={projectInfo} />
               <Requirements />
-              <Co2 />
+              <Co2 projectInfo={projectInfo} />
             </Col>
           </Row>
 
