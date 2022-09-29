@@ -8,6 +8,7 @@ import Table from "react-bootstrap/Table";
 import { AdminProjectModal } from "./AdminProjectModal";
 import { AdminStatusModal } from "./AdminStatusModal";
 import { AdminDeleteModal } from "./AdminDeleteModal";
+import { Footer } from "../home/Footer";
 
 export const AdminProjectState = ({ setIsLogged }) => {
   const [allProjects, setAllProjects] = useState();
@@ -63,108 +64,111 @@ export const AdminProjectState = ({ setIsLogged }) => {
   };
 
   return (
-    <div className="wrapper">
-      <div className="getdown">
-        <Container fluid>
-          <Row>
-            <Col className="adm-proj-state-header">
-              <Button onClick={() => navigate(-1)}>
-                <img src="./assets/icons/arrow_left.svg" />
-              </Button>
-              <h1>Estado de proyectos</h1>
-            </Col>
-          </Row>
+    <>
+      <div className="wrapper">
+        <div className="getdown">
+          <Container fluid>
+            <Row>
+              <Col className="adm-proj-state-header">
+                <Button onClick={() => navigate(-1)}>
+                  <img src="./assets/icons/arrow_left.svg" />
+                </Button>
+                <h1>Estado de proyectos</h1>
+              </Col>
+            </Row>
 
-          <Row>
-            <Table striped>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Lugar</th>
-                  <th>Estado</th>
-                  <th>Borrar</th>
-                  <th>Más información</th>
-                </tr>
-              </thead>
+            <Row>
+              <Table striped>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Lugar</th>
+                    <th>Estado</th>
+                    <th>Borrar</th>
+                    <th>Más información</th>
+                  </tr>
+                </thead>
 
-              <tbody className="list-text">
-                {allProjects &&
-                  allProjects.map((project, index) => (
-                    <tr key={project.project_id}>
-                      <td>{index + 1}</td>
-                      <td>{project.project_id}</td>
-                      <td>{project.project_name}</td>
-                      <td>{project.location}</td>
-                      <td>
-                        <div className="status-col">
-                          <p>
-                            {project.status === 0
-                              ? "Registrado"
-                              : project.status === 1
-                              ? "Calculando"
-                              : "Completado"}
-                          </p>
+                <tbody className="list-text">
+                  {allProjects &&
+                    allProjects.map((project, index) => (
+                      <tr key={project.project_id}>
+                        <td>{index + 1}</td>
+                        <td>{project.project_id}</td>
+                        <td>{project.project_name}</td>
+                        <td>{project.location}</td>
+                        <td>
+                          <div className="status-col">
+                            <p>
+                              {project.status === 0
+                                ? "Registrado"
+                                : project.status === 1
+                                ? "Calculando"
+                                : "Completado"}
+                            </p>
+                            <Button
+                              type="button"
+                              className="pen-status"
+                              onClick={() => handleStateModal(project)}
+                            >
+                              <img
+                                src="/assets/icons/pen.svg"
+                                alt="Edit project state"
+                              />
+                            </Button>
+                          </div>
+                        </td>
+                        <td>
                           <Button
                             type="button"
-                            className="pen-status"
-                            onClick={() => handleStateModal(project)}
+                            onClick={() => handleDeleteModal(project)}
                           >
-                            <img
-                              src="/assets/icons/pen.svg"
-                              alt="Edit project state"
-                            />
+                            Eliminar
                           </Button>
-                        </div>
-                      </td>
-                      <td>
-                        <Button
-                          type="button"
-                          onClick={() => handleDeleteModal(project)}
-                        >
-                          Eliminar
-                        </Button>
-                      </td>
-                      <td>
-                        <Button
-                          type="button"
-                          onClick={() => handleModal(project)}
-                        >
-                          Más info
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </Table>
-          </Row>
-        </Container>
+                        </td>
+                        <td>
+                          <Button
+                            type="button"
+                            onClick={() => handleModal(project)}
+                          >
+                            Más info
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+            </Row>
+          </Container>
 
-        <AdminProjectModal
-          onHide={() => setOpenModal(false)}
-          show={openModal}
-          projectModal={projectModal}
-        />
+          <AdminProjectModal
+            onHide={() => setOpenModal(false)}
+            show={openModal}
+            projectModal={projectModal}
+          />
 
-        <AdminStatusModal
-          onHide={() => setModalState(false)}
-          show={modalState}
-          projectModal={projectModal}
-          setModalState={setModalState}
-          setResetProjects={setResetProjects}
-          resetProjects={resetProjects}
-        />
+          <AdminStatusModal
+            onHide={() => setModalState(false)}
+            show={modalState}
+            projectModal={projectModal}
+            setModalState={setModalState}
+            setResetProjects={setResetProjects}
+            resetProjects={resetProjects}
+          />
 
-        <AdminDeleteModal
-          onHide={() => setModalDelete(false)}
-          setModalDelete={setModalDelete}
-          show={modalDelete}
-          projectModal={projectModal}
-          setResetProjects={setResetProjects}
-          resetProjects={resetProjects}
-        />
+          <AdminDeleteModal
+            onHide={() => setModalDelete(false)}
+            setModalDelete={setModalDelete}
+            show={modalDelete}
+            projectModal={projectModal}
+            setResetProjects={setResetProjects}
+            resetProjects={resetProjects}
+          />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };

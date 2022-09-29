@@ -2,15 +2,19 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Col, Container, Row, Button } from "react-bootstrap";
-import './allusers.scss'
+import "./allusers.scss";
 import Table from "react-bootstrap/Table";
 import { AdminUsersInfo } from "../../components/modal/AdminUsersInfo";
+import { Footer } from "../home/Footer";
 
-export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) => {
-
-  
+export const AdminUsers = ({
+  user,
+  setUserModificate,
+  resetUser,
+  setResetUser,
+}) => {
   const [allUsers, setAllUsers] = useState();
-  
+
   const [busqueda, setBusqueda] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [userInfo, setUserInfo] = useState(false);
@@ -29,124 +33,140 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
         console.log(res);
       })
 
-      .catch((err) => {console.log(err)});
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   console.log(allUsers);
 
-  const handleModal = (usuario) =>{
+  const handleModal = (usuario) => {
     setUserInfo(usuario);
     setOpenModal(true);
-  }
-
+  };
 
   const handleChange = (e) => {
     setBusqueda(e.target.value);
     filtrar(e.target.value);
-  }
+  };
 
-  const filtrar= (terminoBusqueda) => {
+  const filtrar = (terminoBusqueda) => {
     let filtrado = allUsers.filter((elemento) => {
-      if(elemento.company.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+      if (
+        elemento.company
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase())
+      ) {
         return elemento;
       }
     });
-    setAllUsers(filtrado)
-  }
-
-  
+    setAllUsers(filtrado);
+  };
 
   return (
-    <div className="wrapper">
-      <div className="getdown">
-        <Container fluid>
-          <Row>
-            <Col className="adm-proj-state-header">
-              <Button onClick={() => navigate(-1)}>
-                <img src="./assets/icons/arrow_left.svg" />
-              </Button>
-              <h1>Todas nuestras empresas</h1>
-              
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-
-            <input
+    <>
+      <div className="wrapper">
+        <div className="getdown">
+          <Container fluid>
+            <Row>
+              <Col className="adm-proj-state-header">
+                <Button onClick={() => navigate(-1)}>
+                  <img src="./assets/icons/arrow_left.svg" />
+                </Button>
+                <h1>Todas nuestras empresas</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <input
                   className="form-control inputBuscar "
-                  type='text'
-                  placeholder='Buscar empresa'
+                  type="text"
+                  placeholder="Buscar empresa"
                   value={busqueda}
                   onChange={handleChange}
-                  />
-                  <Button className="btn-btn-success" onClick={()=>navigate(-1)}>
+                />
+                <Button
+                  className="btn-btn-success"
+                  onClick={() => navigate(-1)}
+                >
                   Volver
-                  </Button>
-            </Col>
-          </Row>
+                </Button>
+              </Col>
+            </Row>
 
-          <Row>
-            <Table striped>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Empresa</th>
-                  <th>Nombre</th>
-                  <th>NIF</th>
-                  <th>País</th>
-                  <th>Teléfono</th>
-                  <th>Email</th>
-                  <th>Mostrar toda la informacion</th>
-                  <th>Mas información</th>
-                </tr>
-              </thead>
+            <Row>
+              <Table striped>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Empresa</th>
+                    <th>Nombre</th>
+                    <th>NIF</th>
+                    <th>País</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Mostrar toda la informacion</th>
+                    <th>Mas información</th>
+                  </tr>
+                </thead>
 
-              <tbody>
-                {allUsers && 
-                  allUsers.map((usuario, index) => (
-                    <tr key={usuario.user_id}>
-                      <td>{index + 1}</td>
-                      <td>{usuario.company}</td>
-                      <td>{usuario.user_name}</td>
-                      <td>{usuario.nif}</td>
-                      <td>{usuario.country}</td>
-                      <td>{usuario.phone}</td>
-                      <td>{usuario.email}</td>
-                      <td>
-                        <Button onClick={()=>{
-                            handleModal(usuario);
-                        }
-                          } >Información restante</Button>
-                      </td>
-                      <td>
-                        <Button onClick={()=> {
-                            console.log(usuario);
-                            setUserModificate(usuario)
-                            // navigate(`/getEditUser/${usuario.user_id}`)
-                            navigate(`/getEditUser`)
-                        }  
-                        }>Editar usuario</Button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </Table>
-          </Row>
-          <Row>
-            <Col>
-              <p>
-                *Si tiene algun tipo de anomalia en el registro de sus datos por favor, pongase en contacto con nosotros. Le atenderemos de buena gana...en principio...
-              </p>
-            </Col>
-          </Row>
-        </Container>
+                <tbody>
+                  {allUsers &&
+                    allUsers.map((usuario, index) => (
+                      <tr key={usuario.user_id}>
+                        <td>{index + 1}</td>
+                        <td>{usuario.company}</td>
+                        <td>{usuario.user_name}</td>
+                        <td>{usuario.nif}</td>
+                        <td>{usuario.country}</td>
+                        <td>{usuario.phone}</td>
+                        <td>{usuario.email}</td>
+                        <td>
+                          <Button
+                            onClick={() => {
+                              handleModal(usuario);
+                            }}
+                          >
+                            Información restante
+                          </Button>
+                        </td>
+                        <td>
+                          <Button
+                            onClick={() => {
+                              console.log(usuario);
+                              setUserModificate(usuario);
+                              // navigate(`/getEditUser/${usuario.user_id}`)
+                              navigate(`/getEditUser`);
+                            }}
+                          >
+                            Editar usuario
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+            </Row>
+            <Row>
+              <Col>
+                <p>
+                  *Si tiene algun tipo de anomalia en el registro de sus datos
+                  por favor, pongase en contacto con nosotros. Le atenderemos de
+                  buena gana...en principio...
+                </p>
+              </Col>
+            </Row>
+          </Container>
 
-        <AdminUsersInfo
-           onHide={() => setOpenModal(false)}
-           show={openModal}
-           userInfo={userInfo}
-        />
+          <AdminUsersInfo
+            onHide={() => setOpenModal(false)}
+            show={openModal}
+            userInfo={userInfo}
+          />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
-}
+};

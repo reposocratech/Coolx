@@ -1,8 +1,12 @@
+import axios from "axios";
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./blocked.scss";
 
-export const BlockedInfo = () => {
+export const BlockedInfo = ({ projectInfo }) => {
+  const navigate = useNavigate();
+
   return (
     <Container fluid>
       <Row>
@@ -36,7 +40,25 @@ export const BlockedInfo = () => {
           </div>
 
           <div className="unblock">
-            <Button className="buttonBlock">Desbloquear todos los datos</Button>
+            {projectInfo &&
+              (projectInfo[0].status === 0 ? (
+                <Button
+                  className="buttonBlock buy-data"
+                  onClick={() =>
+                    navigate(
+                      `/projectcompleted/${projectInfo[0].project_id}/info`
+                    )
+                  }
+                >
+                  Desbloquear todos los datos
+                </Button>
+              ) : projectInfo[0].status === 1 ? (
+                <Button disabled className="buttonBlock load-data">
+                  Cargando datos...
+                </Button>
+              ) : (
+                <p>Error en la base de datos</p>
+              ))}
           </div>
         </Col>
       </Row>

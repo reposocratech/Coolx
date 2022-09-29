@@ -27,8 +27,8 @@ import { TreeForm } from "../pages/admin/TreeForm";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
 
 import { SuccesPayment } from "../pages/home/SuccesPayment";
-/*import { Tarjeta } from "../components/card/Tarjeta";*/
-import { ProjectCompleted } from "../pages/project/ProjectCompleted";
+// /*import { Tarjeta } from "../components/card/Tarjeta";*/
+// import { ProjectCompleted } from "../pages/project/ProjectCompleted";
 
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 
@@ -147,7 +147,10 @@ export const AppRoutes = () => {
             path={`/project/:id`}
             element={<Project projects={projects} />}
           />
-          <Route path="/projectcompleted" element={<ProjectCompleted />} />
+          {/* <Route
+            path={`/projectcompleted/:id/info`}
+            element={<ProjectCompleted />}
+          /> */}
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2" element={<Succes2 projects={projects} />} />
           <Route

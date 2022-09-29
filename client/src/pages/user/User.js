@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Outlet, useNavigate } from "react-router-dom";
+import { Footer } from "../home/Footer";
 import "./myprojects.scss";
 
 export const User = () => {
@@ -56,6 +57,7 @@ export const User = () => {
           </Row>
         </Container>
       </div>
+      <Footer />
     </div>
   );
 };

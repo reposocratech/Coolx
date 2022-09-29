@@ -43,12 +43,18 @@
   .more-info {
     color: white;
     padding: 12px 24px;
-    background: #70bfcb;
+
     border-radius: 80px;
     border: none;
     font-weight: 700;
     font-size: 14px;
     line-height: 140%;
     text-align: center;
+  }
+  .more-data {
+    background: #70bfcb !important;
+  }
+  .loading-data {
+    background-color: grey !important;
   }
 }
