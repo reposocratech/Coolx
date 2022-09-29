@@ -35,18 +35,18 @@ class treeController {
     //localhost:4000/tree/deleteTree/:tree_id
     deleteTree = (req, res) => {
         let tree_id = req.params.tree_id;
-        console.log(tree_id, "TREEEE ID");
-        // let sql = `UPDATE tree SET is_deleted = 1 WHERE tree_id = ${tree_id}`;
-        // connection.query(sql, (error, result) =>{
-        //     error ? res.status(400).json({ error }) : res.status(200).json(result);
-        // });
+        
+        let sql = `UPDATE tree SET is_deleted = 1 WHERE tree_id = ${tree_id}`;
+        connection.query(sql, (error, result) =>{
+            error ? res.status(400).json({ error }) : res.status(200).json(result);
+        });
     };
 
     //3 traer arbol para su edición
     //localhost:4000/tree/getEditTree/:tree_id
     getEditOneTree = (req, res) => {
         let tree_id = req.params.user_id;
-        let sql = `SELECT * FROM user WHERE tree_id = "${tree_id}"`;
+        let sql = `SELECT * FROM user WHERE tree_id = ${tree_id}`;
         connection.query(sql, (error, result) => {
             error ? res.status(400).json({ error }) : res.status(200).json(result);
         });

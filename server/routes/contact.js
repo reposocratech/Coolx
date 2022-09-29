@@ -1,16 +1,17 @@
 var express = require('express');
-const contactController = require("../controllers/contactController");
+const authController = require("../controllers/authController");
 var router = express.Router();
-const multer = require("../middleware/multer");
-const multerSingle = require("../middleware/multerSingle");
-const verify = require("../middleware/verify");
+
 
 
 // Contact form
 // localhost:4000/contact
-router.post("/contact", contactController.contact);
+//router.post("/contact", contactController.contact);
 
-
+router.post('/', authController.sendMails);
+router.get('/', (req, res) => {
+    res.status(200).send(html);
+});
 
 
 module.exports = router;

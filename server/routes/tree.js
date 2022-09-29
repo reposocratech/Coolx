@@ -11,7 +11,7 @@ router.post("/createTree", treeControllers.createTree);
 
 //2 borrado logico arbol
 //localhost:4000/tree/deleteTree/:tree_id
-router.delete("/deleteUser/:tree_id", treeControllers.deleteTree);
+router.delete("/deleteTree/:tree_id", treeControllers.deleteTree);
 
 //3 traer para editado de arbol
 //localhost:4000/tree/getEditTree/:tree_id
