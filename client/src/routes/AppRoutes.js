@@ -32,6 +32,7 @@ import { ProjectCompleted } from "../pages/project/ProjectCompleted";
 
 
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
+import { Stripe } from "../components/stripe/Stripe";
 
 
 
@@ -148,6 +149,8 @@ export const AppRoutes = () => {
           <Route path="/succes2" element={<Succes2 projects={projects} />} />
           <Route path="/succespayment" element={<SuccesPayment projects={projects} />} />
 
+          <Route path="/stripe" element={<Stripe />} /> 
+
           <Route path="/user" element={<User />}>
             <Route
               path=""
@@ -160,6 +163,7 @@ export const AppRoutes = () => {
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
             <Route path="myaccount" element={<MyAccount />} />
+            
           </Route>
 
 
