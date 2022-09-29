@@ -6,16 +6,12 @@ import "./projectMain.scss";
 import { Co2 } from "../../components/project/Co2";
 import { Requirements } from "../../components/project/Requirements";
 import { BlockedInfo } from "../../components/project/BlockedInfo";
+import { ProjectCompleted } from "./ProjectCompleted";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
-
-
-
 export const Project = () => {
   const [projectInfo, setProjectInfo] = useState();
-
 
   const navigate = useNavigate();
 
@@ -61,11 +57,20 @@ export const Project = () => {
             </Col>
           </Row>
 
-          <Row>
-            <Col>
-              <BlockedInfo />
-            </Col>
-          </Row>
+          {projectInfo &&
+            (projectInfo[0].status === 0 || projectInfo[0].status === 1 ? (
+              <Row>
+                <Col>
+                  <BlockedInfo />
+                </Col>
+              </Row>
+            ) : (
+              <Row>
+                <Col>
+                  <ProjectCompleted />
+                </Col>
+              </Row>
+            ))}
         </Container>
       </div>
     </div>
