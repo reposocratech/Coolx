@@ -7,19 +7,17 @@ import "./tarjeta.scss";
 export const Tarjeta = ({ projects }) => {
   const navigate = useNavigate();
 
+  
+
+
   // console.log(projects);
 
   const handleSend = (project) => {
     axios
       .get(`http://localhost:4000/project/${project.project_id}`)
       .then((res) => {
-        console.log(res);
-
-        if (project.status === 0 || project.status === 1) {
-          navigate(`/project/${project.project_id}`);
-        } else if (project.status === 3) {
-          navigate(`/project/${project.project_id}`);
-        }
+        // console.log(res);
+        navigate(`/project/${project.project_id}`);
       })
       .catch((err) => {
         console.log(err);

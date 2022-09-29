@@ -41,16 +41,15 @@ class projectControllers {
     let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`;
 
     connection.query(sql, (error, result) => {
-     
-      // error && res.status(400).json({ error }) 
+      // error && res.status(400).json({ error })
       // : res.status(200).json(result);
 
       let project_id = result.insertId;
       this.saveProjectImages(img, project_id);
 
       connection.query(sqlProject, (err, resultProject) => {
-          if (err) throw err;
-          res.status(200).json({resultProject, result});
+        if (err) throw err;
+        res.status(200).json({ resultProject, result });
       });
     });
   };
@@ -98,18 +97,16 @@ class projectControllers {
 
   //Editar status de proyecto
   //localhost:4000/project/editStatusProject/:project_id
-  editStatusProject = (req, res) =>{
-    const {
-      status
-    } =req.body;
+  editStatusProject = (req, res) => {
+    const { status } = req.body;
+    console.log("llega status: " + status);
     const project_Id = req.params.project_id;
 
     let sql = `UPDATE project SET status = "${status}" WHERE project_id = ${project_Id}`;
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
-    })
-  }
-
+    });
+  };
 
   // Mostrar la infomación de un proyecto
   // localhost:4000/project/:project_id
@@ -136,13 +133,11 @@ class projectControllers {
     });
   };
 
-
   // Cambiar usuario de un proyecto
   // localhost:4000/project/changeUser/:project_id
   changeUser = (req, res) => {
-
     let project_id = req.params.project_id;
-    const {user_id} = req.body;
+    const { user_id } = req.body;
 
     let sql = `UPDATE project SET user_id='${user_id}' WHERE project_id = ${project_id}`;
     connection.query(sql, (error, result) => {
@@ -150,23 +145,19 @@ class projectControllers {
     });
   };
 
-
   //Mostrar informacion del Project_info
-  //localhost:4000/project/:project_id
+  //localhost:4000/project/:project_id/info
   getProjectInfo = (req, res) => {
     let project_id = req.params.project_id;
-    let sql = `SELECT * FROM project_info WHERE project_id = ${project_id} and is_deleted = 0`;
+    let sql = `SELECT * FROM project_info WHERE project_id = ${project_id}`;
     connection.query(sql, (error, result) => {
       if (error) {
         res.status(400).json({ error });
+        console.log(error);
       }
       res.status(200).json(result);
     });
   };
-
-
-
-};
-
+}
 
 module.exports = new projectControllers();

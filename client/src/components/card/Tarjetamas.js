@@ -2,13 +2,18 @@ import React from "react";
 import { Col, Container, Row, Carousel } from "react-bootstrap";
 import "./tarjeta.scss";
 
-export const Tarjetamas = ({}) => {
+export const Tarjetamas = ({ projectPayed }) => {
+
+  console.log(projectPayed, "PROJECT PAYED TARJETAMAS");
+
   return (
     <>
       <Container className="bage">
         <Row className="contenedor">
-          <Col className="img">
+          <Col md={6} className="img">
             <Carousel>
+
+
               <Carousel.Item>
                 <img
                   className="d-block w-100"
@@ -17,27 +22,13 @@ export const Tarjetamas = ({}) => {
                 />
               </Carousel.Item>
 
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="/images/Bosque3.jpg"
-                  alt="Second slide"
-                />
-              </Carousel.Item>
 
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="/images/Bosque2.jpg"
-                  alt="Third slide"
-                />
-              </Carousel.Item>
             </Carousel>
           </Col>
 
-          <Col className="letras">
+          <Col md={6} className="letras">
             <div>
-              <h4>Proyecto de Ejemplo</h4>
+              <h4>Datos generales</h4>
             </div>
 
             <div className="division">
@@ -52,7 +43,7 @@ export const Tarjetamas = ({}) => {
 
             <div className="division">
               <div>
-                <img src="/assets/icons/location.svg" />
+                <img src="/assets/icons/tree_solid.svg" />
               </div>
 
               <div>

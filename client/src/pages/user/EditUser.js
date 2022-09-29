@@ -5,18 +5,10 @@ import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 
 
-export const EditUser = ({user, setUser, setIsLogged}) => {
 
-    const [editUser, setEditUser] = useState({
-        user_name:"",
-        surname:"",
-        company:"",
-        nif:"",
-        position:"",
-        phone:"",
-        country:"",
-        currency:""
-    })
+export const EditUser = ({ setIsLogged, userModificate}) => {
+
+    const [editUser, setEditUser] = useState(userModificate)
 
     const navigate = useNavigate();
 
@@ -30,12 +22,10 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
         e.preventDefault();
 
         axios
-              .put(`http://localhost:4000/users/editUser/${user.user_id}`, {register: {...editUser}})
+              .put(`http://localhost:4000/users/editUser/${userModificate.user_id}`, {register: {...editUser}})
 
-              .then(({data})=> {
-                setEditUser({...data})
-                setUser({...data})
-                navigate("/user")
+              .then(()=> {
+                navigate("/adminusers")
               })
 
               .catch((err) => {
@@ -45,30 +35,22 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
 
     const deleteUser = (e) => {
 
-      console.log(user.user_id);
           axios
-                .delete(`http://localhost:4000/users/deleteUser/${user.user_id}`)
+                .delete(`http://localhost:4000/users/deleteUser/${userModificate.user_id}`)
 
                 .then((res) => {
                   alert("Usuario eliminado correctamente")
-                  navigate("/admin")
+                  navigate("/adminusers")
                   setIsLogged(true)
                 })
 
                 .catch((err) => {
                   console.log(err);
                 })
-            
-           
+   
     }
 
-    useEffect(() => {
-      setEditUser({...editUser, ...user})
-    }, [])
-    
-
   
-
   return (
     <>
         <div className='contEditUser'>
@@ -105,7 +87,7 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
                         type="text"
                         name="user_name"
                         autoComplete="off"
-                        value={editUser.user_name}
+                        value={editUser?.user_name}
                         onChange={handleChange}
 
                       />
@@ -115,7 +97,7 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
                         type="text"
                         name="surname"
                         autoComplete="off"
-                        value={editUser.surname}
+                        value={editUser?.surname}
                         onChange={handleChange}
 
 
@@ -126,7 +108,7 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
                         type="text"
                         name="company"
                         autoComplete="off"
-                        value={editUser.company}
+                        value={editUser?.company}
                         onChange={handleChange}
 
 
@@ -137,7 +119,7 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
                         type="text"
                         name="nif"
                         autoComplete="off"
-                        value={editUser.nif}
+                        value={editUser?.nif}
                         onChange={handleChange}
 
                       />
@@ -147,7 +129,7 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
                         type="text"
                         name="position"
                         autoComplete="off"
-                        value={editUser.position}
+                        value={editUser?.position}
                         onChange={handleChange}
 
 
@@ -158,7 +140,7 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
                         type="text"
                         name="phone"
                         autoComplete="off"
-                        value={editUser.phone}
+                        value={editUser?.phone}
                         onChange={handleChange}
 
 
@@ -168,7 +150,7 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
                         type="text"
                         name="country"
                         autoComplete="off"
-                        value={editUser.country}
+                        value={editUser?.country}
                         onChange={handleChange}
 
 
@@ -178,7 +160,7 @@ export const EditUser = ({user, setUser, setIsLogged}) => {
                         type="text"
                         name="currency"
                         autoComplete="off"
-                        value={editUser.currency}
+                        value={editUser?.currency}
                         onChange={handleChange}
 
 
