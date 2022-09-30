@@ -4,6 +4,9 @@ var router = express.Router();
 const multer = require("../middleware/multer");
 const multerSingle = require("../middleware/multerSingle");
 const verify = require("../middleware/verify");
+const puppeteer = require ('puppeteer');
+const pdfController = require('../controllers/puppeteer-pdf');
+const puppeteerPdf = require("../controllers/puppeteer-pdf");
 
 // Crear nuevo proyecto
 // localhost:4000/project/newProject/:user_id
@@ -43,5 +46,10 @@ router.put("/changeUser/:project_id/:user_id", projectControllers.changeUser);
 // Mostrar los proyectos solo de los administradores
 // localhost:4000/project/onlyAdmin
 router.post("/onlyAdmin", projectControllers.onlyAdmin);
+
+// Generar PDF de un proyecto
+// localhost:4000/project/:project_id/pdf
+//router.get("/:project_id/pdf", projectControllers.getPdf);
+router.get("/:project_id/pdf", puppeteerPdf.descargar);
 
 module.exports = router;
