@@ -4,10 +4,12 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
+import { Footer } from "../home/Footer";
 
 export const Login = ({ setIsLogged }) => {
 
   const [message, setMessage] = useState("");
+
 
   const [login, setLogin] = useState({
     email: "",
@@ -77,20 +79,22 @@ export const Login = ({ setIsLogged }) => {
   };
 
   return (
-    <div>
-      <Container fluid className="fondo-login">
-        <Row className="contAuth-login">
-          <Col>
-            <div>
-              <div className="titulo-Login">
-                <p>Bienvenido de vuelta</p>
+    <>
+      <div>
+        <Container fluid className="fondo-login">
+          <Row className="contAuth-login">
+            <Col>
+              <div>
+                <div className="titulo-Login">
+                  <p>Bienvenido de vuelta</p>
+                </div>
+                <div className="subtitulo-login">
+                  <p>
+                    Para iniciar sesion introduce tus credenciales a
+                    continuación
+                  </p>
+                </div>
               </div>
-              <div className="subtitulo-login">
-                <p>
-                  Para iniciar sesion introduce tus credenciales a continuación
-                </p>
-              </div>
-            </div>
 
             <div className="formAuth-login">
               <label>Dirección de correo electronico</label>
@@ -146,5 +150,8 @@ export const Login = ({ setIsLogged }) => {
         </Row>
       </Container>
     </div>
+      <Footer />
+    </>
+
   );
 };

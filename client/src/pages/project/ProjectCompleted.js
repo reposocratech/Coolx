@@ -1,103 +1,69 @@
-import axios from 'axios'
-import React , { useEffect, useState }from 'react'
-import { Row, Col, Container } from "react-bootstrap"
-import { useNavigate } from 'react-router-dom'
-import { Tarjetamas } from '../../components/card/Tarjetamas'
-import { Requirements } from '../../components/project/Requirements'
-import { Vegetation } from '../../components/vegetation/Vegetation'
-import "./projectCompleted.scss"
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Row, Col, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { ExtraData } from "../../components/vegetation/ExtraData";
+import { Vegetation } from "../../components/vegetation/Vegetation";
+import "./projectCompleted.scss";
 
 export const ProjectCompleted = () => {
+  const [projectPayed, setProjectPayed] = useState();
+  const [reseteProject, setResetProject] = useState(false);
 
-    const [projectPayed, setProjectPayed] = useState();
-    const [reseteProject, setResetProject] = useState(false)
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    
-    useEffect(() => {
-        let pathname = window.location.pathname;
-        const id = pathname.split("/")[2];
-        console.log(id);
+  useEffect(() => {
+    let pathname = window.location.pathname;
+    const id = pathname.split("/")[2];
+    console.log(id);
 
-        axios
-            .get(`http://localhost:4000/project/${id}/info`)
-            .then((res) => {
-                console.log(res, "soy res del projeccompleted");
-                setProjectPayed(res.data)
-                console.log(res.data, "RES PUNTO DATA");
-                
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-      
-    
-     
-    }, [reseteProject])
-    
+    axios
+      .get(`http://localhost:4000/project/${id}/info`)
+      .then((res) => {
+        // console.log(res, "soy res del projeccompleted");
+        setProjectPayed(res.data);
+        // console.log(res.data, "RES PUNTO DATA");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [reseteProject]);
 
   return (
     <>
-        <div className='cont-completedproject'>
-        <div className='wrapper'>
-            <Container fluid>
+      <Container fluid id="moreInfo">
+        <Row>
+          <Col className="cards-vegetation-completedproject p-0">
+            <Vegetation projectPayed={projectPayed} />
+          </Col>
+        </Row>
 
-            <Col md={12} className="projectCard">
-              <div className="title-project">
-                <a onClick={() => navigate(-1)}>
-                  <img src="/assets/icons/arrow_left.svg" />
-                </a>
-                <p>Proyecto</p>
-              </div>
-            </Col>
+        <Row className="cont-graficas">
+          <Col lg={12} xl={6} className="p-0">
+            <img src="/graficas/evolution.svg" />
+          </Col>
 
-            <Row>
-                <Col md={8}>
-                    <Tarjetamas projectPayed={projectPayed}/>
-                </Col>
+          <Col lg={12} xl={6} className="p-0">
+            <img src="/graficas/foresthealth.svg" />
+          </Col>
 
-                <Col md={3}>
-                    <Requirements />
-                </Col>
-            </Row>
+          <Col lg={12} xl={6} className="p-0">
+            <img src="/graficas/co2.svg" />
+          </Col>
 
-            <Row>
-                <Col md={12} className="cards-vegetation-completedproject">
-                    <Vegetation  projectPayed={projectPayed}/>
-                </Col>
-            </Row>
+          <Col lg={12} xl={6} className="p-0">
+            <img src="/graficas/riskfire.svg" />
+          </Col>
 
+          <Col lg={12} xl={6} className="p-0">
+            <img src="/graficas/digitalterrain.svg" />
+          </Col>
+        </Row>
 
-            <Row>
-                <div className='cont-graficas'>
-
-                <Col md={7} className="py-3">
-                    <img src='/graficas/evolution.png'/>
-                </Col>
-
-                <Col md={7} className="py-3">
-                    <img src='/graficas/foresthealth.png'/>
-                </Col>
-
-                <Col md={7} className="py-3">
-                    <img src='/graficas/co2.png'/>
-                </Col>
-
-                <Col md={7} className="py-3">
-                    <img src='/graficas/digitalterrain.png'/>
-                </Col>
-
-                </div>
-            </Row>
-            </Container>
-
-            </div>
-        </div>
-    
-        
-      
-    
+        <Row>
+          <ExtraData />
+        </Row>
+      </Container>
     </>
-  )
-}
+  );
+};

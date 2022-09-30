@@ -27,36 +27,30 @@ import { TreeForm } from "../pages/admin/TreeForm";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
 
 import { SuccesPayment } from "../pages/home/SuccesPayment";
-// import { Tarjeta } from "../components/card/Tarjeta"
-import { ProjectCompleted } from "../pages/project/ProjectCompleted";
+
+// /*import { Tarjeta } from "../components/card/Tarjeta";*/
+// import { ProjectCompleted } from "../pages/project/ProjectCompleted";
 
 
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
-
-
-
+import { Stripe } from "../components/stripe/Stripe";
 
 export const AppRoutes = () => {
-
   const [isLogged, setIsLogged] = useState(false);
 
   //información del usuario que se loguea
   const [user, setUser] = useState();
-
 
   const [resetUser, setResetUser] = useState(false);
 
   //información de todos los proyectos del usuario que se ha logueado
   const [projects, setProjects] = useState(false);
 
-
   //esto es para modificar usuarios
-  const [userModificate, setUserModificate ] =  useState();
+  const [userModificate, setUserModificate] = useState();
 
   //esto es para la obtener la información de un proyecto
   const [oneProject, setOneProject] = useState();
-
-
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -75,7 +69,6 @@ export const AppRoutes = () => {
           setProjects(res.data.resultProject);
 
           // console.log(res, "soyyyy reeeeesss");
-
         })
 
         .catch((err) => {
@@ -83,8 +76,6 @@ export const AppRoutes = () => {
         });
     }
   }, [isLogged, resetUser]);
-
-
 
   return (
     <div>
@@ -96,57 +87,81 @@ export const AppRoutes = () => {
           setUser={setUser}
         />
         <Routes>
-          <Route path="/" 
-            element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route
             path="/login"
-            element={<Login isLogged={isLogged} 
-            setIsLogged={setIsLogged} />}
+            element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
           />
-          <Route 
-            path="/admin" 
-            element={<Admin />} />
-          <Route 
-            path="/admintree" 
-            element={<AdminTree setIsLogged={setIsLogged}/>}/>
+          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admintree"
+            element={<AdminTree setIsLogged={setIsLogged} />}
+          />
 
-          <Route 
-            path="/adminusers" 
-            element={<AdminUsers user={user}  resetUser={resetUser} setResetUser={setResetUser} userModificate={userModificate} setUserModificate={setUserModificate} />}/>
-          <Route 
-            path="/*" 
-            element={<ErrorPage />} />
+          <Route
+            path="/adminusers"
+            element={
+              <AdminUsers
+                user={user}
+                resetUser={resetUser}
+                setResetUser={setResetUser}
+                userModificate={userModificate}
+                setUserModificate={setUserModificate}
+              />
+            }
+          />
+          <Route path="/*" element={<ErrorPage />} />
           <Route
             path="/adminprojectstate"
             element={<AdminProjectState setIsLogged={setIsLogged} />}
           />
 
           <Route path="/admin" element={<Admin />} />
-          <Route path="/admintree" element={<AdminTree setIsLogged={setIsLogged} />}/>
-          <Route path="/treeform" element={<TreeForm />}/>
+          <Route
+            path="/admintree"
+            element={<AdminTree setIsLogged={setIsLogged} />}
+          />
+          <Route path="/treeform" element={<TreeForm />} />
           <Route path="/*" element={<ErrorPage />} />
 
-
           {/* <Route path="/tarjeta" element={<Tarjeta oneProject={oneProject} setOneProject={setOneProject}/>} /> */}
-
-
 
           <Route
             path="/tarjetamas"
             element={<Tarjetamas projects={projects} />}
           />
-          <Route 
-            path="/vegetation" 
-            element={<Vegetation />} />
+          <Route path="/vegetation" element={<Vegetation />} />
 
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
-          <Route path="/projectform" element={<ProjectForm user={user} projects={projects} setProjects={setProjects} resetUser={resetUser} setResetUser={setResetUser}/>} />
-          <Route path={`/project/:id`} element={<Project projects={projects}/>} />
-          <Route path={`/projectcompleted/:id/info`} element={<ProjectCompleted/>} />
+          <Route
+            path="/projectform"
+            element={
+              <ProjectForm
+                user={user}
+                projects={projects}
+                setProjects={setProjects}
+                resetUser={resetUser}
+                setResetUser={setResetUser}
+              />
+            }
+          />
+          <Route
+            path={`/project/:id`}
+            element={<Project projects={projects} />}
+          />
+          {/* <Route
+            path={`/projectcompleted/:id/info`}
+            element={<ProjectCompleted />}
+          /> */}
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2" element={<Succes2 projects={projects} />} />
-          <Route path="/succespayment" element={<SuccesPayment projects={projects} />} />
+          <Route
+            path="/succespayment"
+            element={<SuccesPayment projects={projects} />}
+          />
+
+          <Route path="/stripe" element={<Stripe />} /> 
 
           <Route path="/user" element={<User />}>
             <Route
@@ -160,12 +175,21 @@ export const AppRoutes = () => {
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
             <Route path="myaccount" element={<MyAccount />} />
+            
           </Route>
 
-
-          <Route path="/getEditUser" element={<EditUser user={user} setUser={setUser} setIsLogged={setIsLogged} userModificate={userModificate} setUserModificate={setUserModificate}/>} />
-
-
+          <Route
+            path="/getEditUser"
+            element={
+              <EditUser
+                user={user}
+                setUser={setUser}
+                setIsLogged={setIsLogged}
+                userModificate={userModificate}
+                setUserModificate={setUserModificate}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

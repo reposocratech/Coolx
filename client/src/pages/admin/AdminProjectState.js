@@ -9,6 +9,8 @@ import { AdminProjectModal } from "./AdminProjectModal";
 import { AdminStatusModal } from "./AdminStatusModal";
 import { AdminDeleteModal } from "./AdminDeleteModal";
 import { AdminEditModal } from "./AdminEditModal";
+import { Footer } from "../home/Footer";
+
 
 export const AdminProjectState = ({ setIsLogged }) => {
   const [allProjects, setAllProjects] = useState();
@@ -124,6 +126,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
    }
 
   return (
+
     <div className="wrapper">
       <div className="getdown">
         <Container fluid>
@@ -181,26 +184,31 @@ export const AdminProjectState = ({ setIsLogged }) => {
                               ? "Calculando"
                               : "Completado"}
                           </p>
+                          
+                            <Button
+                              type="button"
+                              className="pen-status"
+                              onClick={() => handleStateModal(project)}
+                            >
+                              <img
+                                src="/assets/icons/pen.svg"
+                                alt="Edit project state"
+                              />
+                            </Button>
+                          </div>
+                        </td>
+                        <td>
+
                           <Button
                             type="button"
-                            className="pen-status"
-                            onClick={() => handleStateModal(project)}
+                            onClick={() => handleDeleteModal(project)}
                           >
-                            <img
-                              src="/assets/icons/pen.svg"
-                              alt="Edit project state"
-                            />
+                            Eliminar
                           </Button>
+
                         </div>
                       </td>
-                      <td>
-                        <Button
-                          type="button"
-                          onClick={() => handleDeleteModal(project)}
-                        >
-                          Eliminar
-                        </Button>
-                      </td>
+                
                       <td>
                         <Button
                           type="button"
@@ -261,7 +269,12 @@ export const AdminProjectState = ({ setIsLogged }) => {
         
         />
 
+
+          
+        </div>
+
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
