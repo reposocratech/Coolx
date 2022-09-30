@@ -7,9 +7,6 @@ import "./tarjeta.scss";
 export const Tarjeta = ({ projects }) => {
   const navigate = useNavigate();
 
-  
-
-
   // console.log(projects);
 
   const handleSend = (project) => {
@@ -77,13 +74,23 @@ export const Tarjeta = ({ projects }) => {
                   </Row>
 
                   <Row>
-                    <Col>
+                    <Col md={10}>
                       <Button
                         className="p-card-button"
                         onClick={() => handleSend(project)}
                       >
                         Ver más
                       </Button>
+                    </Col>
+                    <Col md={2} className="d-flex align-items-center">
+                      <p className="p-card-status">
+                        {projects &&
+                          (project.status === 0
+                            ? "Registrado"
+                            : project.status === 1
+                            ? "Calculando"
+                            : "Completado")}
+                      </p>
                     </Col>
                   </Row>
                 </Col>

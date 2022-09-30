@@ -1,12 +1,20 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Form, FloatingLabel } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  FloatingLabel,
+  Button,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./projectform.scss";
 import axios from "axios";
 import { Footer } from "../../pages/home/Footer";
 
-export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
+export const ProjectForm = ({ user }) => {
   const [projectFiles, setProjectFiles] = useState();
+  const [id, setId] = useState(user && user.user_id);
 
   const [newProject, setNewProject] = useState({
     projectName: "",
@@ -18,11 +26,15 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
     profit: "",
     projectCost: "",
     yearPlanting: "",
-    user_id: user.user_id,
+    user_id: id,
   });
 
-  // console.log(user.user_id);
   const navigate = useNavigate();
+
+  useEffect(() => {}, [user]);
+
+  console.log(id);
+  console.log("esto id de newproject " + newProject.user_id);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,8 +49,7 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
     e.preventDefault();
 
     const newFormData = new FormData();
-
-    newFormData.append("newProject", JSON.stringify(newProject));     
+    newFormData.append("newProject", JSON.stringify(newProject));
 
     if (projectFiles) {
       for (const elem of projectFiles) {
@@ -48,18 +59,16 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
 
     axios
       .post(
-        `http://localhost:4000/project/newProject/${user.user_id}`,   
+        `http://localhost:4000/project/newProject/${user.user_id}`,
         newFormData
       )
-
       .then((res) => {
         console.log(res);
         navigate("/succes2");
-        setResetUser(!resetUser);
       })
-
       .catch((err) => {
         console.log(err);
+        navigate("/error");
         // if (err.response.data.error.errno === 1062) {
         //   alert("El proyecto ya existe");
         // } else {
@@ -70,17 +79,29 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
 
   return (
     <>
-      <div className="fondo-create">
-        <Container fluid>
+      <div className="wrapper">
+        <Container fluid className="fondo-create">
           <Row>
             <Col className="espacio-create">
-              <div>
-                <h1>Inserte los datos de su nuevo proyecto</h1>
+              <div className="d-flex align-items-center">
+                <Button onClick={() => navigate(-1)}>
+                  <img src="./assets/icons/arrow_left.svg" />
+                </Button>
+                <div>
+                  <h1>Inserte los datos de su nuevo proyecto</h1>
+                </div>
               </div>
+
               <div className="create-icono">
-                <img src="/assets/icons/permanence_solid.svg" />
+                <img
+                  className="create-icono-circle"
+                  src="/assets/icons/permanence_solid_circle.svg"
+                />
                 <p>Introduzca los datos</p>
-                <img src="/assets/icons/arrow_right.svg" />
+                <img
+                  className="create-icono-arrow"
+                  src="/assets/icons/arrow_right.svg"
+                />
               </div>
             </Col>
           </Row>
@@ -199,6 +220,7 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
                       value={newProject.yearPlanting}
                       onChange={handleChange}
                     />
+
                     <Form.Label className="labels mt-3 mb-2">
                       Imagenes del proyecto
                     </Form.Label>
@@ -216,24 +238,17 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
 
           <Row>
             <div>
-            <Col className="colocar-create">
-              <button className="button" onClick={handleSubmit}>
-                Crear proyecto
-              </button>
-            </Col>
-          </div>
-        </Row>
-
-        <Row>
-          <Col className="colocar-create">
-            <button className="button" onClick={handleSubmit}>        
-              Crear proyecto
-            </button>
-          </Col>
+              <Col className="colocar-create">
+                <button className="button" onClick={handleSubmit}>
+                  Crear proyecto
+                </button>
+              </Col>
+            </div>
           </Row>
         </Container>
       </div>
-      <Footer/>
+
+      <Footer />
     </>
   );
 };
