@@ -55,7 +55,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
     }
   }, [resetProjects]);
 
-  // console.log(allProjects.length);
+  console.log(allProjects && allProjects.length);
 
   const handleModal = (project) => {
     setProjectModal(project);
