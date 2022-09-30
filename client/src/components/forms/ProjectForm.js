@@ -38,7 +38,7 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
 
     const newFormData = new FormData();
 
-    newFormData.append("newProject", JSON.stringify(newProject));
+    newFormData.append("newProject", JSON.stringify(newProject));     
 
     if (projectFiles) {
       for (const elem of projectFiles) {
@@ -48,7 +48,7 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
 
     axios
       .post(
-        `http://localhost:4000/project/newProject/${user.user_id}`,
+        `http://localhost:4000/project/newProject/${user.user_id}`,   
         newFormData
       )
 
@@ -130,6 +130,7 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
                     <Form.Label className="labels mt-3 mb-2">
                       Altitud
                     </Form.Label>
+
                     <Form.Control
                       type="text"
                       placeholder="Ej. 36.694071"
@@ -219,6 +220,15 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
                 Crear proyecto
               </button>
             </Col>
+          </div>
+        </Row>
+
+        <Row>
+          <Col className="colocar-create">
+            <button className="button" onClick={handleSubmit}>        
+              Crear proyecto
+            </button>
+          </Col>
           </Row>
         </Container>
       </div>

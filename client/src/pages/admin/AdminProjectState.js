@@ -1,24 +1,27 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";        
 import { useNavigate } from "react-router-dom";
 import "./adminProjectState.scss";
 import Table from "react-bootstrap/Table";
 import { AdminProjectModal } from "./AdminProjectModal";
 import { AdminStatusModal } from "./AdminStatusModal";
 import { AdminDeleteModal } from "./AdminDeleteModal";
+import { AdminCompany } from "./AdminCompany";
 import { AdminEditModal } from "./AdminEditModal";
 import { Footer } from "../home/Footer";
 
-
-export const AdminProjectState = ({ setIsLogged }) => {
+export const AdminProjectState = ({ setIsLogged, user }) => {
   const [allProjects, setAllProjects] = useState();
   const [resetProjects, setResetProjects] = useState(false);
   const [projectModal, setProjectModal] = useState();
   const [openModal, setOpenModal] = useState(false);
   const [modalState, setModalState] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
+  const [modalBuyer, setModalBuyer] = useState(false);
+  const [allUsers, setAllUsers] = useState();
+
 
   const [modalEdit, setModalEdit] = useState(false);
 
@@ -38,7 +41,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
 
       if (type === 1) {
         axios
-          .get(`http://localhost:4000/admin/${id}/allProjects`)
+          .get(`http://localhost:4000/admin/${id}/allProjects`)       
           .then((res) => {
             // console.log(res);
             setAllProjects(res.data);
@@ -55,7 +58,25 @@ export const AdminProjectState = ({ setIsLogged }) => {
     }
   }, [resetProjects]);
 
+  useEffect(() => {
+    const AUTH_TOKEN = window.localStorage.getItem("token");
+    axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
+
+    axios
+      .get(`http://localhost:4000/admin/${user.user_id}/allUsers`)    
+
+      .then((res) => {
+        setAllUsers(res.data);
+        console.log(res);
+      })
+
+      .catch((err) => {console.log(err)});
+  }, []);
+
+  console.log(allUsers);
+
   // console.log(allProjects.length);
+
 
   const handleModal = (project) => {
     setProjectModal(project);
@@ -70,6 +91,11 @@ export const AdminProjectState = ({ setIsLogged }) => {
   const handleDeleteModal = (project) => {
     setProjectModal(project);
     setModalDelete(true);
+  };
+
+  const handleCompany = (project) => {
+    setProjectModal(project);
+    setModalBuyer(true);
   };
 
   const handleEditModal = (project) => {
@@ -158,13 +184,18 @@ export const AdminProjectState = ({ setIsLogged }) => {
             <Table striped >
               <thead className="table-projects">
                 <tr>
+                
+             
                   <th>Id <button onClick={handleOrderId}><img src="/assets/icons/arrow_donw.svg"/></button></th>
                   <th>Nombre <button onClick={handleOrderName}><img src="/assets/icons/arrow_donw.svg"/></button></th>
                   <th>Localización <button onClick={handleOrderLocal}><img src="/assets/icons/arrow_donw.svg"/></button></th>
+                   <th>Id Usuario</th>
                   <th>Estado <button onClick={handleOrderStatus}><img src="/assets/icons/arrow_donw.svg"/></button></th>
                   <th>Borrar</th>
                   <th>Más información</th>
                   <th>Editar</th>
+                  <th>Asignar proyecto a las empresas</th>
+
                 </tr>
               </thead>
 
@@ -176,6 +207,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
                       <td>{project.project_id}</td>
                       <td>{project.project_name}</td>
                       <td>{project.location}</td>
+                      <td>{project.user_id}</td>
 
                       <td>
                         <div className="status-col">
@@ -205,9 +237,13 @@ export const AdminProjectState = ({ setIsLogged }) => {
 
                           <Button
                             type="button"
-                            onClick={() => handleDeleteModal(project)}
+                            className="pen-status"
+                            onClick={() => handleStateModal(project)} 
                           >
-                            Eliminar
+                            <img
+                              src="/assets/icons/pen.svg"
+                              alt="Edit project state"
+                            />
                           </Button>
 
                         </div>
@@ -216,7 +252,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
                       <td>
                         <Button
                           type="button"
-                          onClick={() => handleModal(project)}
+                          onClick={() => handleDeleteModal(project)}  
                         >
                           Más info
                         </Button>
@@ -228,6 +264,14 @@ export const AdminProjectState = ({ setIsLogged }) => {
                           onClick={() => handleEditModal(project)}
                         >
                           Editar
+                        </Button>
+                      </td>
+                      <td>
+                        <Button
+                          type="button"
+                          onClick={() => handleCompany(project)}      
+                        >
+                          Asignar empresa
                         </Button>
                       </td>
                     </tr>
@@ -262,6 +306,16 @@ export const AdminProjectState = ({ setIsLogged }) => {
           resetProjects={resetProjects}
         />
 
+        <AdminCompany
+          onHide={() => setModalBuyer(false)}
+          show={modalBuyer}
+          setModalBuyer={setModalBuyer}
+          allUsers={allUsers}
+          projectModal={projectModal}
+          setResetProjects={setResetProjects}
+          resetProjects={resetProjects}
+
+        />
         <AdminEditModal 
           onHide={() => setModalEdit(false)}
           setModalEdit={setModalEdit}
@@ -271,12 +325,8 @@ export const AdminProjectState = ({ setIsLogged }) => {
           resetProjects={resetProjects}
           setProjectModal={setProjectModal}
         
-        />
-
-
-          
+        />  
         </div>
-
       </div>
       <Footer />
     

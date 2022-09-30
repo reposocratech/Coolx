@@ -1,6 +1,6 @@
 import { Project } from "../pages/project/Project";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";      
 import { NavBarMain } from "../components/navBar/NavBarMain";
 import { Login } from "../pages/auth/Login";
 import { Home } from "../pages/home/Home";
@@ -13,22 +13,22 @@ import { User } from "../pages/user/User";
 import { Admin } from "../pages/admin/Admin";
 import { ErrorPage } from "../pages/home/ErrorPage";
 import { Tarjetamas } from "../components/card/Tarjetamas";
-import { Vegetation } from "../components/vegetation/Vegetation";
-import { ContactForm } from "../components/forms/ContactForm";
+import { Vegetation } from "../components/vegetation/Vegetation";     
+import { ContactForm } from "../components/forms/ContactForm";        
 import jwtDecode from "jwt-decode";
 import axios from "axios";
-import { ProjectForm } from "../components/forms/ProjectForm";
+import { ProjectForm } from "../components/forms/ProjectForm";        
 import { Succes1 } from "../pages/home/Succes1";
 import { Succes2 } from "../pages/home/Sucess2";
 import { EditUser } from "../pages/user/EditUser";
 import { AdminUsers } from "../pages/admin/AdminUsers";
 import { AdminTree } from "../pages/admin/AdminTree";
 import { TreeForm } from "../pages/admin/TreeForm";
-import { AdminProjectState } from "../pages/admin/AdminProjectState";
-
+import { AdminProjectState } from "../pages/admin/AdminProjectState"; 
 import { SuccesPayment } from "../pages/home/SuccesPayment";
 
 // /*import { Tarjeta } from "../components/card/Tarjeta";*/
+import { BuyProject } from "../pages/user/BuyProject";
 // import { ProjectCompleted } from "../pages/project/ProjectCompleted";
 
 
@@ -43,7 +43,7 @@ export const AppRoutes = () => {
 
   const [resetUser, setResetUser] = useState(false);
 
-  //información de todos los proyectos del usuario que se ha logueado
+  //información de todos los proyectos del usuario que se ha logueado 
   const [projects, setProjects] = useState(false);
 
   //esto es para modificar usuarios
@@ -113,7 +113,7 @@ export const AppRoutes = () => {
           <Route path="/*" element={<ErrorPage />} />
           <Route
             path="/adminprojectstate"
-            element={<AdminProjectState setIsLogged={setIsLogged} />}
+            element={<AdminProjectState user={user} setIsLogged={setIsLogged}  />}
           />
 
           <Route path="/admin" element={<Admin />} />
@@ -126,9 +126,14 @@ export const AppRoutes = () => {
 
           {/* <Route path="/tarjeta" element={<Tarjeta oneProject={oneProject} setOneProject={setOneProject}/>} /> */}
 
+          
           <Route
             path="/tarjetamas"
             element={<Tarjetamas projects={projects} />}
+          />
+          <Route
+            path="/buyproject"
+            element={<BuyProject user={user} />}
           />
           <Route path="/vegetation" element={<Vegetation />} />
 
@@ -154,6 +159,7 @@ export const AppRoutes = () => {
             path={`/projectcompleted/:id/info`}
             element={<ProjectCompleted />}
           /> */}
+
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2" element={<Succes2 projects={projects} />} />
           <Route
@@ -166,16 +172,14 @@ export const AppRoutes = () => {
           <Route path="/user" element={<User />}>
             <Route
               path=""
-              element={<MyProjects projects={projects} user={user} />}
-            />
+              element={<MyProjects projects={projects} user={user} />}            />
             <Route
               path="myprojects"
-              element={<MyProjects projects={projects} user={user} />}
-            />
+              element={<MyProjects projects={projects} user={user} />}            />
+
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
-            <Route path="myaccount" element={<MyAccount />} />
-            
+            <Route path="myaccount" element={<MyAccount />} />        
           </Route>
 
           <Route
