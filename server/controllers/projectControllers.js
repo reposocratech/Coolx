@@ -2,6 +2,7 @@ const connection = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const puppeteer = require ('puppeteer');
 
 class projectControllers {
   // Crear nuevo proyecto
@@ -173,7 +174,43 @@ class projectControllers {
       }
       res.status(200).json(result);
     });
+
   };
+
+
+  // Generar PDF de un proyecto
+  // localhost:4000/project/:project_id/pdf
+  getPdf = async(req, res) => {
+
+    // Create a browser instance
+    const browser = await puppeteer.launch({ headless: false });
+
+    // Create a new page
+    const page = await browser.newPage();
+
+    // Website URL to export as pdf
+    const website_url = 'https://coolx.earth/';
+
+    // Open URL in current page
+    await page.goto(website_url, { waitUntil: 'domcontentloaded' });
+
+    //To reflect CSS used for screens instead of print
+    await page.emulateMediaType('screen');
+
+    // Download the PDF
+    const pdf = await page.pdf({
+      path: 'result.pdf',
+      margin: { top: '100px', right: '50px', bottom: '100px', left: '50px' },
+      printBackground: true,
+      format: 'A4',
+    });
+
+    // Close the browser instance
+    await browser.close();
+
+  };
+
 }
+
 
 module.exports = new projectControllers();
