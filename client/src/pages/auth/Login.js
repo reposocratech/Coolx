@@ -7,6 +7,10 @@ import "./login.scss";
 import { Footer } from "../home/Footer";
 
 export const Login = ({ setIsLogged }) => {
+
+  const [message, setMessage] = useState("");
+
+
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -17,6 +21,7 @@ export const Login = ({ setIsLogged }) => {
   const handleChange = (e) => {
     const { value, name } = e.target;
     setLogin({ ...login, [name]: value });
+    setMessage("")
     // console.log(login);
   };
 
@@ -24,6 +29,7 @@ export const Login = ({ setIsLogged }) => {
     // e.preventDefault();
 
     if (login.email === "" || login.password === "") {
+      setMessage("Debe completar todos los campos!")
       // if (email === "" || password === "") {
       //   setMessage(true);
       // } else {
@@ -90,59 +96,62 @@ export const Login = ({ setIsLogged }) => {
                 </div>
               </div>
 
-              <div className="formAuth-login">
-                <label>Dirección de correo electronico</label>
-                <input
-                  className="pt-2"
-                  autoComplete="off"
-                  name="email"
-                  type="email"
-                  value={login.email}
-                  onChange={handleChange}
-                />
-                <br />
+            <div className="formAuth-login">
+              <label>Dirección de correo electronico</label>
+              
+              <input
+                className="pt-2"
+                autoComplete="off"
+                name="email"
+                type="email"
+                value={login.email}
+                onChange={handleChange}
+              />
+              <div style={{color:"darkblue"}}>{message}</div>
+              <br />
 
-                <label>Contraseña</label>
-                <input
-                  className="pt-2"
-                  autoComplete="off"
-                  name="password"
-                  type="password"
-                  value={login.password}
-                  onChange={handleChange}
-                />
+              <label>Contraseña</label>
+              <input
+                className="pt-2"
+                autoComplete="off"
+                name="password"
+                type="password"
+                value={login.password}
+                onChange={handleChange}
+              />
+              <div style={{color:"darkblue"}}>{message}</div>
+              <p>¿Has olvidado tu contraseña?</p>
+            </div>
 
-                <p>¿Has olvidado tu contraseña?</p>
-              </div>
+            <div>
+              <input
+                type="checkbox"
+                name="remember"
+                id="remember"
+                className="form-check-input"
+              />
+              <label htmlFor="remember">Recordar contraseña</label>
+            </div>
 
-              <div>
-                <input
-                  type="checkbox"
-                  name="remember"
-                  id="remember"
-                  className="form-check-input"
-                />
-                <label htmlFor="remember">Recordar contraseña</label>
-              </div>
-
-              <div>
-                <button className="boton-login" onClick={handleSubmit}>
-                  Iniciar sesión
-                </button>
-              </div>
-              <div className="nada-juntos">
-                <button
-                  className="nada-nada"
-                  onClick={() => navigate("/contact")}
-                >
-                  ¿No tienes cuenta? Contáctanos
-                </button>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+            <div>
+              <button className="boton-login" onClick={handleSubmit}>
+                Iniciar sesión
+              </button>
+            </div>
+            <div className="nada-juntos">
+              <button
+                className="nada-nada"
+                onClick={() => navigate("/contact")}
+              >
+                ¿No tienes cuenta? Contáctanos
+              </button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
       <Footer />
     </>
+
   );
 };

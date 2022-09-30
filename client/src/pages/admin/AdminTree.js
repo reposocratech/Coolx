@@ -17,7 +17,12 @@ export const AdminTree = ({ setIsLogged }) => {
   const [modalDeleteTree, setModalDeleteTree] = useState(false);
   const [modalEditTree, setModalEdiTree] = useState(false);
 
-  const navigate = useNavigate();
+
+  const [tablaBusqueda, setTablaBusqueda] = useState([]);
+  const [busqueda, setBusqueda] = useState("")
+
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -32,6 +37,7 @@ export const AdminTree = ({ setIsLogged }) => {
           .get(`http://localhost:4000/admin/${id}/allTrees`)
           .then((res) => {
             setAllTrees(res.data);
+            setTablaBusqueda(res.data);
           })
           .catch((err) => {
             console.log(err);
@@ -50,33 +56,59 @@ export const AdminTree = ({ setIsLogged }) => {
   };
 
   const handleDeleteTree = (tree) => {
-    setTreeModal(tree);
-    setModalDeleteTree(true);
-  };
+
+      setTreeModal(tree);
+      setModalDeleteTree(true);
+  }
+
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+    filtrarTree(e.target.value);
+  }
+
+  const filtrarTree = (terminoBusqueda) => {
+    let resBusqueda = tablaBusqueda.filter((elemento) => {
+      if(elemento.tree_name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+        return elemento
+      }
+    })
+    setAllTrees(resBusqueda);
+  }
+
+
 
   return (
     <>
       <div className="wrapper">
-        <Container fluid>
-          <Row>
-            <Col className="admin-tree-title">
-              <div className="admin-title">
-                <Button onClick={() => navigate(-1)}>
-                  <img src="/assets/icons/arrow_left.svg" />
-                </Button>
-                <h1>Listado de arboles</h1>
-              </div>
 
-              <Button
-                onClick={() => navigate("/treeform")}
-                className="boton-register-tree"
-              >
-                Registrar nuevo árbol
-              </Button>
+      <Container fluid>
+        <Row>
+          <Col className="admin-tree-title">
+
+            <div className='admin-title'>
+              <Button onClick={() => navigate(-1)}><img src='/assets/icons/arrow_left.svg'/></Button>
+              <h1>Listado de arboles</h1>
+            </div>
+            
+            
+            <Button onClick={()=> navigate("/treeform")} className="boton-register-tree">Registrar nuevo árbol</Button>
+          </Col>
+          
+        </Row>
+        <Row>
+            <Col className='barra-busq-tree'>
+               <input
+                  className="form-control inputBuscar "
+                  type='text'
+                  placeholder='Buscar árbol'
+                  value={busqueda}
+                  onChange={handleChange}
+                  />
             </Col>
           </Row>
 
-          <Row className="table-all-trees">
+        <Row className='table-all-trees'>
+        
             <Table striped>
               <thead>
                 <tr>
