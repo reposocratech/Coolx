@@ -1,4 +1,5 @@
 const userControllers = require("./userControllers");
+require("dotenv").config();
 
 const nodemailer = require("nodemailer");
 let transporter = nodemailer.createTransport({
@@ -7,7 +8,7 @@ let transporter = nodemailer.createTransport({
     secure: true, // true para 465, false para otros
     auth: {
       user: 'coolx.earthproj@gmail.com', // user
-      pass: 'zpbfimykotueqkas', // password de aplicación
+      pass: process.env.EMAIL_PASS, // password de aplicación
     }});
 
 class authController {
