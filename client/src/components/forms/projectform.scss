@@ -1,37 +1,45 @@
 .fondo-create {
-  background-color: white;
-  color: black;
-  // height: 120vh;
-  background-position: top;
-  background-size: cover;
-  font-family: Manrope, Arial, serif;
   padding-top: 4rem;
 }
 
 .espacio-create {
-  margin-left: 5vh;
-  padding-top: 2vh;
+  padding-top: 27px;
 
   h1 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
     color: #09427d;
-    font-weight: bold;
-    font-family: Manrope, Arial, serif;
   }
-}
-
-.create-icono {
-  display: flex;
-  flex-direction: row;
-
-  img {
-    width: 40px;
+  button {
+    background-color: transparent;
+    border: none;
   }
 
-  p {
-    padding-left: 10px;
-    padding-top: 10px;
-    font-weight: bold;
-    color: #09427d;
+  button:hover {
+    background-color: transparent !important;
+  }
+  .create-icono {
+    display: flex;
+    align-items: center;
+    padding-left: 52px;
+    gap: 8px;
+    .create-icono-circle {
+      width: 32px;
+    }
+    .create-icono-arrow {
+      width: 1rem;
+    }
+    p {
+      // padding-left: 10px;
+      // padding-top: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 140%;
+      color: #09427d;
+      margin: 0px;
+    }
   }
 }
 

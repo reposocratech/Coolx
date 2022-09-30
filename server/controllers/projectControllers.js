@@ -8,8 +8,8 @@ class projectControllers {
   // localhost:4000/project/newProject/:user_id
 
   createNewProject = (req, res) => {
-    console.log(req.body.newProject);
-
+    // console.log(req.body.newProject);
+    console.log(req.params);
     const data = JSON.parse(req.body.newProject);
 
     console.log(data);
@@ -76,9 +76,9 @@ class projectControllers {
   // Editar proyecto
   // localhost:4000/project/editProject/:project_id
   editProject = (req, res) => {
-      let project_id = req.params.project_id;
-      console.log(project_id);
-      console.log(req.body, "ESTO ES EL BODY");
+    let project_id = req.params.project_id;
+    console.log(project_id);
+    console.log(req.body, "ESTO ES EL BODY");
     const {
       project_name,
       project_description,
@@ -89,13 +89,12 @@ class projectControllers {
       profit,
       project_cost,
     } = req.body;
-    
-    
+
     let sql = `UPDATE project SET project_name='${project_name}', project_description='${project_description}', location = '${location}', altitude = '${altitude}', latitude = '${latitude}', area = ${area}, profit = ${profit}, project_cost = ${project_cost}  WHERE project_id = ${project_id}`;
     console.log(sql);
 
     connection.query(sql, (error, result) => {
-      if(error) throw error;
+      if (error) throw error;
       error ? res.status(400).json({ error }) : res.status(200).json(req.body);
     });
   };
@@ -168,13 +167,13 @@ class projectControllers {
   onlyAdmin = (req, res) => {
     let sql = `SELECT * FROM project WHERE user_id = 2`;
     connection.query(sql, (error, result) => {
-      if(error) {
-        res.status(400).json({error});
+      if (error) {
+        res.status(400).json({ error });
         console.log(error);
       }
       res.status(200).json(result);
     });
-  }; 
-};
+  };
+}
 
 module.exports = new projectControllers();
