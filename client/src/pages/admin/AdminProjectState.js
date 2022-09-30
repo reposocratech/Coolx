@@ -126,7 +126,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
    }
 
   return (
-
+    <>
     <div className="wrapper">
       <div className="getdown">
         <Container fluid>
@@ -171,10 +171,12 @@ export const AdminProjectState = ({ setIsLogged }) => {
               <tbody className="list-text">
                 {allProjects &&
                   allProjects.map((project, index) => (
+
                     <tr key={project.project_id}>
                       <td>{project.project_id}</td>
                       <td>{project.project_name}</td>
                       <td>{project.location}</td>
+
                       <td>
                         <div className="status-col">
                           <p>
@@ -198,6 +200,8 @@ export const AdminProjectState = ({ setIsLogged }) => {
                           </div>
                         </td>
                         <td>
+
+                          <div>
 
                           <Button
                             type="button"
@@ -275,6 +279,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
 
       </div>
       <Footer />
+    
     </>
   );
 };
