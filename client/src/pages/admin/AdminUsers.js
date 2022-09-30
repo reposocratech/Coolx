@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Col, Container, Row, Button } from "react-bootstrap";
-import './allusers.scss'
+import "./allusers.scss";
 import Table from "react-bootstrap/Table";
 import { AdminUsersInfo } from "../../components/modal/AdminUsersInfo";
+import { Footer } from "../home/Footer";
+
 
 export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) => {
 
@@ -30,21 +32,22 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
         setTablaBusqueda(res.data);
       })
 
-      .catch((err) => {console.log(err)});
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   // console.log(allUsers);
 
-  const handleModal = (usuario) =>{
+  const handleModal = (usuario) => {
     setUserInfo(usuario);
     setOpenModal(true);
-  }
-
+  };
 
   const handleChange = (e) => {
     setBusqueda(e.target.value);
     filtrar(e.target.value);
-  }
+  };
 
   const filtrar= (terminoBusqueda) => {
     let filtrado = tablaBusqueda.filter((elemento) => {
@@ -148,7 +151,9 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
            show={openModal}
            userInfo={userInfo}
         />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
-}
+};

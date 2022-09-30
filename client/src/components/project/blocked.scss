@@ -34,12 +34,12 @@
   align-items: center;
   flex-direction: column;
   position: relative;
+  z-index: 99;
   bottom: 151px;
 
   .buttonBlock {
     color: white;
     padding: 12px 24px;
-    background: #70bfcb;
     border-radius: 80px;
     border: none;
     font-weight: 700;
@@ -47,5 +47,11 @@
     line-height: 140%;
     text-align: center;
     letter-spacing: -0.01em;
+  }
+  .buy-data {
+    background-color: #70bfcb !important;
+  }
+  .load-data {
+    background-color: grey !important;
   }
 }
