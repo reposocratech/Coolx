@@ -3,8 +3,8 @@ import { Col, Row, Container, Button } from "react-bootstrap";
 import "./costProfit.scss";
 
 export const CostProfit = ({ projectInfo }) => {
-  const [info, setInfo] = useState();
-  console.log(projectInfo);
+  // const [info, setInfo] = useState();
+  // console.log(projectInfo);
   return (
     <Container>
       <Row className="justify-content-center">
@@ -48,7 +48,20 @@ export const CostProfit = ({ projectInfo }) => {
 
           <Row>
             <Col className="p-0">
-              <Button className="more-info">Acceder a todos los datos</Button>
+              {projectInfo &&
+                (projectInfo[0].status === 0 ? (
+                  <Button className="more-info more-data">
+                    Acceder a todos los datos
+                  </Button>
+                ) : projectInfo[0].status === 1 ? (
+                  <Button disabled className="more-info loading-data">
+                    Cargando datos...
+                  </Button>
+                ) : (
+                  <Button href="#moreInfo" className="more-info more-data">
+                    Ver más datos
+                  </Button>
+                ))}
             </Col>
           </Row>
         </Col>

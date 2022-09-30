@@ -4,8 +4,12 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
+import { Footer } from "../home/Footer";
 
 export const Login = ({ setIsLogged }) => {
+
+  const [message, setMessage] = useState("");
+
 
   const [login, setLogin] = useState({
     email: "",
@@ -17,6 +21,7 @@ export const Login = ({ setIsLogged }) => {
   const handleChange = (e) => {
     const { value, name } = e.target;
     setLogin({ ...login, [name]: value });
+    setMessage("")
     // console.log(login);
   };
 
@@ -24,6 +29,7 @@ export const Login = ({ setIsLogged }) => {
     // e.preventDefault();
 
     if (login.email === "" || login.password === "") {
+      setMessage("Debe completar todos los campos!")
       // if (email === "" || password === "") {
       //   setMessage(true);
       // } else {
@@ -73,23 +79,26 @@ export const Login = ({ setIsLogged }) => {
   };
 
   return (
-    <div>
-      <Container fluid className="fondo-login">
-        <Row className="contAuth-login">
-          <Col>
-            <div>
-              <div className="titulo-Login">
-                <p>Bienvenido de vuelta</p>
+    <>
+      <div>
+        <Container fluid className="fondo-login">
+          <Row className="contAuth-login">
+            <Col>
+              <div>
+                <div className="titulo-Login">
+                  <p>Bienvenido de vuelta</p>
+                </div>
+                <div className="subtitulo-login">
+                  <p>
+                    Para iniciar sesion introduce tus credenciales a
+                    continuación
+                  </p>
+                </div>
               </div>
-              <div className="subtitulo-login">
-                <p>
-                  Para iniciar sesion introduce tus credenciales a continuación
-                </p>
-              </div>
-            </div>
 
             <div className="formAuth-login">
               <label>Dirección de correo electronico</label>
+              
               <input
                 className="pt-2"
                 autoComplete="off"
@@ -98,6 +107,7 @@ export const Login = ({ setIsLogged }) => {
                 value={login.email}
                 onChange={handleChange}
               />
+              <div style={{color:"darkblue"}}>{message}</div>
               <br />
 
               <label>Contraseña</label>
@@ -109,7 +119,7 @@ export const Login = ({ setIsLogged }) => {
                 value={login.password}
                 onChange={handleChange}
               />
-
+              <div style={{color:"darkblue"}}>{message}</div>
               <p>¿Has olvidado tu contraseña?</p>
             </div>
 
@@ -140,5 +150,8 @@ export const Login = ({ setIsLogged }) => {
         </Row>
       </Container>
     </div>
+      <Footer />
+    </>
+
   );
 };

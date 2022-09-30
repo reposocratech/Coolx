@@ -19,7 +19,10 @@ router.put("/editProject/:project_id", projectControllers.editProject);
 
 //Editar status de proyecto
 //localhost:4000/project/editStatusProject/:project_id
-router.put("/editStatusProject/:project_id", projectControllers.editStatusProject);
+router.put(
+  "/editStatusProject/:project_id",
+  projectControllers.editStatusProject
+);
 
 // Mostrar la infomación de un proyecto
 // localhost:4000/project/:project_id
@@ -34,7 +37,11 @@ router.get("/:project_id/info", projectControllers.getProjectInfo);
 router.delete("/deleteProject/:project_id", projectControllers.deleteProject);
 
 // Cambiar usuario de un proyecto
-// localhost:4000/project/changeUser/:project_id
-router.post("/changeUser/:project_id", projectControllers.changeUser);
+// localhost:4000/project/changeUser/:project_id/:user_id
+router.put("/changeUser/:project_id/:user_id", projectControllers.changeUser);
+
+// Mostrar los proyectos solo de los administradores
+// localhost:4000/project/onlyAdmin
+router.post("/onlyAdmin", projectControllers.onlyAdmin);
 
 module.exports = router;

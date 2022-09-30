@@ -1,16 +1,23 @@
-import React, { useEffect } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";        
 import { Tarjeta } from "../../components/card/Tarjeta";
 import "./user.scss";
 import "./myprojects.scss";
+import { BuyModal } from "../../components/modal/BuyModal";
 
 export const MyProjects = ({ projects, user }) => {
-  const navigate = useNavigate();
 
   useEffect(() => {
-    
+
   }, [projects]);
+
+  const [modalBuy, setModalBuy] = useState(false);
+
+
+  const handleCheck = () => {
+        setModalBuy(true);
+  }
+
 
   return (
     <>
@@ -25,7 +32,8 @@ export const MyProjects = ({ projects, user }) => {
           <Col md={4} className="add-container">
             <Button
               className="add-button"
-              onClick={() => navigate(`/projectform`)}
+              type="button"
+              onClick={handleCheck}
             >
               <div>
                 <div className="add-circle">
@@ -37,6 +45,10 @@ export const MyProjects = ({ projects, user }) => {
           </Col>
         </Row>
       </Container>
+
+      <BuyModal
+         onHide={() => setModalBuy(false)}
+         show={modalBuy}/>
     </>
   );
 };
