@@ -215,6 +215,7 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
           </Row>
 
           <Row>
+            <div>
             <Col className="colocar-create">
               <button className="button" onClick={handleSubmit}>
                 Crear proyecto
@@ -232,7 +233,7 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
           </Row>
         </Container>
       </div>
-      <Footer />
+      <Footer/>
     </>
   );
 };
