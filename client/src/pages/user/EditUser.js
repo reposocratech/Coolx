@@ -1,187 +1,171 @@
-import React, { useEffect, useState} from 'react'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
-import "./edituser.scss"
-import axios from 'axios'
-import {useNavigate} from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import "./edituser.scss";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Footer } from "../home/Footer";
 
+export const EditUser = ({ setIsLogged, userModificate }) => {
+  const [editUser, setEditUser] = useState(userModificate);
 
+  const navigate = useNavigate();
 
-export const EditUser = ({ setIsLogged, userModificate}) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditUser({ ...editUser, [name]: value });
+  };
 
-    const [editUser, setEditUser] = useState(userModificate)
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const navigate = useNavigate();
+    axios
+      .put(`http://localhost:4000/users/editUser/${userModificate.user_id}`, {
+        register: { ...editUser },
+      })
 
-  
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setEditUser({...editUser, [name] : value})
-    }
+      .then(() => {
+        navigate("/adminusers");
+      })
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-        axios
-              .put(`http://localhost:4000/users/editUser/${userModificate.user_id}`, {register: {...editUser}})
+  const deleteUser = (e) => {
+    axios
+      .delete(
+        `http://localhost:4000/users/deleteUser/${userModificate.user_id}`
+      )
 
-              .then(()=> {
-                navigate("/adminusers")
-              })
+      .then((res) => {
+        alert("Usuario eliminado correctamente");
+        navigate("/adminusers");
+        setIsLogged(true);
+      })
 
-              .catch((err) => {
-                console.log(err);
-              })
-    }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    const deleteUser = (e) => {
-
-          axios
-                .delete(`http://localhost:4000/users/deleteUser/${userModificate.user_id}`)
-
-                .then((res) => {
-                  alert("Usuario eliminado correctamente")
-                  navigate("/adminusers")
-                  setIsLogged(true)
-                })
-
-                .catch((err) => {
-                  console.log(err);
-                })
-   
-    }
-
-  
   return (
     <>
-        <div className='contEditUser'>
-            <Container fluid>
-                <Row className="d-flex justify-content-center">
-                    <Col md ={12} className="tituloEditUser">
+      <div className="contEditUser">
+        <Container fluid>
+          <Row className="d-flex justify-content-center">
+            <Col md={12} className="tituloEditUser">
+              <div className="titleEdit">
+                <Button onClick={() => navigate(-1)}>
+                  <img src="/assets/icons/arrow_left.svg" />
+                </Button>
 
-                        <div className='titleEdit'>
-                          <Button onClick={()=>navigate(-1)}><img src="/assets/icons/arrow_left.svg"/></Button>
-                          
-                            <h1>Edición de usuario</h1>
-                            
-                        </div>
+                <h1>Edición de usuario</h1>
+              </div>
 
-                        <div className='iconEditUser d-flex align-items-center'>
-                            <img src='/assets/icons/user.svg' />
-                            <p>Editar datos</p>
-                            <img src='/assets/icons/arrow_right.svg'/>
-                        </div>
+              <div className="iconEditUser d-flex align-items-center">
+                <img src="/assets/icons/user.svg" />
+                <p>Editar datos</p>
+                <img src="/assets/icons/arrow_right.svg" />
+              </div>
 
-                        <div className='deleteUser '>
-                          <Button onClick={deleteUser}>Eliminar usuario</Button>
-                          
-                        </div>
-                    </Col>
+              <div className="deleteUser ">
+                <Button onClick={deleteUser}>Eliminar usuario</Button>
+              </div>
+            </Col>
 
+            <Col md={6} lg={4} className="contPpalEditUser">
+              <Form.Group className="editUserForm">
+                <Form className="d-flex flex-column">
+                  <Form.Label className="labels">Nombre</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="user_name"
+                    autoComplete="off"
+                    value={editUser?.user_name}
+                    onChange={handleChange}
+                  />
 
-                    <Col md={6} lg={4} className="contPpalEditUser">
-                
-                    <Form.Group className='editUserForm'>
-                    <Form className="d-flex flex-column">
-                      <Form.Label className="labels">Nombre</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="user_name"
-                        autoComplete="off"
-                        value={editUser?.user_name}
-                        onChange={handleChange}
+                  <Form.Label className="labels mt-3 mb-2">
+                    Apellidos
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="surname"
+                    autoComplete="off"
+                    value={editUser?.surname}
+                    onChange={handleChange}
+                  />
 
-                      />
+                  <Form.Label className="labels mt-3 mb-2">Empresa</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="company"
+                    autoComplete="off"
+                    value={editUser?.company}
+                    onChange={handleChange}
+                  />
 
-                      <Form.Label className="labels mt-3 mb-2">Apellidos</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="surname"
-                        autoComplete="off"
-                        value={editUser?.surname}
-                        onChange={handleChange}
+                  <Form.Label className="labels mt-3 mb-2">NIF/ CIF</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="nif"
+                    autoComplete="off"
+                    value={editUser?.nif}
+                    onChange={handleChange}
+                  />
 
+                  <Form.Label className="labels mt-3 mb-2">
+                    Cargo dentro de la empresa
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="position"
+                    autoComplete="off"
+                    value={editUser?.position}
+                    onChange={handleChange}
+                  />
 
-                      />
+                  <Form.Label className="labels mt-3 mb-2">Teléfono</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="phone"
+                    autoComplete="off"
+                    value={editUser?.phone}
+                    onChange={handleChange}
+                  />
+                  <Form.Label className="labels mt-3 mb-2">País</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="country"
+                    autoComplete="off"
+                    value={editUser?.country}
+                    onChange={handleChange}
+                  />
+                  <Form.Label className="labels mt-3 mb-2">
+                    Moneda del usuario
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="currency"
+                    autoComplete="off"
+                    value={editUser?.currency}
+                    onChange={handleChange}
+                  />
+                </Form>
+              </Form.Group>
 
-                      <Form.Label className="labels mt-3 mb-2">Empresa</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="company"
-                        autoComplete="off"
-                        value={editUser?.company}
-                        onChange={handleChange}
+              <div className="divBotonEditUser">
+                <Button className="button mt-3 mb-2" onClick={handleSubmit}>
+                  Enviar
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
-
-                      />
-
-                        <Form.Label className="labels mt-3 mb-2">NIF/ CIF</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="nif"
-                        autoComplete="off"
-                        value={editUser?.nif}
-                        onChange={handleChange}
-
-                      />
-
-                        <Form.Label className="labels mt-3 mb-2">Cargo dentro de la empresa</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="position"
-                        autoComplete="off"
-                        value={editUser?.position}
-                        onChange={handleChange}
-
-
-                      />
-
-                        <Form.Label className="labels mt-3 mb-2">Teléfono</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="phone"
-                        autoComplete="off"
-                        value={editUser?.phone}
-                        onChange={handleChange}
-
-
-                      />
-                        <Form.Label className="labels mt-3 mb-2">País</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="country"
-                        autoComplete="off"
-                        value={editUser?.country}
-                        onChange={handleChange}
-
-
-                      />
-                        <Form.Label className="labels mt-3 mb-2">Moneda del usuario</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="currency"
-                        autoComplete="off"
-                        value={editUser?.currency}
-                        onChange={handleChange}
-
-
-                      />
-
-
-                            </Form>
-                         </Form.Group>
-
-                        <div className='divBotonEditUser'>
-                            <Button className="button mt-3 mb-2" onClick={handleSubmit} >
-                            Enviar
-                            </Button>
-                      </div>
-                    </Col>
-                    
-                </Row>
-            </Container>
-
-        </div>
+      <Footer />
     </>
-  )
-}
-
+  );
+};
