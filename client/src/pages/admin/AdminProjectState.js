@@ -195,10 +195,8 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                   <th>Más información</th>
                   <th>Editar</th>
                   <th>Asignar proyecto a las empresas</th>
-
                 </tr>
               </thead>
-
               <tbody className="list-text">
                 {allProjects &&
                   allProjects.map((project, index) => (
@@ -232,27 +230,20 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                           </div>
                         </td>
                         <td>
-
                           <div>
-
                           <Button
                             type="button"
-                            className="pen-status"
-                            onClick={() => handleStateModal(project)} 
+                            onClick={() => handleDeleteModal(project)}
                           >
-                            <img
-                              src="/assets/icons/pen.svg"
-                              alt="Edit project state"
-                            />
+                            Eliminar
                           </Button>
-
                         </div>
                       </td>
                 
                       <td>
-                        <Button
+                      <Button
                           type="button"
-                          onClick={() => handleDeleteModal(project)}  
+                          onClick={() => handleModal(project)}
                         >
                           Más info
                         </Button>
