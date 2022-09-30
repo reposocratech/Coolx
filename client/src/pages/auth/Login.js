@@ -4,9 +4,9 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
+import { Footer } from "../home/Footer";
 
 export const Login = ({ setIsLogged }) => {
-
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -73,72 +73,76 @@ export const Login = ({ setIsLogged }) => {
   };
 
   return (
-    <div>
-      <Container fluid className="fondo-login">
-        <Row className="contAuth-login">
-          <Col>
-            <div>
-              <div className="titulo-Login">
-                <p>Bienvenido de vuelta</p>
+    <>
+      <div>
+        <Container fluid className="fondo-login">
+          <Row className="contAuth-login">
+            <Col>
+              <div>
+                <div className="titulo-Login">
+                  <p>Bienvenido de vuelta</p>
+                </div>
+                <div className="subtitulo-login">
+                  <p>
+                    Para iniciar sesion introduce tus credenciales a
+                    continuación
+                  </p>
+                </div>
               </div>
-              <div className="subtitulo-login">
-                <p>
-                  Para iniciar sesion introduce tus credenciales a continuación
-                </p>
+
+              <div className="formAuth-login">
+                <label>Dirección de correo electronico</label>
+                <input
+                  className="pt-2"
+                  autoComplete="off"
+                  name="email"
+                  type="email"
+                  value={login.email}
+                  onChange={handleChange}
+                />
+                <br />
+
+                <label>Contraseña</label>
+                <input
+                  className="pt-2"
+                  autoComplete="off"
+                  name="password"
+                  type="password"
+                  value={login.password}
+                  onChange={handleChange}
+                />
+
+                <p>¿Has olvidado tu contraseña?</p>
               </div>
-            </div>
 
-            <div className="formAuth-login">
-              <label>Dirección de correo electronico</label>
-              <input
-                className="pt-2"
-                autoComplete="off"
-                name="email"
-                type="email"
-                value={login.email}
-                onChange={handleChange}
-              />
-              <br />
+              <div>
+                <input
+                  type="checkbox"
+                  name="remember"
+                  id="remember"
+                  className="form-check-input"
+                />
+                <label htmlFor="remember">Recordar contraseña</label>
+              </div>
 
-              <label>Contraseña</label>
-              <input
-                className="pt-2"
-                autoComplete="off"
-                name="password"
-                type="password"
-                value={login.password}
-                onChange={handleChange}
-              />
-
-              <p>¿Has olvidado tu contraseña?</p>
-            </div>
-
-            <div>
-              <input
-                type="checkbox"
-                name="remember"
-                id="remember"
-                className="form-check-input"
-              />
-              <label htmlFor="remember">Recordar contraseña</label>
-            </div>
-
-            <div>
-              <button className="boton-login" onClick={handleSubmit}>
-                Iniciar sesión
-              </button>
-            </div>
-            <div className="nada-juntos">
-              <button
-                className="nada-nada"
-                onClick={() => navigate("/contact")}
-              >
-                ¿No tienes cuenta? Contáctanos
-              </button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+              <div>
+                <button className="boton-login" onClick={handleSubmit}>
+                  Iniciar sesión
+                </button>
+              </div>
+              <div className="nada-juntos">
+                <button
+                  className="nada-nada"
+                  onClick={() => navigate("/contact")}
+                >
+                  ¿No tienes cuenta? Contáctanos
+                </button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <Footer />
+    </>
   );
 };

@@ -40,7 +40,6 @@ export const ProjectInfo = ({ projectInfo }) => {
             <h4>Descripción</h4>
             <hr />
             <p>{projectInfo && projectInfo[0].project_description}</p>
-            <p>{projectInfo && projectInfo[0].project_description}</p>
           </section>
         </Col>
       </Row>
