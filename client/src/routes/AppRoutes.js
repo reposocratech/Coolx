@@ -31,6 +31,7 @@ import { SuccesPayment } from "../pages/home/SuccesPayment";
 // import { ProjectCompleted } from "../pages/project/ProjectCompleted";
 
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
+import { Stripe } from "../components/stripe/Stripe";
 
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -158,6 +159,8 @@ export const AppRoutes = () => {
             element={<SuccesPayment projects={projects} />}
           />
 
+          <Route path="/stripe" element={<Stripe />} /> 
+
           <Route path="/user" element={<User />}>
             <Route
               path=""
@@ -170,6 +173,7 @@ export const AppRoutes = () => {
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
             <Route path="myaccount" element={<MyAccount />} />
+            
           </Route>
 
           <Route

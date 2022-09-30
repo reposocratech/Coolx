@@ -1,6 +1,9 @@
 const connection = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const pdfService = require("../middleware/pdf-service");
+// const PDFDocument = require('pdfkit');
+// const fs = require('fs');
 require("dotenv").config();
 
 class projectControllers {
@@ -158,6 +161,40 @@ class projectControllers {
       res.status(200).json(result);
     });
   };
-}
 
+  // Generar PDF con información de un proyecto (pago)
+  //localhost:4000/project/:project_id/pdf
+  getProjectPdf = (req, res) => {
+    let project_id = req.params.project_id;
+    let sql = `SELECT * FROM project WHERE project_id = ${project_id}`;
+    let projectData;
+    //const { project_name } = req.body;
+    
+
+    connection.query(sql, (error, result) => {
+      if (error) {
+        res.status(400).json({ error });
+        console.log(error);
+      }
+      res.status(200).json(result);
+      //console.log(result);
+      projectData = result;
+
+      const stream = res.writeHead(200, {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': 'attachment;filename=project.pdf',
+      });
+
+      pdfService.buildPDF(
+        projectData,
+        //projectData.toString(),
+        (chunk) => stream.write(chunk),
+        () => stream.end()
+      );
+
+    });
+
+  }
+  
+}
 module.exports = new projectControllers();
