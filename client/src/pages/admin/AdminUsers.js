@@ -9,9 +9,9 @@ import { AdminUsersInfo } from "../../components/modal/AdminUsersInfo";
 export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) => {
 
   
-  const [allUsers, setAllUsers] = useState();
-  
-  const [busqueda, setBusqueda] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+  const [tablaBusqueda, setTablaBusqueda] = useState([]);
+  const [busqueda, setBusqueda] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [userInfo, setUserInfo] = useState(false);
 
@@ -26,13 +26,14 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
 
       .then((res) => {
         setAllUsers(res.data);
-        console.log(res);
+        console.log(res, "BUSQUEDA RES.DATA");
+        setTablaBusqueda(res.data);
       })
 
       .catch((err) => {console.log(err)});
   }, []);
 
-  console.log(allUsers);
+  // console.log(allUsers);
 
   const handleModal = (usuario) =>{
     setUserInfo(usuario);
@@ -46,15 +47,16 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
   }
 
   const filtrar= (terminoBusqueda) => {
-    let filtrado = allUsers.filter((elemento) => {
+    let filtrado = tablaBusqueda.filter((elemento) => {
       if(elemento.company.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
         return elemento;
-      }
-    });
+      } 
+       
+    })
     setAllUsers(filtrado)
   }
 
-  
+
 
   return (
     <div className="wrapper">
@@ -69,19 +71,19 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
               
             </Col>
           </Row>
-          <Row>
-            <Col>
 
+          <Row>
+            <Col className="barra-busq-user">
             <input
                   className="form-control inputBuscar "
                   type='text'
-                  placeholder='Buscar empresa'
+                  placeholder='Buscar usuario'
                   value={busqueda}
                   onChange={handleChange}
                   />
-                  <Button className="btn-btn-success" onClick={()=>navigate(-1)}>
+                  {/* <Button className="btn-btn-success" onClick={()=>navigate(-1)}>
                   Volver
-                  </Button>
+                  </Button> */}
             </Col>
           </Row>
 

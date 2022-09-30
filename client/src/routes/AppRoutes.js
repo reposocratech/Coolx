@@ -27,7 +27,7 @@ import { TreeForm } from "../pages/admin/TreeForm";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
 
 import { SuccesPayment } from "../pages/home/SuccesPayment";
-// /*import { Tarjeta } from "../components/card/Tarjeta";*/
+// import { Tarjeta } from "../components/card/Tarjeta"
 import { ProjectCompleted } from "../pages/project/ProjectCompleted";
 
 

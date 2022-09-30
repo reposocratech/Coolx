@@ -76,22 +76,27 @@ class projectControllers {
   // Editar proyecto
   // localhost:4000/project/editProject/:project_id
   editProject = (req, res) => {
+      let project_id = req.params.project_id;
+      console.log(project_id);
+      console.log(req.body, "ESTO ES EL BODY");
     const {
-      name,
-      description,
+      project_name,
+      project_description,
       location,
       altitude,
       latitude,
       area,
       profit,
-      cost,
-      yearPlanting,
+      project_cost,
     } = req.body;
-    const projectId = req.params.project_id;
+    
+    
+    let sql = `UPDATE project SET project_name='${project_name}', project_description='${project_description}', location = '${location}', altitude = '${altitude}', latitude = '${latitude}', area = ${area}, profit = ${profit}, project_cost = ${project_cost}  WHERE project_id = ${project_id}`;
+    console.log(sql);
 
-    let sql = `UPDATE project SET project_name='${name}', project_description='${description}', location = '${location}', altitude = '${altitude}', latitude = '${latitude}', area = ${area}, profit = ${profit}, cost = ${cost}, yearPlanting = '${yearPlanting}' WHERE project_id = ${projectId}`;
     connection.query(sql, (error, result) => {
-      error ? res.status(400).json({ error }) : res.status(200).json(result);
+      if(error) throw error;
+      error ? res.status(400).json({ error }) : res.status(200).json(req.body);
     });
   };
 

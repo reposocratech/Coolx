@@ -8,6 +8,7 @@ import Table from "react-bootstrap/Table";
 import { AdminProjectModal } from "./AdminProjectModal";
 import { AdminStatusModal } from "./AdminStatusModal";
 import { AdminDeleteModal } from "./AdminDeleteModal";
+import { AdminEditModal } from "./AdminEditModal";
 
 export const AdminProjectState = ({ setIsLogged }) => {
   const [allProjects, setAllProjects] = useState();
@@ -16,6 +17,12 @@ export const AdminProjectState = ({ setIsLogged }) => {
   const [openModal, setOpenModal] = useState(false);
   const [modalState, setModalState] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
+
+  const [modalEdit, setModalEdit] = useState(false);
+
+  const [tablaBusqueda, setTablaBusqueda] = useState([]);
+  const [busqueda, setBusqueda] = useState("");
+  const [orderProjects, setOrderProjects] = useState()
 
   const navigate = useNavigate();
 
@@ -33,6 +40,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
           .then((res) => {
             // console.log(res);
             setAllProjects(res.data);
+            setTablaBusqueda(res.data);
           })
           .catch((err) => {
             console.log(err);
@@ -45,7 +53,7 @@ export const AdminProjectState = ({ setIsLogged }) => {
     }
   }, [resetProjects]);
 
-  // console.log(allProjects);
+  // console.log(allProjects.length);
 
   const handleModal = (project) => {
     setProjectModal(project);
@@ -62,6 +70,59 @@ export const AdminProjectState = ({ setIsLogged }) => {
     setModalDelete(true);
   };
 
+  const handleEditModal = (project) => {
+    setProjectModal(project);
+    setModalEdit(true);
+  }
+
+  const handleChange = (e) => {
+    setBusqueda(e.target.value)
+    filtrar(e.target.value)
+  };
+
+  const filtrar = (terminoBusqueda) => {
+      let resBusqueda = tablaBusqueda.filter((elemento) => {
+        if(elemento.project_name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+          return elemento
+        }
+      })
+      setAllProjects(resBusqueda);
+  };
+
+  const handleOrderName = () => {
+   
+   const sortedList= [...allProjects].sort((a ,b) => (a.project_name.toString().toLowerCase() > b.project_name.toString().toLowerCase() ? 1 : a.project_name.toString().toLowerCase() < b.project_name.toString().toLowerCase() ? -1 : 0))
+
+    console.log(sortedList);
+    setAllProjects(sortedList)
+   
+  }
+
+  const handleOrderId = () => {
+   
+    const sortedListId= [...allProjects].sort((a ,b) => (Number(a.project_i)> Number(b.project_id) ? 1 : Number(a.project_id) < Number(b.project_id) ? -1 : 0))
+ 
+     console.log(sortedListId);
+     setAllProjects(sortedListId)
+    
+   }
+
+   const handleOrderLocal = () => {
+
+    const sortedListLocal = [...allProjects].sort((a ,b) => (a.location.toString().toLowerCase() > b.location.toString().toLowerCase() ? 1 : a.location.toString().toLowerCase() < b.location.toString().toLowerCase() ? -1 : 0))
+
+    setAllProjects(sortedListLocal)
+
+   }
+
+   const handleOrderStatus = () => {
+
+    const sortedListStatus = [...allProjects].sort((a ,b) => (a.status > b.status ? "registrado" : a.status < b.status ? -1 : 0))
+
+    setAllProjects(sortedListStatus)
+    console.log(sortedListStatus);
+   }
+
   return (
     <div className="wrapper">
       <div className="getdown">
@@ -74,18 +135,33 @@ export const AdminProjectState = ({ setIsLogged }) => {
               <h1>Estado de proyectos</h1>
             </Col>
           </Row>
+          <Row>
+            <Col>
+               <input
+                  className="form-control inputBuscar "
+                  type='text'
+                  placeholder='Buscar empresa'
+                  value={busqueda}
+                  onChange={handleChange}
+                  
+                  />
+                  <Button className="btn-btn-success" onClick={()=>navigate(-1)}>
+                  Volver
+                  </Button>
+            </Col>
+          </Row>
 
           <Row>
-            <Table striped>
-              <thead>
+            <Table striped >
+              <thead className="table-projects">
                 <tr>
-                  <th>#</th>
-                  <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Lugar</th>
-                  <th>Estado</th>
+                  <th>Id <button onClick={handleOrderId}><img src="/assets/icons/arrow_donw.svg"/></button></th>
+                  <th>Nombre <button onClick={handleOrderName}><img src="/assets/icons/arrow_donw.svg"/></button></th>
+                  <th>Localización <button onClick={handleOrderLocal}><img src="/assets/icons/arrow_donw.svg"/></button></th>
+                  <th>Estado <button onClick={handleOrderStatus}><img src="/assets/icons/arrow_donw.svg"/></button></th>
                   <th>Borrar</th>
                   <th>Más información</th>
+                  <th>Editar</th>
                 </tr>
               </thead>
 
@@ -93,7 +169,6 @@ export const AdminProjectState = ({ setIsLogged }) => {
                 {allProjects &&
                   allProjects.map((project, index) => (
                     <tr key={project.project_id}>
-                      <td>{index + 1}</td>
                       <td>{project.project_id}</td>
                       <td>{project.project_name}</td>
                       <td>{project.location}</td>
@@ -134,9 +209,19 @@ export const AdminProjectState = ({ setIsLogged }) => {
                           Más info
                         </Button>
                       </td>
+
+                      <td>
+                        <Button
+                          type="button"
+                          onClick={() => handleEditModal(project)}
+                        >
+                          Editar
+                        </Button>
+                      </td>
                     </tr>
                   ))}
               </tbody>
+              
             </Table>
           </Row>
         </Container>
@@ -164,6 +249,18 @@ export const AdminProjectState = ({ setIsLogged }) => {
           setResetProjects={setResetProjects}
           resetProjects={resetProjects}
         />
+
+        <AdminEditModal 
+          onHide={() => setModalEdit(false)}
+          setModalEdit={setModalEdit}
+          show={modalEdit}
+          projectModal={projectModal}
+          setResetProjects={setResetProjects}
+          resetProjects={resetProjects}
+          setProjectModal={setProjectModal}
+        
+        />
+
       </div>
     </div>
   );

@@ -17,6 +17,9 @@ export const AdminTree = ({setIsLogged}) => {
   const [modalDeleteTree, setModalDeleteTree] = useState(false)
   const [modalEditTree, setModalEdiTree] = useState(false)
 
+  const [tablaBusqueda, setTablaBusqueda] = useState([]);
+  const [busqueda, setBusqueda] = useState("")
+
   const navigate = useNavigate()
 
   
@@ -33,6 +36,7 @@ export const AdminTree = ({setIsLogged}) => {
           .get(`http://localhost:4000/admin/${id}/allTrees`)
           .then((res) => {
             setAllTrees(res.data);
+            setTablaBusqueda(res.data);
           })
           .catch((err) => {
             console.log(err);
@@ -56,6 +60,20 @@ export const AdminTree = ({setIsLogged}) => {
       setModalDeleteTree(true);
   }
 
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+    filtrarTree(e.target.value);
+  }
+
+  const filtrarTree = (terminoBusqueda) => {
+    let resBusqueda = tablaBusqueda.filter((elemento) => {
+      if(elemento.tree_name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+        return elemento
+      }
+    })
+    setAllTrees(resBusqueda);
+  }
+
 
   return (
     <>
@@ -74,6 +92,17 @@ export const AdminTree = ({setIsLogged}) => {
           </Col>
           
         </Row>
+        <Row>
+            <Col className='barra-busq-tree'>
+               <input
+                  className="form-control inputBuscar "
+                  type='text'
+                  placeholder='Buscar árbol'
+                  value={busqueda}
+                  onChange={handleChange}
+                  />
+            </Col>
+          </Row>
 
         <Row className='table-all-trees'>
         
