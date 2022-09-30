@@ -134,10 +134,9 @@ class projectControllers {
   };
 
   // Cambiar usuario de un proyecto
-  // localhost:4000/project/changeUser/:project_id
+  // localhost:4000/project/changeUser/:project_id/:user_id
   changeUser = (req, res) => {
-    let project_id = req.params.project_id;
-    const { user_id } = req.body;
+    const { user_id, project_id } = req.params;
 
     let sql = `UPDATE project SET user_id='${user_id}' WHERE project_id = ${project_id}`;
     connection.query(sql, (error, result) => {
@@ -158,6 +157,19 @@ class projectControllers {
       res.status(200).json(result);
     });
   };
-}
+
+  // Mostrar los proyectos solo de los administradores
+  // localhost:4000/project/onlyAdmin
+  onlyAdmin = (req, res) => {
+    let sql = `SELECT * FROM project WHERE user_id = 2`;
+    connection.query(sql, (error, result) => {
+      if(error) {
+        res.status(400).json({error});
+        console.log(error);
+      }
+      res.status(200).json(result);
+    });
+  }; 
+};
 
 module.exports = new projectControllers();

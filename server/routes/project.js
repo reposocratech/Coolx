@@ -34,7 +34,11 @@ router.get("/:project_id/info", projectControllers.getProjectInfo);
 router.delete("/deleteProject/:project_id", projectControllers.deleteProject);
 
 // Cambiar usuario de un proyecto
-// localhost:4000/project/changeUser/:project_id
-router.post("/changeUser/:project_id", projectControllers.changeUser);
+// localhost:4000/project/changeUser/:project_id/:user_id
+router.put("/changeUser/:project_id/:user_id", projectControllers.changeUser);
+
+// Mostrar los proyectos solo de los administradores
+// localhost:4000/project/onlyAdmin
+router.post("/onlyAdmin", projectControllers.onlyAdmin);
 
 module.exports = router;
