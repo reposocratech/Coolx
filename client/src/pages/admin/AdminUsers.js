@@ -62,6 +62,7 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
 
 
   return (
+    <>
     <div className="wrapper">
       <div className="getdown">
         <Container fluid>
