@@ -1,35 +1,42 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
 import { Footer } from "../home/Footer";
 
 export const Login = ({ setIsLogged }) => {
-
   const [message, setMessage] = useState("");
-
 
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
 
+  const [submitButton, setSubmitButton] = useState(false);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { value, name } = e.target;
     setLogin({ ...login, [name]: value });
-    setMessage("")
+    setMessage("");
     // console.log(login);
+
+    const { email, password } = login;
+    if (email && password) {
+      setSubmitButton(true);
+    } else {
+      setSubmitButton(false);
+    }
   };
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     if (login.email === "" || login.password === "") {
-      setMessage("Debe completar todos los campos!")
+      setMessage("Debe completar todos los campos!");
       // if (email === "" || password === "") {
       //   setMessage(true);
       // } else {
@@ -90,68 +97,82 @@ export const Login = ({ setIsLogged }) => {
                 </div>
                 <div className="subtitulo-login">
                   <p>
-                    Para iniciar sesion introduce tus credenciales a
+                    Para iniciar sesión introduce tus credenciales a
                     continuación
                   </p>
                 </div>
               </div>
 
-            <div className="formAuth-login">
-              <label>Dirección de correo electronico</label>
-              
-              <input
-                className="pt-2"
-                autoComplete="off"
-                name="email"
-                type="email"
-                value={login.email}
-                onChange={handleChange}
-              />
-              <div style={{color:"darkblue"}}>{message}</div>
-              <br />
+              <Form.Group controlId="loginForm">
+                <Form className="formAuth-login">
+                  <Form.Label className="label-login">
+                    Dirección de correo electrónico
+                  </Form.Label>
+                  <Form.Control
+                    className=""
+                    autoComplete="off"
+                    name="email"
+                    type="email"
+                    value={login.email}
+                    onChange={handleChange}
+                  />
+                  <div style={{ color: "darkblue" }}>{message}</div>
+                  <Form.Label className="label-login">Contraseña</Form.Label>
+                  <Form.Control
+                    className=""
+                    autoComplete="off"
+                    name="password"
+                    type="password"
+                    value={login.password}
+                    onChange={handleChange}
+                  />
 
-              <label>Contraseña</label>
-              <input
-                className="pt-2"
-                autoComplete="off"
-                name="password"
-                type="password"
-                value={login.password}
-                onChange={handleChange}
-              />
-              <div style={{color:"darkblue"}}>{message}</div>
-              <p>¿Has olvidado tu contraseña?</p>
-            </div>
+                  <div style={{ color: "darkblue" }}>{message}</div>
 
-            <div>
-              <input
-                type="checkbox"
-                name="remember"
-                id="remember"
-                className="form-check-input"
-              />
-              <label htmlFor="remember">Recordar contraseña</label>
-            </div>
+                  <p>¿Has olvidado tu contraseña?</p>
+                </Form>
 
-            <div>
-              <button className="boton-login" onClick={handleSubmit}>
-                Iniciar sesión
-              </button>
-            </div>
-            <div className="nada-juntos">
-              <button
-                className="nada-nada"
-                onClick={() => navigate("/contact")}
-              >
-                ¿No tienes cuenta? Contáctanos
-              </button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+                {["checkbox"].map((type) => (
+                  <div key={`inline-${type}`} className="mb-3">
+                    <Form.Check
+                      inline
+                      label="Recordar contraseña"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                    />
+                  </div>
+                ))}
+
+                <div>
+                  {!submitButton ? (
+                    <div className="boton-login bl-disabled text-center">
+                      Iniciar sesión
+                    </div>
+                  ) : (
+                    <Button
+                      className="boton-login show-bl"
+                      onClick={handleSubmit}
+                    >
+                      Iniciar sesión
+                    </Button>
+                  )}
+                </div>
+                <div className="nada-juntos">
+                  <p>¿No tienes cuenta?</p>
+                  <Button
+                    className="nada-nada"
+                    onClick={() => navigate("/contact")}
+                  >
+                    Contáctanos
+                  </Button>
+                </div>
+              </Form.Group>
+            </Col>
+          </Row>
+        </Container>
+      </div>
       <Footer />
     </>
-
   );
 };
