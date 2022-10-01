@@ -42,7 +42,9 @@ module.exports = {
 
         // Crear nuestro documento
         //let pdf = await crearPdf("https://coolx.earth/");
-        let pdf = await crearPdf(`http://localhost:4000/project/${project_id}/pdf`);
+        //let pdf = await crearPdf(`http://localhost:4000/project/${project_id}`);
+        let pdf = await crearPdf(`http://localhost:3000/project/12`);
+
 
         // Devolver el response como PDF
         res.contentType('application/pdf');
