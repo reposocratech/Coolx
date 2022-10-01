@@ -15,6 +15,8 @@ import { Footer } from "../../pages/home/Footer";
 export const ProjectForm = ({ user }) => {
   const [projectFiles, setProjectFiles] = useState();
   const [id, setId] = useState(user && user.user_id);
+  const [submitButton, setSubmitButton] = useState(false);
+  const [havePic, setHavePic] = useState(false);
 
   const [newProject, setNewProject] = useState({
     projectName: "",
@@ -33,16 +35,46 @@ export const ProjectForm = ({ user }) => {
 
   useEffect(() => {}, [user]);
 
-  console.log(id);
-  console.log("esto id de newproject " + newProject.user_id);
+  // console.log(id);
+  // console.log("esto id de newproject " + newProject.user_id);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
+    // console.log(e.target);
+    const {
+      projectName,
+      projectDescription,
+      location,
+      altitude,
+      latitude,
+      area,
+      profit,
+      projectCost,
+      yearPlanting,
+    } = newProject;
+    if (
+      projectName &&
+      projectDescription &&
+      location &&
+      altitude &&
+      latitude &&
+      area &&
+      profit &&
+      projectCost
+    ) {
+      setSubmitButton(true);
+    } else {
+      setSubmitButton(false);
+    }
   };
 
   const handleFiles = (e) => {
     setProjectFiles(e.target.files);
+    // console.log(e.target.files);
+
+    setHavePic(true);
+    console.log(havePic);
   };
 
   const handleSubmit = (e) => {
@@ -105,6 +137,7 @@ export const ProjectForm = ({ user }) => {
               </div>
             </Col>
           </Row>
+
           <Row>
             <div className="d-flex justify-content-center">
               <Col md={5} className="col-create">
@@ -238,10 +271,19 @@ export const ProjectForm = ({ user }) => {
 
           <Row>
             <div>
-              <Col className="colocar-create">
-                <button className="button" onClick={handleSubmit}>
-                  Crear proyecto
-                </button>
+              <Col className="colocar-create mb-5">
+                {submitButton && havePic ? (
+                  <Button
+                    className="button-create show-bp"
+                    onClick={handleSubmit}
+                  >
+                    Crear proyecto
+                  </Button>
+                ) : (
+                  <div className="button-create bp-disabled text-center">
+                    Crear proyecto
+                  </div>
+                )}
               </Col>
             </div>
           </Row>
