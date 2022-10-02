@@ -5,7 +5,7 @@ import "./user.scss";
 import "./myprojects.scss";
 import { BuyModal } from "../../components/modal/BuyModal";
 
-export const MyProjects = ({ projects, user, setBuyProject, buyProject }) => {
+export const MyProjects = ({ projects, user, setBuyProject, buyProject, setResetUser, resetUser }) => {
 
   useEffect(() => {
 
