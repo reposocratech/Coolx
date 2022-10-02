@@ -97,6 +97,7 @@ export const ProjectForm = ({ user }) => {
       .then((res) => {
         console.log(res);
         navigate("/succes2");
+        // setResetUser(!resetUser);
       })
       .catch((err) => {
         console.log(err);

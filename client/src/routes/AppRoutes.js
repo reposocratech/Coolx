@@ -51,6 +51,12 @@ export const AppRoutes = () => {
   //esto es para la obtener la información de un proyecto
   const [oneProject, setOneProject] = useState();
 
+  // esto es para cuando compramos un proyecto
+  const [buyProject, setBuyProject] = useState();
+
+  
+
+
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
 
@@ -75,6 +81,7 @@ export const AppRoutes = () => {
         });
     }
   }, [isLogged, resetUser]);
+
 
   return (
     <div>
@@ -129,7 +136,10 @@ export const AppRoutes = () => {
             path="/tarjetamas"
             element={<Tarjetamas projects={projects} />}
           />
-          <Route path="/buyproject" element={<BuyProject user={user} />} />
+          <Route
+            path="/buyproject"
+            element={<BuyProject user={user} buyProject={buyProject} setBuyProject={setBuyProject}/>}
+          />
           <Route path="/vegetation" element={<Vegetation />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
@@ -159,31 +169,19 @@ export const AppRoutes = () => {
             element={<SuccesPayment projects={projects} />}
           />
 
-          <Route path="/stripe" element={<Stripe />} />
+          <Route path="/stripe" element={<Stripe buyProject={buyProject} user={user}/>} />
+
+
+       
 
           <Route path="/user" element={<User />}>
             <Route
               path=""
-              element={
-                <MyProjects
-                  projects={projects}
-                  user={user}
-                  resetUser={resetUser}
-                  setResetUser={setResetUser}
-                />
-              }
-            />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} />} />
             <Route
               path="myprojects"
-              element={
-                <MyProjects
-                  projects={projects}
-                  user={user}
-                  resetUser={resetUser}
-                  setResetUser={setResetUser}
-                />
-              }
-            />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject}/>} />
+
 
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
