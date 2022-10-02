@@ -55,8 +55,10 @@ export const AppRoutes = () => {
   // esto es para cuando compramos un proyecto
   const [buyProject, setBuyProject] = useState();
 
-  
+  // con esto nos traemos las imagenes 
+  const [images, setImages] = useState(false);
 
+  
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -73,6 +75,7 @@ export const AppRoutes = () => {
         .then((res) => {
           setUser(res.data.resultUser[0]);
           setProjects(res.data.resultProject);
+          setImages(true);
 
           // console.log(res, "soyyyy reeeeesss");
         })
@@ -82,6 +85,17 @@ export const AppRoutes = () => {
         });
     }
   }, [isLogged, resetUser]);
+
+    
+
+
+
+
+
+
+
+
+
 
 
   return (
@@ -181,10 +195,10 @@ export const AppRoutes = () => {
           <Route path="/user" element={<User />}>
             <Route
               path=""
-              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} />} />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
             <Route
               path="myprojects"
-              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser}/>} />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
 
 
             <Route path="reports" element={<Reports />} />
