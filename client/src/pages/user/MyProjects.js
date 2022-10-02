@@ -5,7 +5,7 @@ import "./user.scss";
 import "./myprojects.scss";
 import { BuyModal } from "../../components/modal/BuyModal";
 
-export const MyProjects = ({ projects, user }) => {
+export const MyProjects = ({ projects, user, setBuyProject, buyProject }) => {
 
   useEffect(() => {
 
@@ -25,7 +25,7 @@ export const MyProjects = ({ projects, user }) => {
         <Row>
           <Col md={8} className="card-container">
             <div>
-              <Tarjeta projects={projects} />
+              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject} />
             </div>
           </Col>
 

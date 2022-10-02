@@ -55,7 +55,7 @@ export const ProjectForm = ({ user, setProjects, resetUser, setResetUser }) => {
       .then((res) => {
         console.log(res);
         navigate("/succes2");
-        setResetUser(!resetUser);
+        // setResetUser(!resetUser);
       })
 
       .catch((err) => {

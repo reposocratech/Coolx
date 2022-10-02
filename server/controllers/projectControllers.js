@@ -166,7 +166,12 @@ class projectControllers {
   // Mostrar los proyectos solo de los administradores
   // localhost:4000/project/onlyAdmin
   onlyAdmin = (req, res) => {
-    let sql = `SELECT * FROM project WHERE user_id = 2`;
+    // let sql = `SELECT * FROM project WHERE user_id = 2`;
+
+    let sql = `select * from project, user
+    where project.user_id = user.user_id
+    and user.user_type = 1 group by project.project_id`;
+
     connection.query(sql, (error, result) => {
       if(error) {
         res.status(400).json({error});
