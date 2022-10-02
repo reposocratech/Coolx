@@ -4,24 +4,28 @@ import { Col, Container, Row, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import "./tarjeta.scss";
 
-export const Tarjeta = ({ projects, buyProject, setBuyProject }) => {
+export const Tarjeta = ({ projects, buyProject, setBuyProject , setImages}) => {
   const navigate = useNavigate();
 
 
   // console.log(projects);
 
+
   const handleSend = (project) => {
     axios
       .get(`http://localhost:4000/project/${project.project_id}`)
       .then((res) => {
-        // console.log(res);
+        // console.log(res)
         setBuyProject(project);
+        console.log();
         navigate(`/project/${project.project_id}`);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+
 
   return (
     <>
@@ -31,7 +35,7 @@ export const Tarjeta = ({ projects, buyProject, setBuyProject }) => {
             <Container fluid key={project.project_id}>
               <Row className="project-card-container ">
                 <Col lg={5} className="card-img">
-                  <img src={project.images.length ? `/imagesimages/${project.images[0].file_name}` : "/images/bosque1.png"} />
+                  <img src={project.image ? `/imagesimages/${project.image}` : "/images/bosque1.png"} /> 
                 </Col>
 
                 <Col lg={7} className="card-information">

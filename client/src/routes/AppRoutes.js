@@ -55,6 +55,11 @@ export const AppRoutes = () => {
   // esto es para cuando compramos un proyecto
   const [buyProject, setBuyProject] = useState();
 
+  //trae todas la imagenes
+  const [images, setImages] = useState(false);
+
+  const [files, seFiles] = useState()
+
   
 
 
@@ -73,6 +78,7 @@ export const AppRoutes = () => {
         .then((res) => {
           setUser(res.data.resultUser[0]);
           setProjects(res.data.resultProject);
+          setImages(true)
 
           // console.log(res, "soyyyy reeeeesss");
         })
@@ -82,6 +88,7 @@ export const AppRoutes = () => {
         });
     }
   }, [isLogged, resetUser]);
+
 
 
   return (
@@ -181,10 +188,10 @@ export const AppRoutes = () => {
           <Route path="/user" element={<User />}>
             <Route
               path=""
-              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} />} />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} image={images} setImages={setImages}/>} />
             <Route
               path="myprojects"
-              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser}/>} />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} image={images} setImages={setImages}/>} />
 
 
             <Route path="reports" element={<Reports />} />

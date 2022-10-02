@@ -118,10 +118,11 @@ class projectControllers {
   getProject = (req, res) => {
     // console.log(req.params);
     let project_id = req.params.project_id;
-    let sql = `SELECT * FROM project WHERE project_id = ${project_id} and is_deleted = 0`;
+    let sql = `SELECT * FROM image, project WHERE project.project_id = images.project_id and project.project_id = ${project_id} group by image_id`;
     connection.query(sql, (error, result) => {
       if (error) {
-        res.status(400).json({ error });
+        res.status(400).json({ error })
+        console.log("CONSULTA A SERVER");
       }
       res.status(200).json(result);
     });
