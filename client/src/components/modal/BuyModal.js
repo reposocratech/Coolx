@@ -20,7 +20,6 @@ export const BuyModal = ({ onHide, show }) => {
 
 }
 
-const navigate = useNavigate();
 
     return (
         <Modal show={show} aria-labelledby="contained-modal-title-vcenter">
