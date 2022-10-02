@@ -9,10 +9,16 @@ import {
   FloatingLabel,
   Container,
 } from "react-bootstrap";
+
+import { useNavigate } from "react-router-dom";
 import "./contact.scss";
 import { Footer } from "../../pages/home/Footer";
 
+
 export const ContactForm = () => {
+
+  const [message, setMessage] = useState("")
+
   const [user, setUser] = useState({
     userName: "",
     email: "",
@@ -21,10 +27,14 @@ export const ContactForm = () => {
   });
   const [submitButton, setSubmitButton] = useState(false);
 
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(e.target);
     setUser({ ...user, [name]: value });
+    setMessage("")
+
 
     const { userName, email, phone, userMessage } = user;
     if (userName && email && phone && userMessage) {
@@ -32,18 +42,24 @@ export const ContactForm = () => {
     } else {
       setSubmitButton(false);
     }
+
   };
 
   const handleSend = (e) => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:4000/contact", user)
-      .then((res) => {
-        console.log(res);
-        setUser({ userName: "", email: "", phone: "", userMessage: "" });
-      })
-      .catch((err) => console.log(err));
+    if(user.name === "" || user.email === "" || user.phone === "" || user.userMessage === "") {
+      setMessage("Los campos deben estar completos")
+    } else {
+    axios.post("http://localhost:4000/contact",user)
+    .then((res) => {
+      console.log(res);
+      navigate("/succes3")
+      setUser({ userName: "", email: "", phone: "", userMessage: "" });
+    })
+    .catch((err) => console.log(err))
+    }
+
   };
 
   return (
@@ -60,27 +76,43 @@ export const ContactForm = () => {
                   </h4>
                 </div>
 
-                <Form.Group controlId="contactForm">
-                  <Form className="d-flex flex-column">
-                    <Form.Label className="labels-contact">Nombre</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="userName"
-                      autoComplete="off"
-                      value={user.username}
-                      onChange={handleChange}
-                    />
 
-                    <Form.Label className="labels-contact mt-3 mb-2">
-                      Email
-                    </Form.Label>
-                    <Form.Control
-                      type="email"
-                      name="email"
-                      autoComplete="off"
-                      value={user.email}
-                      onChange={handleChange}
-                    />
+              <Form.Group controlId="contactForm">
+                <Form className="d-flex flex-column">
+                  <Form.Label className="labels-form">Nombre</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="userName"
+                    autoComplete="off"
+                    value={user.username}
+                    onChange={handleChange}
+                  />
+                   <div style={{color:"darkblue"}}>{message}</div>
+
+                  <Form.Label className="labels-form mt-3 mb-2">
+                    Email
+                  </Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    autoComplete="off"
+                    value={user.email}
+                    onChange={handleChange}
+                  />
+                   <div style={{color:"darkblue"}}>{message}</div>
+
+                  <Form.Label className="labels-form mt-3 mb-2">
+                    Teléfono
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="phone"
+                    autoComplete="off"
+                    value={user.phone}
+                    onChange={handleChange}
+                  />
+                   <div style={{color:"darkblue"}}>{message}</div>
+
 
                     <Form.Label className="labels-contact mt-3 mb-2">
                       Teléfono
@@ -92,6 +124,10 @@ export const ContactForm = () => {
                       value={user.phone}
                       onChange={handleChange}
                     />
+
+                     <div style={{color:"darkblue"}}>{message}</div>
+             
+
 
                     <Form.Label className="labels-contact mt-3 mb-2">
                       Mensaje

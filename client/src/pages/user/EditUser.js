@@ -67,6 +67,7 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                 />
               </div>
 
+
               <div className="iconDeleteUser mt-3">
                 <img
                   className="iconDeleteUser-circle"
@@ -81,6 +82,7 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                   className="iconDeleteUser-arrow"
                   src="/assets/icons/arrow_right.svg"
                 />
+
               </div>
             </Col>
           </Row>

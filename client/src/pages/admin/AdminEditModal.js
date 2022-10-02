@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap"
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import "./admineditmodal.scss"
 
 export const AdminEditModal = ({ 
   setModalEdit,
@@ -46,13 +47,13 @@ export const AdminEditModal = ({
 
   return (
     <Modal show={show}  animation={false}>
-    <Modal.Header closeButton>
+    <Modal.Header closeButton onClick={onHide}>
     <Modal.Title>Edición de proyecto</Modal.Title>
     </Modal.Header>
 
       <Modal.Body>
           <Form.Group >
-            <Form className="formTree d-flex flex-column">
+            <Form className="edit-project-modal d-flex flex-column">
             <Form.Label className="labels">
               Nombre del proyecto
             </Form.Label>
@@ -145,8 +146,8 @@ export const AdminEditModal = ({
       </Modal.Body>
 
       <Modal.Footer>
-          <Button variant="secondary" onClick={onHide}>Cancelar</Button>
-          <Button variant="primary" onClick={handleSubmit}>Guardar cambios</Button>
+          <Button className='exit-edit-admin' onClick={onHide}>Cancelar</Button>
+          <Button className='save-edit-admin' onClick={handleSubmit}>Guardar cambios</Button>
       </Modal.Footer>
 
   </Modal>

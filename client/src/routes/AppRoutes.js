@@ -33,6 +33,7 @@ import { BuyProject } from "../pages/user/BuyProject";
 
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 import { Stripe } from "../components/stripe/Stripe";
+import { Succes3 } from "../pages/home/Succes3";
 
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -50,6 +51,12 @@ export const AppRoutes = () => {
 
   //esto es para la obtener la información de un proyecto
   const [oneProject, setOneProject] = useState();
+
+  // esto es para cuando compramos un proyecto
+  const [buyProject, setBuyProject] = useState();
+
+  
+
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -76,6 +83,7 @@ export const AppRoutes = () => {
     }
   }, [isLogged, resetUser]);
 
+
   return (
     <div>
       <BrowserRouter>
@@ -84,6 +92,8 @@ export const AppRoutes = () => {
           setIsLogged={setIsLogged}
           user={user}
           setUser={setUser}
+          userModificate={userModificate}
+          setUserModificate={setUserModificate}
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -129,7 +139,10 @@ export const AppRoutes = () => {
             path="/tarjetamas"
             element={<Tarjetamas projects={projects} />}
           />
-          <Route path="/buyproject" element={<BuyProject user={user} />} />
+          <Route
+            path="/buyproject"
+            element={<BuyProject user={user} buyProject={buyProject} setBuyProject={setBuyProject}/>}
+          />
           <Route path="/vegetation" element={<Vegetation />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
@@ -158,32 +171,21 @@ export const AppRoutes = () => {
             path="/succespayment"
             element={<SuccesPayment projects={projects} />}
           />
+          <Route path="/succes3" element={<Succes3/> } />
 
-          <Route path="/stripe" element={<Stripe />} />
+          <Route path="/stripe" element={<Stripe buyProject={buyProject} user={user}/>} />
+
+
+       
 
           <Route path="/user" element={<User />}>
             <Route
               path=""
-              element={
-                <MyProjects
-                  projects={projects}
-                  user={user}
-                  resetUser={resetUser}
-                  setResetUser={setResetUser}
-                />
-              }
-            />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} />} />
             <Route
               path="myprojects"
-              element={
-                <MyProjects
-                  projects={projects}
-                  user={user}
-                  resetUser={resetUser}
-                  setResetUser={setResetUser}
-                />
-              }
-            />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser}/>} />
+
 
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />

@@ -4,6 +4,7 @@ import { Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import "./treeeditmodal.scss"
 
 
 export const TreeEditModal = ({
@@ -50,7 +51,7 @@ export const TreeEditModal = ({
 
             <Modal.Body>
                 <Form.Group >
-                  <Form className="formTree d-flex flex-column">
+                  <Form className="tree-edit-modal d-flex flex-column">
                   <Form.Label className="labels">
                     Nombre de árbol
                   </Form.Label>
@@ -118,8 +119,8 @@ export const TreeEditModal = ({
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary" onClick={onHide}>Cancelar</Button>
-                <Button variant="primary" onClick={handleSubmit}>Guardar cambios</Button>
+                <Button className='exit-edit-tree' onClick={onHide}>Cancelar</Button>
+                <Button className='save-edit-tree' onClick={handleSubmit}>Guardar cambios</Button>
             </Modal.Footer>
 
         </Modal>

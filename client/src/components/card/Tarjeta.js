@@ -1,11 +1,12 @@
 import axios from "axios";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Container, Row, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./tarjeta.scss";
 
-export const Tarjeta = ({ projects }) => {
+export const Tarjeta = ({ projects, buyProject, setBuyProject }) => {
   const navigate = useNavigate();
+
 
   // console.log(projects);
 
@@ -14,6 +15,7 @@ export const Tarjeta = ({ projects }) => {
       .get(`http://localhost:4000/project/${project.project_id}`)
       .then((res) => {
         // console.log(res);
+        setBuyProject(project);
         navigate(`/project/${project.project_id}`);
       })
       .catch((err) => {
@@ -29,7 +31,7 @@ export const Tarjeta = ({ projects }) => {
             <Container fluid key={project.project_id}>
               <Row className="project-card-container ">
                 <Col lg={5} className="card-img">
-                  <img src="/images/Bosque.jpg" />
+                  <img src={project.images.length ? `/imagesimages/${project.images[0].file_name}` : "/images/bosque1.png"} />
                 </Col>
 
                 <Col lg={7} className="card-information">

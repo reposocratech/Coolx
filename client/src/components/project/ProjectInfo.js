@@ -4,6 +4,7 @@ import "./projectInfo.scss";
 import { StatusProject } from "./StatusProject";
 
 export const ProjectInfo = ({ projectInfo }) => {
+  console.log(projectInfo);
   return (
     <Container fluid className="cardProjectInfo">
       <Row>

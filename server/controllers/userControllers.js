@@ -103,7 +103,24 @@ class userController {
         if (error2) {
           res.status(400).json({ error2 });
         }
-        res.status(200).json({ resultUser, resultProject });
+       
+        let projectIds = resultProject.map((project) => project.project_id);
+        let sqlProjectsImages = `SELECT project_id as id, file_name FROM image WHERE project_id IN (${projectIds.join(', ')})`
+
+        connection.query(sqlProjectsImages, (error3, resultImages) => {
+          if(error3) {
+            res.status(400).json({ error3 });
+          }
+
+          resultProject = resultProject.map((project) => {
+            return {
+              ...project,
+              images: resultImages.filter((image) => image.id === project.project_id)
+            }
+          })
+
+          res.status(200).json({ resultUser, resultProject });
+        })
       });
     });
   };

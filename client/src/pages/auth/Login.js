@@ -7,7 +7,9 @@ import "./login.scss";
 import { Footer } from "../home/Footer";
 
 export const Login = ({ setIsLogged }) => {
+
   const [message, setMessage] = useState("");
+  const [messageOut,setMessageOut] = useState("");
 
   const [login, setLogin] = useState({
     email: "",
@@ -21,7 +23,9 @@ export const Login = ({ setIsLogged }) => {
   const handleChange = (e) => {
     const { value, name } = e.target;
     setLogin({ ...login, [name]: value });
-    setMessage("");
+    setMessage("")
+    setMessageOut("")
+
     // console.log(login);
 
     const { email, password } = login;
@@ -33,15 +37,20 @@ export const Login = ({ setIsLogged }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
 
+    // e.preventDefault();
+    
     if (login.email === "" || login.password === "") {
-      setMessage("Debe completar todos los campos!");
+      setMessage("Debe completar todos los campos!")
+      
+
       // if (email === "" || password === "") {
       //   setMessage(true);
       // } else {
       //   setMessage(false);
-    } else {
+    } 
+    
+    else {
       axios
         .post("http://localhost:4000/users/login", login)
 
@@ -76,11 +85,11 @@ export const Login = ({ setIsLogged }) => {
         .catch((err) => {
           console.log(err);
           if (err.response.status === 401) {
-            alert("Usuario no registrado o eliminado");
+            alert("Usuario y/o contraseña incorrecto");
           } else {
             navigate("/error");
           }
-          // setMessageOut("Incorrect user or password");
+           setMessageOut("Contraseña y/o usuario incorrectos");
         });
     }
   };
@@ -103,6 +112,7 @@ export const Login = ({ setIsLogged }) => {
                 </div>
               </div>
 
+
               <Form.Group controlId="loginForm">
                 <Form className="formAuth-login">
                   <Form.Label className="label-login">
@@ -117,6 +127,9 @@ export const Login = ({ setIsLogged }) => {
                     onChange={handleChange}
                   />
                   <div style={{ color: "darkblue" }}>{message}</div>
+                  <div style={{color:"darkblue"}}>{messageOut}</div>
+                   <br />
+                   
                   <Form.Label className="label-login">Contraseña</Form.Label>
                   <Form.Control
                     className=""
@@ -127,7 +140,7 @@ export const Login = ({ setIsLogged }) => {
                     onChange={handleChange}
                   />
 
-                  <div style={{ color: "darkblue" }}>{message}</div>
+                   <div style={{color:"darkblue"}}>{message}</div>
 
                   <p>¿Has olvidado tu contraseña?</p>
                 </Form>

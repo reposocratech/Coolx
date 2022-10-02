@@ -7,7 +7,6 @@ var router = express.Router();
 const stripe = new Stripe("sk_test_51LnIA1J5n5ohBaXPvqYjgIkobjoWixGhWj9ya8VSu39WKs14JYLhxibZKVd2tM4uoXk9X4NcsTccU3cmBBb2uUHH00IRbJL1nF")
 
 
-
 router.post('/api/checkout',async (req, res) => {
     try{
 
@@ -23,14 +22,10 @@ router.post('/api/checkout',async (req, res) => {
 
     console.log(payment);
     res.send({message: 'Pago realizado correctamente'});
-}catch (error) {
+    }catch (error) {
     console.log(error);
     res.json({ message: error.raw.message })
 }
 
-
 });
-
-
-
   module.exports = router;

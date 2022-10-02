@@ -97,6 +97,7 @@ export const ProjectForm = ({ user }) => {
       .then((res) => {
         console.log(res);
         navigate("/succes2");
+        // setResetUser(!resetUser);
       })
       .catch((err) => {
         console.log(err);
@@ -288,6 +289,7 @@ export const ProjectForm = ({ user }) => {
             </div>
           </Row>
 
+
           <Row>
             <div>
               <Col className="colocar-create mb-5">
@@ -306,6 +308,7 @@ export const ProjectForm = ({ user }) => {
               </Col>
             </div>
           </Row>
+
         </Container>
       </div>
 

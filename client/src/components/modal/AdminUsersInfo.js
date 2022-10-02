@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
+import "./adminuserinfo.scss"
 
 export const AdminUsersInfo = ({ onHide, show, userInfo }) => {
   return (
@@ -35,7 +36,7 @@ export const AdminUsersInfo = ({ onHide, show, userInfo }) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>Cerrar</Button>
+        <Button className="close-modal" onClick={onHide}>Cerrar</Button>
       </Modal.Footer>
     </Modal>
   );

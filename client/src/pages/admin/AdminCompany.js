@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
+import "./admincompany.scss"
 
 
 export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjects, setResetProjects, setModalBuyer }) => {
@@ -55,7 +56,7 @@ export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjec
                       <td>{index + 1}</td>
                       <td>{usuario.company}</td>
                       <td>
-                        <Button onClick={()=> {
+                        <Button className="assign-company-modal" onClick={()=> {
                             handleCompany(usuario, projectModal)      
                         }
                         }>Asignar empresa</Button>
@@ -68,7 +69,7 @@ export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjec
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
+        <Button className="exit-company-modal" onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   );
