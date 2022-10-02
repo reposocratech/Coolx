@@ -8,10 +8,8 @@ class userController {
   //localhost:4000/users/registrocoolx
 
   createUser = (req, res) => {
-
     // console.log("hola estoy en el controlador");
     console.log(req.body);
-
 
     const { user_name, email, password, surname, company, nif, phone } =
       req.body;
@@ -19,7 +17,6 @@ class userController {
     let saltRounds = 8;
     bcrypt.genSalt(saltRounds, function (err, saltRounds) {
       bcrypt.hash(password, saltRounds, function (err, hash) {
-
         let sql = `INSERT INTO user (user_name, password, surname, company, nif, phone, email) VALUES ('${user_name}', '${hash}', "${surname}", "${company}", "${nif}", "${phone}", '${email}')`;
 
         connection.query(sql, (error, result) => {
@@ -103,24 +100,25 @@ class userController {
         if (error2) {
           res.status(400).json({ error2 });
         }
-       
-        let projectIds = resultProject.map((project) => project.project_id);
-        let sqlProjectsImages = `SELECT project_id as id, file_name FROM image WHERE project_id IN (${projectIds.join(', ')})`
+        res.status(200).json({ resultUser, resultProject });
 
-        connection.query(sqlProjectsImages, (error3, resultImages) => {
-          if(error3) {
-            res.status(400).json({ error3 });
-          }
+        // PARA CARGAR IMAGENES
+        // let projectIds = resultProject.map((project) => project.project_id);
+        // let sqlProjectsImages = `SELECT project_id as id, file_name FROM image WHERE project_id IN (${projectIds.join(', ')})`
 
-          resultProject = resultProject.map((project) => {
-            return {
-              ...project,
-              images: resultImages.filter((image) => image.id === project.project_id)
-            }
-          })
+        // connection.query(sqlProjectsImages, (error3, resultImages) => {
+        //   if(error3) {
+        //     res.status(400).json({ error3 });
+        //   }
 
-          res.status(200).json({ resultUser, resultProject });
-        })
+        //   resultProject = resultProject.map((project) => {
+        //     return {
+        //       ...project,
+        //       images: resultImages.filter((image) => image.id === project.project_id)
+        //     }
+        //   })
+
+        // })
       });
     });
   };
@@ -129,7 +127,7 @@ class userController {
   // localhost:4000/users/editUser/:user_id
   editUser = (req, res) => {
     let user_id = req.params.user_id;
-    
+
     const {
       user_name,
       surname,
@@ -145,7 +143,9 @@ class userController {
 
     connection.query(sql, (error, result) => {
       if (error) throw error;
-      error ? res.status(400).json({ error }) : res.status(200).json(req.body.register);
+      error
+        ? res.status(400).json({ error })
+        : res.status(200).json(req.body.register);
     });
   };
 
@@ -163,9 +163,9 @@ class userController {
   //localhost:4000/users/deleteUser/:user_id
 
   deleteUser = (req, res) => {
-     let user_id = req.params.user_id;
-     console.log(user_id);
-     let sql = `UPDATE user SET is_deleted = 1 WHERE user_id = "${user_id}"`;
+    let user_id = req.params.user_id;
+    console.log(user_id);
+    let sql = `UPDATE user SET is_deleted = 1 WHERE user_id = "${user_id}"`;
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
@@ -174,16 +174,14 @@ class userController {
   //7 mostrar todos los usuarios
   //localhost:4000/users/allUsers
   selectAllUsers = (req, res) => {
-
     console.log("headers", req.headers.authorization);
 
     let sql = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
 
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
-
-    })
-  }
+    });
+  };
 }
 
 module.exports = new userController();

@@ -6,13 +6,11 @@ import axios from "axios";
 import { Footer } from "../home/Footer";
 
 export const Register = () => {
-
   const [message, setMessage] = useState("");
-  const [messagePassword, setMessagePassword] = useState("")
+  const [messagePassword, setMessagePassword] = useState("");
   const [checkPass, setCheckPass] = useState({
-    pass:""
+    pass: "",
   });
-
 
   const [newUser, setNewUser] = useState({
     user_name: "",
@@ -23,11 +21,7 @@ export const Register = () => {
     company: "",
     nif: "",
   });
-  const [message, setMessage] = useState("");
-  const [messagePassword, setMessagePassword] = useState("");
-  const [checkPass, setCheckPass] = useState({
-    pass: "",
-  });
+
   const [submitButton, setSubmitButton] = useState(false);
 
   const navigate = useNavigate();
@@ -40,7 +34,7 @@ export const Register = () => {
     setMessage("");
 
     setNewUser({ ...newUser, [name]: value });
-    setMessagePassword("")
+    setMessagePassword("");
 
     const { user_name, surname, email, phone, password, company, nif } =
       newUser;
@@ -53,7 +47,6 @@ export const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
 
     if (
       newUser.name === "" ||
@@ -104,18 +97,7 @@ export const Register = () => {
     const { name, value } = e.target;
     setCheckPass({ ...checkPass, [name]: value });
     // console.log("REPITE CONTRASEÑA");
-
   };
-
-  
-
-  const handleChangePass = (e) => {
-    const { name, value } = e.target;
-    setCheckPass({...checkPass, [name]: value });
-    // console.log("REPITE CONTRASEÑA");
-
-  }
-
 
   // PARA MENSAJE
   // const { name, email, password } = register;
@@ -141,7 +123,6 @@ export const Register = () => {
 
                 <Form.Group controlId="contactForm">
                   <Form className="d-flex flex-column">
-
                     <Row>
                       <Col md={6}>
                         <Form.Label className="labels-form">Nombre</Form.Label>
@@ -266,7 +247,6 @@ export const Register = () => {
                         />
                       </Col>
                     </Row>
-
 
                     <div>
                       {!submitButton ? (
