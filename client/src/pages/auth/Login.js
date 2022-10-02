@@ -8,7 +8,9 @@ import { Footer } from "../home/Footer";
 
 export const Login = ({ setIsLogged }) => {
 
+  const [colorHover, setColorHover] = useState("boton-login")
   const [message, setMessage] = useState("");
+  const [messageOut,setMessageOut] = useState("");
 
 
   const [login, setLogin] = useState({
@@ -22,19 +24,23 @@ export const Login = ({ setIsLogged }) => {
     const { value, name } = e.target;
     setLogin({ ...login, [name]: value });
     setMessage("")
+    setMessageOut("")
     // console.log(login);
   };
 
   const handleSubmit = (e) => {
     // e.preventDefault();
-
+    
     if (login.email === "" || login.password === "") {
       setMessage("Debe completar todos los campos!")
+      
       // if (email === "" || password === "") {
       //   setMessage(true);
       // } else {
       //   setMessage(false);
-    } else {
+    } 
+    
+    else {
       axios
         .post("http://localhost:4000/users/login", login)
 
@@ -69,11 +75,11 @@ export const Login = ({ setIsLogged }) => {
         .catch((err) => {
           console.log(err);
           if (err.response.status === 401) {
-            alert("Usuario no registrado o eliminado");
+            alert("Usuario y/o contraseña incorrecto");
           } else {
             navigate("/error");
           }
-          // setMessageOut("Incorrect user or password");
+           setMessageOut("Contraseña y/o usuario incorrectos");
         });
     }
   };
@@ -97,7 +103,7 @@ export const Login = ({ setIsLogged }) => {
               </div>
 
             <div className="formAuth-login">
-              <label>Dirección de correo electronico</label>
+              <label>Dirección de correo electrónico</label>
               
               <input
                 className="pt-2"
@@ -108,6 +114,7 @@ export const Login = ({ setIsLogged }) => {
                 onChange={handleChange}
               />
               <div style={{color:"darkblue"}}>{message}</div>
+              <div style={{color:"darkblue"}}>{messageOut}</div>
               <br />
 
               <label>Contraseña</label>
@@ -134,7 +141,7 @@ export const Login = ({ setIsLogged }) => {
             </div>
 
             <div>
-              <button className="boton-login" onClick={handleSubmit}>
+              <button className={colorHover} onClick={handleSubmit}>
                 Iniciar sesión
               </button>
             </div>

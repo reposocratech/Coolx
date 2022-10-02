@@ -69,8 +69,8 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                 <img src="/assets/icons/arrow_right.svg" />
               </div>
 
-              <div className="deleteUser ">
-                <Button onClick={deleteUser}>Eliminar usuario</Button>
+              <div>
+                <Button className="deleteUser mt-2" onClick={deleteUser}>Eliminar usuario</Button>
               </div>
             </Col>
 

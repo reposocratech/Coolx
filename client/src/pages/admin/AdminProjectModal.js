@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
+import "./adminprojectmodal.scss"
 
 export const AdminProjectModal = ({ onHide, show, projectModal }) => {
   return (
@@ -22,19 +23,19 @@ export const AdminProjectModal = ({ onHide, show, projectModal }) => {
               </Col>
               <Col xs={6} md={4}>
                 <Row>
-                  <p>Localización: {projectModal.location}</p>
+                  <p><b>Localización:</b> {projectModal.location}</p>
                 </Row>
                 <Row>
-                  <p>Altitud: {projectModal.altitude}</p>
+                  <p><b>Altitud:</b> {projectModal.altitude}</p>
                 </Row>
                 <Row>
-                  <p>Latitud: {projectModal.latitude}</p>
+                  <p><b>Latitud:</b> {projectModal.latitude}</p>
                 </Row>
                 <Row>
-                  <p>Hectáreas: {projectModal.area}</p>
+                  <p><b>Hectáreas:</b> {projectModal.area}</p>
                 </Row>
                 <Row>
-                  <p>Año de plantación: {projectModal.year_planting}</p>
+                  <p><b>Año de plantación:</b> {projectModal.year_planting}</p>
                 </Row>
               </Col>
             </Row>
@@ -43,14 +44,14 @@ export const AdminProjectModal = ({ onHide, show, projectModal }) => {
           {projectModal && (
             <Row>
               <Col xs={6} md={4}>
-                <p>Ganancia: {projectModal.profit} $</p>
+                <p><b>Ganancia</b>: {projectModal.profit} $</p>
               </Col>
               <Col xs={6} md={4}>
-                <p>Costos: {projectModal.project_cost} $</p>
+                <p><b>Costos: </b>{projectModal.project_cost} $</p>
               </Col>
               <Col xs={6} md={4}>
                 <p>
-                  Estado:{" "}
+                  <b>Estado:{" "}</b>
                   {projectModal.status === 0
                     ? "Registrado"
                     : projectModal.status === 1
@@ -63,7 +64,7 @@ export const AdminProjectModal = ({ onHide, show, projectModal }) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
+        <Button className="exit-info-modal" onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   );

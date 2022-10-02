@@ -6,6 +6,14 @@ import axios from "axios";
 import { Footer } from "../home/Footer";
 
 export const Register = () => {
+
+  const [message, setMessage] = useState("");
+  const [messagePassword, setMessagePassword] = useState("")
+  const [checkPass, setCheckPass] = useState({
+    pass:""
+  });
+
+
   const [newUser, setNewUser] = useState({
     user_name: "",
     surname: "",
@@ -20,9 +28,10 @@ export const Register = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setMessage("");
     // console.log(name, value);
-
     setNewUser({ ...newUser, [name]: value });
+    setMessagePassword("")
 
     // console.log(newUser);
   };
@@ -30,6 +39,16 @@ export const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+      if(newUser.name === "" || newUser.surname === "" || newUser.email === "" || newUser.phone === "" || newUser.password === "" || newUser.company === "" || newUser.nif === ""){
+        setMessage("Debe completar todos los campos!")
+      } 
+      console.log("ESTE ES NEWUSER "+ newUser.password, "ESTE ES CHEKCPASS"+ checkPass.pass);
+        if(newUser.password !== checkPass.pass){
+        setMessagePassword("LAS CONSTRASEÑAS DEBEN SER IGUALES")
+        console.log("CONTRASEÑA DONT MATCH");
+     } 
+
+     else {
     axios
       .post("http://localhost:4000/users/registrocoolx", newUser)
       .then((res) => {
@@ -44,7 +63,18 @@ export const Register = () => {
           navigate("/error");
         }
       });
+    }
   };
+
+  
+
+  const handleChangePass = (e) => {
+    const { name, value } = e.target;
+    setCheckPass({...checkPass, [name]: value });
+    // console.log("REPITE CONTRASEÑA");
+
+  }
+
 
   // PARA MENSAJE
   // const { name, email, password } = register;
@@ -78,7 +108,8 @@ export const Register = () => {
                       value={newUser.user_name}
                       onChange={handleChange}
                     />
-
+                    <div style={{color:"darkblue"}}>{message}</div>
+            
                     <Form.Label className="labels-form mt-3 mb-2">
                       Apellido
                     </Form.Label>
@@ -89,7 +120,7 @@ export const Register = () => {
                       value={newUser.surname}
                       onChange={handleChange}
                     />
-
+                    <div style={{color:"darkblue"}}>{message}</div>
                     <Form.Label className="labels-form mt-3 mb-2">
                       Email
                     </Form.Label>
@@ -100,6 +131,7 @@ export const Register = () => {
                       value={newUser.email}
                       onChange={handleChange}
                     />
+                    <div style={{color:"darkblue"}}>{message}</div>
 
                     <Form.Label className="labels-form mt-3 mb-2">
                       Teléfono
@@ -111,6 +143,7 @@ export const Register = () => {
                       value={newUser.phone}
                       onChange={handleChange}
                     />
+                    <div style={{color:"darkblue"}}>{message}</div>
 
                     <Form.Label className="labels-form mt-3 mb-2">
                       Contraseña
@@ -122,11 +155,21 @@ export const Register = () => {
                       value={newUser.password}
                       onChange={handleChange}
                     />
+                    <div style={{color:"darkblue"}}>{message}</div>
+                    <div style={{color:"darkblue"}}>{messagePassword}</div>
 
-                    {/* <Form.Label className="labels-form mt-3 mb-2">
+                    <Form.Label className="labels-form mt-3 mb-2">
                     Repite la contraseña
-                  </Form.Label>
-                  <Form.Control type="text" name="pass" autoComplete="off" /> */}
+                    </Form.Label>
+                    <Form.Control 
+                    type="password"
+                    name="pass"
+                    autoComplete="off"
+                    value={checkPass.pass}
+                    onChange={handleChangePass} 
+                    />
+                    <div style={{color:"darkblue"}}>{message}</div>
+                    {/* <div style={{color:"darkblue"}}>{messagePassword}</div> */}
 
                     <Form.Label className="labels-form mt-3 mb-2">
                       Nombre de la empresa
@@ -138,6 +181,7 @@ export const Register = () => {
                       value={newUser.company}
                       onChange={handleChange}
                     />
+                    <div style={{color:"darkblue"}}>{message}</div>
 
                     <Form.Label className="labels-form mt-3 mb-2">
                       N.I.F
@@ -149,6 +193,7 @@ export const Register = () => {
                       value={newUser.nif}
                       onChange={handleChange}
                     />
+                    <div style={{color:"darkblue"}}>{message}</div>
 
                     <div>
                       <Button className="button-form" onClick={handleSubmit}>

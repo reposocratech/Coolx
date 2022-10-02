@@ -10,8 +10,12 @@ import {
   FloatingLabel,
   Container,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export const ContactForm = () => {
+
+  const [message, setMessage] = useState("")
+
   const [user, setUser] = useState({
     userName: "",
     email: "",
@@ -19,18 +23,27 @@ export const ContactForm = () => {
     userMessage: "",
   });
 
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setUser({ ...user, [name]: value });
+    setMessage("")
   };
 
   const handleSend = (e) => {
     e.preventDefault();
+    if(user.name === "" || user.email === "" || user.phone === "" || user.userMessage === "") {
+      setMessage("Los campos deben estar completos")
+    } else {
     axios.post("http://localhost:4000/contact",user)
-    .then((res) => console.log(res) )
+    .then((res) => {
+      console.log(res);
+      navigate("/succes3")
+    })
     .catch((err) => console.log(err))
-
+    }
   };
 
   return (
@@ -56,6 +69,7 @@ export const ContactForm = () => {
                     value={user.username}
                     onChange={handleChange}
                   />
+                   <div style={{color:"darkblue"}}>{message}</div>
 
                   <Form.Label className="labels-form mt-3 mb-2">
                     Email
@@ -67,6 +81,7 @@ export const ContactForm = () => {
                     value={user.email}
                     onChange={handleChange}
                   />
+                   <div style={{color:"darkblue"}}>{message}</div>
 
                   <Form.Label className="labels-form mt-3 mb-2">
                     Teléfono
@@ -78,6 +93,7 @@ export const ContactForm = () => {
                     value={user.phone}
                     onChange={handleChange}
                   />
+                   <div style={{color:"darkblue"}}>{message}</div>
 
                   <Form.Label className="labels-form mt-3 mb-2">
                     Mensaje
@@ -92,6 +108,7 @@ export const ContactForm = () => {
                       onChange={handleChange}
                       style={{ height: "100px" }}
                     />
+                     <div style={{color:"darkblue"}}>{message}</div>
                   </FloatingLabel>
 
                   <div>

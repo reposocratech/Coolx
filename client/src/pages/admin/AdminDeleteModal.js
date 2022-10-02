@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
+import "./admindeletemodal.scss"
 
 export const AdminDeleteModal = ({
   setModalDelete,
@@ -37,11 +38,11 @@ export const AdminDeleteModal = ({
         </h5>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onHide}>
+        <Button className="exit-modal" onClick={onHide}>
           Cancelar
         </Button>
         <Button
-          variant="primary"
+          className="delete-project-modal"
           onClick={() => handleSubmit(projectModal.project_id)}
         >
           Eliminar

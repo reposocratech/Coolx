@@ -33,3 +33,56 @@
   color: white;
   height: 76px;
 }
+
+.cont-avatar {
+  display: flex;
+  align-items: center;
+
+  .avatar-user {
+    display: flex;
+    align-items: baseline;
+
+    button {
+      background-color: transparent;
+      width: 44px;
+      height: 44px;
+      padding: 5px;
+      margin-left: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #39B5FF;
+      border-radius: 50px;
+      border: none;
+    }
+
+
+    h3 {
+      margin-bottom: 0 !important;
+    }
+
+  }
+
+  .options-user {
+    display: flex;
+    flex-direction: column;
+
+    .logout,
+    .edit {
+      background-color: transparent;
+      border: none;
+
+      p {
+        font-size: 12px;
+        margin-bottom: 0;
+      }
+
+    }
+
+    .logout:hover,
+    .edit:hover {
+      background-color: transparent !important;
+    }
+  }
+
+}
