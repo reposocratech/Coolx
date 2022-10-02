@@ -4,10 +4,8 @@ import { Col, Container, Row, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import "./tarjeta.scss";
 
-export const Tarjeta = ({ projects }) => {
+export const Tarjeta = ({ projects, buyProject, setBuyProject }) => {
   const navigate = useNavigate();
-
-
 
 
   // console.log(projects);
@@ -17,6 +15,7 @@ export const Tarjeta = ({ projects }) => {
       .get(`http://localhost:4000/project/${project.project_id}`)
       .then((res) => {
         // console.log(res);
+        setBuyProject(project);
         navigate(`/project/${project.project_id}`);
       })
       .catch((err) => {
@@ -77,13 +76,23 @@ export const Tarjeta = ({ projects }) => {
                   </Row>
 
                   <Row>
-                    <Col>
+                    <Col md={10}>
                       <Button
                         className="p-card-button"
                         onClick={() => handleSend(project)}
                       >
                         Ver más
                       </Button>
+                    </Col>
+                    <Col md={2} className="d-flex align-items-center">
+                      <p className="p-card-status">
+                        {projects &&
+                          (project.status === 0
+                            ? "Registrado"
+                            : project.status === 1
+                            ? "Calculando"
+                            : "Completado")}
+                      </p>
                     </Col>
                   </Row>
                 </Col>

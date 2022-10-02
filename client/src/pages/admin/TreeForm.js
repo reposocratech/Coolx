@@ -14,12 +14,34 @@ export const TreeForm = () => {
     avg_biomass: "",
     avg_age: "",
   });
+  const [submitButton, setSubmitButton] = useState(false);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewTree({ ...newTree, [name]: value });
+
+    const {
+      tree_name,
+      latin_name,
+      avg_height_tree,
+      avg_crown_area,
+      avg_biomass,
+      avg_age,
+    } = newTree;
+    if (
+      tree_name &&
+      latin_name &&
+      avg_height_tree &&
+      avg_crown_area &&
+      avg_biomass &&
+      avg_age
+    ) {
+      setSubmitButton(true);
+    } else {
+      setSubmitButton(false);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -141,9 +163,15 @@ export const TreeForm = () => {
 
           <Row>
             <Col className="contenedor-boton-tree">
-              <button className="button-send" onClick={handleSubmit}>
-                Guardar datos
-              </button>
+              {!submitButton ? (
+                <div className="button-send bt-disabled text-center">
+                  Guardar datos
+                </div>
+              ) : (
+                <Button className="button-send show-bt" onClick={handleSubmit}>
+                  Guardar datos
+                </Button>
+              )}
             </Col>
           </Row>
         </Container>

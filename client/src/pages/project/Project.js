@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Footer } from "../home/Footer";
 
-export const Project = () => {
+export const Project = ({user,}) => {
   const [projectInfo, setProjectInfo] = useState();
 
   const navigate = useNavigate();

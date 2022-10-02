@@ -2,14 +2,15 @@ const connection = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const puppeteer = require ('puppeteer');
 
 class projectControllers {
   // Crear nuevo proyecto
   // localhost:4000/project/newProject/:user_id
 
   createNewProject = (req, res) => {
-    console.log(req.body.newProject);
-
+    // console.log(req.body.newProject);
+    console.log(req.params);
     const data = JSON.parse(req.body.newProject);
 
     console.log(data);
@@ -76,9 +77,9 @@ class projectControllers {
   // Editar proyecto
   // localhost:4000/project/editProject/:project_id
   editProject = (req, res) => {
-      let project_id = req.params.project_id;
-      console.log(project_id);
-      console.log(req.body, "ESTO ES EL BODY");
+    let project_id = req.params.project_id;
+    console.log(project_id);
+    console.log(req.body, "ESTO ES EL BODY");
     const {
       project_name,
       project_description,
@@ -89,13 +90,12 @@ class projectControllers {
       profit,
       project_cost,
     } = req.body;
-    
-    
+
     let sql = `UPDATE project SET project_name='${project_name}', project_description='${project_description}', location = '${location}', altitude = '${altitude}', latitude = '${latitude}', area = ${area}, profit = ${profit}, project_cost = ${project_cost}  WHERE project_id = ${project_id}`;
     console.log(sql);
 
     connection.query(sql, (error, result) => {
-      if(error) throw error;
+      if (error) throw error;
       error ? res.status(400).json({ error }) : res.status(200).json(req.body);
     });
   };
@@ -166,15 +166,56 @@ class projectControllers {
   // Mostrar los proyectos solo de los administradores
   // localhost:4000/project/onlyAdmin
   onlyAdmin = (req, res) => {
-    let sql = `SELECT * FROM project WHERE user_id = 2`;
+    // let sql = `SELECT * FROM project WHERE user_id = 2`;
+
+    let sql = `select * from project, user
+    where project.user_id = user.user_id
+    and user.user_type = 1 group by project.project_id`;
+
     connection.query(sql, (error, result) => {
-      if(error) {
-        res.status(400).json({error});
+      if (error) {
+        res.status(400).json({ error });
         console.log(error);
       }
       res.status(200).json(result);
     });
-  }; 
-};
+
+  };
+
+
+  // Generar PDF de un proyecto
+  // localhost:4000/project/:project_id/pdf
+  getPdf = async(req, res) => {
+
+    // Create a browser instance
+    const browser = await puppeteer.launch({ headless: false });
+
+    // Create a new page
+    const page = await browser.newPage();
+
+    // Website URL to export as pdf
+    const website_url = 'https://coolx.earth/';
+
+    // Open URL in current page
+    await page.goto(website_url, { waitUntil: 'domcontentloaded' });
+
+    //To reflect CSS used for screens instead of print
+    await page.emulateMediaType('screen');
+
+    // Download the PDF
+    const pdf = await page.pdf({
+      path: 'result.pdf',
+      margin: { top: '100px', right: '50px', bottom: '100px', left: '50px' },
+      printBackground: true,
+      format: 'A4',
+    });
+
+    // Close the browser instance
+    await browser.close();
+
+  };
+
+}
+
 
 module.exports = new projectControllers();

@@ -5,7 +5,7 @@ import "./errorpage.scss";
 
 export const Succes2 = ({ projects }) => {
   const navigate = useNavigate();
-  console.log(projects[projects.length - 1]);
+  // console.log(projects[projects.length - 1]);
   return (
     <div>
       <Container fluid className="fondo-error">

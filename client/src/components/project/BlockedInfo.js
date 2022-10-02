@@ -44,12 +44,11 @@ export const BlockedInfo = ({ projectInfo }) => {
               (projectInfo[0].status === 0 ? (
                 <Button
                   className="buttonBlock buy-data"
-                  onClick={() =>
-                    navigate(
-                      `/projectcompleted/${projectInfo[0].project_id}/info`
-                    )
-                  }
+                  onClick={() =>navigate("/stripe")
+                  // `/projectcompleted/${projectInfo[0].project_id}/info`
+                }
                 >
+                  
                   Desbloquear todos los datos
                 </Button>
               ) : projectInfo[0].status === 1 ? (

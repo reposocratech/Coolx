@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -7,14 +7,17 @@ import Row from "react-bootstrap/Row";
 import { useNavigate } from 'react-router-dom';
 import "./buymodal.scss"
 
-export const BuyModal = ({onHide, show, setModalBuy}) => {
 
-const handleClick = () => {
+export const BuyModal = ({ onHide, show }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
     navigate("/projectform");
-}
+  };
 
-const handleClick2 = () => {
+  const handleClick2 = () => {
     navigate("/buyproject");
+
 }
 
 const navigate = useNavigate();
@@ -55,3 +58,4 @@ const navigate = useNavigate();
         </Modal>
       );
     };
+
