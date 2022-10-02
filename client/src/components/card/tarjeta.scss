@@ -80,5 +80,17 @@
       line-height: 140%;
       text-align: center;
     }
+    .p-card-button:hover {
+      background-color: white !important;
+      color: #09427d !important;
+      box-shadow: inset 0 0 0 2px #70bfcb;
+    }
+    .p-card-status {
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 140%;
+      margin: 0pc;
+      color: #09427d;
+    }
   }
 }

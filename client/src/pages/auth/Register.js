@@ -16,6 +16,8 @@ export const Register = () => {
     nif: "",
   });
 
+  const [submitButton, setSubmitButton] = useState(false);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -25,6 +27,14 @@ export const Register = () => {
     setNewUser({ ...newUser, [name]: value });
 
     // console.log(newUser);
+
+    const { user_name, surname, email, phone, password, company, nif } =
+      newUser;
+    if (user_name && surname && email && phone && password && company && nif) {
+      setSubmitButton(true);
+    } else {
+      setSubmitButton(false);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -34,6 +44,15 @@ export const Register = () => {
       .post("http://localhost:4000/users/registrocoolx", newUser)
       .then((res) => {
         console.log(res);
+        setNewUser({
+          user_name: "",
+          surname: "",
+          email: "",
+          phone: "",
+          password: "",
+          company: "",
+          nif: "",
+        });
         navigate("/succes1");
       })
       .catch((err) => {
@@ -151,9 +170,18 @@ export const Register = () => {
                     />
 
                     <div>
-                      <Button className="button-form" onClick={handleSubmit}>
-                        Enviar
-                      </Button>
+                      {!submitButton ? (
+                        <div className="button-form bf-disabled text-center">
+                          Enviar
+                        </div>
+                      ) : (
+                        <Button
+                          className="button-form show-bf"
+                          onClick={handleSubmit}
+                        >
+                          Enviar
+                        </Button>
+                      )}
                     </div>
                   </Form>
                 </Form.Group>

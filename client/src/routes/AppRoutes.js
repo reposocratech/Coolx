@@ -1,6 +1,6 @@
 import { Project } from "../pages/project/Project";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";      
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavBarMain } from "../components/navBar/NavBarMain";
 import { Login } from "../pages/auth/Login";
 import { Home } from "../pages/home/Home";
@@ -13,24 +13,23 @@ import { User } from "../pages/user/User";
 import { Admin } from "../pages/admin/Admin";
 import { ErrorPage } from "../pages/home/ErrorPage";
 import { Tarjetamas } from "../components/card/Tarjetamas";
-import { Vegetation } from "../components/vegetation/Vegetation";     
-import { ContactForm } from "../components/forms/ContactForm";        
+import { Vegetation } from "../components/vegetation/Vegetation";
+import { ContactForm } from "../components/forms/ContactForm";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
-import { ProjectForm } from "../components/forms/ProjectForm";        
+import { ProjectForm } from "../components/forms/ProjectForm";
 import { Succes1 } from "../pages/home/Succes1";
 import { Succes2 } from "../pages/home/Sucess2";
 import { EditUser } from "../pages/user/EditUser";
 import { AdminUsers } from "../pages/admin/AdminUsers";
 import { AdminTree } from "../pages/admin/AdminTree";
 import { TreeForm } from "../pages/admin/TreeForm";
-import { AdminProjectState } from "../pages/admin/AdminProjectState"; 
+import { AdminProjectState } from "../pages/admin/AdminProjectState";
 import { SuccesPayment } from "../pages/home/SuccesPayment";
 
 // /*import { Tarjeta } from "../components/card/Tarjeta";*/
 import { BuyProject } from "../pages/user/BuyProject";
 // import { ProjectCompleted } from "../pages/project/ProjectCompleted";
-
 
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 import { Stripe } from "../components/stripe/Stripe";
@@ -43,7 +42,7 @@ export const AppRoutes = () => {
 
   const [resetUser, setResetUser] = useState(false);
 
-  //información de todos los proyectos del usuario que se ha logueado 
+  //información de todos los proyectos del usuario que se ha logueado
   const [projects, setProjects] = useState(false);
 
   //esto es para modificar usuarios
@@ -104,7 +103,6 @@ export const AppRoutes = () => {
             path="/admintree"
             element={<AdminTree setIsLogged={setIsLogged} />}
           />
-
           <Route
             path="/adminusers"
             element={
@@ -120,9 +118,10 @@ export const AppRoutes = () => {
           <Route path="/*" element={<ErrorPage />} />
           <Route
             path="/adminprojectstate"
-            element={<AdminProjectState user={user} setIsLogged={setIsLogged}  />}
+            element={
+              <AdminProjectState user={user} setIsLogged={setIsLogged} />
+            }
           />
-
           <Route path="/admin" element={<Admin />} />
           <Route
             path="/admintree"
@@ -133,7 +132,6 @@ export const AppRoutes = () => {
 
           {/* <Route path="/tarjeta" element={<Tarjeta oneProject={oneProject} setOneProject={setOneProject}/>} /> */}
 
-          
           <Route
             path="/tarjetamas"
             element={<Tarjetamas projects={projects} />}
@@ -143,7 +141,6 @@ export const AppRoutes = () => {
             element={<BuyProject user={user} buyProject={buyProject} setBuyProject={setBuyProject}/>}
           />
           <Route path="/vegetation" element={<Vegetation />} />
-
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
           <Route
@@ -153,8 +150,6 @@ export const AppRoutes = () => {
                 user={user}
                 projects={projects}
                 setProjects={setProjects}
-                resetUser={resetUser}
-                setResetUser={setResetUser}
               />
             }
           />
@@ -177,19 +172,20 @@ export const AppRoutes = () => {
           <Route path="/stripe" element={<Stripe buyProject={buyProject} user={user}/>} />
 
 
-          
+       
 
           <Route path="/user" element={<User />}>
             <Route
               path=""
-              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} />}            />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} />} />
             <Route
               path="myprojects"
-              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject}/>}            />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject}/>} />
+
 
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
-            <Route path="myaccount" element={<MyAccount />} />        
+            <Route path="myaccount" element={<MyAccount />} />
           </Route>
 
           <Route
