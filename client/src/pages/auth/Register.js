@@ -23,7 +23,11 @@ export const Register = () => {
     company: "",
     nif: "",
   });
-
+  const [message, setMessage] = useState("");
+  const [messagePassword, setMessagePassword] = useState("");
+  const [checkPass, setCheckPass] = useState({
+    pass: "",
+  });
   const [submitButton, setSubmitButton] = useState(false);
 
   const navigate = useNavigate();
@@ -32,10 +36,11 @@ export const Register = () => {
     const { name, value } = e.target;
     setMessage("");
     // console.log(name, value);
+
+    setMessage("");
+
     setNewUser({ ...newUser, [name]: value });
     setMessagePassword("")
-
-    // console.log(newUser);
 
     const { user_name, surname, email, phone, password, company, nif } =
       newUser;
@@ -49,40 +54,57 @@ export const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-      if(newUser.name === "" || newUser.surname === "" || newUser.email === "" || newUser.phone === "" || newUser.password === "" || newUser.company === "" || newUser.nif === ""){
-        setMessage("Debe completar todos los campos!")
-      } 
-      console.log("ESTE ES NEWUSER "+ newUser.password, "ESTE ES CHEKCPASS"+ checkPass.pass);
-        if(newUser.password !== checkPass.pass){
-        setMessagePassword("LAS CONSTRASEÑAS DEBEN SER IGUALES")
-        console.log("CONTRASEÑA DONT MATCH");
-     } 
 
-     else {
-    axios
-      .post("http://localhost:4000/users/registrocoolx", newUser)
-      .then((res) => {
-        console.log(res);
-        setNewUser({
-          user_name: "",
-          surname: "",
-          email: "",
-          phone: "",
-          password: "",
-          company: "",
-          nif: "",
-        });
-        navigate("/succes1");
-      })
-      .catch((err) => {
-        // console.log(err);
-        if (err.response.data.error.errno === 1062) {
-          alert("Email or N.I.F already exist");
-        } else {
-          navigate("/error");
-        }
-      });
+    if (
+      newUser.name === "" ||
+      newUser.surname === "" ||
+      newUser.email === "" ||
+      newUser.phone === "" ||
+      newUser.password === "" ||
+      newUser.company === "" ||
+      newUser.nif === ""
+    ) {
+      setMessage("Debe completar todos los campos!");
     }
+    console.log(
+      "ESTE ES NEWUSER " + newUser.password,
+      "ESTE ES CHEKCPASS" + checkPass.pass
+    );
+    if (newUser.password !== checkPass.pass) {
+      setMessagePassword("LAS CONSTRASEÑAS DEBEN SER IGUALES");
+      console.log("CONTRASEÑA DONT MATCH");
+    } else {
+      axios
+        .post("http://localhost:4000/users/registrocoolx", newUser)
+        .then((res) => {
+          console.log(res);
+          setNewUser({
+            user_name: "",
+            surname: "",
+            email: "",
+            phone: "",
+            password: "",
+            company: "",
+            nif: "",
+          });
+          navigate("/succes1");
+        })
+        .catch((err) => {
+          // console.log(err);
+          if (err.response.data.error.errno === 1062) {
+            alert("Email or N.I.F already exist");
+          } else {
+            navigate("/error");
+          }
+        });
+    }
+  };
+
+  const handleChangePass = (e) => {
+    const { name, value } = e.target;
+    setCheckPass({ ...checkPass, [name]: value });
+    // console.log("REPITE CONTRASEÑA");
+
   };
 
   
@@ -119,100 +141,132 @@ export const Register = () => {
 
                 <Form.Group controlId="contactForm">
                   <Form className="d-flex flex-column">
-                    <Form.Label className="labels-form">Nombre</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="user_name"
-                      autoComplete="off"
-                      value={newUser.user_name}
-                      onChange={handleChange}
-                    />
-                    <div style={{color:"darkblue"}}>{message}</div>
-            
-                    <Form.Label className="labels-form mt-3 mb-2">
-                      Apellido
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="surname"
-                      autoComplete="off"
-                      value={newUser.surname}
-                      onChange={handleChange}
-                    />
-                    <div style={{color:"darkblue"}}>{message}</div>
-                    <Form.Label className="labels-form mt-3 mb-2">
-                      Email
-                    </Form.Label>
-                    <Form.Control
-                      type="email"
-                      name="email"
-                      autoComplete="off"
-                      value={newUser.email}
-                      onChange={handleChange}
-                    />
-                    <div style={{color:"darkblue"}}>{message}</div>
 
-                    <Form.Label className="labels-form mt-3 mb-2">
-                      Teléfono
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="phone"
-                      autoComplete="off"
-                      value={newUser.phone}
-                      onChange={handleChange}
-                    />
-                    <div style={{color:"darkblue"}}>{message}</div>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Label className="labels-form">Nombre</Form.Label>
+                        <Form.Control
+                          className="mb-3"
+                          type="text"
+                          name="user_name"
+                          autoComplete="off"
+                          value={newUser.user_name}
+                          onChange={handleChange}
+                        />
+                        <div style={{ color: "darkblue" }}>{message}</div>
+                      </Col>
 
-                    <Form.Label className="labels-form mt-3 mb-2">
-                      Contraseña
-                    </Form.Label>
-                    <Form.Control
-                      type="password"
-                      name="password"
-                      autoComplete="off"
-                      value={newUser.password}
-                      onChange={handleChange}
-                    />
-                    <div style={{color:"darkblue"}}>{message}</div>
-                    <div style={{color:"darkblue"}}>{messagePassword}</div>
+                      <Col md={6}>
+                        <Form.Label className="labels-form mb-2">
+                          Apellido
+                        </Form.Label>
+                        <Form.Control
+                          className="mb-3"
+                          type="text"
+                          name="surname"
+                          autoComplete="off"
+                          value={newUser.surname}
+                          onChange={handleChange}
+                        />
+                        <div style={{ color: "darkblue" }}>{message}</div>
+                      </Col>
 
-                    <Form.Label className="labels-form mt-3 mb-2">
-                    Repite la contraseña
-                    </Form.Label>
-                    <Form.Control 
-                    type="password"
-                    name="pass"
-                    autoComplete="off"
-                    value={checkPass.pass}
-                    onChange={handleChangePass} 
-                    />
-                    <div style={{color:"darkblue"}}>{message}</div>
-                    {/* <div style={{color:"darkblue"}}>{messagePassword}</div> */}
+                      <Col md={6}>
+                        <div style={{ color: "darkblue" }}>{message}</div>
+                        <Form.Label className="labels-form mb-2">
+                          Nombre de la empresa
+                        </Form.Label>
+                        <Form.Control
+                          className="mb-3"
+                          type="text"
+                          name="company"
+                          autoComplete="off"
+                          value={newUser.company}
+                          onChange={handleChange}
+                        />
+                        <div style={{ color: "darkblue" }}>{message}</div>
+                      </Col>
 
-                    <Form.Label className="labels-form mt-3 mb-2">
-                      Nombre de la empresa
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="company"
-                      autoComplete="off"
-                      value={newUser.company}
-                      onChange={handleChange}
-                    />
-                    <div style={{color:"darkblue"}}>{message}</div>
+                      <Col md={6}>
+                        <Form.Label className="labels-form mb-2">
+                          N.I.F
+                        </Form.Label>
+                        <Form.Control
+                          className="mb-3"
+                          type="text"
+                          name="nif"
+                          autoComplete="off"
+                          value={newUser.nif}
+                          onChange={handleChange}
+                        />
+                        <div style={{ color: "darkblue" }}>{message}</div>
+                      </Col>
+                    </Row>
 
-                    <Form.Label className="labels-form mt-3 mb-2">
-                      N.I.F
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="nif"
-                      autoComplete="off"
-                      value={newUser.nif}
-                      onChange={handleChange}
-                    />
-                    <div style={{color:"darkblue"}}>{message}</div>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Label className="labels-form mb-2">
+                          Email
+                        </Form.Label>
+                        <Form.Control
+                          className="mb-3"
+                          type="email"
+                          name="email"
+                          autoComplete="off"
+                          value={newUser.email}
+                          onChange={handleChange}
+                        />
+                        <div style={{ color: "darkblue" }}>{message}</div>
+                      </Col>
+
+                      <Col md={6}>
+                        <Form.Label className="labels-form mb-2">
+                          Teléfono
+                        </Form.Label>
+                        <Form.Control
+                          className="mb-3"
+                          type="text"
+                          name="phone"
+                          autoComplete="off"
+                          value={newUser.phone}
+                          onChange={handleChange}
+                        />
+                        <div style={{ color: "darkblue" }}>{message}</div>
+                      </Col>
+
+                      <Col md={6}>
+                        <Form.Label className="labels-form mb-2">
+                          Contraseña
+                        </Form.Label>
+                        <Form.Control
+                          className="mb-3"
+                          type="password"
+                          name="password"
+                          autoComplete="off"
+                          value={newUser.password}
+                          onChange={handleChange}
+                        />
+                        <div style={{ color: "darkblue" }}>{message}</div>
+                        <div style={{ color: "darkblue" }}>
+                          {messagePassword}
+                        </div>
+                      </Col>
+
+                      <Col md={6}>
+                        <Form.Label className="labels-form mb-2">
+                          Repite la contraseña
+                        </Form.Label>
+                        <Form.Control
+                          className="mb-3"
+                          type="password"
+                          name="pass"
+                          autoComplete="off"
+                          value={checkPass.pass}
+                          onChange={handleChangePass}
+                        />
+                      </Col>
+                    </Row>
+
 
                     <div>
                       {!submitButton ? (
