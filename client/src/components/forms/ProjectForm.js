@@ -270,6 +270,7 @@ export const ProjectForm = ({ user }) => {
             </div>
           </Row>
 
+
           <Row>
             <div>
               <Col className="colocar-create mb-5">
@@ -288,6 +289,7 @@ export const ProjectForm = ({ user }) => {
               </Col>
             </div>
           </Row>
+
         </Container>
       </div>
 

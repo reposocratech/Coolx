@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Col, Container, Row, Button } from "react-bootstrap";
-import "./allusers.scss";
+import "./adminusers.scss";
 import Table from "react-bootstrap/Table";
 import { AdminUsersInfo } from "../../components/modal/AdminUsersInfo";
 import { Footer } from "../home/Footer";
@@ -91,8 +91,8 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
             </Col>
           </Row>
 
-          <Row>
-            <Table striped>
+          <Row className="m-0">
+            <Table striped className="table-allusers">
               <thead>
                 <tr>
                   <th>#</th>
@@ -119,13 +119,13 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
                       <td>{usuario.phone}</td>
                       <td>{usuario.email}</td>
                       <td>
-                        <Button onClick={()=>{
+                        <Button className="info-users" onClick={()=>{
                             handleModal(usuario);
                         }
                           } >Información restante</Button>
                       </td>
                       <td>
-                        <Button onClick={()=> {
+                        <Button className="edit-users" onClick={()=> {
                             console.log(usuario);
                             setUserModificate(usuario)
                             // navigate(`/getEditUser/${usuario.user_id}`)

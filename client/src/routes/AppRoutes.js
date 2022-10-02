@@ -33,6 +33,7 @@ import { BuyProject } from "../pages/user/BuyProject";
 
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 import { Stripe } from "../components/stripe/Stripe";
+import { Succes3 } from "../pages/home/Succes3";
 
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -91,6 +92,8 @@ export const AppRoutes = () => {
           setIsLogged={setIsLogged}
           user={user}
           setUser={setUser}
+          userModificate={userModificate}
+          setUserModificate={setUserModificate}
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -168,6 +171,7 @@ export const AppRoutes = () => {
             path="/succespayment"
             element={<SuccesPayment projects={projects} />}
           />
+          <Route path="/succes3" element={<Succes3/> } />
 
           <Route path="/stripe" element={<Stripe buyProject={buyProject} user={user}/>} />
 

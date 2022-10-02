@@ -42,36 +42,42 @@ export const NavBarMain = ({
 
             {!isLogged ? (
               <div>
-                <Button className="me-3" onClick={() => navigate(`/login`)}>
+                <Button className="boton-sesion me-3" onClick={() => navigate(`/login`)}>
                   Iniciar Sesion
                 </Button>
               </div>
             ) : (
               <>
-                {user && (
+                {user && ( 
                   <>
                     {user && (
-                      <div className="letra me-2">
-                        <h3>{user.user_name[0]}</h3>
+                      <div className="cont-avatar">
+
+                        <img className="me-3" src="/assets/icons/bell.svg"/>
+                        {user && user.user_name}
+                        
+                        <div className="avatar-user me-2">
+                          
+                          <Button  onClick={handleNavigate}>
+                            <h3>{user.user_name[0]}</h3>
+                          </Button>
+                        </div>
+
+                        <div className="options-user">
+                          <Button className="logout" onClick={handleLogout}>
+                           <p>Logout</p>
+                          </Button>
+
+                          <Button className="edit" >
+                            <p>Editar</p>
+                          </Button> 
+                        </div>
                       </div>
                     )}
                   </>
                 )}
 
-                <Button
-                  className="me-2"
-                  variant="warning"
-                  onClick={handleNavigate}
-                >
-                  Perfil de: {user && user.user_name}
-                </Button>
-                <Button variant="warning" onClick={handleLogout}>
-                  Logout
-                </Button>
-
-                <Button variant="warning" onClick={()=> navigate("/edituser")}>
-                Editar
-              </Button>
+                
               </>
             )}
 

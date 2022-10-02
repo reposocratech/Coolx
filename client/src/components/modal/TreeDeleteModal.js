@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
+import "./treedeletemodal.scss"
 
 export const TreeDeleteModal = ({ 
     onHide, 
@@ -40,11 +41,11 @@ export const TreeDeleteModal = ({
       </h5>
     </Modal.Body>
     <Modal.Footer>
-      <Button variant="secondary" onClick={onHide}>
+      <Button className="exit-delete-tree" onClick={onHide}>
         Cancelar
       </Button>
       <Button
-        variant="primary"
+        className="save-delete-tree"
         onClick={() => deleteTree(treeModal.tree_id)}
       >
         Eliminar

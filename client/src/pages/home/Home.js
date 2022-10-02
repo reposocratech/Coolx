@@ -37,7 +37,7 @@ export const Home = () => {
               <NavBarProject />
             </Col>
 
-            <Col md={12} sm={1} className="infoRegProject" id="regProject">
+            <Col md={12} sm={12} className="infoRegProject" id="regProject">
               <div className="wrapperRegProject">
                 <Row>
                   <Col md={6} sm={12} className="topInfoRegProject">
