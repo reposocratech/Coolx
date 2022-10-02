@@ -248,7 +248,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                                 alt="Edit project state"
                               />
                             </Button>
-                          </div>
+                        </div>
                         </td>
                         <td>
                           <div>
@@ -263,6 +263,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                         </td>
 
                         <td>
+                          <div>
                           <Button
                             type="button"
                             onClick={() => handleDeleteModal(project)}
