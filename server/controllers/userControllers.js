@@ -129,7 +129,7 @@ class userController {
   // localhost:4000/users/editUser/:user_id
   editUser = (req, res) => {
     let user_id = req.params.user_id;
-
+    
     const {
       user_name,
       surname,

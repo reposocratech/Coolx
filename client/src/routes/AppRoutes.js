@@ -34,6 +34,7 @@ import { BuyProject } from "../pages/user/BuyProject";
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
+import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
 
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -48,7 +49,7 @@ export const AppRoutes = () => {
 
   //esto es para modificar usuarios
   const [userModificate, setUserModificate] = useState();
-
+ 
   //esto es para la obtener la información de un proyecto
   const [oneProject, setOneProject] = useState();
 
@@ -87,6 +88,7 @@ export const AppRoutes = () => {
   }, [isLogged, resetUser]);
 
     
+
 
 
 
@@ -218,6 +220,7 @@ export const AppRoutes = () => {
               />
             }
           />
+          <Route path="/editusernavbar" element={<EditUserNavbar user={user}  resetUser={resetUser} setResetUser={setResetUser} />} />
         </Routes>
       </BrowserRouter>
     </div>

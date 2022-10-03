@@ -9,7 +9,7 @@ export const MyProjects = ({ projects, user, setBuyProject, buyProject, setReset
 
   useEffect(() => {
 
-  }, [projects]);
+  }, [projects, images]);
   const [modalBuy, setModalBuy] = useState(false);
 
   useEffect(() => {

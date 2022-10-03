@@ -102,7 +102,7 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
                   <th>País</th>
                   <th>Teléfono</th>
                   <th>Email</th>
-                  <th>Mostrar toda la informacion</th>
+                  <th>Más Info</th>
                   <th>Mas información</th>
                 </tr>
               </thead>
@@ -122,7 +122,7 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
                         <Button className="info-users" onClick={()=>{
                             handleModal(usuario);
                         }
-                          } >Información restante</Button>
+                          } >Más info</Button>
                       </td>
                       <td>
                         <Button className="edit-users" onClick={()=> {
