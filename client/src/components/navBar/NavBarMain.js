@@ -108,6 +108,7 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
                         </Row>
                       </Col>
 
+
                       <Col md={3} className="d-flex align-items-center p-0">
                         <div className="avatar-user me-2">
                           <Button

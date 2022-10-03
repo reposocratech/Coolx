@@ -68,7 +68,6 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                 />
               </div>
 
-
               <div className="iconDeleteUser mt-3">
                 <img
                   className="iconDeleteUser-circle"
@@ -83,7 +82,6 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                   className="iconDeleteUser-arrow"
                   src="/assets/icons/arrow_right.svg"
                 />
-
               </div>
             </Col>
           </Row>
@@ -151,7 +149,9 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           type="text"
                           name="position"
                           autoComplete="off"
-                          value={editUser?.position}
+                          value={
+                            editUser.position != "null" ? editUser.position : ""
+                          }
                           onChange={handleChange}
                         />
 
@@ -176,7 +176,9 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           type="text"
                           name="country"
                           autoComplete="off"
-                          value={editUser?.country}
+                          value={
+                            editUser.country != "null" ? editUser.country : ""
+                          }
                           onChange={handleChange}
                         />
                         <Form.Label className="label-edit mb-2">
@@ -188,7 +190,9 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           type="text"
                           name="currency"
                           autoComplete="off"
-                          value={editUser?.currency}
+                          value={
+                            editUser.currency != "null" ? editUser.currency : ""
+                          }
                           onChange={handleChange}
                         />
                       </Col>
