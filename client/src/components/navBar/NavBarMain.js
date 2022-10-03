@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, Button, Row, Col } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import "./navbar.scss";
 
-export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
+export const NavBarMain = ({ setIsLogged, setUser, user }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -39,7 +39,7 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
                       </p>
                   </Button>
 
-                  {!isLogged &&
+                  {!user &&
                   
                   <Button className="sasa" onClick={() => navigate(`/login`)}>
                        <p>Iniciar sesión</p>
@@ -49,7 +49,7 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
                 </Col>
               </Nav.Link> 
       
-              {isLogged && 
+              {user && 
               <Nav.Link className="sasa" >
                 <Col md={12} >
                      <Button onClick={()=> navigate("/editusernavbar")}>
@@ -58,7 +58,7 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
                 </Col>
               </Nav.Link>}
 
-              {isLogged && 
+              {user && 
               <Nav.Link className="sasa" >
               <Col md={12} >
                 <Button onClick={handleLogout}>
@@ -69,7 +69,7 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
             </Nav>
 
             <Nav className="ms-auto barraBig">
-              {!isLogged ? (
+              {!user ? (
                 <div>
                   <Button
                     className="boton-sesion me-3"

@@ -151,7 +151,9 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           type="text"
                           name="position"
                           autoComplete="off"
-                          value={editUser?.position}
+                          value={
+                            editUser?.position != "null" ? editUser?.position : ""
+                          }
                           onChange={handleChange}
                         />
 
