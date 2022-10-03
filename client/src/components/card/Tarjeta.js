@@ -4,11 +4,11 @@ import { Col, Container, Row, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import "./tarjeta.scss";
 
-export const Tarjeta = ({ projects, buyProject, setBuyProject , setImages}) => {
+export const Tarjeta = ({ projects, setBuyProject }) => {
   const navigate = useNavigate();
 
 
-  // console.log(projects);
+  console.log(projects);
 
 
   const handleSend = (project) => {
@@ -35,7 +35,7 @@ export const Tarjeta = ({ projects, buyProject, setBuyProject , setImages}) => {
             <Container fluid key={project.project_id}>
               <Row className="project-card-container ">
                 <Col lg={5} className="card-img">
-                  <img src={project.image ? `/imagesimages/${project.image}` : "/images/bosque1.png"} /> 
+                  <img src={project.file_name ? `/imagesimages/${project.file_name}` : "/images/bosque1.png"} />
                 </Col>
 
                 <Col lg={7} className="card-information">

@@ -1,49 +1,50 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import "./edituser.scss";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Footer } from "../home/Footer";
-import { UserDeleteModal } from "../../components/modal/UserDeleteModal";
+import React, { useState, useEffect } from 'react'
+import { Col, Container, Row, Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-export const EditUser = ({ setIsLogged, userModificate }) => {
-  const [editUser, setEditUser] = useState(userModificate);
-  const [modalUserDelete, setModalUserDelete] = useState(false);
-  const [sendInfo, setSendInfo] = useState();
+export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
+
+    console.log(user);
+    // console.log(user.user_name);
+ 
+    const [editUser, setEditUser] = useState(user);
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setEditUser({...editUser, [name]: value});
+       
+    }
+
   
-  const navigate = useNavigate();
-
-  const handleDeleteModal = () => {
-    setSendInfo(userModificate);
-    setModalUserDelete(true);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEditUser({ ...editUser, [name]: value });
-  };
-
-  console.log(editUser);
   const handleSubmit = (e) => {
     e.preventDefault();
+        axios
+        .put(`http://localhost:4000/users/editUser/${editUser.user_id}`, { register: {...editUser}})
 
-    axios
-      .put(`http://localhost:4000/users/editUser/${userModificate.user_id}`, {
-        register: { ...editUser },
-      })
+        .then(() => {
+           alert("Cambios guardados exitosamente")
+           setResetUser(!resetUser)
+           if (user.user_type === 0) {
+            navigate(`/user`);
+          } else if (user.user_type === 1) {
+            navigate("/admin");
+          }
 
-      .then(() => {
-        navigate("/adminusers");
-      })
-
-      .catch((err) => {
-        console.log(err);
-      });
+        })
+      
+        .catch((err) => {
+          console.log(err);
+        });
+      
+   
   };
-
+  
   return (
     <>
-      <div className="wrapper">
+        <div className="wrapper">
         <Container fluid className="contEditUser">
           <Row>
             <Col md={12} className="tituloEditUser">
@@ -52,38 +53,8 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                   <img src="/assets/icons/arrow_left.svg" />
                 </Button>
                 <div>
-                  <h1>Edición de usuario</h1>
+                  <h1>Editar datos</h1>
                 </div>
-              </div>
-
-              <div className="iconEditUser">
-                <img
-                  className="iconEditUser-circle"
-                  src="/assets/icons/user.svg"
-                />
-                <p>Editar datos</p>
-                <img
-                  className="iconEditUser-arrow"
-                  src="/assets/icons/arrow_right.svg"
-                />
-              </div>
-
-
-              <div className="iconDeleteUser mt-3">
-                <img
-                  className="iconDeleteUser-circle"
-                  src="/assets/icons/delete.svg"
-                />
-                <Button className="delete-btn p-0">
-                  <p className="delet-red" onClick={handleDeleteModal}>
-                    Eliminar usuario
-                  </p>
-                </Button>
-                <img
-                  className="iconDeleteUser-arrow"
-                  src="/assets/icons/arrow_right.svg"
-                />
-
               </div>
             </Col>
           </Row>
@@ -95,7 +66,9 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                   <Form className="editUserForm d-flex flex-column">
                     <Row>
                       <Col md={6}>
-                        <Form.Label className="label-edit">Nombre</Form.Label>
+                        <Form.Label className="label-edit">
+                            Nombre
+                        </Form.Label>
                         <Form.Control
                           className="mb-3"
                           type="text"
@@ -103,6 +76,7 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           autoComplete="off"
                           value={editUser?.user_name}
                           onChange={handleChange}
+                         
                         />
 
                         <Form.Label className="label-edit mb-2">
@@ -115,6 +89,7 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           autoComplete="off"
                           value={editUser?.surname}
                           onChange={handleChange}
+                         
                         />
 
                         <Form.Label className="label-edit mb-2">
@@ -127,6 +102,8 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           autoComplete="off"
                           value={editUser?.company}
                           onChange={handleChange}
+                          
+                        
                         />
 
                         <Form.Label className="label-edit mb-2">
@@ -139,6 +116,7 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           autoComplete="off"
                           value={editUser?.nif}
                           onChange={handleChange}
+                         
                         />
                       </Col>
 
@@ -153,6 +131,7 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           autoComplete="off"
                           value={editUser?.position}
                           onChange={handleChange}
+                       
                         />
 
                         <Form.Label className="label-edit mb-2">
@@ -165,12 +144,12 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           autoComplete="off"
                           value={editUser?.phone}
                           onChange={handleChange}
+                          
                         />
 
                         <Form.Label className="label-edit mb-2">
                           País
                         </Form.Label>
-
                         <Form.Control
                           className="mb-3"
                           type="text"
@@ -178,31 +157,32 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
                           autoComplete="off"
                           value={editUser?.country}
                           onChange={handleChange}
+                         
                         />
                         <Form.Label className="label-edit mb-2">
                           Moneda del usuario
                         </Form.Label>
-
                         <Form.Control
                           className="mb-3"
                           type="text"
-                          name="currency"
                           autoComplete="off"
                           value={editUser?.currency}
                           onChange={handleChange}
+                          
                         />
                       </Col>
                     </Row>
                   </Form>
                 </Form.Group>
               </Col>
-            </div>
-          </Row>
+            </div> 
+         </Row> 
 
           <Row>
             <div>
               <Col className="send-edit-user mb-5">
-                <Button className="button-edit" onClick={handleSubmit}>
+                <Button className="button-edit"
+                onClick={handleSubmit} >
                   Enviar
                 </Button>
               </Col>
@@ -210,14 +190,6 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
           </Row>
         </Container>
       </div>
-
-      <Footer />
-
-      <UserDeleteModal
-        onHide={() => setModalUserDelete(false)}
-        show={modalUserDelete}
-        sendInfo={sendInfo}
-      />
     </>
-  );
-};
+  )
+}

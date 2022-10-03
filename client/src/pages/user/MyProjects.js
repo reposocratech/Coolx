@@ -26,7 +26,7 @@ export const MyProjects = ({ projects, user, setBuyProject, buyProject, setReset
         <Row>
           <Col md={8} className="card-container">
             <div>
-              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject} setImages={setImages}/>
+              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject} setImages={setImages} images={images} />
             </div>
           </Col>
 
