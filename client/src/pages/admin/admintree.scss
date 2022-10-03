@@ -23,13 +23,18 @@
     }
 
     .boton-register-tree {
-        background-color: #B8DBE1;
-        border-radius: 80px;
-        padding: 12px 24px !important;
-        font-size: 14px;
+        margin-bottom: 15px;
+        background-color: #09427D;
+        border-radius: 50px;
         font-weight: bold;
         border: none;
         color: white;
+    }
+
+    .boton-register-tree:hover {
+        background-color: white !important;
+        color: #09427d !important;
+        box-shadow: inset 0 0 0 2px #09427d !important;
     }
 
 }
@@ -39,22 +44,30 @@
 }
 
 .table-all-trees {
-    padding-top: 5rem;
+    margin-top: 15px !important;
+
+    border: 1px solid rgb(206, 212, 218) !important;
+
+    th {
+        background-color: #09427D !important;
+        color: white;
+    }
 
     .boton-delete-tree,
     .boton-edit-tree {
-        background-color: #B8DBE1;
-        border-radius: 80px;
-        padding: 12px 24px !important;
-        font-size: 14px;
+        background-color: #09427D;
+        border-radius: 50px;
         font-weight: bold;
         border: none;
         color: white;
 
     }
 
-    .boton-delete-tree:hover {
-        background-color: red !important;
+    .boton-delete-tree:hover,
+    .boton-edit-tree:hover {
+        background-color: white !important;
+        color: #09427d !important;
+        box-shadow: inset 0 0 0 2px #09427d !important;
     }
 
 

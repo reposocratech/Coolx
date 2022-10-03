@@ -1,22 +1,25 @@
-import React from 'react'
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import { useNavigate } from 'react-router-dom';
+import "./buymodal.scss"
 
-export const BuyModal = ({onHide, show, setModalBuy}) => {
 
-const handleClick = () => {
+export const BuyModal = ({ onHide, show }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
     navigate("/projectform");
-}
+  };
 
-const handleClick2 = () => {
+  const handleClick2 = () => {
     navigate("/buyproject");
+
 }
 
-const navigate = useNavigate();
 
     return (
         <Modal show={show} aria-labelledby="contained-modal-title-vcenter">
@@ -31,12 +34,14 @@ const navigate = useNavigate();
                 <Col>
                 <Button
                     type="button"
+                    className='add-newproject-modal me-2'
                     onClick={handleClick}
                 >Subir mi proyecto
                 </Button>
 
                 <Button
                     type="button"
+                    className='buy-newproject-modal'
                     onClick={handleClick2}
 
                 >Comprar un proyecto
@@ -47,8 +52,9 @@ const navigate = useNavigate();
             </Container>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={onHide}>Close</Button>
+            <Button className='exit-buyproject-modal' onClick={onHide}>Close</Button>
           </Modal.Footer>
         </Modal>
       );
     };
+

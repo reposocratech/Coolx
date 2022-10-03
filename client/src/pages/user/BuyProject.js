@@ -5,7 +5,7 @@ import Table from "react-bootstrap/Table";
 import axios from 'axios'
 
 
-export const BuyProject = ({user}) => {
+export const BuyProject = ({user, setBuyProject, buyProject}) => {
 
   const navigate = useNavigate();
 
@@ -13,18 +13,22 @@ export const BuyProject = ({user}) => {
 
   const [reset, setReset] = useState(false);
 
-  const handleBuy = (project) => {
-    axios
-      .put(`http://localhost:4000/project/changeUser/${project.project_id}/${user.user_id}`)
-      .then((res) => {
-        console.log(res.data);
-        setReset(!reset);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
-  }
 
+  const handleBuy = (project) => {
+
+    setBuyProject(project);
+    navigate("/stripe");
+
+    // axios
+    //   .put(`http://localhost:4000/project/changeUser/${project.project_id}/${user.user_id}`)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setReset(!reset);
+    //   })
+    //   .catch((err)=>{
+    //     console.log(err);
+    //   })
+  }
 
 
   useEffect(() => {
@@ -33,7 +37,6 @@ export const BuyProject = ({user}) => {
 
       .then((res) => {
         setAllProjects(res.data);
-        console.log(res);
       })
 
       .catch((err)=>{

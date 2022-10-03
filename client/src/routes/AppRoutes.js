@@ -1,6 +1,6 @@
 import { Project } from "../pages/project/Project";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";      
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavBarMain } from "../components/navBar/NavBarMain";
 import { Login } from "../pages/auth/Login";
 import { Home } from "../pages/home/Home";
@@ -13,27 +13,27 @@ import { User } from "../pages/user/User";
 import { Admin } from "../pages/admin/Admin";
 import { ErrorPage } from "../pages/home/ErrorPage";
 import { Tarjetamas } from "../components/card/Tarjetamas";
-import { Vegetation } from "../components/vegetation/Vegetation";     
-import { ContactForm } from "../components/forms/ContactForm";        
+import { Vegetation } from "../components/vegetation/Vegetation";
+import { ContactForm } from "../components/forms/ContactForm";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
-import { ProjectForm } from "../components/forms/ProjectForm";        
+import { ProjectForm } from "../components/forms/ProjectForm";
 import { Succes1 } from "../pages/home/Succes1";
 import { Succes2 } from "../pages/home/Sucess2";
 import { EditUser } from "../pages/user/EditUser";
 import { AdminUsers } from "../pages/admin/AdminUsers";
 import { AdminTree } from "../pages/admin/AdminTree";
 import { TreeForm } from "../pages/admin/TreeForm";
-import { AdminProjectState } from "../pages/admin/AdminProjectState"; 
+import { AdminProjectState } from "../pages/admin/AdminProjectState";
 import { SuccesPayment } from "../pages/home/SuccesPayment";
 
 // /*import { Tarjeta } from "../components/card/Tarjeta";*/
 import { BuyProject } from "../pages/user/BuyProject";
 // import { ProjectCompleted } from "../pages/project/ProjectCompleted";
 
-
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 import { Stripe } from "../components/stripe/Stripe";
+import { Succes3 } from "../pages/home/Succes3";
 
 export const AppRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -43,7 +43,7 @@ export const AppRoutes = () => {
 
   const [resetUser, setResetUser] = useState(false);
 
-  //información de todos los proyectos del usuario que se ha logueado 
+  //información de todos los proyectos del usuario que se ha logueado
   const [projects, setProjects] = useState(false);
 
   //esto es para modificar usuarios
@@ -51,6 +51,14 @@ export const AppRoutes = () => {
 
   //esto es para la obtener la información de un proyecto
   const [oneProject, setOneProject] = useState();
+
+  // esto es para cuando compramos un proyecto
+  const [buyProject, setBuyProject] = useState();
+
+  // con esto nos traemos las imagenes 
+  const [images, setImages] = useState(false);
+
+  
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -67,6 +75,7 @@ export const AppRoutes = () => {
         .then((res) => {
           setUser(res.data.resultUser[0]);
           setProjects(res.data.resultProject);
+          setImages(true);
 
           // console.log(res, "soyyyy reeeeesss");
         })
@@ -77,6 +86,18 @@ export const AppRoutes = () => {
     }
   }, [isLogged, resetUser]);
 
+    
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div>
       <BrowserRouter>
@@ -85,6 +106,8 @@ export const AppRoutes = () => {
           setIsLogged={setIsLogged}
           user={user}
           setUser={setUser}
+          userModificate={userModificate}
+          setUserModificate={setUserModificate}
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -97,7 +120,6 @@ export const AppRoutes = () => {
             path="/admintree"
             element={<AdminTree setIsLogged={setIsLogged} />}
           />
-
           <Route
             path="/adminusers"
             element={
@@ -113,9 +135,10 @@ export const AppRoutes = () => {
           <Route path="/*" element={<ErrorPage />} />
           <Route
             path="/adminprojectstate"
-            element={<AdminProjectState user={user} setIsLogged={setIsLogged}  />}
+            element={
+              <AdminProjectState user={user} setIsLogged={setIsLogged} />
+            }
           />
-
           <Route path="/admin" element={<Admin />} />
           <Route
             path="/admintree"
@@ -126,17 +149,15 @@ export const AppRoutes = () => {
 
           {/* <Route path="/tarjeta" element={<Tarjeta oneProject={oneProject} setOneProject={setOneProject}/>} /> */}
 
-          
           <Route
             path="/tarjetamas"
             element={<Tarjetamas projects={projects} />}
           />
           <Route
             path="/buyproject"
-            element={<BuyProject user={user} />}
+            element={<BuyProject user={user} buyProject={buyProject} setBuyProject={setBuyProject}/>}
           />
           <Route path="/vegetation" element={<Vegetation />} />
-
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/registrocoolx" element={<Register />} />
           <Route
@@ -146,8 +167,6 @@ export const AppRoutes = () => {
                 user={user}
                 projects={projects}
                 setProjects={setProjects}
-                resetUser={resetUser}
-                setResetUser={setResetUser}
               />
             }
           />
@@ -166,20 +185,25 @@ export const AppRoutes = () => {
             path="/succespayment"
             element={<SuccesPayment projects={projects} />}
           />
+          <Route path="/succes3" element={<Succes3/> } />
 
-          <Route path="/stripe" element={<Stripe />} /> 
+          <Route path="/stripe" element={<Stripe buyProject={buyProject} user={user}/>} />
+
+
+       
 
           <Route path="/user" element={<User />}>
             <Route
               path=""
-              element={<MyProjects projects={projects} user={user} />}            />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
             <Route
               path="myprojects"
-              element={<MyProjects projects={projects} user={user} />}            />
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
+
 
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
-            <Route path="myaccount" element={<MyAccount />} />        
+            <Route path="myaccount" element={<MyAccount />} />
           </Route>
 
           <Route

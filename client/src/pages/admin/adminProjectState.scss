@@ -44,8 +44,45 @@
 }
 
 .table-projects {
+  background-color: #09427D !important;
+
   button {
     background-color: transparent;
     border: none;
   }
+
+
+  th {
+    background-color: #09427D !important;
+    color: white;
+
+  }
+
+}
+
+.list-text {
+  border: 1px solid rgb(206, 212, 218) !important;
+
+  .delete-project,
+  .edit-project,
+  .info-project,
+  .assign-project {
+    background-color: #09427D;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    color: white;
+
+  }
+
+  .delete-project:hover,
+  .edit-project:hover,
+  .info-project:hover,
+  .assign-project:hover {
+    background-color: white !important;
+    color: #09427d !important;
+    box-shadow: inset 0 0 0 2px #09427d !important;
+
+  }
+
 }

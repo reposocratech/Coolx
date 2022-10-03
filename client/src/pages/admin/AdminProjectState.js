@@ -1,7 +1,7 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";        
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./adminProjectState.scss";
 import Table from "react-bootstrap/Table";
@@ -22,12 +22,11 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
   const [modalBuyer, setModalBuyer] = useState(false);
   const [allUsers, setAllUsers] = useState();
 
-
   const [modalEdit, setModalEdit] = useState(false);
 
   const [tablaBusqueda, setTablaBusqueda] = useState([]);
   const [busqueda, setBusqueda] = useState("");
-  const [orderProjects, setOrderProjects] = useState()
+  const [orderProjects, setOrderProjects] = useState();
 
   const navigate = useNavigate();
 
@@ -41,7 +40,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
 
       if (type === 1) {
         axios
-          .get(`http://localhost:4000/admin/${id}/allProjects`)       
+          .get(`http://localhost:4000/admin/${id}/allProjects`)
           .then((res) => {
             // console.log(res);
             setAllProjects(res.data);
@@ -63,20 +62,21 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
     axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
 
     axios
-      .get(`http://localhost:4000/admin/${user.user_id}/allUsers`)    
+      .get(`http://localhost:4000/admin/${user.user_id}/allUsers`)
 
       .then((res) => {
         setAllUsers(res.data);
         console.log(res);
       })
 
-      .catch((err) => {console.log(err)});
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   console.log(allUsers);
 
   // console.log(allProjects.length);
-
 
   const handleModal = (project) => {
     setProjectModal(project);
@@ -101,96 +101,116 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
   const handleEditModal = (project) => {
     setProjectModal(project);
     setModalEdit(true);
-  }
+  };
 
   const handleChange = (e) => {
-    setBusqueda(e.target.value)
-    filtrar(e.target.value)
+    setBusqueda(e.target.value);
+    filtrar(e.target.value);
   };
 
   const filtrar = (terminoBusqueda) => {
-      let resBusqueda = tablaBusqueda.filter((elemento) => {
-        if(elemento.project_name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
-          return elemento
-        }
-      })
-      setAllProjects(resBusqueda);
+    let resBusqueda = tablaBusqueda.filter((elemento) => {
+      if (
+        elemento.project_name
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase())
+      ) {
+        return elemento;
+      }
+    });
+    setAllProjects(resBusqueda);
   };
 
   const handleOrderName = () => {
-   
-   const sortedList= [...allProjects].sort((a ,b) => (a.project_name.toString().toLowerCase() > b.project_name.toString().toLowerCase() ? 1 : a.project_name.toString().toLowerCase() < b.project_name.toString().toLowerCase() ? -1 : 0))
+    const sortedList = [...allProjects].sort((a, b) =>
+      a.project_name.toString().toLowerCase() >
+      b.project_name.toString().toLowerCase()
+        ? 1
+        : a.project_name.toString().toLowerCase() <
+          b.project_name.toString().toLowerCase()
+        ? -1
+        : 0
+    );
 
     console.log(sortedList);
-    setAllProjects(sortedList)
-   
-  }
+    setAllProjects(sortedList);
+  };
 
   const handleOrderId = () => {
-   
-    const sortedListId= [...allProjects].sort((a ,b) => (Number(a.project_i)> Number(b.project_id) ? 1 : Number(a.project_id) < Number(b.project_id) ? -1 : 0))
- 
-     console.log(sortedListId);
-     setAllProjects(sortedListId)
-    
-   }
+    const sortedListId = [...allProjects].sort((a, b) =>
+      Number(a.project_i) > Number(b.project_id)
+        ? 1
+        : Number(a.project_id) < Number(b.project_id)
+        ? -1
+        : 0
+    );
 
-   const handleOrderLocal = () => {
+    console.log(sortedListId);
+    setAllProjects(sortedListId);
+  };
 
-    const sortedListLocal = [...allProjects].sort((a ,b) => (a.location.toString().toLowerCase() > b.location.toString().toLowerCase() ? 1 : a.location.toString().toLowerCase() < b.location.toString().toLowerCase() ? -1 : 0))
+  const handleOrderLocal = () => {
+    const sortedListLocal = [...allProjects].sort((a, b) =>
+      a.location.toString().toLowerCase() > b.location.toString().toLowerCase()
+        ? 1
+        : a.location.toString().toLowerCase() <
+          b.location.toString().toLowerCase()
+        ? -1
+        : 0
+    );
 
-    setAllProjects(sortedListLocal)
+    setAllProjects(sortedListLocal);
+  };
 
-   }
+  const handleOrderStatus = () => {
+    const sortedListStatus = [...allProjects].sort((a, b) =>
+      a.status > b.status ? "registrado" : a.status < b.status ? -1 : 0
+    );
 
-   const handleOrderStatus = () => {
-
-    const sortedListStatus = [...allProjects].sort((a ,b) => (a.status > b.status ? "registrado" : a.status < b.status ? -1 : 0))
-
-    setAllProjects(sortedListStatus)
+    setAllProjects(sortedListStatus);
     console.log(sortedListStatus);
-   }
+  };
 
   return (
     <>
-    <div className="wrapper">
-      <div className="getdown">
-        <Container fluid>
-          <Row>
-            <Col className="adm-proj-state-header">
-              <Button onClick={() => navigate(-1)}>
-                <img src="./assets/icons/arrow_left.svg" />
-              </Button>
-              <h1>Estado de proyectos</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-               <input
+      <div className="wrapper">
+        <div className="getdown">
+          <Container fluid>
+            <Row>
+              <Col className="adm-proj-state-header">
+                <Button onClick={() => navigate(-1)}>
+                  <img src="./assets/icons/arrow_left.svg" />
+                </Button>
+                <h1>Estado de proyectos</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <input
                   className="form-control inputBuscar "
-                  type='text'
-                  placeholder='Buscar empresa'
+                  type="text"
+                  placeholder="Buscar empresa"
                   value={busqueda}
                   onChange={handleChange}
+
                   
                   />
-                  <Button className="btn-btn-success" onClick={()=>navigate(-1)}>
-                  Volver
-                  </Button>
+            
             </Col>
           </Row>
 
-          <Row>
+          <Row className="m-0 mt-3">
             <Table striped >
               <thead className="table-projects">
                 <tr>
                 
              
-                  <th>Id <button onClick={handleOrderId}><img src="/assets/icons/arrow_donw.svg"/></button></th>
-                  <th>Nombre <button onClick={handleOrderName}><img src="/assets/icons/arrow_donw.svg"/></button></th>
-                  <th>Localización <button onClick={handleOrderLocal}><img src="/assets/icons/arrow_donw.svg"/></button></th>
+                  <th>Id <button onClick={handleOrderId}><img src="/assets/icons/arrow_white.svg"/></button></th>
+                  <th>Nombre <button onClick={handleOrderName}><img src="/assets/icons/arrow_white.svg"/></button></th>
+                  <th>Localización <button onClick={handleOrderLocal}><img src="/assets/icons/arrow_white.svg"/></button></th>
                    <th>Id Usuario</th>
-                  <th>Estado <button onClick={handleOrderStatus}><img src="/assets/icons/arrow_donw.svg"/></button></th>
+                  <th>Estado <button onClick={handleOrderStatus}><img src="/assets/icons/arrow_white.svg"/></button></th>
                   <th>Borrar</th>
                   <th>Más información</th>
                   <th>Editar</th>
@@ -217,6 +237,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                               : "Completado"}
                           </p>
                           
+
                             <Button
                               type="button"
                               className="pen-status"
@@ -227,22 +248,25 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                                 alt="Edit project state"
                               />
                             </Button>
-                          </div>
+                        </div>
                         </td>
                         <td>
                           <div>
-                          <Button
-                            type="button"
-                            onClick={() => handleDeleteModal(project)}
-                          >
-                            Eliminar
-                          </Button>
-                        </div>
-                      </td>
+                            <Button
+                              type="button" 
+                              className="delete-project"
+                              onClick={() => handleDeleteModal(project)}
+                            >
+                              Eliminar
+                            </Button>
+                          </div>
+                        </td>
+
                 
                       <td>
                       <Button
                           type="button"
+                          className="info-project"
                           onClick={() => handleModal(project)}
                         >
                           Más info
@@ -252,6 +276,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                       <td>
                         <Button
                           type="button"
+                          className="edit-project"
                           onClick={() => handleEditModal(project)}
                         >
                           Editar
@@ -260,6 +285,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                       <td>
                         <Button
                           type="button"
+                          className="assign-project"
                           onClick={() => handleCompany(project)}      
                         >
                           Asignar empresa
@@ -270,6 +296,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
               </tbody>
               
             </Table>
+            {/* <h5>Cantidad de proyectos: {allProjects.length}</h5> */}
           </Row>
         </Container>
 
@@ -317,10 +344,10 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
           setProjectModal={setProjectModal}
         
         />  
+
         </div>
       </div>
       <Footer />
-    
     </>
   );
 };

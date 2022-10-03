@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row, Container, Button } from "react-bootstrap";
 import "./costProfit.scss";
+import { useNavigate } from "react-router-dom";
 
 export const CostProfit = ({ projectInfo }) => {
   // const [info, setInfo] = useState();
   // console.log(projectInfo);
+
+  const navigate = useNavigate();
+
+
   return (
     <Container>
       <Row className="justify-content-center">
@@ -50,7 +55,11 @@ export const CostProfit = ({ projectInfo }) => {
             <Col className="p-0">
               {projectInfo &&
                 (projectInfo[0].status === 0 ? (
-                  <Button className="more-info more-data">
+                  <Button className="more-info more-data" onClick={()=>{
+                    navigate("/stripe")
+                  }
+                  
+                  }>
                     Acceder a todos los datos
                   </Button>
                 ) : projectInfo[0].status === 1 ? (

@@ -1,0 +1,17 @@
+.add-newproject-modal,
+.buy-newproject-modal,
+.exit-buyproject-modal {
+    background-color: #09427D !important;
+    border-radius: 50px !important;
+    font-weight: bold !important;
+    border: none !important;
+    color: white !important;
+}
+
+.add-newproject-modal:hover,
+.buy-newproject-modal:hover,
+.exit-buyproject-modal:hover {
+    background-color: white !important;
+    color: #09427d !important;
+    box-shadow: inset 0 0 0 2px #09427d !important;
+}

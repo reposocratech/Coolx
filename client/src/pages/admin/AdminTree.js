@@ -107,7 +107,7 @@ export const AdminTree = ({ setIsLogged }) => {
             </Col>
           </Row>
 
-        <Row className='table-all-trees'>
+        <Row className='table-all-trees m-0 mt-3'>
         
             <Table striped>
               <thead>
