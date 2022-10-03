@@ -86,17 +86,6 @@ export const AppRoutes = () => {
     }
   }, [isLogged, resetUser]);
 
-    
-
-
-
-
-
-
-
-
-
-
 
   return (
     <div>
