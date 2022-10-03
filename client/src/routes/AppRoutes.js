@@ -34,6 +34,7 @@ import { BuyProject } from "../pages/user/BuyProject";
 import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
+import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
 
 export const AppRoutes = ({
   user,
@@ -47,12 +48,15 @@ export const AppRoutes = ({
 
   //esto es para modificar usuarios
   const [userModificate, setUserModificate] = useState();
-
+ 
   //esto es para la obtener la información de un proyecto
   const [oneProject, setOneProject] = useState();
 
   // esto es para cuando compramos un proyecto
   const [buyProject, setBuyProject] = useState();
+
+  // con esto nos traemos las imagenes 
+  const [images, setImages] = useState(false);
 
   return (
     <div>
@@ -156,32 +160,10 @@ export const AppRoutes = ({
 
           <Route path="/user" element={<User />}>
             <Route
-              path=""
-              element={
-                <MyProjects
-                  projects={projects}
-                  user={user}
-                  buyProject={buyProject}
-                  setBuyProject={setBuyProject}
-                  setResetUser={setResetUser}
-                  resetUser={resetUser}
-                />
-              }
-            />
+              path="" element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
             <Route
               path="myprojects"
-              element={
-                <MyProjects
-                  projects={projects}
-                  user={user}
-                  buyProject={buyProject}
-                  setBuyProject={setBuyProject}
-                  setResetUser={setResetUser}
-                  resetUser={resetUser}
-                />
-              }
-            />
-
+              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
             <Route path="myaccount" element={<MyAccount />} />
@@ -199,6 +181,7 @@ export const AppRoutes = ({
               />
             }
           />
+          <Route path="/editusernavbar" element={<EditUserNavbar user={user}  resetUser={resetUser} setResetUser={setResetUser} />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -91,7 +91,9 @@ class userController {
     // console.log(user_id + " user id");
 
     let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
-    let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`;
+    let sqlProject = `select * from image, project, user
+    where user.user_id = project.user_id and project.project_id = image.project_id
+    and user.user_id = ${user_id} group by image.image_id`;
     connection.query(sqlUser, (error, resultUser) => {
       if (error) {
         res.status(400).json({ error });
@@ -109,7 +111,7 @@ class userController {
   // localhost:4000/users/editUser/:user_id
   editUser = (req, res) => {
     let user_id = req.params.user_id;
-
+    
     const {
       user_name,
       surname,
@@ -165,6 +167,7 @@ class userController {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
+
 }
 
 module.exports = new userController();

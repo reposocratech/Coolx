@@ -135,12 +135,11 @@ class projectControllers {
   getProject = (req, res) => {
     // console.log(req.params);
     let project_id = req.params.project_id;
-    let sql = `SELECT * FROM project WHERE project_id = ${project_id} and is_deleted = 0`;
+    let sql = `select * from image, project
+    where project.project_id = image.project_id
+    and project.project_id = ${project_id} group by image.image_id`;
     connection.query(sql, (error, result) => {
-      if (error) {
-        res.status(400).json({ error });
-      }
-      res.status(200).json(result);
+      error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
 
@@ -197,6 +196,22 @@ class projectControllers {
       res.status(200).json(result);
     });
   };
+
+  //Mostrar todas las imagenes de un proyecto
+  // localhost:4000/project/images/:project_id
+  getImages = (req,res) => {
+    let project_id = req.params.project_id;
+    let sql = `SELECT * FROM image WHERE project_id = ${project_id}`;
+    connection.query(sql, (error, resultImages) => {
+      if (error) {
+        res.status(400).json({ error });
+        console.log(error);
+      }
+      res.status(200).json(resultImages);
+      console.log(resultImages);
+    });
+
+  }
 
   // Generar PDF de un proyecto
   // localhost:4000/project/:project_id/pdf

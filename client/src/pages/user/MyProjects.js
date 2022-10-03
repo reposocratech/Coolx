@@ -11,8 +11,9 @@ export const MyProjects = ({
   buyProject,
   setResetUser,
   resetUser,
+  setImages, images
 }) => {
-  useEffect(() => {}, [projects]);
+  useEffect(() => {}, [projects, images]);
 
   const [modalBuy, setModalBuy] = useState(false);
 
@@ -30,11 +31,7 @@ export const MyProjects = ({
         <Row>
           <Col md={8} className="card-container">
             <div>
-              <Tarjeta
-                projects={projects}
-                buyProject={buyProject}
-                setBuyProject={setBuyProject}
-              />
+              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject} setImages={setImages} images={images} />
             </div>
           </Col>
 
