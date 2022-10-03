@@ -1,15 +1,9 @@
 import React from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav, Button, Row, Col } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import "./navbar.scss";
 
-export const NavBarMain = ({
-  isLogged,
-  setIsLogged,
-  setUser,
-  user
-}) => {
-
+export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -27,63 +21,82 @@ export const NavBarMain = ({
     setUser(null);
   };
 
-
   return (
     <>
-      <Navbar fixed="top" className="nav-color" expand="lg">
+      <Navbar collapseOnSelect fixed="top" className="nav-color" expand="lg">
         <Container>
           <Navbar.Brand className="navbar-logo" as={Link} to="/">
-            {" "}
             <img src="/assets/branding/logo_white.svg" />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse>
-            <Nav className="me-auto"></Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ms-auto barraMobile">
+              <Nav.Link className="sasa" href="#action2">
+                Nombre Apellido
+              </Nav.Link>
+              <Nav.Link className="sasa" href="#action2">
+                Editar
+              </Nav.Link>
+              <Nav.Link className="sasa" href="#action2">
+                Logout
+              </Nav.Link>
+            </Nav>
 
-            {!isLogged ? (
-              <div>
-                <Button className="boton-sesion me-3" onClick={() => navigate(`/login`)}>
-                  Iniciar Sesion
-                </Button>
-              </div>
-            ) : (
-              <>
-                {user && ( 
-                  <>
-                    {user && (
-                      <div className="cont-avatar">
+            <Nav className="ms-auto barraBig">
+              {!user ? (
+                <div>
+                  <Button
+                    className="boton-sesion me-3"
+                    onClick={() => navigate(`/login`)}
+                  >
+                    Iniciar Sesion
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  {user && (
+                    <Row>
+                      <Col md={2} className="d-flex align-items-center">
+                        <img src="/assets/icons/bell.svg" />
+                      </Col>
 
-                        <img className="me-3" src="/assets/icons/bell.svg"/>
-                        {user && user.user_name}
-                        
+                      <Col md={7} className="pt-1">
+                        <Row>
+                          <Col md={12} className="user-name ">
+                            <p>
+                              {user && user.user_name} {user && user.surname}
+                            </p>
+                          </Col>
+                        </Row>
+                        <Row className="btns">
+                          <Col md={8} className="d-flex justify-content-end">
+                            <Button>
+                              <p>Editar</p>
+                            </Button>
+                          </Col>
+                          <Col md={4} className="d-flex justify-content-end">
+                            <Button onClick={handleLogout}>
+                              <p>Logout</p>
+                            </Button>
+                          </Col>
+                        </Row>
+                      </Col>
+
+                      <Col md={3} className="d-flex align-items-center p-0">
                         <div className="avatar-user me-2">
-                          
-                          <Button  onClick={handleNavigate}>
+                          <Button
+                            className="avatar-btn"
+                            onClick={handleNavigate}
+                          >
                             <h3>{user.user_name[0]}</h3>
                           </Button>
                         </div>
-
-                        <div className="options-user">
-                          <Button className="logout" onClick={handleLogout}>
-                           <p>Logout</p>
-                          </Button>
-
-                          <Button className="edit" >
-                            <p>Editar</p>
-                          </Button> 
-                        </div>
-                      </div>
-                    )}
-                  </>
-                )}
-
-                
-              </>
-            )}
-
-          
-          
-
+                      </Col>
+                    </Row>
+                  )}
+                </>
+              )}
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>

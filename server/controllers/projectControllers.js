@@ -2,7 +2,7 @@ const connection = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const puppeteer = require ('puppeteer');
+const puppeteer = require("puppeteer");
 
 class projectControllers {
   // Crear nuevo proyecto
@@ -12,7 +12,7 @@ class projectControllers {
     // console.log(req.body.newProject);
     console.log(req.params);
     const data = JSON.parse(req.body.newProject);
-
+    const user_id = req.params.user_id;
     console.log(data);
 
     let img = [""];
@@ -32,44 +32,61 @@ class projectControllers {
       profit,
       projectCost,
       yearPlanting,
-      user_id,
     } = data;
 
-    console.log(projectName);
-
+    // console.log(projectName);
+    // console.log("id: " + user_id);
     let sql = `INSERT INTO project (project_name, project_description, location, altitude, latitude, area, profit, project_cost, year_Planting, user_id) VALUES ('${projectName}','${projectDescription}', '${location}', '${altitude}', '${latitude}', "${area}", '${profit}', '${projectCost}', '${yearPlanting}','${user_id}')`;
 
-    let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`;
+    // let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`;
 
     connection.query(sql, (error, result) => {
-      // error && res.status(400).json({ error })
-      // : res.status(200).json(result);
+      if (error) throw error;
 
       let project_id = result.insertId;
       this.saveProjectImages(img, project_id);
 
-      connection.query(sqlProject, (err, resultProject) => {
-        if (err) throw err;
-        res.status(200).json({ resultProject, result });
-      });
+      // console.log("res res res ", result);
+
+      res.status(200).json(result);
     });
+
+    // connection.query(sql, (error, result) => {
+    //   // error && res.status(400).json({ error })
+    //   // : res.status(200).json(result);
+    //   if (error) throw error;
+    //   console.log("result: " + result);
+
+    //   let project_id = result.insertId;
+    //   // this.saveProjectImages(img, project_id);
+    //   console.log("projectID: " + project_id);
+
+    //   // connection.query(sqlProject, (err, resultProject) => {
+    //   //   // console.log("resultProject: " + resultProject);
+
+    //   //   if (err) throw err;
+    //   //   // res.status(200).json({ resultProject, result });
+    //   // });
+
+    //   res.status(200).json(result);
+    // });
   };
 
   //Guardar imágenes de los proyectos (no es una ruta, solo función)
-  saveProjectImages = (images, project_id, next) => {
+  saveProjectImages = (images, project_id) => {
     let img = images;
 
     var time = new Date();
 
     let date_img = new Date(time);
 
-    console.log("Esta es la imagen", img, project_id, date_img);
+    // console.log("Esta es la imagen", img, project_id, date_img);
 
     img.forEach((img) => {
       let sql = `INSERT INTO image (file_name, date_img, project_id) VALUES ('${img.filename}','${date_img}','${project_id}')`;
       connection.query(sql, (error, result) => {
         if (error) throw error;
-        console.log(result);
+        // console.log(result);
       });
     });
   };
@@ -179,14 +196,11 @@ class projectControllers {
       }
       res.status(200).json(result);
     });
-
   };
-
 
   // Generar PDF de un proyecto
   // localhost:4000/project/:project_id/pdf
-  getPdf = async(req, res) => {
-
+  getPdf = async (req, res) => {
     // Create a browser instance
     const browser = await puppeteer.launch({ headless: false });
 
@@ -194,28 +208,25 @@ class projectControllers {
     const page = await browser.newPage();
 
     // Website URL to export as pdf
-    const website_url = 'https://coolx.earth/';
+    const website_url = "https://coolx.earth/";
 
     // Open URL in current page
-    await page.goto(website_url, { waitUntil: 'domcontentloaded' });
+    await page.goto(website_url, { waitUntil: "domcontentloaded" });
 
     //To reflect CSS used for screens instead of print
-    await page.emulateMediaType('screen');
+    await page.emulateMediaType("screen");
 
     // Download the PDF
     const pdf = await page.pdf({
-      path: 'result.pdf',
-      margin: { top: '100px', right: '50px', bottom: '100px', left: '50px' },
+      path: "result.pdf",
+      margin: { top: "100px", right: "50px", bottom: "100px", left: "50px" },
       printBackground: true,
-      format: 'A4',
+      format: "A4",
     });
 
     // Close the browser instance
     await browser.close();
-
   };
-
 }
-
 
 module.exports = new projectControllers();

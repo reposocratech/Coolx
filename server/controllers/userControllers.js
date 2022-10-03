@@ -88,7 +88,7 @@ class userController {
   selectOneUser = (req, res) => {
     console.log(req.params.user_id, "EL ID ");
     const user_id = req.params.user_id;
-    // console.log(req, "======");
+    // console.log(user_id + " user id");
 
     let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
     let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`;
@@ -101,24 +101,6 @@ class userController {
           res.status(400).json({ error2 });
         }
         res.status(200).json({ resultUser, resultProject });
-
-        // PARA CARGAR IMAGENES
-        // let projectIds = resultProject.map((project) => project.project_id);
-        // let sqlProjectsImages = `SELECT project_id as id, file_name FROM image WHERE project_id IN (${projectIds.join(', ')})`
-
-        // connection.query(sqlProjectsImages, (error3, resultImages) => {
-        //   if(error3) {
-        //     res.status(400).json({ error3 });
-        //   }
-
-        //   resultProject = resultProject.map((project) => {
-        //     return {
-        //       ...project,
-        //       images: resultImages.filter((image) => image.id === project.project_id)
-        //     }
-        //   })
-
-        // })
       });
     });
   };
@@ -138,6 +120,7 @@ class userController {
       country,
       currency,
     } = req.body.register;
+    console.log("hola ", req.body.register);
 
     let sql = `UPDATE user SET user_name = "${user_name}", surname = "${surname}", company = "${company}", nif = "${nif}", position = "${position}", phone = "${phone}", country = "${country}", currency = "${currency}" WHERE user_id = "${user_id}"`;
 

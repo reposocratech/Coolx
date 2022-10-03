@@ -5,11 +5,15 @@ import "./user.scss";
 import "./myprojects.scss";
 import { BuyModal } from "../../components/modal/BuyModal";
 
-export const MyProjects = ({ projects, user, setBuyProject, buyProject, setResetUser, resetUser }) => {
+export const MyProjects = ({
+  projects,
+  setBuyProject,
+  buyProject,
+  setResetUser,
+  resetUser,
+}) => {
+  useEffect(() => {}, [projects]);
 
-  useEffect(() => {
-
-  }, [projects]);
   const [modalBuy, setModalBuy] = useState(false);
 
   useEffect(() => {
@@ -26,7 +30,11 @@ export const MyProjects = ({ projects, user, setBuyProject, buyProject, setReset
         <Row>
           <Col md={8} className="card-container">
             <div>
-              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject} />
+              <Tarjeta
+                projects={projects}
+                buyProject={buyProject}
+                setBuyProject={setBuyProject}
+              />
             </div>
           </Col>
 

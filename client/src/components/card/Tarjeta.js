@@ -7,7 +7,6 @@ import "./tarjeta.scss";
 export const Tarjeta = ({ projects, buyProject, setBuyProject }) => {
   const navigate = useNavigate();
 
-
   // console.log(projects);
 
   const handleSend = (project) => {
@@ -31,7 +30,7 @@ export const Tarjeta = ({ projects, buyProject, setBuyProject }) => {
             <Container fluid key={project.project_id}>
               <Row className="project-card-container ">
                 <Col lg={5} className="card-img">
-                  <img src={project.images.length ? `/imagesimages/${project.images[0].file_name}` : "/images/bosque1.png"} />
+                  {/* <img src={project.images.length ? `/imagesimages/${project.images[0].file_name}` : "/images/bosque1.png"} /> */}
                 </Col>
 
                 <Col lg={7} className="card-information">
