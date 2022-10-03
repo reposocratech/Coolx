@@ -184,6 +184,7 @@ class userController {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
+
 }
 
 module.exports = new userController();
