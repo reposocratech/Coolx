@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
-import "./adminuserinfo.scss"
+import "./adminuserinfo.scss";
 
 export const AdminUsersInfo = ({ onHide, show, userInfo }) => {
   return (
@@ -25,18 +25,18 @@ export const AdminUsersInfo = ({ onHide, show, userInfo }) => {
                 <p>Email: {userInfo.email}</p>
                 <p>País: {userInfo.country}</p>
                 <p>Moneda del país: {userInfo.currency}</p>
-                <p>Fecha de registro: {userInfo.create_date} </p>
-                <p>Fecha de la ultima modificación: {userInfo.last_mod_date} </p>
-                <p>Fecha de última conexión: {userInfo.last_connection} </p>
-
+                <p>Fecha de registro: 04-04-2022 </p>
+                <p>Fecha de la ultima modificación: 25-04-2022 </p>
+                <p>Fecha de última conexión: 03-05-2022 </p>
               </Col>
-
             </Row>
           )}
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="close-modal" onClick={onHide}>Cerrar</Button>
+        <Button className="close-modal" onClick={onHide}>
+          Cerrar
+        </Button>
       </Modal.Footer>
     </Modal>
   );

@@ -17,7 +17,7 @@ class userController {
     let saltRounds = 8;
     bcrypt.genSalt(saltRounds, function (err, saltRounds) {
       bcrypt.hash(password, saltRounds, function (err, hash) {
-        let sql = `INSERT INTO user (user_name, password, surname, company, nif, phone, email) VALUES ('${user_name}', '${hash}', "${surname}", "${company}", "${nif}", "${phone}", '${email}')`;
+        let sql = `INSERT INTO user (user_name, password, surname, company, nif, phone, email, position, country, currency) VALUES ('${user_name}', '${hash}', "${surname}", "${company}", "${nif}", "${phone}", '${email}', "", "", "")`;
 
         connection.query(sql, (error, result) => {
           console.log(error);
@@ -111,7 +111,7 @@ class userController {
   // localhost:4000/users/editUser/:user_id
   editUser = (req, res) => {
     let user_id = req.params.user_id;
-    
+
     const {
       user_name,
       surname,
@@ -167,7 +167,6 @@ class userController {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
-
 }
 
 module.exports = new userController();

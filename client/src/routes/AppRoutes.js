@@ -48,14 +48,14 @@ export const AppRoutes = ({
 
   //esto es para modificar usuarios
   const [userModificate, setUserModificate] = useState();
- 
+
   //esto es para la obtener la información de un proyecto
   const [oneProject, setOneProject] = useState();
 
   // esto es para cuando compramos un proyecto
   const [buyProject, setBuyProject] = useState();
 
-  // con esto nos traemos las imagenes 
+  // con esto nos traemos las imagenes
   const [images, setImages] = useState(false);
 
   return (
@@ -66,8 +66,6 @@ export const AppRoutes = ({
           setIsLogged={setIsLogged}
           user={user}
           setUser={setUser}
-          userModificate={userModificate}
-          setUserModificate={setUserModificate}
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -83,13 +81,7 @@ export const AppRoutes = ({
           <Route
             path="/adminusers"
             element={
-              <AdminUsers
-                user={user}
-                resetUser={resetUser}
-                setResetUser={setResetUser}
-                userModificate={userModificate}
-                setUserModificate={setUserModificate}
-              />
+              <AdminUsers user={user} setUserModificate={setUserModificate} />
             }
           />
           <Route path="/*" element={<ErrorPage />} />
@@ -99,7 +91,7 @@ export const AppRoutes = ({
               <AdminProjectState user={user} setIsLogged={setIsLogged} />
             }
           />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/:admin_id" element={<Admin />} />
           <Route
             path="/admintree"
             element={<AdminTree setIsLogged={setIsLogged} />}
@@ -160,28 +152,61 @@ export const AppRoutes = ({
 
           <Route path="/user" element={<User />}>
             <Route
-              path="" element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
+              path=""
+              element={
+                <MyProjects
+                  projects={projects}
+                  user={user}
+                  buyProject={buyProject}
+                  setBuyProject={setBuyProject}
+                  setResetUser={setResetUser}
+                  resetUser={resetUser}
+                  setImages={setImages}
+                  images={images}
+                />
+              }
+            />
             <Route
               path="myprojects"
-              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
+              element={
+                <MyProjects
+                  projects={projects}
+                  user={user}
+                  buyProject={buyProject}
+                  setBuyProject={setBuyProject}
+                  setResetUser={setResetUser}
+                  resetUser={resetUser}
+                  setImages={setImages}
+                  images={images}
+                />
+              }
+            />
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
             <Route path="myaccount" element={<MyAccount />} />
           </Route>
 
           <Route
-            path="/getEditUser"
+            path="/getEditUser/:user_id"
             element={
               <EditUser
                 user={user}
                 setUser={setUser}
                 setIsLogged={setIsLogged}
                 userModificate={userModificate}
-                setUserModificate={setUserModificate}
               />
             }
           />
-          <Route path="/editusernavbar" element={<EditUserNavbar user={user}  resetUser={resetUser} setResetUser={setResetUser} />} />
+          <Route
+            path="/editusernavbar"
+            element={
+              <EditUserNavbar
+                user={user}
+                resetUser={resetUser}
+                setResetUser={setResetUser}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

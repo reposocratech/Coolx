@@ -21,12 +21,9 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
   const [modalDelete, setModalDelete] = useState(false);
   const [modalBuyer, setModalBuyer] = useState(false);
   const [allUsers, setAllUsers] = useState();
-
   const [modalEdit, setModalEdit] = useState(false);
-
   const [tablaBusqueda, setTablaBusqueda] = useState([]);
   const [busqueda, setBusqueda] = useState("");
-  const [orderProjects, setOrderProjects] = useState();
 
   const navigate = useNavigate();
 
@@ -58,23 +55,34 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
   }, [resetProjects]);
 
   useEffect(() => {
-    const AUTH_TOKEN = window.localStorage.getItem("token");
-    axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
+    const token = window.localStorage.getItem("infocoolx");
 
-    axios
-      .get(`http://localhost:4000/admin/${user.user_id}/allUsers`)
+    if (token) {
+      setIsLogged(true);
 
-      .then((res) => {
-        setAllUsers(res.data);
-        console.log(res);
-      })
+      const { id, type } = jwtDecode(token).user;
 
-      .catch((err) => {
-        console.log(err);
-      });
+      if (type === 1) {
+        axios
+          .get(`http://localhost:4000/admin/${id}/allUsers`)
+
+          .then((res) => {
+            setAllUsers(res.data);
+            console.log(res);
+          })
+
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        alert("No tienes permiso de administrador");
+      }
+    } else {
+      alert("Debes iniciar sección como administrador");
+    }
   }, []);
 
-  console.log(allUsers);
+  // console.log(allUsers);
 
   // console.log(allProjects.length);
 
@@ -193,50 +201,63 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                   placeholder="Buscar empresa"
                   value={busqueda}
                   onChange={handleChange}
+                />
+              </Col>
+            </Row>
 
-                  
-                  />
-            
-            </Col>
-          </Row>
+            <Row className="m-0 mt-3">
+              <Table striped>
+                <thead className="table-projects">
+                  <tr>
+                    <th>
+                      Id{" "}
+                      <button onClick={handleOrderId}>
+                        <img src="/assets/icons/arrow_white.svg" />
+                      </button>
+                    </th>
+                    <th>
+                      Nombre{" "}
+                      <button onClick={handleOrderName}>
+                        <img src="/assets/icons/arrow_white.svg" />
+                      </button>
+                    </th>
+                    <th>
+                      Localización{" "}
+                      <button onClick={handleOrderLocal}>
+                        <img src="/assets/icons/arrow_white.svg" />
+                      </button>
+                    </th>
+                    <th>Id Usuario</th>
+                    <th>
+                      Estado{" "}
+                      <button onClick={handleOrderStatus}>
+                        <img src="/assets/icons/arrow_white.svg" />
+                      </button>
+                    </th>
+                    <th>Borrar</th>
+                    <th>Más información</th>
+                    <th>Editar</th>
+                    <th>Asignar proyecto a las empresas</th>
+                  </tr>
+                </thead>
+                <tbody className="list-text">
+                  {allProjects &&
+                    allProjects.map((project, index) => (
+                      <tr key={project.project_id}>
+                        <td>{project.project_id}</td>
+                        <td>{project.project_name}</td>
+                        <td>{project.location}</td>
+                        <td>{project.user_id}</td>
 
-          <Row className="m-0 mt-3">
-            <Table striped >
-              <thead className="table-projects">
-                <tr>
-                
-             
-                  <th>Id <button onClick={handleOrderId}><img src="/assets/icons/arrow_white.svg"/></button></th>
-                  <th>Nombre <button onClick={handleOrderName}><img src="/assets/icons/arrow_white.svg"/></button></th>
-                  <th>Localización <button onClick={handleOrderLocal}><img src="/assets/icons/arrow_white.svg"/></button></th>
-                   <th>Id Usuario</th>
-                  <th>Estado <button onClick={handleOrderStatus}><img src="/assets/icons/arrow_white.svg"/></button></th>
-                  <th>Borrar</th>
-                  <th>Más información</th>
-                  <th>Editar</th>
-                  <th>Asignar proyecto a las empresas</th>
-                </tr>
-              </thead>
-              <tbody className="list-text">
-                {allProjects &&
-                  allProjects.map((project, index) => (
-
-                    <tr key={project.project_id}>
-                      <td>{project.project_id}</td>
-                      <td>{project.project_name}</td>
-                      <td>{project.location}</td>
-                      <td>{project.user_id}</td>
-
-                      <td>
-                        <div className="status-col">
-                          <p>
-                            {project.status === 0
-                              ? "Registrado"
-                              : project.status === 1
-                              ? "Calculando"
-                              : "Completado"}
-                          </p>
-                          
+                        <td>
+                          <div className="status-col">
+                            <p>
+                              {project.status === 0
+                                ? "Registrado"
+                                : project.status === 1
+                                ? "Calculando"
+                                : "Completado"}
+                            </p>
 
                             <Button
                               type="button"
@@ -248,12 +269,12 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                                 alt="Edit project state"
                               />
                             </Button>
-                        </div>
+                          </div>
                         </td>
                         <td>
                           <div>
                             <Button
-                              type="button" 
+                              type="button"
                               className="delete-project"
                               onClick={() => handleDeleteModal(project)}
                             >
@@ -262,89 +283,84 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                           </div>
                         </td>
 
-                
-                      <td>
-                      <Button
-                          type="button"
-                          className="info-project"
-                          onClick={() => handleModal(project)}
-                        >
-                          Más info
-                        </Button>
-                      </td>
+                        <td>
+                          <Button
+                            type="button"
+                            className="info-project"
+                            onClick={() => handleModal(project)}
+                          >
+                            Más info
+                          </Button>
+                        </td>
 
-                      <td>
-                        <Button
-                          type="button"
-                          className="edit-project"
-                          onClick={() => handleEditModal(project)}
-                        >
-                          Editar
-                        </Button>
-                      </td>
-                      <td>
-                        <Button
-                          type="button"
-                          className="assign-project"
-                          onClick={() => handleCompany(project)}      
-                        >
-                          Asignar empresa
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-              
-            </Table>
-            {/* <h5>Cantidad de proyectos: {allProjects.length}</h5> */}
-          </Row>
-        </Container>
+                        <td>
+                          <Button
+                            type="button"
+                            className="edit-project"
+                            onClick={() => handleEditModal(project)}
+                          >
+                            Editar
+                          </Button>
+                        </td>
+                        <td>
+                          <Button
+                            type="button"
+                            className="assign-project"
+                            onClick={() => handleCompany(project)}
+                          >
+                            Asignar empresa
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+              {/* <h5>Cantidad de proyectos: {allProjects.length}</h5> */}
+            </Row>
+          </Container>
 
-        <AdminProjectModal
-          onHide={() => setOpenModal(false)}
-          show={openModal}
-          projectModal={projectModal}
-        />
+          <AdminProjectModal
+            onHide={() => setOpenModal(false)}
+            show={openModal}
+            projectModal={projectModal}
+          />
 
-        <AdminStatusModal
-          onHide={() => setModalState(false)}
-          show={modalState}
-          projectModal={projectModal}
-          setModalState={setModalState}
-          setResetProjects={setResetProjects}
-          resetProjects={resetProjects}
-        />
+          <AdminStatusModal
+            onHide={() => setModalState(false)}
+            show={modalState}
+            projectModal={projectModal}
+            setModalState={setModalState}
+            setResetProjects={setResetProjects}
+            resetProjects={resetProjects}
+          />
 
-        <AdminDeleteModal
-          onHide={() => setModalDelete(false)}
-          setModalDelete={setModalDelete}
-          show={modalDelete}
-          projectModal={projectModal}
-          setResetProjects={setResetProjects}
-          resetProjects={resetProjects}
-        />
+          <AdminDeleteModal
+            onHide={() => setModalDelete(false)}
+            setModalDelete={setModalDelete}
+            show={modalDelete}
+            projectModal={projectModal}
+            setResetProjects={setResetProjects}
+            resetProjects={resetProjects}
+          />
 
-        <AdminCompany
-          onHide={() => setModalBuyer(false)}
-          show={modalBuyer}
-          setModalBuyer={setModalBuyer}
-          allUsers={allUsers}
-          projectModal={projectModal}
-          setResetProjects={setResetProjects}
-          resetProjects={resetProjects}
-
-        />
-        <AdminEditModal 
-          onHide={() => setModalEdit(false)}
-          setModalEdit={setModalEdit}
-          show={modalEdit}
-          projectModal={projectModal}
-          setResetProjects={setResetProjects}
-          resetProjects={resetProjects}
-          setProjectModal={setProjectModal}
-        
-        />  
-
+          <AdminCompany
+            onHide={() => setModalBuyer(false)}
+            show={modalBuyer}
+            setModalBuyer={setModalBuyer}
+            allUsers={allUsers}
+            projectModal={projectModal}
+            setResetProjects={setResetProjects}
+            resetProjects={resetProjects}
+          />
+          <AdminEditModal
+            onHide={() => setModalEdit(false)}
+            setModalEdit={setModalEdit}
+            show={modalEdit}
+            projectModal={projectModal}
+            setResetProjects={setResetProjects}
+            resetProjects={resetProjects}
+            setProjectModal={setProjectModal}
+          />
         </div>
       </div>
       <Footer />
