@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, Button, Row, Col } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import "./navbar.scss";
 
-export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
+export const NavBarMain = ({ setIsLogged, setUser, user }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -32,44 +32,44 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto barraMobile">
               <Nav.Link className="sasa">
-                <Col md={12} >
+                <Col md={12}>
                   <Button className="avatar-btn" onClick={handleNavigate}>
-                      <p>
-                        {user && user.user_name} {user && user.surname}
-                      </p>
+                    <p>
+                      {user && user.user_name} {user && user.surname}
+                    </p>
                   </Button>
 
-                  {!isLogged &&
-                  
-                  <Button className="sasa" onClick={() => navigate(`/login`)}>
-                       <p>Iniciar sesión</p>
-                  </Button>
-                  } 
-                  
+                  {!user && (
+                    <Button className="sasa" onClick={() => navigate(`/login`)}>
+                      <p>Iniciar sesión</p>
+                    </Button>
+                  )}
                 </Col>
-              </Nav.Link> 
-      
-              {isLogged && 
-              <Nav.Link className="sasa" >
-                <Col md={12} >
-                     <Button onClick={()=> navigate("/editusernavbar")}>
-                          <p>Editar</p>
-                      </Button> 
-                </Col>
-              </Nav.Link>}
+              </Nav.Link>
 
-              {isLogged && 
-              <Nav.Link className="sasa" >
-              <Col md={12} >
-                <Button onClick={handleLogout}>
-                    <p>Logout</p>
-                </Button>
-              </Col>
-              </Nav.Link>}
+              {user && (
+                <Nav.Link className="sasa">
+                  <Col md={12}>
+                    <Button onClick={() => navigate("/editusernavbar")}>
+                      <p>Editar</p>
+                    </Button>
+                  </Col>
+                </Nav.Link>
+              )}
+
+              {user && (
+                <Nav.Link className="sasa">
+                  <Col md={12}>
+                    <Button onClick={handleLogout}>
+                      <p>Logout</p>
+                    </Button>
+                  </Col>
+                </Nav.Link>
+              )}
             </Nav>
 
             <Nav className="ms-auto barraBig">
-              {!isLogged ? (
+              {!user ? (
                 <div>
                   <Button
                     className="boton-sesion me-3"
@@ -96,7 +96,7 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
                         </Row>
                         <Row className="btns">
                           <Col md={8} className="d-flex justify-content-end">
-                            <Button onClick={()=> navigate("/editusernavbar")}>
+                            <Button onClick={() => navigate("/editusernavbar")}>
                               <p>Editar</p>
                             </Button>
                           </Col>
@@ -107,7 +107,6 @@ export const NavBarMain = ({ isLogged, setIsLogged, setUser, user }) => {
                           </Col>
                         </Row>
                       </Col>
-
 
                       <Col md={3} className="d-flex align-items-center p-0">
                         <div className="avatar-user me-2">
