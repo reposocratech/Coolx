@@ -12,12 +12,10 @@ import "./projectform.scss";
 import axios from "axios";
 import { Footer } from "../../pages/home/Footer";
 
-export const ProjectForm = ({ user }) => {
+export const ProjectForm = ({ user, resetUser, setResetUser }) => {
   const [projectFiles, setProjectFiles] = useState();
-  const [id, setId] = useState(user && user.user_id);
   const [submitButton, setSubmitButton] = useState(false);
   const [havePic, setHavePic] = useState(false);
-
   const [newProject, setNewProject] = useState({
     projectName: "",
     projectDescription: "",
@@ -28,20 +26,17 @@ export const ProjectForm = ({ user }) => {
     profit: "",
     projectCost: "",
     yearPlanting: "",
-    user_id: id,
   });
 
   const navigate = useNavigate();
 
-  useEffect(() => {}, [user]);
-
-  // console.log(id);
-  // console.log("esto id de newproject " + newProject.user_id);
+  // console.log(user?.user_id);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
-    // console.log(e.target);
+    console.log(e.target);
+
     const {
       projectName,
       projectDescription,
@@ -53,6 +48,7 @@ export const ProjectForm = ({ user }) => {
       projectCost,
       yearPlanting,
     } = newProject;
+
     if (
       projectName &&
       projectDescription &&
@@ -95,9 +91,9 @@ export const ProjectForm = ({ user }) => {
         newFormData
       )
       .then((res) => {
-        console.log(res);
-        navigate("/succes2");
-        // setResetUser(!resetUser);
+        console.log("res project FINALLLLL", res);
+        navigate(`/succes2/${res.data.insertId}`);
+        setResetUser(!resetUser);
       })
       .catch((err) => {
         console.log(err);
@@ -289,7 +285,6 @@ export const ProjectForm = ({ user }) => {
             </div>
           </Row>
 
-
           <Row>
             <div>
               <Col className="colocar-create mb-5">
@@ -308,7 +303,6 @@ export const ProjectForm = ({ user }) => {
               </Col>
             </div>
           </Row>
-
         </Container>
       </div>
 

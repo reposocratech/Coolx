@@ -1,11 +1,15 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./errorpage.scss";
 
-export const Succes2 = ({ projects }) => {
+export const Succes2 = () => {
   const navigate = useNavigate();
-  // console.log(projects[projects.length - 1]);
+
+  const { project_id } = useParams();
+
+  // console.log("ergegegeg", typeof project_id);
+
   return (
     <div>
       <Container fluid className="fondo-error">
@@ -22,9 +26,7 @@ export const Succes2 = ({ projects }) => {
             </h4>
             <button
               className="button-error"
-              onClick={() =>
-                navigate(`/project/${projects[projects.length - 1].project_id}`)
-              }
+              onClick={() => navigate(`/project/${project_id}`)}
             >
               Acceder al proyecto
             </button>
