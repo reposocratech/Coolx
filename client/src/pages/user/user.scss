@@ -49,8 +49,14 @@
   .selected {
     background: #e0ecf8;
   }
+  .selected:hover {
+    background-color: #e0ecf8 !important;
+  }
   .unselected {
     background: transparent;
+  }
+  .unselected:hover {
+    background-color: #abc2d9 !important;
   }
 }
 

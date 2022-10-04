@@ -1,13 +1,15 @@
 import React from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Footer } from "../home/Footer";
 import "./admin.scss";
 import { AdminUsers } from "./AdminUsers";
 
 export const Admin = ({ user }) => {
   const navigate = useNavigate();
-  // console.log("esto es user: " + user.user_name[0]);
+  console.log("esto es user: ", user?.user_name);
+
+  const { admin_id } = useParams();
 
   return (
     <>
@@ -54,7 +56,7 @@ export const Admin = ({ user }) => {
             >
               <Button
                 className="admin-tools"
-                onClick={() => navigate("/adminusers")}
+                onClick={() => navigate(`/adminusers`)}
               >
                 <div className="blue-circle">
                   <img src="/assets/icons/all_users.svg" alt="All users icon" />
