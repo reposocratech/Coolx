@@ -39,24 +39,28 @@ export const NavBarMain = ({ setIsLogged, setUser, user }) => {
                     </p>
                   </Button>
 
+
                   {!user && (
-                    <Button className="sasa" onClick={() => navigate(`/login`)}>
-                      <p>Iniciar sesión</p>
-                    </Button>
-                  )}
+                  
+                  <Button className="sasa" onClick={() => navigate(`/login`)}>
+                       <p>Iniciar sesión</p>
+                  </Button>
+                 )} 
+                  
+                </Col>
+              </Nav.Link> 
+      
+              {user && (
+              <Nav.Link className="sasa" >
+                <Col md={12} >
+                     <Button onClick={()=> navigate("/editusernavbar")}>
+                          <p>Editar</p>
+                      </Button> 
+
                 </Col>
               </Nav.Link>
-
-              {user && (
-                <Nav.Link className="sasa">
-                  <Col md={12}>
-                    <Button onClick={() => navigate("/editusernavbar")}>
-                      <p>Editar</p>
-                    </Button>
-                  </Col>
-                </Nav.Link>
               )}
-
+       
               {user && (
                 <Nav.Link className="sasa">
                   <Col md={12}>
@@ -66,6 +70,7 @@ export const NavBarMain = ({ setIsLogged, setUser, user }) => {
                   </Col>
                 </Nav.Link>
               )}
+
             </Nav>
 
             <Nav className="ms-auto barraBig">
