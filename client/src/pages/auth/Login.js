@@ -6,16 +6,13 @@ import jwtDecode from "jwt-decode";
 import "./login.scss";
 import { Footer } from "../home/Footer";
 
-export const Login = ({ setIsLogged }) => {
-
+export const Login = ({ user, setUser }) => {
   const [message, setMessage] = useState("");
-  const [messageOut,setMessageOut] = useState("");
-
+  const [messageOut, setMessageOut] = useState("");
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
-
   const [submitButton, setSubmitButton] = useState(false);
 
   const navigate = useNavigate();
@@ -23,10 +20,8 @@ export const Login = ({ setIsLogged }) => {
   const handleChange = (e) => {
     const { value, name } = e.target;
     setLogin({ ...login, [name]: value });
-    setMessage("")
-    setMessageOut("")
-
-    // console.log(login);
+    setMessage("");
+    setMessageOut("");
 
     const { email, password } = login;
     if (email && password) {
@@ -37,20 +32,11 @@ export const Login = ({ setIsLogged }) => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
 
-    // e.preventDefault();
-    
     if (login.email === "" || login.password === "") {
-      setMessage("Debe completar todos los campos!")
-      
-
-      // if (email === "" || password === "") {
-      //   setMessage(true);
-      // } else {
-      //   setMessage(false);
-    } 
-    
-    else {
+      setMessage("Debe completar todos los campos!");
+    } else {
       axios
         .post("http://localhost:4000/users/login", login)
 
@@ -62,19 +48,16 @@ export const Login = ({ setIsLogged }) => {
 
           console.log("Esto es la decoficacion del token ", jwtDecode(token));
 
+          const id = jwtDecode(token).user.id;
+          loadUser(id);
+
           const type = jwtDecode(token).user.type;
-          console.log("Este es el tipo del usuario: ", type);
-
-          // Para indicar que está conectado con un promp
-
-          setIsLogged(true);
 
           // replace:true para evitar volver atrás al estar logueado
-
           type === 0
             ? navigate("/user", { replace: true })
             : type === 1
-            ? navigate("/admin", { replace: true })
+            ? navigate(`/admin/${id}`, { replace: true })
             : navigate("/error");
 
           //redireccionar a home
@@ -89,9 +72,22 @@ export const Login = ({ setIsLogged }) => {
           } else {
             navigate("/error");
           }
-           setMessageOut("Contraseña y/o usuario incorrectos");
+          setMessageOut("Contraseña y/o usuario incorrectos");
         });
     }
+  };
+
+  const loadUser = (id) => {
+    axios
+      .get(`http://localhost:4000/users/oneUser/${id}`)
+      .then((res) => {
+        setUser(res.data.resultUser[0]);
+        // console.log(res.data.resultUser[0].user_type, "TYPEEEEEEEE");
+        // console.log(typeof res.data.resultUser[0].user_type);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -112,7 +108,6 @@ export const Login = ({ setIsLogged }) => {
                 </div>
               </div>
 
-
               <Form.Group controlId="loginForm">
                 <Form className="formAuth-login">
                   <Form.Label className="label-login">
@@ -127,9 +122,9 @@ export const Login = ({ setIsLogged }) => {
                     onChange={handleChange}
                   />
                   <div style={{ color: "darkblue" }}>{message}</div>
-                  <div style={{color:"darkblue"}}>{messageOut}</div>
-                   <br />
-                   
+                  <div style={{ color: "darkblue" }}>{messageOut}</div>
+                  <br />
+
                   <Form.Label className="label-login">Contraseña</Form.Label>
                   <Form.Control
                     className=""
@@ -140,7 +135,7 @@ export const Login = ({ setIsLogged }) => {
                     onChange={handleChange}
                   />
 
-                   <div style={{color:"darkblue"}}>{message}</div>
+                  <div style={{ color: "darkblue" }}>{message}</div>
 
                   <p>¿Has olvidado tu contraseña?</p>
                 </Form>

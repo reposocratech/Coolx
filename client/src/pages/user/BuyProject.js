@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import Table from "react-bootstrap/Table";
 import axios from 'axios'
+import "./buyproject.scss"
 
 
 export const BuyProject = ({user, setBuyProject, buyProject}) => {
@@ -61,7 +62,7 @@ export const BuyProject = ({user, setBuyProject, buyProject}) => {
             </Col>
           </Row>
 
-          <Row>
+          <Row className='table-buy-project mt-2'>
             <Table striped>
               <thead>
                 <tr>
@@ -82,7 +83,7 @@ export const BuyProject = ({user, setBuyProject, buyProject}) => {
                       <td>{project.project_name}</td>
                       <td>{project.location}</td>
                       <td>
-                        <Button
+                        <Button className='buy-project-list'
                         onClick={()=>handleBuy(project)}
                         >
                           Comprar este proyecto

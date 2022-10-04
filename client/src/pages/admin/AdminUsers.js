@@ -1,16 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import "./adminusers.scss";
 import Table from "react-bootstrap/Table";
 import { AdminUsersInfo } from "../../components/modal/AdminUsersInfo";
 import { Footer } from "../home/Footer";
+import jwtDecode from "jwt-decode";
 
-
-export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) => {
-
-  
+export const AdminUsers = ({ user, setUserModificate }) => {
   const [allUsers, setAllUsers] = useState([]);
   const [tablaBusqueda, setTablaBusqueda] = useState([]);
   const [busqueda, setBusqueda] = useState("");
@@ -20,21 +18,33 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
   const navigate = useNavigate();
 
   useEffect(() => {
-    const AUTH_TOKEN = window.localStorage.getItem("token");
-    axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
+    // const AUTH_TOKEN = window.localStorage.getItem("token");
+    // axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
+    const token = window.localStorage.getItem("infocoolx");
+    if (token) {
+      // setIsLogged(true);
 
-    axios
-      .get(`http://localhost:4000/admin/${user.user_id}/allUsers`)
+      const { id, type } = jwtDecode(token).user;
 
-      .then((res) => {
-        setAllUsers(res.data);
-        console.log(res, "BUSQUEDA RES.DATA");
-        setTablaBusqueda(res.data);
-      })
+      if (type === 1) {
+        axios
+          .get(`http://localhost:4000/admin/${user?.user_id}/allUsers`)
 
-      .catch((err) => {
-        console.log(err);
-      });
+          .then((res) => {
+            setAllUsers(res.data);
+            console.log(res, "BUSQUEDA RES.DATA");
+            setTablaBusqueda(res.data);
+          })
+
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        alert("No tienes permiso de administrador");
+      }
+    } else {
+      alert("Debes iniciar sección como administrador");
+    }
   }, []);
 
   // console.log(allUsers);
@@ -49,26 +59,29 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
     filtrar(e.target.value);
   };
 
-  const filtrar= (terminoBusqueda) => {
+  const filtrar = (terminoBusqueda) => {
     let filtrado = tablaBusqueda.filter((elemento) => {
-      if(elemento.company.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+      if (
+        elemento.company
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase())
+      ) {
         return elemento;
-      } 
-       
-    })
-    setAllUsers(filtrado)
-  }
-
-
+      }
+    });
+    setAllUsers(filtrado);
+  };
 
   return (
     <>
+
     <div className="wrapper">
       <div className="getdown">
         <Container fluid>
           <Row>
             <Col className="adm-proj-state-header">
-              <Button onClick={() => navigate(-1)}>
+              <Button onClick={() => navigate("/admin")}>
                 <img src="./assets/icons/arrow_left.svg" />
               </Button>
               <h1>Todas nuestras empresas</h1>
@@ -79,15 +92,14 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
           <Row>
             <Col className="barra-busq-user">
             <input
+
                   className="form-control inputBuscar "
-                  type='text'
-                  placeholder='Buscar usuario'
+                  type="text"
+                  placeholder="Buscar usuario"
                   value={busqueda}
                   onChange={handleChange}
                   />
-                  {/* <Button className="btn-btn-success" onClick={()=>navigate(-1)}>
-                  Volver
-                  </Button> */}
+                
             </Col>
           </Row>
 
@@ -102,8 +114,8 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
                   <th>País</th>
                   <th>Teléfono</th>
                   <th>Email</th>
-                  <th>Mostrar toda la informacion</th>
-                  <th>Mas información</th>
+                  <th>Más Info</th>
+                  <th>Editar usuario</th>
                 </tr>
               </thead>
 
@@ -122,7 +134,7 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
                         <Button className="info-users" onClick={()=>{
                             handleModal(usuario);
                         }
-                          } >Información restante</Button>
+                          } >Más info</Button>
                       </td>
                       <td>
                         <Button className="edit-users" onClick={()=> {
@@ -152,6 +164,7 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
            show={openModal}
            userInfo={userInfo}
         />
+
         </div>
       </div>
       <Footer />

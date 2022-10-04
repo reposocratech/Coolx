@@ -47,6 +47,10 @@ router.put("/changeUser/:project_id/:user_id", projectControllers.changeUser);
 // localhost:4000/project/onlyAdmin
 router.post("/onlyAdmin", projectControllers.onlyAdmin);
 
+// Mostrar todas las imagenes de un proyecto
+// localhost:4000/project/images/:project_id
+router.get("/images/:project_id", projectControllers.getImages)
+
 // Generar PDF de un proyecto
 // localhost:4000/project/:project_id/pdf
 router.get("/:project_id/pdf", puppeteerPdf.descargar);

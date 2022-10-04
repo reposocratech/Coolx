@@ -11,7 +11,8 @@ var adminRouter = require("./routes/admin");
 var treeRouter = require("./routes/tree");
 var adminRouter = require("./routes/admin");
 var contactRouter = require("./routes/contact");
-var stripeRouter = require("./routes/stripe")
+var stripeRouter = require("./routes/stripe");
+
 
 
 var app = express();
