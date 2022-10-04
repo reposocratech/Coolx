@@ -2,16 +2,34 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./edituser.scss";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Footer } from "../home/Footer";
 import { UserDeleteModal } from "../../components/modal/UserDeleteModal";
 
-export const EditUser = ({ setIsLogged, userModificate }) => {
-  const [editUser, setEditUser] = useState(userModificate);
+export const EditUser = ({ userModificate }) => {
+  const [editUser, setEditUser] = useState();
   const [modalUserDelete, setModalUserDelete] = useState(false);
   const [sendInfo, setSendInfo] = useState();
-  
+
   const navigate = useNavigate();
+
+  const { user_id } = useParams();
+  // console.log(userModificate, "......");
+  useEffect(() => {
+    if (userModificate) {
+      setEditUser(userModificate);
+    } else {
+      axios
+        .get(`http://localhost:4000/users/oneUser/${user_id}`)
+        .then((res) => {
+          console.log("es resss", res.data.resultUser[0]);
+          setEditUser(res.data.resultUser[0]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
 
   const handleDeleteModal = () => {
     setSendInfo(userModificate);
@@ -23,12 +41,12 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
     setEditUser({ ...editUser, [name]: value });
   };
 
-  console.log(editUser);
+  // console.log(editUser);
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:4000/users/editUser/${userModificate.user_id}`, {
+      .put(`http://localhost:4000/users/editUser/${user_id}`, {
         register: { ...editUser },
       })
 
@@ -89,116 +107,112 @@ export const EditUser = ({ setIsLogged, userModificate }) => {
           <Row>
             <div className="d-flex justify-content-center">
               <Col md={6} lg={4} className="contPpalEditUser">
-                <Form.Group>
-                  <Form className="editUserForm d-flex flex-column">
-                    <Row>
-                      <Col md={6}>
-                        <Form.Label className="label-edit">Nombre</Form.Label>
-                        <Form.Control
-                          className="mb-3"
-                          type="text"
-                          name="user_name"
-                          autoComplete="off"
-                          value={editUser?.user_name}
-                          onChange={handleChange}
-                        />
+                {editUser && (
+                  <Form.Group>
+                    <Form className="editUserForm d-flex flex-column">
+                      <Row>
+                        <Col md={6}>
+                          <Form.Label className="label-edit">Nombre</Form.Label>
+                          <Form.Control
+                            className="mb-3"
+                            type="text"
+                            name="user_name"
+                            autoComplete="off"
+                            value={editUser.user_name}
+                            onChange={handleChange}
+                          />
 
-                        <Form.Label className="label-edit mb-2">
-                          Apellidos
-                        </Form.Label>
-                        <Form.Control
-                          className="mb-3"
-                          type="text"
-                          name="surname"
-                          autoComplete="off"
-                          value={editUser?.surname}
-                          onChange={handleChange}
-                        />
+                          <Form.Label className="label-edit mb-2">
+                            Apellidos
+                          </Form.Label>
+                          <Form.Control
+                            className="mb-3"
+                            type="text"
+                            name="surname"
+                            autoComplete="off"
+                            value={editUser.surname}
+                            onChange={handleChange}
+                          />
 
-                        <Form.Label className="label-edit mb-2">
-                          Empresa
-                        </Form.Label>
-                        <Form.Control
-                          className="mb-3"
-                          type="text"
-                          name="company"
-                          autoComplete="off"
-                          value={editUser?.company}
-                          onChange={handleChange}
-                        />
+                          <Form.Label className="label-edit mb-2">
+                            Empresa
+                          </Form.Label>
+                          <Form.Control
+                            className="mb-3"
+                            type="text"
+                            name="company"
+                            autoComplete="off"
+                            value={editUser.company}
+                            onChange={handleChange}
+                          />
 
-                        <Form.Label className="label-edit mb-2">
-                          NIF/ CIF
-                        </Form.Label>
-                        <Form.Control
-                          className="mb-3"
-                          type="text"
-                          name="nif"
-                          autoComplete="off"
-                          value={editUser?.nif}
-                          onChange={handleChange}
-                        />
-                      </Col>
+                          <Form.Label className="label-edit mb-2">
+                            NIF/ CIF
+                          </Form.Label>
+                          <Form.Control
+                            className="mb-3"
+                            type="text"
+                            name="nif"
+                            autoComplete="off"
+                            value={editUser.nif}
+                            onChange={handleChange}
+                          />
+                        </Col>
 
-                      <Col md={6}>
-                        <Form.Label className="label-edit mb-2">
-                          Puesto de trabajo
-                        </Form.Label>
-                        <Form.Control
-                          className="mb-3"
-                          type="text"
-                          name="position"
-                          autoComplete="off"
-                          value={
-                            editUser.position != "null" ? editUser.position : ""
-                          }
-                          onChange={handleChange}
-                        />
+                        <Col md={6}>
+                          <Form.Label className="label-edit mb-2">
+                            Puesto de trabajo
+                          </Form.Label>
+                          <Form.Control
+                            className="mb-3"
+                            type="text"
+                            name="position"
+                            autoComplete="off"
+                            value={editUser.position}
+                            onChange={handleChange}
+                          />
 
-                        <Form.Label className="label-edit mb-2">
-                          Teléfono
-                        </Form.Label>
-                        <Form.Control
-                          className="mb-3"
-                          type="text"
-                          name="phone"
-                          autoComplete="off"
-                          value={editUser?.phone}
-                          onChange={handleChange}
-                        />
+                          <Form.Label className="label-edit mb-2">
+                            Teléfono
+                          </Form.Label>
+                          <Form.Control
+                            className="mb-3"
+                            type="text"
+                            name="phone"
+                            autoComplete="off"
+                            value={editUser.phone}
+                            onChange={handleChange}
+                          />
 
-                        <Form.Label className="label-edit mb-2">
-                          País
-                        </Form.Label>
+                          <Form.Label className="label-edit mb-2">
+                            País
+                          </Form.Label>
 
-                        <Form.Control
-                          className="mb-3"
-                          type="text"
-                          name="country"
-                          autoComplete="off"
-                          value={
-                            editUser.country != "null" ? editUser.country : ""
-                          }
-                          onChange={handleChange}
-                        />
-                        <Form.Label className="label-edit mb-2">
-                          Moneda del usuario
-                        </Form.Label>
+                          <Form.Control
+                            className="mb-3"
+                            type="text"
+                            name="country"
+                            autoComplete="off"
+                            value={editUser.country}
+                            onChange={handleChange}
+                          />
+                          <Form.Label className="label-edit mb-2">
+                            Moneda del usuario
+                          </Form.Label>
 
-                        <Form.Control
-                          className="mb-3"
-                          type="text"
-                          name="currency"
-                          autoComplete="off"
-                          value={
-                            editUser.currency != "null" ? editUser.currency : ""
-                          }
-                          onChange={handleChange}
-                        />
-                      </Col>
-                    </Row>
-                  </Form>
-                </Form.Group>
+                          <Form.Control
+                            className="mb-3"
+                            type="text"
+                            name="currency"
+                            autoComplete="off"
+                            value={editUser.currency}
+                            onChange={handleChange}
+                          />
+                        </Col>
+                      </Row>
+                    </Form>
+                  </Form.Group>
+                )}
               </Col>
             </div>
           </Row>
