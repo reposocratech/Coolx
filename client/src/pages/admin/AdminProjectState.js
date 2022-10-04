@@ -47,7 +47,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");
@@ -75,7 +75,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");

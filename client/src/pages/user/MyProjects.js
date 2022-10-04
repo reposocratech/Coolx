@@ -11,7 +11,8 @@ export const MyProjects = ({
   buyProject,
   setResetUser,
   resetUser,
-  setImages, images
+  setImages,
+  images,
 }) => {
   useEffect(() => {}, [projects, images]);
 
@@ -27,17 +28,27 @@ export const MyProjects = ({
 
   return (
     <>
-      <Container>
-        <Row>
+      <Container className="h-100">
+        <Row className="h-100">
           <Col md={8} className="card-container">
             <div>
-              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject} setImages={setImages} images={images} />
+              <Tarjeta
+                projects={projects}
+                buyProject={buyProject}
+                setBuyProject={setBuyProject}
+                setImages={setImages}
+                images={images}
+              />
             </div>
           </Col>
 
           <Col md={4} className="add-container">
-            <Button className="add-button" type="button" onClick={handleCheck}>
-              <div>
+            <Button
+              className="add-button m-0"
+              type="button"
+              onClick={handleCheck}
+            >
+              <div className="d-flex flex-column justify-content-center">
                 <div className="add-circle">
                   <h2>+</h2>
                 </div>

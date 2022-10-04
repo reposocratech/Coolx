@@ -57,7 +57,7 @@ export const Login = ({ user, setUser }) => {
           type === 0
             ? navigate("/user", { replace: true })
             : type === 1
-            ? navigate(`/admin/${id}`, { replace: true })
+            ? navigate(`/admin`, { replace: true })
             : navigate("/error");
 
           //redireccionar a home

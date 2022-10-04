@@ -30,13 +30,16 @@ export const NavBarMain = ({ setIsLogged, setUser, user }) => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
+            {/* barra versión mobile */}
             <Nav className="ms-auto barraMobile">
               <Nav.Link className="sasa">
                 <Col md={12}>
                   <Button className="avatar-btn" onClick={handleNavigate}>
-                    <p>
-                      {user && user.user_name} {user && user.surname}
-                    </p>
+                    {user && (
+                      <p>
+                        {user.user_name} {user.surname}
+                      </p>
+                    )}
                   </Button>
 
                   {!user && (
@@ -50,7 +53,11 @@ export const NavBarMain = ({ setIsLogged, setUser, user }) => {
               {user && (
                 <Nav.Link className="sasa">
                   <Col md={12}>
-                    <Button onClick={() => navigate("/editusernavbar")}>
+                    <Button
+                      onClick={() =>
+                        navigate(`/editusernavbar/${user.user_id}`)
+                      }
+                    >
                       <p>Editar</p>
                     </Button>
                   </Col>
@@ -90,13 +97,17 @@ export const NavBarMain = ({ setIsLogged, setUser, user }) => {
                         <Row>
                           <Col md={12} className="user-name ">
                             <p>
-                              {user && user.user_name} {user && user.surname}
+                              {user.user_name} {user.surname}
                             </p>
                           </Col>
                         </Row>
                         <Row className="btns">
                           <Col md={8} className="d-flex justify-content-end">
-                            <Button onClick={() => navigate("/editusernavbar")}>
+                            <Button
+                              onClick={() =>
+                                navigate(`/editusernavbar/${user.user_id}`)
+                              }
+                            >
                               <p>Editar</p>
                             </Button>
                           </Col>

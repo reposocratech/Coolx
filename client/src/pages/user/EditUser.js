@@ -5,8 +5,9 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Footer } from "../home/Footer";
 import { UserDeleteModal } from "../../components/modal/UserDeleteModal";
+import jwtDecode from "jwt-decode";
 
-export const EditUser = ({ userModificate }) => {
+export const EditUser = ({ userModificate, setIsLogged, user }) => {
   const [editUser, setEditUser] = useState();
   const [modalUserDelete, setModalUserDelete] = useState(false);
   const [sendInfo, setSendInfo] = useState();
@@ -15,6 +16,23 @@ export const EditUser = ({ userModificate }) => {
 
   const { user_id } = useParams();
   // console.log(userModificate, "......");
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("infocoolx");
+
+    if (token) {
+      setIsLogged(true);
+
+      const { type } = jwtDecode(token).user;
+
+      if (type !== 1) {
+        navigate("/");
+      }
+    } else {
+      alert("Debes iniciar sección como administrador");
+    }
+  }, [user]);
+
   useEffect(() => {
     if (userModificate) {
       setEditUser(userModificate);
