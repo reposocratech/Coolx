@@ -36,16 +36,15 @@ import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
 import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
 
-export const AppRoutes = () => {
+export const AppRoutes = ({
+  user,
+  setUser,
+  projects,
+  setProjects,
+  resetUser,
+  setResetUser,
+}) => {
   const [isLogged, setIsLogged] = useState(false);
-
-  //información del usuario que se loguea
-  const [user, setUser] = useState();
-
-  const [resetUser, setResetUser] = useState(false);
-
-  //información de todos los proyectos del usuario que se ha logueado
-  const [projects, setProjects] = useState(false);
 
   //esto es para modificar usuarios
   const [userModificate, setUserModificate] = useState();
@@ -58,47 +57,6 @@ export const AppRoutes = () => {
 
   // con esto nos traemos las imagenes 
   const [images, setImages] = useState(false);
-
-  
-
-  useEffect(() => {
-    const token = window.localStorage.getItem("infocoolx");
-
-    if (token) {
-      setIsLogged(true);
-
-      const { id } = jwtDecode(token).user;
-      // console.log(id);
-
-      axios
-        .get(`http://localhost:4000/users/oneUser/${id}`)
-
-        .then((res) => {
-          setUser(res.data.resultUser[0]);
-          setProjects(res.data.resultProject);
-          setImages(true);
-
-          // console.log(res, "soyyyy reeeeesss");
-        })
-
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [isLogged, resetUser]);
-
-    
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <div>
@@ -115,7 +73,7 @@ export const AppRoutes = () => {
           <Route path="/" element={<Home />} />
           <Route
             path="/login"
-            element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
+            element={<Login user={user} setUser={setUser} />}
           />
           <Route path="/admin" element={<Admin />} />
           <Route
@@ -157,7 +115,13 @@ export const AppRoutes = () => {
           />
           <Route
             path="/buyproject"
-            element={<BuyProject user={user} buyProject={buyProject} setBuyProject={setBuyProject}/>}
+            element={
+              <BuyProject
+                user={user}
+                buyProject={buyProject}
+                setBuyProject={setBuyProject}
+              />
+            }
           />
           <Route path="/vegetation" element={<Vegetation />} />
           <Route path="/contact" element={<ContactForm />} />
@@ -167,8 +131,8 @@ export const AppRoutes = () => {
             element={
               <ProjectForm
                 user={user}
-                projects={projects}
-                setProjects={setProjects}
+                resetUser={resetUser}
+                setResetUser={setResetUser}
               />
             }
           />
@@ -182,27 +146,24 @@ export const AppRoutes = () => {
           /> */}
 
           <Route path="/succes1" element={<Succes1 />} />
-          <Route path="/succes2" element={<Succes2 projects={projects} />} />
+          <Route path="/succes2/:project_id" element={<Succes2 />} />
           <Route
             path="/succespayment"
             element={<SuccesPayment projects={projects} />}
           />
-          <Route path="/succes3" element={<Succes3/> } />
+          <Route path="/succes3" element={<Succes3 />} />
 
-          <Route path="/stripe" element={<Stripe buyProject={buyProject} user={user}/>} />
-
-
-       
+          <Route
+            path="/stripe"
+            element={<Stripe buyProject={buyProject} user={user} />}
+          />
 
           <Route path="/user" element={<User />}>
             <Route
-              path=""
-              element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
+              path="" element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
             <Route
               path="myprojects"
               element={<MyProjects projects={projects} user={user} buyProject={buyProject} setBuyProject={setBuyProject} setResetUser={setResetUser} resetUser={resetUser} setImages={setImages} images={images}/>} />
-
-
             <Route path="reports" element={<Reports />} />
             <Route path="messages" element={<Messages />} />
             <Route path="myaccount" element={<MyAccount />} />

@@ -98,6 +98,35 @@
   }
 }
 
+.avatar-user {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+
+  .avatar-btn {
+    width: 100%;
+    height: 100%;
+    background-color: #39b5ff;
+    border-radius: 50%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+    h3 {
+      color: white;
+      font-size: 2rem;
+      text-align: center;
+      margin: 0px;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  }
+}
+
 .barraMobile {
   display: none !important;
   text-align: end;
@@ -121,4 +150,12 @@
   .barraBig {
     display: none !important;
   }
+}
+
+.navbar-toggler {
+  border-color: white !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("../../../public/assets/icons/menu_white.svg") !important;
 }

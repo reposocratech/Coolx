@@ -86,22 +86,36 @@ const CheckoutForm = ({buyProject, user}) => {
 
     return (
     <Container>
-        <Row>
-            <Col>
-            <form onSubmit={handleSubmit} className="card card-body credit">
-                <h3 className='text-center my-2'>Precio: {buyProject.project_cost}</h3>
+        <Row className="justify-content-center">
+            <Col md={7} lg={7} sm={7}>
+            {buyProject && 
+            <form onSubmit={handleSubmit} className="card-body">
+
+                <div className='title-card-info'>
+                     <h3 className='text-center my-2'>Precio: {buyProject.project_cost}</h3>
+
+                    <div>
+                        <img src='/assets/icons/visa_card.svg'/>
+                        <img src='/assets/icons/master_card.svg'/>
+                        <img src='/assets/icons/american_card.svg'/>
+                    </div>
+                     
+                </div>
+               
                 <div className="form-group">
                 <CardElement className='form-control'/>
                 </div>
+               
                 <h5 className='pt-4'>Nombre del proyecto: {buyProject.project_name}</h5>
                 <h5 className='pt-2'>Localización del proyecto: {buyProject.location}</h5>
                 <h5 className='pt-2'>Beneficio del proyecto: {buyProject.profit}</h5>
-                <button className='btn btn-success' disabled={!stripe}> 
+                <button className='buy-projectbutton-card my-2' disabled={!stripe}> 
                 {loading ? (
                     <div className='spinner-border text-light' role="status"><span className='sr-only'></span></div>
                 ) : "Comprar"}
                 </button>
             </form>
+                }
             </Col>
         </Row>
 
@@ -117,10 +131,11 @@ export const Stripe = ({buyProject, user}) => {
 
     return (
         <div className='stripe-fondo'> 
+        {buyProject && 
         <Elements stripe={stripePromise}> 
             <h1 className='pt-5 pb-5'>Nombre del proyecto: {buyProject.project_name}</h1> 
             <CheckoutForm buyProject={buyProject} user={user}/>
-        </Elements>
+        </Elements>}
         </div>
        
     );

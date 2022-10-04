@@ -7,24 +7,20 @@ import { Co2 } from "../../components/project/Co2";
 import { Requirements } from "../../components/project/Requirements";
 import { BlockedInfo } from "../../components/project/BlockedInfo";
 import { ProjectCompleted } from "./ProjectCompleted";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Footer } from "../home/Footer";
 
-export const Project = ({user,}) => {
+export const Project = () => {
   const [projectInfo, setProjectInfo] = useState();
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    let pathname = window.location.pathname;
-    const id = pathname.split("/")[2];
-    // console.log(id);
-
     axios
       .get(`http://localhost:4000/project/${id}`)
       .then((res) => {
-        // console.log(res);
         setProjectInfo(res.data);
         // console.log(res.data);
       })

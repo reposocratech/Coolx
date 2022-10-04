@@ -86,7 +86,7 @@ export const AdminTree = ({ setIsLogged }) => {
           <Col className="admin-tree-title">
 
             <div className='admin-title'>
-              <Button onClick={() => navigate(-1)}><img src='/assets/icons/arrow_left.svg'/></Button>
+              <Button onClick={() => navigate("/admin")}><img src='/assets/icons/arrow_left.svg'/></Button>
               <h1>Listado de arboles</h1>
             </div>
             

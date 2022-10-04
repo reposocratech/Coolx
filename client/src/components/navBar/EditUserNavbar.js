@@ -129,7 +129,7 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
                           type="text"
                           name="position"
                           autoComplete="off"
-                          value={editUser?.position}
+                          value={editUser.position != "null" ? editUser.position : ""}
                           onChange={handleChange}
                        
                         />
@@ -155,7 +155,7 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
                           type="text"
                           name="country"
                           autoComplete="off"
-                          value={editUser?.country}
+                          value={editUser.country != "null" ? editUser.country : ""}
                           onChange={handleChange}
                          
                         />
@@ -166,7 +166,7 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
                           className="mb-3"
                           type="text"
                           autoComplete="off"
-                          value={editUser?.currency}
+                          value={editUser.currency != "null" ? editUser.currency : ""}
                           onChange={handleChange}
                           
                         />

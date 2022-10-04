@@ -68,7 +68,7 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
         <Container fluid>
           <Row>
             <Col className="adm-proj-state-header">
-              <Button onClick={() => navigate(-1)}>
+              <Button onClick={() => navigate("/admin")}>
                 <img src="./assets/icons/arrow_left.svg" />
               </Button>
               <h1>Todas nuestras empresas</h1>
@@ -85,9 +85,7 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
                   value={busqueda}
                   onChange={handleChange}
                   />
-                  {/* <Button className="btn-btn-success" onClick={()=>navigate(-1)}>
-                  Volver
-                  </Button> */}
+                
             </Col>
           </Row>
 
@@ -103,7 +101,7 @@ export const AdminUsers = ({user, setUserModificate, resetUser, setResetUser}) =
                   <th>Teléfono</th>
                   <th>Email</th>
                   <th>Más Info</th>
-                  <th>Mas información</th>
+                  <th>Editar usuario</th>
                 </tr>
               </thead>
 
