@@ -1,5 +1,6 @@
 .adm-proj-state-header {
   margin-top: 27px;
+
   h1 {
     font-weight: 700;
     font-size: 32px;
@@ -32,6 +33,10 @@
     font-weight: bold;
     border: none;
     color: white;
+
+    p {
+      margin-bottom: 0 !important;
+    }
   }
 
   .info-users:hover,
@@ -40,5 +45,76 @@
     background-color: white !important;
     color: #09427d !important;
     box-shadow: inset 0 0 0 2px #09427d !important;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+
+  .name-user-table,
+  .nif-user-table,
+  .country-user-table,
+  .list-item-table,
+  .email-user-table {
+    display: none !important;
+  }
+
+  .edit-users {
+    background-image: url("../../../public/assets/icons/edit_white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+
+    p {
+      display: none;
+    }
+  }
+
+  .info-users {
+    background-image: url("../../../public/assets/icons/info_white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+
+    p {
+      display: none;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 770px) {
+
+  .name-user-table,
+  .nif-user-table,
+  .country-user-table,
+  .list-item-table,
+  .email-user-table {
+    display: none !important;
+  }
+
+  .edit-users {
+    background-image: url("../../../public/assets/icons/edit_white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+
+    p {
+      display: none;
+    }
+  }
+
+  .info-users {
+    background-image: url("../../../public/assets/icons/info_white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+
+    p {
+      display: none;
+    }
   }
 }

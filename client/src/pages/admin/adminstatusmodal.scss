@@ -1,0 +1,15 @@
+.exit-statusproject-modal,
+.save-statusproject-modal {
+    background-color: #09427D !important;
+    border-radius: 50px !important;
+    font-weight: bold !important;
+    border: none !important;
+    color: white !important;
+}
+
+.exit-statusproject-modal:hover,
+.save-statusproject-modal:hover {
+    background-color: white !important;
+    color: #09427d !important;
+    box-shadow: inset 0 0 0 2px #09427d !important;
+}

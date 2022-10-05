@@ -28,12 +28,12 @@ import { BuyProject } from "../pages/user/BuyProject";
 import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
 import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
+import { Footer } from "../pages/home/Footer";
 
 export const AppRoutes = ({
   user,
   setUser,
   projects,
-  setProjects,
   resetUser,
   setResetUser,
 }) => {
@@ -42,14 +42,8 @@ export const AppRoutes = ({
   //esto es para modificar usuarios
   const [userModificate, setUserModificate] = useState();
 
-  //esto es para la obtener la información de un proyecto
-  const [oneProject, setOneProject] = useState();
-
   // esto es para cuando compramos un proyecto
   const [buyProject, setBuyProject] = useState();
-
-  // con esto nos traemos las imagenes
-  const [images, setImages] = useState(false);
 
   return (
     <div>
@@ -130,7 +124,7 @@ export const AppRoutes = ({
           />
           <Route path="/succes3" element={<Succes3 />} />
           <Route
-            path="/stripe"
+            path="/stripe/:project_id"
             element={<Stripe buyProject={buyProject} user={user} />}
           />
           <Route path="/user" element={<User />}>
@@ -144,8 +138,6 @@ export const AppRoutes = ({
                   setBuyProject={setBuyProject}
                   setResetUser={setResetUser}
                   resetUser={resetUser}
-                  setImages={setImages}
-                  images={images}
                 />
               }
             />
@@ -159,8 +151,6 @@ export const AppRoutes = ({
                   setBuyProject={setBuyProject}
                   setResetUser={setResetUser}
                   resetUser={resetUser}
-                  setImages={setImages}
-                  images={images}
                 />
               }
             />
@@ -190,7 +180,10 @@ export const AppRoutes = ({
               />
             }
           />
+          {/* <Route path="/pdf" element={<Pdf />} /> */}
         </Routes>
+
+        <Footer user={user} />
       </BrowserRouter>
     </div>
   );

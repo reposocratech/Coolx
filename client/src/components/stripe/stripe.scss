@@ -5,6 +5,7 @@
     padding: 20px !important;
     justify-content: space-between !important;
     background-color: white;
+    box-shadow: 0px 2px 2px 0px #00000052;
 
     h3,
     h5 {
@@ -30,6 +31,13 @@
 }
 
 
+@media only screen and (max-width: 992px) {
+    .cont-summary-payment {
+        display: none !important;
+    }
+}
+
+
 .stripe-fondo {
     display: flex;
     flex-direction: column;
@@ -39,10 +47,18 @@
     background-position: center;
     background-size: cover;
     padding-top: 60px;
+
     h1 {
-        font-size: 40px;
+        font-size: 35px;
         font-weight: bold;
         color: #09427d;
+        padding-left: 5%;
+    }
+}
+
+@media screen and (max-height: 850px) {
+    .stripe-fondo {
+        height: 130vh;
     }
 }
 

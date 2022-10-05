@@ -10,6 +10,21 @@ export const ProjectInfo = ({ projectInfo }) => {
 
   const { id } = useParams();
 
+  const descargarPdf = () => {
+    // Usa fetch para obtener el pdf
+    fetch(`http://localhost:4000/pdf/${id}`).then((response) => {
+      response.blob().then((blob) => {
+        // Crea un nuevo objeto del pdf
+        const fileURL = window.URL.createObjectURL(blob);
+        // Define los valores de algunas propiedades (nombre, etc.)
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = `Proyecto_${id}`;
+        alink.click();
+      });
+    });
+  };
+
   useEffect(() => {
     axios
       .get(`http://localhost:4000/project/images/${id}`)
@@ -51,8 +66,8 @@ export const ProjectInfo = ({ projectInfo }) => {
           <section className="descripcionProjectInfo">
             <div className="download-btn">
               <h4>Descripción</h4>
-              <Button type="button">
-                <img src="/assets/icons/download_white.svg" /> Descargar en PDF
+              <Button onClick={descargarPdf} type="button">
+                <img src="/assets/icons/download_white.svg" /> Descargar PDF
               </Button>
             </div>
             <hr />

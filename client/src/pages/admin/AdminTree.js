@@ -6,7 +6,6 @@ import jwtDecode from "jwt-decode";
 import "./admintree.scss";
 import { TreeDeleteModal } from "../../components/modal/TreeDeleteModal";
 import { TreeEditModal } from "../../components/modal/TreeEditModal";
-import { Footer } from "../home/Footer";
 
 export const AdminTree = ({ setIsLogged }) => {
   const [allTrees, setAllTrees] = useState([]);
@@ -78,74 +77,78 @@ export const AdminTree = ({ setIsLogged }) => {
   return (
     <>
       <div className="wrapper">
-      <Container fluid>
-        <Row>
-          <Col className="admin-tree-title">
+        <Container fluid>
+          <Row>
+            <Col className="admin-tree-title">
+              <div className="admin-title">
+                <Button onClick={() => navigate("/admin")}>
+                  <img src="/assets/icons/arrow_left.svg" />
+                </Button>
+                <h1>Listado de arboles</h1>
+              </div>
 
-            <div className='admin-title'>
-              <Button onClick={() => navigate("/admin")}><img src='/assets/icons/arrow_left.svg'/></Button>
-              <h1>Listado de arboles</h1>
-            </div>
-            
-            
-            <Button onClick={()=> navigate("/treeform")} className="boton-register-tree">Registrar nuevo árbol</Button>
-          </Col>
-          
-        </Row>
-        <Row>
-            <Col className='barra-busq-tree'>
-               <input
-                  className="form-control inputBuscar "
-                  type='text'
-                  placeholder='Buscar árbol'
-                  value={busqueda}
-                  onChange={handleChange}
-                  />
+              <Button
+                onClick={() => navigate("/treeform")}
+                className="boton-register-tree"
+              >
+                Registrar nuevo árbol
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="barra-busq-tree">
+              <input
+                className="form-control inputBuscar "
+                type="text"
+                placeholder="Buscar árbol"
+                value={busqueda}
+                onChange={handleChange}
+              />
             </Col>
           </Row>
 
-          <Row className="table-all-trees m-0 mt-3">
-            <Table striped>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Id</th>
-                  <th>Nombre del árbol</th>
-                  <th>Nombre en latín</th>
-                  <th>Borrar</th>
-                  <th>Editar</th>
-                </tr>
-              </thead>
+          <Row className="table-all-trees mt-3">
+            <div className="table-tree-container p-0">
+              <Table striped responsive="sm">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th className="latin-tree-name">Nombre en latín</th>
+                    <th>Borrar</th>
+                    <th>Editar</th>
+                  </tr>
+                </thead>
 
-              <tbody>
-                {allTrees &&
-                  allTrees.map((tree, index) => (
-                    <tr key={tree.tree_id}>
-                      <td>{index + 1}</td>
-                      <td>{tree.tree_id}</td>
-                      <td>{tree.tree_name}</td>
-                      <td>{tree.latin_name}</td>
+                <tbody>
+                  {allTrees &&
+                    allTrees.map((tree, index) => (
+                      <tr key={tree.tree_id}>
+                        <td>{index + 1}</td>
+                        <td>{tree.tree_name}</td>
+                        <td className="latin-tree-name">{tree.latin_name}</td>
 
-                      <td>
-                        <Button
-                          onClick={() => handleDeleteTree(tree)}
-                          className="boton-delete-tree"
-                        >
-                          Eliminar
-                        </Button>
-                      </td>
-                      <td>
-                        <Button
-                          onClick={() => handleEditTree(tree)}
-                          className="boton-edit-tree"
-                        >
-                          Editar
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </Table>
+                        <td>
+                          <Button
+                            onClick={() => handleDeleteTree(tree)}
+                            className="boton-delete-tree"
+                          >
+                            <p>Eliminar</p>
+                          </Button>
+                        </td>
+                        <td>
+                          <Button
+                            onClick={() => handleEditTree(tree)}
+                            className="boton-edit-tree"
+                          >
+                            <p>Editar</p>
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+            </div>
           </Row>
 
           <TreeDeleteModal
@@ -169,8 +172,6 @@ export const AdminTree = ({ setIsLogged }) => {
           />
         </Container>
       </div>
-
-      <Footer />
     </>
   );
 };

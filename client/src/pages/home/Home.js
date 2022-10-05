@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import "./home.scss";
-import { Footer } from "./Footer";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -197,7 +196,6 @@ export const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Footer />
     </>
   );
 };

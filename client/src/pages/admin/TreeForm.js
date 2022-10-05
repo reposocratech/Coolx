@@ -3,7 +3,6 @@ import { Container, Col, Row, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./treeform.scss";
-import { Footer } from "../home/Footer";
 import jwtDecode from "jwt-decode";
 
 export const TreeForm = ({ setIsLogged }) => {
@@ -208,7 +207,6 @@ export const TreeForm = ({ setIsLogged }) => {
           </Row>
         </Container>
       </div>
-      <Footer />
     </>
   );
 };

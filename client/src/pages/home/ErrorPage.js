@@ -10,7 +10,7 @@ export const ErrorPage = () => {
     <div>
       <Container fluid className="fondo-error">
         <Row className="error pt-5">
-          <Col className="columna pb-5">
+          <Col md={12} lg={12} sm={12} className="columna pb-5">
             <div className="emoticono pb-5">
               <img src="./assets/inactive.svg" />
             </div>
