@@ -66,10 +66,7 @@ export const NavBarMain = ({ setIsLogged, setUser, user }) => {
                   </Col>
                 </Nav.Link>
               )}
-                </Col>
-              </Nav.Link>
-              )}
-       
+               
               {user && (
                 <Nav.Link className="sasa">
                   <Col md={12}>
