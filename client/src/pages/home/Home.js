@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { NavBarProject } from "../../components/navBar/NavBarProject";
 import { useNavigate, Link } from "react-router-dom";
 import "./home.scss";
 import { Footer } from "./Footer";
@@ -32,11 +31,8 @@ export const Home = () => {
         </Row>
 
         <Row className="fondoRegProject">
+          <div md={12} className="p-0 separador"></div>
           <div className="fondoBlur1">
-            <Col md={12} className="p-0">
-              <NavBarProject />
-            </Col>
-
             <Col md={12} sm={12} className="infoRegProject" id="regProject">
               <div className="wrapperRegProject">
                 <Row>
@@ -200,9 +196,8 @@ export const Home = () => {
             <img src="/assets/colabs/university.svg" />
           </Col>
         </Row>
-
-        <Footer />
       </Container>
+      <Footer />
     </>
   );
 };
