@@ -11,7 +11,8 @@ export const MyProjects = ({
   buyProject,
   setResetUser,
   resetUser,
-  setImages, images
+  setImages,
+  images,
 }) => {
   useEffect(() => {}, [projects, images]);
 
@@ -25,19 +26,25 @@ export const MyProjects = ({
     setModalBuy(true);
   };
 
+  console.log(projects, "esto es lo que buscooo");
+
   return (
     <>
-      <Container>
-        <Row>
-          <Col md={8} className="card-container">
+      <Container className="h-100">
+        <Row className="h-100">
+          <Col sm={9} lg={8} className="card-container">
             <div>
-              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject} setImages={setImages} images={images} />
+              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject}/>
             </div>
           </Col>
 
-          <Col md={4} className="add-container">
-            <Button className="add-button" type="button" onClick={handleCheck}>
-              <div>
+          <Col sm={3} lg={4} className="add-container">
+            <Button
+              className="add-button m-0"
+              type="button"
+              onClick={handleCheck}
+            >
+              <div className="d-flex flex-column justify-content-center">
                 <div className="add-circle">
                   <h2>+</h2>
                 </div>

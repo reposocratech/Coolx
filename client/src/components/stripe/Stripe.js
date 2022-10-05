@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -8,8 +8,11 @@ import {
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import "./stripe.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Col, Container, Row, Button } from "react-bootstrap";
+import { ResumenCompra } from "./ResumenCompra";
+import { PagoSeguro } from "./PagoSeguro";
+
 
 const stripePromise = loadStripe(
   "pk_test_51LnIA1J5n5ohBaXPnr6gxHm2Hu7UeuRDJgkrBYRyKTPtTpYPcSqXeR94KsiMCPjo4vFdlcPi5jllaVS5dAGrdoT6005G5Uk9aw"
@@ -19,6 +22,8 @@ const CheckoutForm = ({ buyProject, user }) => {
   const [exito, setExito] = useState(false);
   const [exito2, setExito2] = useState(false);
   const [loading, setLoading] = useState(false);
+
+
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -93,8 +98,8 @@ const CheckoutForm = ({ buyProject, user }) => {
   return (
     <Container>
         <Row className="justify-content-center">
-            <Col md={7} lg={7} sm={7}>
-            {buyProject && (
+            <Col xs={11} sm={11} md={9} lg={7}>
+            
             <form onSubmit={handleSubmit} className="card-body">
 
                 <div className='title-card-info'>
@@ -125,8 +130,19 @@ const CheckoutForm = ({ buyProject, user }) => {
                 )}
               </button>
             </form>
-               )}
+               
             </Col>
+
+            
+            <Col md={3} className="cont-summary-payment">
+                <Row>
+                    <ResumenCompra />
+                </Row>
+                <Row>
+                    <PagoSeguro />
+                </Row>
+            </Col>
+
         </Row>
     </Container>
   );
@@ -134,17 +150,42 @@ const CheckoutForm = ({ buyProject, user }) => {
 
 
 export const Stripe = ({ buyProject, user }) => {
+
+  const [buyProjectTemporal, setBuyProjectTemporal] = useState();
+
+  const {project_id} = useParams();
+  console.log(project_id);
+
+  useEffect(()=> {
+      if(buyProject){
+        setBuyProjectTemporal(buyProject)
+      }
+      else{
+        console.log("Algo el axios")
+        axios
+        .get(`http://localhost:4000/project/${project_id}`)
+
+        .then((res)=> {
+          setBuyProjectTemporal(res.data[0]);
+          console.log(res.data);
+
+        })
+        .catch((err)=> {
+          console.log(err);
+        })
+      }
+  }, [])
+
   return (
     <div className="stripe-fondo">
-      {buyProject && (
-        <Elements stripe={stripePromise}>
+       {buyProjectTemporal && <Elements stripe={stripePromise}>
           <h1 className="pt-5 pb-5">
-            Nombre del proyecto: {buyProject.project_name}
+            Nombre del proyecto: {buyProjectTemporal.project_name}
           </h1>
-          <CheckoutForm buyProject={buyProject} user={user} />
-        </Elements>
-      )}
+          <CheckoutForm buyProject={buyProjectTemporal} user={user}  />
+        </Elements>} 
     </div>
+
   );
 
 };

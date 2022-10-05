@@ -56,7 +56,7 @@ export const CostProfit = ({ projectInfo }) => {
               {projectInfo &&
                 (projectInfo[0].status === 0 ? (
                   <Button className="more-info more-data" onClick={()=>{
-                    navigate("/stripe")
+                    navigate(`/stripe/${projectInfo[0].project_id}`)
                   }
                   
                   }>

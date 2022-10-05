@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import "./errorpage.scss";
+import "./succes.scss";
 import { useNavigate } from "react-router-dom";
 
 export const SuccesPayment = ({ projects }) => {
@@ -10,7 +10,7 @@ export const SuccesPayment = ({ projects }) => {
     <div>
       <Container fluid className="fondo-error">
         <Row className="error">
-          <Col className="columna pb-5">
+          <Col md={12} lg={12} sm={12} className="columna pb-5">
             <div className="emoticono pb-5">
               <img src="./assets/active_on.svg" />
             </div>

@@ -10,19 +10,15 @@ import { Footer } from "../home/Footer";
 
 export const AdminTree = ({ setIsLogged }) => {
   const [allTrees, setAllTrees] = useState([]);
-  const [showModal, setShowModal] = useState(false);
   const [editTree, setEditTree] = useState(false);
   const [resetAllTrees, setResetAllTrees] = useState(false);
   const [treeModal, setTreeModal] = useState();
   const [modalDeleteTree, setModalDeleteTree] = useState(false);
   const [modalEditTree, setModalEdiTree] = useState(false);
-
-
   const [tablaBusqueda, setTablaBusqueda] = useState([]);
-  const [busqueda, setBusqueda] = useState("")
+  const [busqueda, setBusqueda] = useState("");
 
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -43,7 +39,7 @@ export const AdminTree = ({ setIsLogged }) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");
@@ -56,31 +52,32 @@ export const AdminTree = ({ setIsLogged }) => {
   };
 
   const handleDeleteTree = (tree) => {
-
-      setTreeModal(tree);
-      setModalDeleteTree(true);
-  }
+    setTreeModal(tree);
+    setModalDeleteTree(true);
+  };
 
   const handleChange = (e) => {
     setBusqueda(e.target.value);
     filtrarTree(e.target.value);
-  }
+  };
 
   const filtrarTree = (terminoBusqueda) => {
     let resBusqueda = tablaBusqueda.filter((elemento) => {
-      if(elemento.tree_name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
-        return elemento
+      if (
+        elemento.tree_name
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase())
+      ) {
+        return elemento;
       }
-    })
+    });
     setAllTrees(resBusqueda);
-  }
-
-
+  };
 
   return (
     <>
       <div className="wrapper">
-
       <Container fluid>
         <Row>
           <Col className="admin-tree-title">
@@ -107,35 +104,39 @@ export const AdminTree = ({ setIsLogged }) => {
             </Col>
           </Row>
 
-        <Row className='table-all-trees m-0 mt-3'>
+
+        <Row className='table-all-trees mt-3'>
         
-            <Table striped>
+          <div className="table-tree-container p-0">
+            
+            <Table striped responsive="sm">
+             
+
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Id</th>
-                  <th>Nombre del árbol</th>
-                  <th>Nombre en latín</th>
+                  <th>Nombre</th>
+                  <th className="latin-tree-name">Nombre en latín</th>
                   <th>Borrar</th>
                   <th>Editar</th>
                 </tr>
               </thead>
-
+           
+           
               <tbody>
                 {allTrees &&
                   allTrees.map((tree, index) => (
                     <tr key={tree.tree_id}>
                       <td>{index + 1}</td>
-                      <td>{tree.tree_id}</td>
                       <td>{tree.tree_name}</td>
-                      <td>{tree.latin_name}</td>
+                      <td className="latin-tree-name">{tree.latin_name}</td>
 
                       <td>
                         <Button
                           onClick={() => handleDeleteTree(tree)}
                           className="boton-delete-tree"
                         >
-                          Eliminar
+                          <p>Eliminar</p>
                         </Button>
                       </td>
                       <td>
@@ -143,13 +144,15 @@ export const AdminTree = ({ setIsLogged }) => {
                           onClick={() => handleEditTree(tree)}
                           className="boton-edit-tree"
                         >
-                          Editar
+                          <p>Editar</p>
                         </Button>
                       </td>
                     </tr>
                   ))}
               </tbody>
+             
             </Table>
+          </div>
           </Row>
 
           <TreeDeleteModal

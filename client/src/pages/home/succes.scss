@@ -1,0 +1,84 @@
+.fondo-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 95vh;
+    background-image: url("../../../public/images/fondo.jpg");
+    background-position: center;
+    background-size: cover;
+    color: white;
+    padding-top: 4rem;
+}
+
+@media only screen and (max-width: 940px) {
+    .fondo-error {
+        height: 850px;
+        text-align: center;
+    }
+}
+
+
+.error {
+    background-color: white;
+    height: 65%;
+    width: 55%;
+    padding: 40px;
+    gap: 24px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
+    border-radius: 24px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 536px) {
+    .error {
+        height: 75%;
+        width: 70%;
+
+    }
+}
+
+.columna {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    img {
+        width: 100px;
+    }
+
+    h1 {
+        font-family: "Manrope";
+        color: #09427d;
+        font-weight: bold;
+    }
+
+    h4 {
+        font-family: "Manrope";
+        color: #09427d;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 940px) {
+    .columna img {
+        width: 90px
+    }
+}
+
+.button-error {
+    width: 30%;
+    height: 20%;
+    color: #ffffff;
+    background-color: #70bfcb;
+    border-radius: 80px;
+    border: none;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 940px) {
+    .button-error {
+        width: 130px
+    }
+}

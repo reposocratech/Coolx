@@ -4,6 +4,8 @@ import { Col, Row, Button, Form, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Footer } from "../home/Footer";
+import validator from "validator"
+
 
 export const Register = () => {
   const [message, setMessage] = useState("");
@@ -11,6 +13,9 @@ export const Register = () => {
   const [checkPass, setCheckPass] = useState({
     pass: "",
   });
+  
+ const [messageEmail, setMessageEmail] = useState("");
+
 
   const [newUser, setNewUser] = useState({
     user_name: "",
@@ -29,16 +34,20 @@ export const Register = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setMessage("");
-    // console.log(name, value);
-
-    setMessage("");
-
     setNewUser({ ...newUser, [name]: value });
     setMessagePassword("");
 
-    const { user_name, surname, email, phone, password, company, nif } =
-      newUser;
-    if (user_name && surname && email && phone && password && company && nif) {
+
+    if(validator.isEmail(newUser.email)) {
+        setMessageEmail("")
+    } else {
+      setMessageEmail("")
+    
+    }
+   
+
+    const { user_name, surname, email, phone, password, company, nif } = newUser;
+    if (user_name && surname && email && phone && password && company && nif && validator.isEmail(email)) {
       setSubmitButton(true);
     } else {
       setSubmitButton(false);
@@ -59,13 +68,10 @@ export const Register = () => {
     ) {
       setMessage("Debe completar todos los campos!");
     }
-    console.log(
-      "ESTE ES NEWUSER " + newUser.password,
-      "ESTE ES CHEKCPASS" + checkPass.pass
-    );
+   
     if (newUser.password !== checkPass.pass) {
       setMessagePassword("LAS CONSTRASEÑAS DEBEN SER IGUALES");
-      console.log("CONTRASEÑA DONT MATCH");
+      
     } else {
       axios
        .post("http://localhost:4000/users/registrocoolx", newUser)
@@ -105,9 +111,10 @@ export const Register = () => {
   const handleChangePass = (e) => {
     const { name, value } = e.target;
     setCheckPass({ ...checkPass, [name]: value });
-    // console.log("REPITE CONTRASEÑA");
+    
   };
 
+ 
   // PARA MENSAJE
   // const { name, email, password } = register;
 
@@ -122,7 +129,7 @@ export const Register = () => {
         <Container fluid>
           <Row className="d-flex justify-content-center">
             <div className="form-bg d-flex justify-content-center">
-              <Col md={4} className="col-form">
+              <Col md={6} className="col-form">
                 <div className="text-center">
                   <h1>Registro</h1>
                   <h4 className="message-form">
@@ -133,7 +140,7 @@ export const Register = () => {
                 <Form.Group controlId="contactForm">
                   <Form className="d-flex flex-column">
                     <Row>
-                      <Col md={6}>
+                      <Col md={6} lg={6}>
                         <Form.Label className="labels-form">Nombre</Form.Label>
                         <Form.Control
                           className="mb-3"
@@ -205,7 +212,9 @@ export const Register = () => {
                           autoComplete="off"
                           value={newUser.email}
                           onChange={handleChange}
+                          
                         />
+                        <div style={{ color: "darkblue" }}>{messageEmail}</div>
                         <div style={{ color: "darkblue" }}>{message}</div>
                       </Col>
 

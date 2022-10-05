@@ -38,7 +38,6 @@ class projectControllers {
     // console.log("id: " + user_id);
     let sql = `INSERT INTO project (project_name, project_description, location, altitude, latitude, area, profit, project_cost, year_Planting, user_id) VALUES ('${projectName}','${projectDescription}', '${location}', '${altitude}', '${latitude}', "${area}", '${profit}', '${projectCost}', '${yearPlanting}','${user_id}')`;
 
-    // let sqlProject = `SELECT * FROM project WHERE user_id = ${user_id} and is_deleted = 0`;
 
     connection.query(sql, (error, result) => {
       if (error) throw error;
@@ -135,9 +134,8 @@ class projectControllers {
   getProject = (req, res) => {
     // console.log(req.params);
     let project_id = req.params.project_id;
-    let sql = `SELECT * FROM image, project
-    WHERE project.project_id = image.project_id
-    AND project.project_id = ${project_id} GROUP BY image.image_id`;
+    let sql = `SELECT * FROM project
+    WHERE project.project_id = ${project_id}`;
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });

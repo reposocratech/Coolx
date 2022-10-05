@@ -40,7 +40,7 @@ export const AdminUsers = ({ user, setUserModificate }) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");
@@ -104,18 +104,18 @@ export const AdminUsers = ({ user, setUserModificate }) => {
           </Row>
 
           <Row className="m-0">
-            <Table striped className="table-allusers">
+            <Table striped responsive="sm" className="table-allusers">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th className="list-item-table">#</th>
                   <th>Empresa</th>
-                  <th>Nombre</th>
-                  <th>NIF</th>
-                  <th>País</th>
+                  <th className="name-user-table">Nombre</th>
+                  <th className="nif-user-table">NIF</th>
+                  <th className="country-user-table">País</th>
                   <th>Teléfono</th>
-                  <th>Email</th>
-                  <th>Más Info</th>
-                  <th>Editar usuario</th>
+                  <th className="email-user-table">Email</th>
+                  <th>Info</th>
+                  <th>Editar</th>
                 </tr>
               </thead>
 
@@ -123,27 +123,27 @@ export const AdminUsers = ({ user, setUserModificate }) => {
                 {allUsers && 
                   allUsers.map((usuario, index) => (
                     <tr key={usuario.user_id}>
-                      <td>{index + 1}</td>
+                      <td className="list-item-table">{index + 1}</td>
                       <td>{usuario.company}</td>
-                      <td>{usuario.user_name}</td>
-                      <td>{usuario.nif}</td>
-                      <td>{usuario.country}</td>
+                      <td className="name-user-table">{usuario.user_name}</td>
+                      <td className="nif-user-table">{usuario.nif}</td>
+                      <td className="country-user-table">{usuario.country}</td>
                       <td>{usuario.phone}</td>
-                      <td>{usuario.email}</td>
+                      <td className="email-user-table">{usuario.email}</td>
                       <td>
                         <Button className="info-users" onClick={()=>{
                             handleModal(usuario);
                         }
-                          } >Más info</Button>
+                          } ><p>Más info</p></Button>
                       </td>
                       <td>
                         <Button className="edit-users" onClick={()=> {
                             console.log(usuario);
                             setUserModificate(usuario)
-                            // navigate(`/getEditUser/${usuario.user_id}`)
-                            navigate(`/getEditUser`)
+                            navigate(`/getEditUser/${usuario.user_id}`)
+                            // navigate(`/getEditUser`)
                         }  
-                        }>Editar usuario</Button>
+                        }><p>Editar usuario</p></Button>
                       </td>
                     </tr>
                   ))}

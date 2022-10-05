@@ -15,15 +15,13 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
       .then((res) => {
         // console.log(res)
         setBuyProject(project);
-        console.log();
+        console.log(project, "Buscamos projeeeecctttt");
         navigate(`/project/${project.project_id}`);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-
 
   return (
     <>
@@ -32,11 +30,17 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
           return (
             <Container fluid key={project.project_id}>
               <Row className="project-card-container ">
-                <Col lg={5} className="card-img">
-                  <img src={project.file_name ? `/imagesimages/${project.file_name}` : "/images/bosque1.png"} />
+                <Col lg={6} xl={5} className="card-img">
+                  <img
+                    src={
+                      project.file_name
+                        ? `/imagesimages/${project.file_name}`
+                        : "/images/bosque1.png"
+                    }
+                  />
                 </Col>
 
-                <Col lg={7} className="card-information">
+                <Col lg={6} xl={7} className="card-information">
                   <Row>
                     <Col className="p-card-title">
                       <h4>{project.project_name}</h4>
@@ -62,23 +66,23 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
                   </Row>
 
                   <Row className="p-card-profit">
-                    <Col lg={2} className="p-0 ">
+                    <Col xs={2} className="p-0 ">
                       <img
                         className="project-pic"
                         src="/assets/icons/money.svg"
                       />
                     </Col>
 
-                    <Col lg={10} className="p-0 d-flex align-items-end">
+                    <Col xs={10} className="p-0 d-flex align-items-end">
                       <div>
                         <p>Ganacias consultora</p>
                         <h4>{project.profit} $</h4>
                       </div>
                     </Col>
                   </Row>
-
-                  <Row>
-                    <Col md={10}>
+                  <hr />
+                  <Row className="btn-direction">
+                    <Col xs={5} lg={10}>
                       <Button
                         className="p-card-button"
                         onClick={() => handleSend(project)}
@@ -86,7 +90,7 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
                         Ver más
                       </Button>
                     </Col>
-                    <Col md={2} className="d-flex align-items-center">
+                    <Col xs={7} lg={2} className="d-flex align-items-center">
                       <p className="p-card-status">
                         {projects &&
                           (project.status === 0

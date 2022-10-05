@@ -57,13 +57,9 @@ export const Login = ({ user, setUser }) => {
           type === 0
             ? navigate("/user", { replace: true })
             : type === 1
-            ? navigate(`/admin/${id}`, { replace: true })
+            ? navigate(`/admin`, { replace: true })
             : navigate("/error");
 
-          //redireccionar a home
-          //evitar login y registro
-          //mostrar el button de logout
-          //guardarlo en localstore
         })
         .catch((err) => {
           console.log(err);
