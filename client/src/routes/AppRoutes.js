@@ -1,5 +1,5 @@
 import { Project } from "../pages/project/Project";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavBarMain } from "../components/navBar/NavBarMain";
 import { Login } from "../pages/auth/Login";
@@ -15,8 +15,6 @@ import { ErrorPage } from "../pages/home/ErrorPage";
 import { Tarjetamas } from "../components/card/Tarjetamas";
 import { Vegetation } from "../components/vegetation/Vegetation";
 import { ContactForm } from "../components/forms/ContactForm";
-import jwtDecode from "jwt-decode";
-import axios from "axios";
 import { ProjectForm } from "../components/forms/ProjectForm";
 import { Succes1 } from "../pages/home/Succes1";
 import { Succes2 } from "../pages/home/Sucess2";
@@ -26,12 +24,7 @@ import { AdminTree } from "../pages/admin/AdminTree";
 import { TreeForm } from "../pages/admin/TreeForm";
 import { AdminProjectState } from "../pages/admin/AdminProjectState";
 import { SuccesPayment } from "../pages/home/SuccesPayment";
-
-// /*import { Tarjeta } from "../components/card/Tarjeta";*/
 import { BuyProject } from "../pages/user/BuyProject";
-// import { ProjectCompleted } from "../pages/project/ProjectCompleted";
-
-import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
 import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
@@ -73,34 +66,31 @@ export const AppRoutes = ({
             path="/login"
             element={<Login user={user} setUser={setUser} />}
           />
-          <Route path="/admin" element={<Admin />} />
-          <Route
-            path="/admintree"
-            element={<AdminTree setIsLogged={setIsLogged} />}
-          />
           <Route
             path="/adminusers"
             element={
               <AdminUsers user={user} setUserModificate={setUserModificate} />
             }
           />
-          <Route path="/*" element={<ErrorPage />} />
           <Route
             path="/adminprojectstate"
             element={
               <AdminProjectState user={user} setIsLogged={setIsLogged} />
             }
           />
-          <Route path="/admin/:admin_id" element={<Admin />} />
+          <Route
+            path="/admin"
+            element={<Admin user={user} setIsLogged={setIsLogged} />}
+          />
           <Route
             path="/admintree"
             element={<AdminTree setIsLogged={setIsLogged} />}
           />
-          <Route path="/treeform" element={<TreeForm />} />
+          <Route
+            path="/treeform"
+            element={<TreeForm setIsLogged={setIsLogged} />}
+          />
           <Route path="/*" element={<ErrorPage />} />
-
-          {/* <Route path="/tarjeta" element={<Tarjeta oneProject={oneProject} setOneProject={setOneProject}/>} /> */}
-
           <Route
             path="/tarjetamas"
             element={<Tarjetamas projects={projects} />}
@@ -132,11 +122,6 @@ export const AppRoutes = ({
             path={`/project/:id`}
             element={<Project projects={projects} />}
           />
-          {/* <Route
-            path={`/projectcompleted/:id/info`}
-            element={<ProjectCompleted />}
-          /> */}
-
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2/:project_id" element={<Succes2 />} />
           <Route
@@ -144,12 +129,10 @@ export const AppRoutes = ({
             element={<SuccesPayment projects={projects} />}
           />
           <Route path="/succes3" element={<Succes3 />} />
-
           <Route
             path="/stripe"
             element={<Stripe buyProject={buyProject} user={user} />}
           />
-
           <Route path="/user" element={<User />}>
             <Route
               path=""
@@ -198,7 +181,7 @@ export const AppRoutes = ({
             }
           />
           <Route
-            path="/editusernavbar"
+            path="/editusernavbar/:user_id"
             element={
               <EditUserNavbar
                 user={user}

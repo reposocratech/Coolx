@@ -40,7 +40,7 @@ export const AdminUsers = ({ user, setUserModificate }) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");

@@ -1,6 +1,8 @@
 .nav-color {
   background-color: #09427d;
   color: white;
+  min-block-size: 60px;
+  max-block-size: 60px;
 }
 
 .boton-sesion {
@@ -26,12 +28,6 @@
   border: none;
   border-radius: 80px;
   padding: 12px 24px;
-}
-
-.nav-colorProject {
-  background-color: #09427d;
-  color: white;
-  height: 3rem;
 }
 
 .user-name {
@@ -133,7 +129,6 @@
 
   .sasa {
     color: white;
-
     button {
       background-color: transparent !important;
       border: none !important;
