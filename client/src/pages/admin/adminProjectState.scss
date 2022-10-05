@@ -73,6 +73,10 @@
     border: none;
     color: white;
 
+    p {
+      margin-bottom: 0 !important;
+    }
+
   }
 
   .delete-project:hover,
@@ -84,5 +88,95 @@
     box-shadow: inset 0 0 0 2px #09427d !important;
 
   }
+}
 
+@media only screen and (max-width: 890px) {
+
+  .id-user-tableproject,
+  .location-project-table {
+    display: none !important;
+  }
+
+
+  .edit-project {
+    background-image: url("../../../public/assets/icons/edit_white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+
+    p {
+      display: none;
+    }
+  }
+
+  .info-project {
+    background-image: url("../../../public/assets/icons/info_white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+
+    p {
+      display: none;
+    }
+  }
+
+  .delete-project {
+    background-image: url("../../../public/assets/icons/delete.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+
+    p {
+      display: none;
+    }
+  }
+
+  .assign-project {
+    background-image: url("../../../public/assets/icons/assign_company.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+
+    p {
+      display: none;
+    }
+  }
+
+
+  .status-user-tableproject {
+    .status-col {
+      display: none;
+    }
+
+    .status-col-mobile {
+      display: contents;
+      display: flex;
+      justify-content: center;
+
+      .pen-status {
+        background-color: transparent !important;
+        border: none !important;
+        padding: 0px;
+
+        img {
+          height: 18px;
+        }
+      }
+
+      p {
+        display: none;
+      }
+    }
+  }
+
+}
+
+@media only screen and (max-width: 1920px) {
+  .status-col-mobile {
+    display: none;
+  }
 }

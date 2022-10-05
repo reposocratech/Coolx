@@ -64,7 +64,7 @@ export const AdminProjectModal = ({ onHide, show, projectModal }) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="exit-info-modal" onClick={onHide}>Close</Button>
+        <Button className="exit-info-modal" onClick={onHide}>Cerrar</Button>
       </Modal.Footer>
     </Modal>
   );

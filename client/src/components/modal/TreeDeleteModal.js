@@ -30,7 +30,7 @@ export const TreeDeleteModal = ({
     }
 
   return (
-    <Modal show={showModal} animation={false}>
+    <Modal show={showModal} animation={false} className="p-4">
     <Modal.Header>
       <Modal.Title>Eliminar un árbol</Modal.Title>
     </Modal.Header>
