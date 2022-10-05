@@ -17,7 +17,7 @@ export const Succes1 = () => {
 
             <h1 className="pb-2">Tu cuenta ha sido creada con éxito</h1>
             <h4 className="pb-5">
-              Te hemos enviado un email para que puedas verificar tu cuenta.
+              Te hemos enviado un email de confirmación.
             </h4>
             <button className="button-error" onClick={() => navigate("/login")}>
               Ir a mi cuenta

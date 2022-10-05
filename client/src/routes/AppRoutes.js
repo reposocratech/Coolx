@@ -180,6 +180,7 @@ export const AppRoutes = ({
               />
             }
           />
+          {/* <Route path="/pdf" element={<Pdf />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
