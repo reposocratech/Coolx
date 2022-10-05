@@ -34,6 +34,7 @@
   display: flex;
   justify-content: end;
   align-items: flex-end;
+
   p {
     font-weight: 700;
     font-size: 14px;
@@ -99,6 +100,7 @@
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
+
   .avatar-btn {
     width: 100%;
     height: 100%;
@@ -109,6 +111,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+
     h3 {
       color: white;
       font-size: 2rem;
@@ -123,6 +126,7 @@
 .barraMobile {
   display: none !important;
   text-align: end;
+
   .sasa {
     color: white;
     button {
@@ -137,7 +141,16 @@
   .barraMobile {
     display: initial !important;
   }
+
   .barraBig {
     display: none !important;
   }
+}
+
+.navbar-toggler {
+  border-color: white !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("../../../public/assets/icons/menu_white.svg") !important;
 }

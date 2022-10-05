@@ -78,33 +78,29 @@ export const AdminTree = ({ setIsLogged }) => {
   return (
     <>
       <div className="wrapper">
-        <Container fluid>
-          <Row>
-            <Col className="admin-tree-title">
-              <div className="admin-title">
-                <Button onClick={() => navigate(-1)}>
-                  <img src="/assets/icons/arrow_left.svg" />
-                </Button>
-                <h1>Listado de arboles</h1>
-              </div>
+      <Container fluid>
+        <Row>
+          <Col className="admin-tree-title">
 
-              <Button
-                onClick={() => navigate("/treeform")}
-                className="boton-register-tree"
-              >
-                Registrar nuevo árbol
-              </Button>
-            </Col>
-          </Row>
-          <Row>
-            <Col className="barra-busq-tree">
-              <input
-                className="form-control inputBuscar "
-                type="text"
-                placeholder="Buscar árbol"
-                value={busqueda}
-                onChange={handleChange}
-              />
+            <div className='admin-title'>
+              <Button onClick={() => navigate("/admin")}><img src='/assets/icons/arrow_left.svg'/></Button>
+              <h1>Listado de arboles</h1>
+            </div>
+            
+            
+            <Button onClick={()=> navigate("/treeform")} className="boton-register-tree">Registrar nuevo árbol</Button>
+          </Col>
+          
+        </Row>
+        <Row>
+            <Col className='barra-busq-tree'>
+               <input
+                  className="form-control inputBuscar "
+                  type='text'
+                  placeholder='Buscar árbol'
+                  value={busqueda}
+                  onChange={handleChange}
+                  />
             </Col>
           </Row>
 

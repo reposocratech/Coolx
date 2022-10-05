@@ -187,7 +187,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
           <Container fluid>
             <Row>
               <Col className="adm-proj-state-header">
-                <Button onClick={() => navigate(-1)}>
+                <Button onClick={() => navigate("/admin")}>
                   <img src="./assets/icons/arrow_left.svg" />
                 </Button>
                 <h1>Estado de proyectos</h1>

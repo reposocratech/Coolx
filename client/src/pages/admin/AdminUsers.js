@@ -75,104 +75,96 @@ export const AdminUsers = ({ user, setUserModificate }) => {
 
   return (
     <>
-      <div className="wrapper">
-        <div className="getdown">
-          <Container fluid>
-            <Row>
-              <Col className="adm-proj-state-header">
-                <Button onClick={() => navigate(-1)}>
-                  <img src="./assets/icons/arrow_left.svg" />
-                </Button>
-                <h1>Todas nuestras empresas</h1>
-              </Col>
-            </Row>
 
-            <Row>
-              <Col className="barra-busq-user">
-                <input
+    <div className="wrapper">
+      <div className="getdown">
+        <Container fluid>
+          <Row>
+            <Col className="adm-proj-state-header">
+              <Button onClick={() => navigate("/admin")}>
+                <img src="./assets/icons/arrow_left.svg" />
+              </Button>
+              <h1>Todas nuestras empresas</h1>
+              
+            </Col>
+          </Row>
+
+          <Row>
+            <Col className="barra-busq-user">
+            <input
+
                   className="form-control inputBuscar "
                   type="text"
                   placeholder="Buscar usuario"
                   value={busqueda}
                   onChange={handleChange}
-                />
-                {/* <Button className="btn-btn-success" onClick={()=>navigate(-1)}>
-                  Volver
-                  </Button> */}
-              </Col>
-            </Row>
+                  />
+                
+            </Col>
+          </Row>
 
-            <Row className="m-0">
-              <Table striped className="table-allusers">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Empresa</th>
-                    <th>Nombre</th>
-                    <th>NIF</th>
-                    <th>País</th>
-                    <th>Teléfono</th>
-                    <th>Email</th>
-                    <th>Más Info</th>
-                    <th>Mas información</th>
-                  </tr>
-                </thead>
+          <Row className="m-0">
+            <Table striped className="table-allusers">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Empresa</th>
+                  <th>Nombre</th>
+                  <th>NIF</th>
+                  <th>País</th>
+                  <th>Teléfono</th>
+                  <th>Email</th>
+                  <th>Más Info</th>
+                  <th>Editar usuario</th>
+                </tr>
+              </thead>
 
-                <tbody>
-                  {allUsers &&
-                    allUsers.map((usuario, index) => (
-                      <tr key={usuario.user_id}>
-                        <td>{index + 1}</td>
-                        <td>{usuario.company}</td>
-                        <td>{usuario.user_name}</td>
-                        <td>{usuario.nif}</td>
-                        <td>{usuario.country}</td>
-                        <td>{usuario.phone}</td>
-                        <td>{usuario.email}</td>
-                        <td>
-                          <Button
-                            className="info-users"
-                            onClick={() => {
-                              handleModal(usuario);
-                            }}
-                          >
-                            Más info
-                          </Button>
-                        </td>
-                        <td>
-                          <Button
-                            className="edit-users"
-                            onClick={() => {
-                              console.log(usuario);
-                              setUserModificate(usuario);
-                              // navigate(`/getEditUser/${usuario.user_id}`)
-                              navigate(`/getEditUser/${usuario.user_id}`);
-                            }}
-                          >
-                            Editar usuario
-                          </Button>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </Table>
-            </Row>
-            <Row>
-              <Col>
-                <p>
-                  *Si tiene algun tipo de anomalia en el registro de sus datos
-                  por favor, pongase en contacto con nosotros. Le atenderemos de
-                  buena gana...en principio...
-                </p>
-              </Col>
-            </Row>
-          </Container>
+              <tbody>
+                {allUsers && 
+                  allUsers.map((usuario, index) => (
+                    <tr key={usuario.user_id}>
+                      <td>{index + 1}</td>
+                      <td>{usuario.company}</td>
+                      <td>{usuario.user_name}</td>
+                      <td>{usuario.nif}</td>
+                      <td>{usuario.country}</td>
+                      <td>{usuario.phone}</td>
+                      <td>{usuario.email}</td>
+                      <td>
+                        <Button className="info-users" onClick={()=>{
+                            handleModal(usuario);
+                        }
+                          } >Más info</Button>
+                      </td>
+                      <td>
+                        <Button className="edit-users" onClick={()=> {
+                            console.log(usuario);
+                            setUserModificate(usuario)
+                            // navigate(`/getEditUser/${usuario.user_id}`)
+                            navigate(`/getEditUser`)
+                        }  
+                        }>Editar usuario</Button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          </Row>
+          <Row>
+            <Col>
+              <p>
+                *Si tiene algun tipo de anomalia en el registro de sus datos por favor, pongase en contacto con nosotros. Le atenderemos de buena gana...en principio...
+              </p>
+            </Col>
+          </Row>
+        </Container>
 
-          <AdminUsersInfo
-            onHide={() => setOpenModal(false)}
-            show={openModal}
-            userInfo={userInfo}
-          />
+        <AdminUsersInfo
+           onHide={() => setOpenModal(false)}
+           show={openModal}
+           userInfo={userInfo}
+        />
+
         </div>
       </div>
       <Footer />

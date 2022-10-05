@@ -113,7 +113,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
           <Row>
             <Col className="espacio-create">
               <div className="d-flex align-items-center">
-                <Button onClick={() => navigate(-1)}>
+                <Button onClick={() => navigate("/admin")}>
                   <img src="./assets/icons/arrow_left.svg" />
                 </Button>
 
