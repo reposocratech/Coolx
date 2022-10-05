@@ -15,8 +15,6 @@ import { ErrorPage } from "../pages/home/ErrorPage";
 import { Tarjetamas } from "../components/card/Tarjetamas";
 import { Vegetation } from "../components/vegetation/Vegetation";
 import { ContactForm } from "../components/forms/ContactForm";
-import jwtDecode from "jwt-decode";
-import axios from "axios";
 import { ProjectForm } from "../components/forms/ProjectForm";
 import { Succes1 } from "../pages/home/Succes1";
 import { Succes2 } from "../pages/home/Sucess2";
@@ -31,7 +29,6 @@ import { SuccesPayment } from "../pages/home/SuccesPayment";
 import { BuyProject } from "../pages/user/BuyProject";
 // import { ProjectCompleted } from "../pages/project/ProjectCompleted";
 
-import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
 import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
@@ -49,14 +46,8 @@ export const AppRoutes = ({
   //esto es para modificar usuarios
   const [userModificate, setUserModificate] = useState();
 
-  //esto es para la obtener la información de un proyecto
-  const [oneProject, setOneProject] = useState();
-
   // esto es para cuando compramos un proyecto
   const [buyProject, setBuyProject] = useState();
-
-  // con esto nos traemos las imagenes
-  const [images, setImages] = useState(false);
 
   return (
     <div>
@@ -146,7 +137,7 @@ export const AppRoutes = ({
           <Route path="/succes3" element={<Succes3 />} />
 
           <Route
-            path="/stripe"
+            path="/stripe/:project_id"
             element={<Stripe buyProject={buyProject} user={user} />}
           />
 
@@ -161,8 +152,6 @@ export const AppRoutes = ({
                   setBuyProject={setBuyProject}
                   setResetUser={setResetUser}
                   resetUser={resetUser}
-                  setImages={setImages}
-                  images={images}
                 />
               }
             />
@@ -176,8 +165,6 @@ export const AppRoutes = ({
                   setBuyProject={setBuyProject}
                   setResetUser={setResetUser}
                   resetUser={resetUser}
-                  setImages={setImages}
-                  images={images}
                 />
               }
             />

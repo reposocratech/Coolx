@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import "./errorpage.scss";
+import "./succes.scss";
 
 
 export const Succes3 = () => {
@@ -9,7 +9,7 @@ export const Succes3 = () => {
     <div>
       <Container fluid className="fondo-error">
         <Row className="error">
-          <Col className="columna pb-5">
+          <Col md={12} lg={12} sm={12} className="columna pb-5">
             <div className="emoticono pb-5">
               <img src="./assets/active_on.svg" />
             </div>

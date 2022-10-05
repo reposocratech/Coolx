@@ -15,7 +15,7 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
       .then((res) => {
         // console.log(res)
         setBuyProject(project);
-        console.log();
+        console.log(project, "Buscamos projeeeecctttt");
         navigate(`/project/${project.project_id}`);
       })
       .catch((err) => {

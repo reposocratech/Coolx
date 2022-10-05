@@ -6,7 +6,7 @@ import axios from 'axios'
 import "./buyproject.scss"
 
 
-export const BuyProject = ({user, setBuyProject, buyProject}) => {
+export const BuyProject = ({setBuyProject}) => {
 
   const navigate = useNavigate();
 
@@ -16,9 +16,10 @@ export const BuyProject = ({user, setBuyProject, buyProject}) => {
 
 
   const handleBuy = (project) => {
-
+    console.log(project);
     setBuyProject(project);
-    navigate("/stripe");
+    // navigate(`/stripe/4 `);
+    navigate(`/stripe/${project.project_id}`);
 
     // axios
     //   .put(`http://localhost:4000/project/changeUser/${project.project_id}/${user.user_id}`)

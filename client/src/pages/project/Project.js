@@ -35,7 +35,7 @@ export const Project = () => {
         <div className="wrapperProject">
           <Container fluid>
             <Row className="mb-3">
-              <Col md={12} className="projectCard">
+              <Col md={8} className="projectCard">
                 <div className="title-project">
                   <a onClick={() => navigate(-1)}>
                     <img src="/assets/icons/arrow_left.svg" />
@@ -44,11 +44,11 @@ export const Project = () => {
                 </div>
               </Col>
 
-              <Col md={8}>
+              <Col md={8} className="pt-2">
                 <ProjectInfo projectInfo={projectInfo} />
               </Col>
 
-              <Col md={4}>
+              <Col md={4} className="pt-2">
                 <CostProfit projectInfo={projectInfo} />
                 <Requirements />
                 <Co2 projectInfo={projectInfo} />
@@ -58,13 +58,13 @@ export const Project = () => {
             {projectInfo &&
               (projectInfo[0].status === 0 || projectInfo[0].status === 1 ? (
                 <Row>
-                  <Col>
+                  <Col md={12}>
                     <BlockedInfo projectInfo={projectInfo} />
                   </Col>
                 </Row>
               ) : (
                 <Row>
-                  <Col>
+                  <Col md={12}>
                     <ProjectCompleted />
                   </Col>
                 </Row>

@@ -69,7 +69,7 @@ export const ContactForm = () => {
         <Container fluid>
           <Row className="d-flex justify-content-center ">
             <div className="contact-form-bg d-flex justify-content-center">
-              <Col md={4} className="col-contact">
+              <Col md={2} className="col-contact">
                 <div className="text-center">
                   <h1>Bienvenido</h1>
                   <h4 className="message-contact">
@@ -84,7 +84,7 @@ export const ContactForm = () => {
                       type="text"
                       name="userName"
                       autoComplete="off"
-                      value={user.username}
+                      value={user.userName}
                       onChange={handleChange}
                     />
                     <div style={{ color: "darkblue" }}>{message}</div>

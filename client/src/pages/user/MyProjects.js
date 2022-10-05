@@ -25,13 +25,15 @@ export const MyProjects = ({
     setModalBuy(true);
   };
 
+  console.log(projects, "esto es lo que buscooo");
+
   return (
     <>
       <Container>
         <Row>
           <Col md={8} className="card-container">
             <div>
-              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject} setImages={setImages} images={images} />
+              <Tarjeta projects={projects} buyProject={buyProject} setBuyProject={setBuyProject}/>
             </div>
           </Col>
 
