@@ -47,7 +47,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");
@@ -75,7 +75,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");
@@ -206,51 +206,65 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
             </Row>
 
             <Row className="m-0 mt-3">
-              <Table striped>
+              <Table striped responsive="sm">
                 <thead className="table-projects">
                   <tr>
-                    <th>
-                      Id{" "}
-                      <button onClick={handleOrderId}>
-                        <img src="/assets/icons/arrow_white.svg" />
-                      </button>
-                    </th>
-                    <th>
+                    <th className="name-project-table">
                       Nombre{" "}
                       <button onClick={handleOrderName}>
                         <img src="/assets/icons/arrow_white.svg" />
                       </button>
                     </th>
-                    <th>
+                    <th className="location-project-table">
                       Localización{" "}
                       <button onClick={handleOrderLocal}>
                         <img src="/assets/icons/arrow_white.svg" />
                       </button>
                     </th>
-                    <th>Id Usuario</th>
-                    <th>
+                    <th className="id-user-tableproject">Id Usuario</th>
+                    <th className="status-user-tableproject">
                       Estado{" "}
                       <button onClick={handleOrderStatus}>
                         <img src="/assets/icons/arrow_white.svg" />
                       </button>
                     </th>
                     <th>Borrar</th>
-                    <th>Más información</th>
+                    <th>Info</th>
                     <th>Editar</th>
-                    <th>Asignar proyecto a las empresas</th>
+                    <th>Asignar proyecto</th>
                   </tr>
                 </thead>
                 <tbody className="list-text">
                   {allProjects &&
                     allProjects.map((project, index) => (
                       <tr key={project.project_id}>
-                        <td>{project.project_id}</td>
                         <td>{project.project_name}</td>
-                        <td>{project.location}</td>
-                        <td>{project.user_id}</td>
+                        <td className="location-project-table">{project.location}</td>
+                        <td className="id-user-tableproject">{project.user_id}</td>
 
-                        <td>
+                        <td className="status-user-tableproject">
                           <div className="status-col">
+                            <p>
+                              {project.status === 0
+                                ? "Registrado"
+                                : project.status === 1
+                                ? "Calculando"
+                                : "Completado"}
+                            </p>
+
+                            <Button
+                              type="button"
+                              className="pen-status"
+                              onClick={() => handleStateModal(project)}
+                            >
+                              <img
+                                src="/assets/icons/pen.svg"
+                                alt="Edit project state"
+                              />
+                            </Button>
+                          </div>
+
+                          <div className="status-col-mobile">
                             <p>
                               {project.status === 0
                                 ? "Registrado"
@@ -278,7 +292,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                               className="delete-project"
                               onClick={() => handleDeleteModal(project)}
                             >
-                              Eliminar
+                              <p>Eliminar</p>
                             </Button>
                           </div>
                         </td>
@@ -289,7 +303,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                             className="info-project"
                             onClick={() => handleModal(project)}
                           >
-                            Más info
+                           <p>Más info</p>
                           </Button>
                         </td>
 
@@ -299,7 +313,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                             className="edit-project"
                             onClick={() => handleEditModal(project)}
                           >
-                            Editar
+                            <p>Editar</p>
                           </Button>
                         </td>
                         <td>
@@ -308,7 +322,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                             className="assign-project"
                             onClick={() => handleCompany(project)}
                           >
-                            Asignar empresa
+                            <p>Asignar empresa</p>
                           </Button>
                         </td>
                       </tr>

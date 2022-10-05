@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Footer } from "../home/Footer";
 import "./admin.scss";
-import { AdminUsers } from "./AdminUsers";
+import jwtDecode from "jwt-decode";
 
-export const Admin = ({ user }) => {
+export const Admin = ({ setIsLogged, user }) => {
   const navigate = useNavigate();
-  console.log("esto es user: ", user?.user_name);
+  // console.log("esto es user: ", user?.user_name);
 
-  const { admin_id } = useParams();
+  useEffect(() => {
+    const token = window.localStorage.getItem("infocoolx");
+
+    if (token) {
+      setIsLogged(true);
+
+      const { type } = jwtDecode(token).user;
+
+      if (type !== 1) {
+        navigate("/");
+      }
+    } else {
+      alert("Debes iniciar sección como administrador");
+    }
+  }, [user]);
 
   return (
     <>

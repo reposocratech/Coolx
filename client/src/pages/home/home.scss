@@ -63,6 +63,11 @@
   }
 }
 
+.separador {
+  background-color: #09427d;
+  height: 1rem;
+}
+
 .fondoRegProject,
 .bloqueGarantizarHome {
   background-image: url("../../../public/images/bosque1.png");
@@ -236,13 +241,7 @@
     font-weight: bold;
   }
 }
-// .f-position {
-//   width: 100%;
 
-//   position: absolute;
-//   bottom: 0;
-//   left: 0;
-// }
 .footer {
   display: flex;
   justify-content: center;
@@ -289,10 +288,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-
-    img {
-      height: 24px;
-      margin-left: 6px;
+    a {
+      img {
+        height: 24px;
+        margin-left: 6px;
+      }
     }
   }
 
@@ -304,5 +304,42 @@
     margin-top: 65.5px;
     font-size: 10px;
     font-weight: lighter;
+  }
+}
+
+.footer-mobile {
+  display: none !important;
+  position: fixed;
+  bottom: 0px;
+  z-index: 99;
+  width: 100%;
+  .f-mobile-bar {
+    background-color: #09427d;
+    padding-block: 1rem;
+    padding-inline: 0.5rem;
+    img {
+      width: 3rem;
+    }
+    button {
+      background: #e0ecf8 !important;
+      border: none !important;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 140%;
+      color: #09427d !important;
+      height: 100%;
+      img {
+        width: 2rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .footer {
+    display: none !important;
+  }
+  .footer-mobile {
+    display: initial !important;
   }
 }

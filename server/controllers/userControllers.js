@@ -93,7 +93,7 @@ class userController {
     let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
     let sqlProject = `select * from image, project, user
     where user.user_id = project.user_id and project.project_id = image.project_id
-    and user.user_id = ${user_id} group by image.image_id`;
+    and user.user_id = ${user_id} group by project.project_id`;
     connection.query(sqlUser, (error, resultUser) => {
       if (error) {
         res.status(400).json({ error });
