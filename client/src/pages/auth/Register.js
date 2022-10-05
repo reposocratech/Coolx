@@ -68,8 +68,9 @@ export const Register = () => {
       console.log("CONTRASEÑA DONT MATCH");
     } else {
       axios
-        .post("http://localhost:4000/users/registrocoolx", newUser)
+       .post("http://localhost:4000/users/registrocoolx", newUser)
         .then((res) => {
+          sendMail(newUser);
           console.log(res);
           setNewUser({
             user_name: "",
@@ -92,6 +93,14 @@ export const Register = () => {
         });
     }
   };
+
+  const sendMail = (user) => {
+    axios
+      .post("http://localhost:4000/users/mailregistrocoolx", user)
+      .then((res) => console.log(res))
+      .catch((err)=> console.log(err));
+
+  }
 
   const handleChangePass = (e) => {
     const { name, value } = e.target;
