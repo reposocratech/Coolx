@@ -100,9 +100,10 @@
   }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 992px) {
   .project-card-container {
     min-height: auto !important;
+    // width: 100% !important;
     .card-img {
       display: none !important;
     }
@@ -128,6 +129,23 @@
   }
 }
 
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  .project-card-container {
+    min-inline-size: 0px !important;
+    .card-img {
+      width: clamp(4vw, 12vw, 214px);
+      height: clamp(4vw, 12vw, 214px);
+    }
+  }
+  .card-information {
+    .p-card-profit {
+      div {
+        justify-content: end !important;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1366px) {
   .project-card-container {
     min-inline-size: 0px !important;
@@ -144,12 +162,12 @@
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  .project-card-container {
-    min-inline-size: 0px !important;
-    .card-img {
-      width: clamp(10vw, 15vw, 214px);
-      height: clamp(10vw, 15vw, 214px);
-    }
-  }
-}
+// @media only screen and (max-width: 1200px) {
+//   .project-card-container {
+//     min-inline-size: 0px !important;
+//     .card-img {
+//       width: clamp(10vw, 15vw, 214px);
+//       height: clamp(10vw, 15vw, 214px);
+//     }
+//   }
+// }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./oops.scss";
 
 export const Oops = () => {
   return (

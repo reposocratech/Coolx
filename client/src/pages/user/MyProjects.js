@@ -30,7 +30,7 @@ export const MyProjects = ({
     <>
       <Container className="h-100">
         <Row className="h-100">
-          <Col md={8} className="card-container">
+          <Col sm={9} lg={8} className="card-container">
             <div>
               <Tarjeta
                 projects={projects}
@@ -42,7 +42,7 @@ export const MyProjects = ({
             </div>
           </Col>
 
-          <Col md={4} className="add-container">
+          <Col sm={3} lg={4} className="add-container">
             <Button
               className="add-button m-0"
               type="button"

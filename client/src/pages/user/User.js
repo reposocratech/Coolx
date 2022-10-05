@@ -26,13 +26,18 @@ export const User = () => {
       <div className="wrapper">
         <Container fluid>
           <Row>
-            <Col lg={2} className="left-bar p-0 ">
-              <div className="left-bar-content d-flex flex-column">
+            <Col xs={12} sm={12} lg={2} className="left-bar p-0 ">
+              <div className="left-bar-content">
                 <Row className="w-100">
                   {radios.map((radio, idx) => (
-                    <Col xs={6} sm={3} lg={12} className="btn-user-container">
+                    <Col
+                      xs={6}
+                      sm={3}
+                      lg={12}
+                      className="btn-user-container"
+                      key={idx}
+                    >
                       <Button
-                        key={idx}
                         id={`radio-${idx}`}
                         type="radio"
                         className={
@@ -55,7 +60,7 @@ export const User = () => {
               </div>
             </Col>
 
-            <Col lg={10} className="sheet p-0 mb-4">
+            <Col sm={12} lg={10} className="sheet p-0 mb-4">
               <Outlet />
             </Col>
           </Row>

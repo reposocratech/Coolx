@@ -1,15 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { BuyModal } from "../../components/modal/BuyModal";
 
 export const Footer = () => {
   const [modalBuy, setModalBuy] = useState(false);
+  const [footerBtn, setFooterBtn] = useState();
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    let pathname = window.location.pathname;
+    // console.log("path: ", pathname);
+
+    if (pathname === "/") {
+      setFooterBtn("Panel");
+    } else {
+      setFooterBtn("Agregar");
+    }
+  });
+
   const handleCheck = () => {
-    setModalBuy(true);
+    if (footerBtn === "Agregar") {
+      setModalBuy(true);
+    } else if (footerBtn === "Panel") {
+      navigate("/user");
+    }
   };
 
   return (
@@ -74,12 +90,12 @@ export const Footer = () => {
         <Row className="footer-mobile">
           <Col className="pw-0">
             <Row className="f-mobile-bar">
-              <Col xs={2} className="p-0 text-center">
+              <Col xs={3} className="p-0 text-center">
                 <Button type="button" onClick={() => navigate(-1)}>
                   <img src="/assets/icons/undo.svg" alt="undo icon" />
                 </Button>
               </Col>
-              <Col xs={3} className="pl-0 pr-3 text-end">
+              <Col xs={2} className="pl-0 pr-3 text-end">
                 <a
                   href="https://www.instagram.com/coolx.earth/"
                   target="_blank"
@@ -102,7 +118,9 @@ export const Footer = () => {
                 xs={4}
                 className="p-0 text-center d-flex justify-content-center"
               >
-                <Button onClick={handleCheck}>Agregar</Button>
+                <Button className="w-100" onClick={handleCheck}>
+                  {footerBtn}
+                </Button>
               </Col>
             </Row>
           </Col>

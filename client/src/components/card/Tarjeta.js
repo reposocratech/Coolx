@@ -30,7 +30,7 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
           return (
             <Container fluid key={project.project_id}>
               <Row className="project-card-container ">
-                <Col lg={4} xl={5} className="card-img">
+                <Col lg={6} xl={5} className="card-img">
                   <img
                     src={
                       project.file_name
@@ -40,7 +40,7 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
                   />
                 </Col>
 
-                <Col lg={8} xl={7} className="card-information">
+                <Col lg={6} xl={7} className="card-information">
                   <Row>
                     <Col className="p-card-title">
                       <h4>{project.project_name}</h4>
@@ -82,7 +82,7 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
                   </Row>
                   <hr />
                   <Row className="btn-direction">
-                    <Col xs={5} md={10}>
+                    <Col xs={5} lg={10}>
                       <Button
                         className="p-card-button"
                         onClick={() => handleSend(project)}
@@ -90,7 +90,7 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
                         Ver más
                       </Button>
                     </Col>
-                    <Col xs={7} md={2} className="d-flex align-items-center">
+                    <Col xs={7} lg={2} className="d-flex align-items-center">
                       <p className="p-card-status">
                         {projects &&
                           (project.status === 0
