@@ -152,5 +152,6 @@
 }
 
 .navbar-toggler-icon {
-  background-image: url("../../../public/assets/icons/menu_white.svg") !important;
+  filter: invert(100) !important;
+  border: none !important;
 }

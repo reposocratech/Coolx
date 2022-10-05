@@ -10,6 +10,8 @@ import axios from "axios";
 import "./stripe.scss";
 import { useNavigate } from "react-router-dom";
 import { Col, Container, Row, Button } from "react-bootstrap";
+import { ResumenCompra } from "./ResumenCompra";
+import { PagoSeguro } from "./PagoSeguro";
 
 const stripePromise = loadStripe(
   "pk_test_51LnIA1J5n5ohBaXPnr6gxHm2Hu7UeuRDJgkrBYRyKTPtTpYPcSqXeR94KsiMCPjo4vFdlcPi5jllaVS5dAGrdoT6005G5Uk9aw"
@@ -127,6 +129,17 @@ const CheckoutForm = ({ buyProject, user }) => {
             </form>
                )}
             </Col>
+
+            
+            <Col md={3} className="cont-summary-payment">
+                <Row>
+                    <ResumenCompra />
+                </Row>
+                <Row>
+                    <PagoSeguro />
+                </Row>
+            </Col>
+
         </Row>
     </Container>
   );
@@ -135,16 +148,20 @@ const CheckoutForm = ({ buyProject, user }) => {
 
 export const Stripe = ({ buyProject, user }) => {
   return (
-    <div className="stripe-fondo">
-      {buyProject && (
-        <Elements stripe={stripePromise}>
-          <h1 className="pt-5 pb-5">
-            Nombre del proyecto: {buyProject.project_name}
-          </h1>
-          <CheckoutForm buyProject={buyProject} user={user} />
-        </Elements>
-      )}
-    </div>
+    <Row>
+        <Col md={12}>
+            <div className="stripe-fondo">
+              {buyProject && (
+                <Elements stripe={stripePromise}>
+                  <h1 className="pt-5 pb-5">
+                    Nombre del proyecto: {buyProject.project_name}
+                  </h1>
+                  <CheckoutForm buyProject={buyProject} user={user} />
+                </Elements>
+              )}
+            </div>
+        </Col>
+    </Row>
   );
 
 };
