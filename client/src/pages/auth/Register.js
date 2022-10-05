@@ -120,7 +120,7 @@ export const Register = () => {
         <Container fluid>
           <Row className="d-flex justify-content-center">
             <div className="form-bg d-flex justify-content-center">
-              <Col md={4} className="col-form">
+              <Col md={6} className="col-form">
                 <div className="text-center">
                   <h1>Registro</h1>
                   <h4 className="message-form">
@@ -131,7 +131,7 @@ export const Register = () => {
                 <Form.Group controlId="contactForm">
                   <Form className="d-flex flex-column">
                     <Row>
-                      <Col md={6}>
+                      <Col md={6} lg={6}>
                         <Form.Label className="labels-form">Nombre</Form.Label>
                         <Form.Control
                           className="mb-3"

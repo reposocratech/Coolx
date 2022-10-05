@@ -60,10 +60,6 @@ export const Login = ({ user, setUser }) => {
             ? navigate(`/admin`, { replace: true })
             : navigate("/error");
 
-          //redireccionar a home
-          //evitar login y registro
-          //mostrar el button de logout
-          //guardarlo en localstore
         })
         .catch((err) => {
           console.log(err);
