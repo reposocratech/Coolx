@@ -1,50 +1,50 @@
 .admin-tree-title {
-    padding-top: 4rem;
+  padding-top: 60px;
 
-    .admin-title {
-        padding-top: 2rem;
-        display: flex;
+  .admin-title {
+    padding-top: 2rem;
+    display: flex;
 
-
-        h1 {
-            color: #09427D;
-            font-weight: bold;
-            font-family: Manrope, Arial, serif;
-        }
-
-        button {
-            background-color: transparent;
-            border: none;
-        }
-
-        button:hover {
-            background-color: transparent;
-        }
+    h1 {
+      color: #09427d;
+      font-weight: bold;
+      font-family: Manrope, Arial, serif;
     }
 
-    .boton-register-tree {
-        margin-bottom: 15px;
-        background-color: #09427D;
-        border-radius: 50px;
-        font-weight: bold;
-        border: none;
-        color: white;
+    button {
+      background-color: transparent;
+      border: none;
     }
 
-    .boton-register-tree:hover {
-        background-color: white !important;
-        color: #09427d !important;
-        box-shadow: inset 0 0 0 2px #09427d !important;
+    button:hover {
+      background-color: transparent;
     }
+  }
 
+  .boton-register-tree {
+    margin-bottom: 15px;
+    background-color: #09427d;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    color: white;
+  }
+
+  .boton-register-tree:hover {
+    background-color: white !important;
+    color: #09427d !important;
+    box-shadow: inset 0 0 0 2px #09427d !important;
+  }
 }
 
 .barra-busq-tree {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .table-all-trees {
+
     margin-top: 15px !important;
+    margin-bottom: 15px !important;
 
     border: 1px solid rgb(206, 212, 218) !important;
 
@@ -61,6 +61,10 @@
         border: none;
         color: white;
 
+        p {
+            margin-bottom: 0 !important;
+        }
+
     }
 
     .boton-delete-tree:hover,
@@ -71,4 +75,52 @@
     }
 
 
+}
+
+.table-tree-container {
+    padding-top: 44px;
+    padding-inline: 31px !important;
+    // height: 100vh;
+    overflow: overlay !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+
+
+
+}
+
+@media only screen and (max-width: 590px) {
+
+    .latin-tree-name {
+        display: none !important;
+    }
+
+    .boton-delete-tree {
+        background-image: url("../../../public/assets/icons/delete.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 30px;
+        height: 30px;
+
+        p {
+            display: none;
+        }
+    }
+
+    .boton-edit-tree {
+        background-image: url("../../../public/assets/icons/edit_white.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 32px;
+        height: 32px;
+
+        p {
+            display: none;
+        }
+
+    }
+}
+
+.table-tree-container::-webkit-scrollbar {
+    display: none !important;
 }

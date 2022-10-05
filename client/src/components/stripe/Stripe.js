@@ -10,6 +10,8 @@ import axios from "axios";
 import "./stripe.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { Col, Container, Row, Button } from "react-bootstrap";
+import { ResumenCompra } from "./ResumenCompra";
+import { PagoSeguro } from "./PagoSeguro";
 
 
 const stripePromise = loadStripe(
@@ -130,6 +132,17 @@ const CheckoutForm = ({ buyProject, user }) => {
             </form>
                
             </Col>
+
+            
+            <Col md={3} className="cont-summary-payment">
+                <Row>
+                    <ResumenCompra />
+                </Row>
+                <Row>
+                    <PagoSeguro />
+                </Row>
+            </Col>
+
         </Row>
     </Container>
   );
@@ -172,6 +185,7 @@ export const Stripe = ({ buyProject, user }) => {
           <CheckoutForm buyProject={buyProjectTemporal} user={user}  />
         </Elements>} 
     </div>
+
   );
 
 };

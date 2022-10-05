@@ -7,13 +7,14 @@
   align-items: center;
   height: 100vh;
   color: white;
-  padding-top: 6rem;
+  padding-top: 60px;
 }
 
 @media only screen and (max-width: 524px) {
   .fondo-login {
     height: 135vh;
   }
+
 }
 
 .contAuth-login {
@@ -31,8 +32,6 @@
     max-width: 300px;
   }
 }
-
-
 
 .titulo-Login {
   p {

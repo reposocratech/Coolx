@@ -27,7 +27,7 @@ export const AdminDeleteModal = ({
   };
 
   return (
-    <Modal show={show} animation={false}>
+    <Modal show={show} animation={false} className="p-3">
       <Modal.Header>
         <Modal.Title>Eliminar un proyecto</Modal.Title>
       </Modal.Header>

@@ -35,7 +35,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
-    console.log(e.target);
+  
 
     const {
       projectName,
