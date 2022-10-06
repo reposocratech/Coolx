@@ -5,7 +5,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
 
-export const Login = ({ user, setUser }) => {
+export const Login = ({ setUser }) => {
   const [message, setMessage] = useState("");
   const [messageOut, setMessageOut] = useState("");
   const [login, setLogin] = useState({
@@ -72,7 +72,6 @@ export const Login = ({ user, setUser }) => {
       .get(`http://localhost:4000/users/oneUser/${id}`)
       .then((res) => {
         setUser(res.data.resultUser[0]);
-
       })
       .catch((err) => {
         console.log(err);
@@ -126,7 +125,14 @@ export const Login = ({ user, setUser }) => {
 
                   <div style={{ color: "darkblue" }}>{message}</div>
 
-                  <p>¿Has olvidado tu contraseña?</p>
+                  <div className="nada-juntos">
+                    <Button
+                      className="nada-nada"
+                      onClick={() => navigate(`/forgotpassword`)}
+                    >
+                      <p aling="right">¿Has olvidado tu contraseña?</p>
+                    </Button>
+                  </div>
                 </Form>
 
                 {["checkbox"].map((type) => (

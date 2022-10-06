@@ -51,8 +51,5 @@ router.post("/onlyAdmin", projectControllers.onlyAdmin);
 // localhost:4000/project/images/:project_id
 router.get("/images/:project_id", projectControllers.getImages)
 
-// Generar PDF de un proyecto
-// localhost:4000/project/:project_id/pdf
-//router.get("/:project_id/pdf", puppeteerPdf.descargar);
 
 module.exports = router;

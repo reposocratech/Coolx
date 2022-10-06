@@ -87,6 +87,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
       )
       .then((res) => {
         navigate(`/succes2/${res.data.insertId}`);
+        console.log("res.data.insertId ", res.data.insertId);
         setResetUser(!resetUser);
       })
       .catch((err) => {
