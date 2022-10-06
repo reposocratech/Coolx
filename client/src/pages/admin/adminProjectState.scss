@@ -90,7 +90,7 @@
   }
 }
 
-@media only screen and (max-width: 890px) {
+@media only screen and (max-width: 970px) {
 
   .id-user-tableproject,
   .location-project-table {
@@ -155,22 +155,32 @@
     .status-col-mobile {
       display: contents;
       display: flex;
-      justify-content: center;
+
+
 
       .pen-status {
         background-color: transparent !important;
         border: none !important;
         padding: 0px;
+        margin-left: 3px;
 
         img {
           height: 18px;
+
         }
       }
 
-      p {
-        display: none;
-      }
+      // p {
+      //   display: none;
+      // }
     }
+  }
+
+}
+
+@media only screen and (max-width:1060px) {
+  .id-user-tableproject {
+    display: none;
   }
 
 }

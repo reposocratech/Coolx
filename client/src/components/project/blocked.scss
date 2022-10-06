@@ -1,3 +1,5 @@
+$azulCoolxClaro: #70bfcb;
+
 .blockedInfo {
   margin-top: 10px !important;
   margin-bottom: 10px !important;
@@ -36,7 +38,6 @@
   position: relative;
   z-index: 99;
   bottom: 151px;
-
   .buttonBlock {
     color: white;
     padding: 12px 24px;
@@ -49,9 +50,21 @@
     letter-spacing: -0.01em;
   }
   .buy-data {
-    background-color: #70bfcb !important;
+    background-color: $azulCoolxClaro !important;
+  }
+
+  .buy-data:hover {
+    background-color: white !important;
+    color: #09427d !important;
+    box-shadow: inset 0 0 0 2px $azulCoolxClaro !important;
   }
   .load-data {
     background-color: grey !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .unblock {
+    bottom: 400px;
   }
 }
