@@ -1,10 +1,17 @@
+@mixin h4ProjectInfo {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.01em;
+  margin: 0px;
+}
+
 .cardProjectInfo {
   padding: 15px;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0px 2px 2px 0px #00000052;
   height: 100%;
-
   img {
     border-radius: 10px;
   }
@@ -13,15 +20,9 @@
 .barraStatus,
 .descripcionProjectInfo {
   margin-top: 15px;
-
   h4 {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 140%;
-    letter-spacing: -0.01em;
-    margin: 0px;
+    @include h4ProjectInfo;
   }
-
   p {
     font-weight: 500;
     font-size: 12px;
@@ -32,15 +33,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     h4 {
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 140%;
-      letter-spacing: -0.01em;
-      margin: 0px;
+      @include h4ProjectInfo;
     }
-
     button {
       display: flex;
       flex-direction: row;
@@ -58,7 +53,6 @@
       color: #ffffff;
       border: none;
     }
-
     button:hover {
       background-color: white !important;
       color: #09427d !important;
@@ -67,17 +61,20 @@
   }
 }
 
-@media screen and (max-width: 520px) {
-  .descripcionProjectInfo {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-}
-
 @media screen and (max-width: 500px) {
-  .download-btn {
-    display: flex;
-    flex-direction: column;
-
+  .descripcionProjectInfo {
+    .download-btn {
+      display: flex;
+      flex-direction: column-reverse;
+      h4 {
+        margin-bottom: 1rem;
+      }
+      button {
+        margin-bottom: 1rem;
+      }
+    }
+    hr {
+      display: none;
+    }
   }
 }

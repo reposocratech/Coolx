@@ -1,6 +1,6 @@
 .infoCo2 {
   background-color: white;
-  margin-top: 16px !important;
+  margin-top: 1rem !important;
   border-radius: 10px;
   padding: 15px 24px 24px 24px !important;
   box-shadow: 0px 2px 2px 0px #00000052;
@@ -10,7 +10,7 @@
   text-align: center;
   p {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 160%;
     margin-bottom: 15px;
   }
@@ -26,7 +26,7 @@
     line-height: 140%;
   }
   img {
-    height: 16px;
+    height: 1rem;
   }
 }
 
@@ -41,7 +41,6 @@
 
 .coste2 {
   width: 100%;
-
   p {
     font-weight: 500;
     font-size: 14px;
@@ -57,5 +56,17 @@
   }
   img {
     width: 55px !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .infoCo2 {
+    .coste2 {
+      div {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+    }
   }
 }

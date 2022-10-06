@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../home/Footer";
 import "./admin.scss";
 import jwtDecode from "jwt-decode";
 
 export const Admin = ({ setIsLogged, user }) => {
   const navigate = useNavigate();
-  // console.log("esto es user: ", user?.user_name);
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -32,14 +30,14 @@ export const Admin = ({ setIsLogged, user }) => {
           <Row>
             <Col md={12} className="admin-name">
               <p>
-                Administrador {user && user.user_name} {user && user.surname}
+                Admin: {user && user.user_name} {user && user.surname}
               </p>
             </Col>
           </Row>
 
           <Row>
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -64,7 +62,7 @@ export const Admin = ({ setIsLogged, user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -86,7 +84,7 @@ export const Admin = ({ setIsLogged, user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -108,7 +106,7 @@ export const Admin = ({ setIsLogged, user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -133,7 +131,7 @@ export const Admin = ({ setIsLogged, user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -156,7 +154,7 @@ export const Admin = ({ setIsLogged, user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -180,7 +178,6 @@ export const Admin = ({ setIsLogged, user }) => {
           </Row>
         </Container>
       </div>
-      <Footer />
     </>
   );
 };

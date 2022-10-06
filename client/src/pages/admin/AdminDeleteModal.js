@@ -13,11 +13,10 @@ export const AdminDeleteModal = ({
   setResetProjects,
 }) => {
   const handleSubmit = (id) => {
-    // console.log("id= " + id);
+    
     axios
       .delete(`http://localhost:4000/project/deleteProject/${id}`)
       .then((res) => {
-        // console.log(res);
         setResetProjects(!resetProjects);
         setModalDelete(false);
       })
@@ -27,7 +26,7 @@ export const AdminDeleteModal = ({
   };
 
   return (
-    <Modal show={show} animation={false} className="p-3">
+    <Modal show={show} animation={false} className="p-3" centered>
       <Modal.Header>
         <Modal.Title>Eliminar un proyecto</Modal.Title>
       </Modal.Header>

@@ -1,16 +1,15 @@
-import axios from "axios";
-import jwtDecode from "jwt-decode";
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import "./adminProjectState.scss";
-import Table from "react-bootstrap/Table";
 import { AdminProjectModal } from "./AdminProjectModal";
 import { AdminStatusModal } from "./AdminStatusModal";
 import { AdminDeleteModal } from "./AdminDeleteModal";
 import { AdminCompany } from "./AdminCompany";
 import { AdminEditModal } from "./AdminEditModal";
-import { Footer } from "../home/Footer";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import Table from "react-bootstrap/Table";
+import "./adminProjectState.scss";
 
 export const AdminProjectState = ({ setIsLogged, user }) => {
   const [allProjects, setAllProjects] = useState();
@@ -39,7 +38,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
         axios
           .get(`http://localhost:4000/admin/${id}/allProjects`)
           .then((res) => {
-            // console.log(res);
             setAllProjects(res.data);
             setTablaBusqueda(res.data);
           })
@@ -68,7 +66,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
 
           .then((res) => {
             setAllUsers(res.data);
-            console.log(res);
           })
 
           .catch((err) => {
@@ -81,10 +78,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
       alert("Debes iniciar sección como administrador");
     }
   }, []);
-
-  // console.log(allUsers);
-
-  // console.log(allProjects.length);
 
   const handleModal = (project) => {
     setProjectModal(project);
@@ -231,7 +224,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                     <th>Borrar</th>
                     <th>Info</th>
                     <th>Editar</th>
-                    <th>Asignar proyecto</th>
+                    <th>Proyecto</th>
                   </tr>
                 </thead>
                 <tbody className="list-text">
@@ -239,8 +232,12 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                     allProjects.map((project, index) => (
                       <tr key={project.project_id}>
                         <td>{project.project_name}</td>
-                        <td className="location-project-table">{project.location}</td>
-                        <td className="id-user-tableproject">{project.user_id}</td>
+                        <td className="location-project-table">
+                          {project.location}
+                        </td>
+                        <td className="id-user-tableproject">
+                          {project.user_id}
+                        </td>
 
                         <td className="status-user-tableproject">
                           <div className="status-col">
@@ -303,7 +300,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                             className="info-project"
                             onClick={() => handleModal(project)}
                           >
-                           <p>Más info</p>
+                            <p>Más info</p>
                           </Button>
                         </td>
 
@@ -377,7 +374,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
           />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

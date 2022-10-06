@@ -9,7 +9,7 @@ export const Succes2 = () => {
   const { project_id } = useParams();
 
   return (
-    <div>
+    <>
       <Container fluid className="fondo-error">
         <Row className="error">
           <Col md={12} lg={12} sm={12} className="columna pb-5">
@@ -31,6 +31,6 @@ export const Succes2 = () => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 };

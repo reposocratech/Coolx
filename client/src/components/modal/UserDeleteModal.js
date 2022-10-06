@@ -13,9 +13,8 @@ export const UserDeleteModal = ({ sendInfo, show, onHide }) => {
       .delete(`http://localhost:4000/users/deleteUser/${id}`)
 
       .then((res) => {
-        // alert("Usuario eliminado correctamente");
+        alert("Usuario eliminado correctamente");
         navigate("/adminusers");
-        // setIsLogged(true);
       })
 
       .catch((err) => {
@@ -24,7 +23,7 @@ export const UserDeleteModal = ({ sendInfo, show, onHide }) => {
   };
 
   return (
-    <Modal show={show} animation={false}>
+    <Modal show={show} animation={false} centered>
       <Modal.Header>
         <Modal.Title>Eliminar un usuario</Modal.Title>
       </Modal.Header>

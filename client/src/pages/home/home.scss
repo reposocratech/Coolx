@@ -1,3 +1,6 @@
+$azulCoolx: #09427d;
+$azulCoolxClaro: #70bfcb;
+
 .fondo-home {
   display: flex;
   flex-direction: column;
@@ -43,7 +46,7 @@
     padding: 12px 24px;
     width: 137px;
     height: 44px;
-    background: #70bfcb;
+    background: $azulCoolxClaro;
     border-radius: 80px;
     border: none;
     font-family: "Manrope";
@@ -54,7 +57,6 @@
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
-
     p {
       font-weight: 700;
       font-size: 14px;
@@ -64,7 +66,7 @@
 }
 
 .separador {
-  background-color: #09427d;
+  background-color: $azulCoolx;
   height: 1rem;
 }
 
@@ -72,7 +74,6 @@
 .bloqueGarantizarHome {
   background-image: url("../../../public/images/bosque1.png");
   background-size: cover;
-  // height: 70vh;
   left: 0px;
   top: 0px;
 }
@@ -89,10 +90,8 @@
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(8px);
-  padding-right: 0px !important;
-  padding-left: 0px !important;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-inline: 0px !important;
+  padding-block: 80px;
 }
 
 .infoRegProject {
@@ -103,18 +102,15 @@
   margin-top: 80px;
   margin-bottom: 80px;
   padding: 35px;
-
   p {
     margin-left: 32px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
   }
-
   .wrapperRegProject {
     max-width: 1400px;
-    padding-inline-end: 20px;
-    padding-inline-start: 20px;
+    padding-inline: 20px;
     margin: auto;
   }
 }
@@ -126,22 +122,13 @@
   align-items: center;
 }
 
-@media screen and (min-width: 380px) {
-  .topInfo,
-  .bottomInfo {
-    img {
-      height: 200px;
-    }
-  }
-}
-
 .bottomInfoRegProject {
-  margin-top: 16px;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   justify-content: center;
+  text-align: center;
 }
 
 .bloqueProcesoHome {
@@ -149,14 +136,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-
   .tituloProceso {
     margin: 80px 56px 56px 56px;
-
     h1 {
       font-size: 40px;
       font-weight: bold;
-      color: #09427d;
+      color: $azulCoolx;
     }
   }
 }
@@ -170,7 +155,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   img {
     margin-bottom: 24px;
   }
@@ -179,14 +163,12 @@
 .iconsProceso {
   margin-top: 56px !important;
   margin-bottom: 80px;
-
   h4 {
     font-weight: bold;
   }
-
   p,
   h4 {
-    color: #09427d;
+    color: $azulCoolx;
     text-align: center;
   }
 }
@@ -194,24 +176,20 @@
 .bloqueGarantizarHome {
   text-align: center;
   color: white;
-
   .tituloBloqGarant {
     h1 {
       font-size: 40px;
       font-weight: bold;
     }
   }
-
   .iconsGarantizar {
     margin-top: 56px;
   }
-
   .buttonBloqGarant {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   .botonBloqGarant {
     margin-top: 40px;
     color: white;
@@ -222,7 +200,7 @@
     padding: 12px 24px;
     width: 137px;
     height: 44px;
-    background: #70bfcb;
+    background: $azulCoolxClaro;
     border-radius: 80px;
     border: none;
   }
@@ -235,111 +213,17 @@
   justify-content: space-around;
   padding: 20px;
   margin: 20px !important;
-
   h4 {
-    color: #09427d;
+    color: $azulCoolx;
     font-weight: bold;
   }
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-  background-color: #09427d;
-  padding: 56px;
-
-  .footer_logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
-    font-size: 12px;
-
+@media screen and (min-width: 380px) {
+  .topInfo,
+  .bottomInfo {
     img {
-      width: 153px;
-      margin-bottom: 16px;
+      height: 200px;
     }
-  }
-
-  .footer_contacto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-
-    img {
-      height: 20px;
-    }
-
-    .mail {
-      display: flex;
-      margin-top: 6px;
-
-      p {
-        margin-left: 8px;
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  .footer_rrss {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    a {
-      img {
-        height: 24px;
-        margin-left: 6px;
-      }
-    }
-  }
-
-  .legal {
-    display: flex;
-    color: white;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 65.5px;
-    font-size: 10px;
-    font-weight: lighter;
-  }
-}
-
-.footer-mobile {
-  display: none !important;
-  position: fixed;
-  bottom: 0px;
-  z-index: 99;
-  width: 100%;
-  .f-mobile-bar {
-    background-color: #09427d;
-    padding-block: 1rem;
-    padding-inline: 0.5rem;
-    img {
-      width: 3rem;
-    }
-    button {
-      background: #e0ecf8 !important;
-      border: none !important;
-      font-weight: 700;
-      font-size: 1rem;
-      line-height: 140%;
-      color: #09427d !important;
-      height: 100%;
-      img {
-        width: 2rem;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .footer {
-    display: none !important;
-  }
-  .footer-mobile {
-    display: initial !important;
   }
 }
