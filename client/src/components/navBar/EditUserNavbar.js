@@ -40,7 +40,6 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
       })
 
       .then(() => {
-         alert("Cambios guardados exitosamente")
         setResetUser(!resetUser);
         if (user.user_type === 0) {
           navigate(`/user`);
