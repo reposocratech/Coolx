@@ -4,18 +4,19 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 class userController {
+
   //1.Crear usuario
   //localhost:4000/users/registrocoolx
-
   createUser = (req, res) => {
-    console.log(req.body);
 
     const { user_name, email, password, surname, company, nif, phone } =
       req.body;
 
     let saltRounds = 8;
+
     bcrypt.genSalt(saltRounds, function (err, saltRounds) {
       bcrypt.hash(password, saltRounds, function (err, hash) {
+
         let sql = `INSERT INTO user (user_name, password, surname, company, nif, phone, email, position, country, currency) VALUES ('${user_name}', '${hash}', "${surname}", "${company}", "${nif}", "${phone}", '${email}', "", "", "")`;
 
         connection.query(sql, (error, result) => {
@@ -28,13 +29,14 @@ class userController {
     });
   };
 
-  // 2. User login **** AÑADIR VERIFICACIÓN TIPO USUARIO
+
+  // 2. User login
   // localhost:4000/users/login
   login = (req, res) => {
-    let { email, password } = req.body;
-    let sql = `SELECT * FROM user WHERE email = '${email}'and is_deleted = 0`;
 
-    console.log("login req body " + req.body);
+    let { email, password } = req.body;
+
+    let sql = `SELECT * FROM user WHERE email = '${email}'and is_deleted = 0`;
 
     connection.query(sql, (error, result) => {
       //en caso de error en la consulta
@@ -54,9 +56,8 @@ class userController {
         //capturo el user_id
         const user_id = user.user_id;
 
-        //compramos contraseñas
+        //comparamos contraseñas
         bcrypt.compare(password, hash, (error, response) => {
-          if (error) throw error;
           //si las contraseñas coinciden
           if (response === true) {
             const token = jwt.sign(
@@ -81,33 +82,41 @@ class userController {
     });
   };
 
-  //3 traer informacion de un usuario **** SOLO EL PROPIO USUARIO O UN ADMIN
+
+  //3 traer informacion de un usuario
   //localhost:4000/users/oneUser/:user_id
 
   selectOneUser = (req, res) => {
-    console.log(req.params.user_id, "EL ID ");
+
     const user_id = req.params.user_id;
 
     let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} AND is_deleted = 0`;
     let sqlProject = `SELECT * FROM image, project, user
     WHERE user.user_id = project.user_id AND project.project_id = image.project_id
     AND user.user_id = ${user_id} GROUP BY project.project_id`;
+    
     connection.query(sqlUser, (error, resultUser) => {
       if (error) {
         res.status(400).json({ error });
-      }
+        return;
+      } 
+      console.log("aqui");
       connection.query(sqlProject, (error2, resultProject) => {
         if (error2) {
           res.status(400).json({ error2 });
+          console.log("error2");
+          return;
         }
         res.status(200).json({ resultUser, resultProject });
       });
     });
   };
 
-  // 4 editar Usuario **** SOLO EL PROPIO USUARIO (EL ADMIN TAMBIÉN?)
+
+  // 4 editar Usuario
   // localhost:4000/users/editUser/:user_id
   editUser = (req, res) => {
+
     let user_id = req.params.user_id;
 
     const {
@@ -125,30 +134,35 @@ class userController {
     let sql = `UPDATE user SET user_name = "${user_name}", surname = "${surname}", company = "${company}", nif = "${nif}", position = "${position}", phone = "${phone}", country = "${country}", currency = "${currency}" WHERE user_id = "${user_id}"`;
 
     connection.query(sql, (error, result) => {
-      if (error) throw error;
       error
         ? res.status(400).json({ error })
         : res.status(200).json(req.body.register);
     });
   };
 
-  //5 traer informacion de Usuario para editarlo **** SOLO EL PROPIO USUARIO (EL ADMIN TAMBIÉN?)
+
+  //5 traer informacion de Usuario para editarlo
   //localhost:4000/users/editUser/:user_id
   getEditOneUser = (req, res) => {
+
     let user_id = req.params.user_id;
+
     let sql = `SELECT * FROM user WHERE user_id = "${user_id}"`;
+
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
 
-  //6 Borrado lógico de un usuario **** OJO: SOLO LO PUEDE HACER EL PROPIO USUARIO
-  //localhost:4000/users/deleteUser/:user_id
 
+  //6 Borrado lógico de un usuario
+  //localhost:4000/users/deleteUser/:user_id
   deleteUser = (req, res) => {
+
     let user_id = req.params.user_id;
-    console.log(user_id);
+
     let sql = `UPDATE user SET is_deleted = 1 WHERE user_id = "${user_id}"`;
+
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
@@ -166,5 +180,6 @@ class userController {
     });
   };
 }
+
 
 module.exports = new userController();

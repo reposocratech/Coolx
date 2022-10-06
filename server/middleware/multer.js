@@ -3,7 +3,6 @@ function uploadImage(a) {
  
   const storage = multer.diskStorage({
     destination: `../client/./public/images${a}`,
-    //destination: `./public/images/${a}`,
 
     filename: function (req, file, callback) {
       callback(null, "Id-" + Date.now() + "-" + file.originalname);

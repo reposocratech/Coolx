@@ -156,7 +156,6 @@ export const Stripe = ({ buyProject, user }) => {
         setBuyProjectTemporal(buyProject)
       }
       else{
-        console.log("Algo el axios")
         axios
         .get(`http://localhost:4000/project/${project_id}`)
 

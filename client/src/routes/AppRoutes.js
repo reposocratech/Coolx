@@ -29,6 +29,7 @@ import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
 import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
 import { Footer } from "../pages/home/Footer";
+import { ForgorPassword } from "../pages/auth/ForgotPassword";
 
 export const AppRoutes = ({
   user,
@@ -56,10 +57,8 @@ export const AppRoutes = ({
         />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/login"
-            element={<Login user={user} setUser={setUser} />}
-          />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/forgotpassword" element={<ForgorPassword />} />
           <Route
             path="/adminusers"
             element={
@@ -180,7 +179,6 @@ export const AppRoutes = ({
               />
             }
           />
-          {/* <Route path="/pdf" element={<Pdf />} /> */}
         </Routes>
 
         <Footer user={user} />

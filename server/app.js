@@ -13,8 +13,7 @@ var adminRouter = require("./routes/admin");
 var contactRouter = require("./routes/contact");
 var stripeRouter = require("./routes/stripe");
 var pdfRouter = require("./routes/pdf");
-
-
+var passwordRouter = require("./routes/password");
 
 var app = express();
 app.use(
@@ -33,7 +32,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/project", projectRouter);
@@ -42,6 +40,6 @@ app.use("/admin", adminRouter);
 app.use("/contact", contactRouter);
 app.use("/stripe", stripeRouter);
 app.use("/pdf", pdfRouter);
-
+app.use("/password", passwordRouter);
 
 module.exports = app;
