@@ -137,7 +137,14 @@ export const Login = ({ user, setUser }) => {
 
                   <div style={{ color: "darkblue" }}>{message}</div>
 
-                  <p>¿Has olvidado tu contraseña?</p>
+                  <div className="nada-juntos">
+                    <Button
+                      className="nada-nada"
+                      onClick={() => navigate(`/forgotpassword`)}
+                    >
+                      <p aling="right">¿Has olvidado tu contraseña?</p>
+                    </Button>
+                  </div>
                 </Form>
 
                 {["checkbox"].map((type) => (

@@ -1,9 +1,10 @@
 var express = require("express");
-const userControllers = require("../controllers/userControllers");
 var router = express.Router();
 const multer = require("../middleware/multer");
 const multerSingle = require("../middleware/multerSingle");
 const verify = require("../middleware/verify");
+const userControllers = require("../controllers/userControllers");
+
 
 //1 createUser
 //localhost:4000/users/registrocoolx
@@ -33,7 +34,6 @@ router.delete("/deleteUser/:user_id", userControllers.deleteUser);
 //7 mostrar todos los usuarios
 //localhost:4000/users/allUsers
 router.get("/allUsers", verify, userControllers.selectAllUsers);
-
 
 
 module.exports = router;

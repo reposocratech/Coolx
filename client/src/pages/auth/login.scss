@@ -37,15 +37,21 @@
   margin-bottom: 24px;
 }
 
+.forgotsub {
+  text-align: center;
+}
+
 .formAuth-login {
   display: flex;
   flex-direction: column;
+
   .label-login {
     font-weight: 500;
     font-size: 14px;
     line-height: 140%;
     margin-bottom: 8px;
   }
+
   .m-2 {
     border-radius: 4px;
   }
@@ -89,29 +95,35 @@
   margin-top: 8px;
   margin-bottom: 16px;
 }
+
 .bl-disabled {
   background-color: rgb(184, 219, 225) !important;
 }
+
 .show-bl {
   background: #70bfcb !important;
   // overflow: hidden;
   // position: relative;
 }
+
 .show-bl:hover {
   background-color: white !important;
   color: #09427d !important;
 }
+
 .nada-juntos {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+
   p {
     font-weight: 500;
     font-size: 12px;
     line-height: 140%;
     margin: 0px;
   }
+
   .nada-nada {
     border: none !important;
     background-color: transparent;
@@ -119,7 +131,9 @@
     font-size: 12px !important;
     line-height: 140% !important;
   }
+
   .nada-nada:hover {
     background-color: transparent !important;
   }
+
 }

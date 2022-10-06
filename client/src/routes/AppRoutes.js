@@ -35,6 +35,8 @@ import { AdminUsersInfo } from "../components/modal/AdminUsersInfo";
 import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
 import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
+import { ForgorPassword } from "../pages/auth/ForgotPassword";
+
 
 export const AppRoutes = ({
   user,
@@ -73,6 +75,7 @@ export const AppRoutes = ({
             path="/login"
             element={<Login user={user} setUser={setUser} />}
           />
+          <Route path="/forgotpassword" element={<ForgorPassword />} />
           <Route path="/admin" element={<Admin />} />
           <Route
             path="/admintree"
