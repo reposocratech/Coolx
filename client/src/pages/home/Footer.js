@@ -70,7 +70,7 @@ export const Footer = ({ user }) => {
         {/* FOOTER TABLET Y PORTATIL */}
         <Row className="footer ">
           <Col>
-            <div className="wrapper">
+            <div className="wrapper3">
               <Row>
                 <Col sm={12} md={5} lg={4} className="footer_logo">
                   <img src="/assets/branding/logo_white.svg" />
