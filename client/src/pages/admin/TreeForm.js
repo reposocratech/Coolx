@@ -76,136 +76,131 @@ export const TreeForm = ({ setIsLogged }) => {
   };
 
   return (
-    <>
-      <div className="wrapper">
-        <Container fluid className="formCreateTree">
-          <Row>
-            <Col md={12} className="header-create-tree">
-              <div className="d-flex align-items-center">
-                <Button onClick={() => navigate(-1)}>
-                  <img src="./assets/icons/arrow_left.svg" />
-                </Button>
-                <div>
-                  <h1>Datos del árbol</h1>
-                </div>
+    <div className="wrapper">
+      <Container fluid className="formCreateTree">
+        <Row>
+          <Col md={12} className="header-create-tree">
+            <div className="d-flex align-items-center">
+              <Button onClick={() => navigate(-1)}>
+                <img src="./assets/icons/arrow_left.svg" />
+              </Button>
+              <div>
+                <h1>Datos del árbol</h1>
               </div>
+            </div>
 
-              <div className="create-icono-tree">
-                <img
-                  className="iconTree-circle"
-                  src="./assets/icons/tree_circle.svg"
-                />
-                <p>Introduzca los datos</p>
-                <img
-                  className="iconTree-arrow"
-                  src="./assets/icons/arrow_right.svg"
-                />
-              </div>
+            <div className="create-icono-tree">
+              <img
+                className="iconTree-circle"
+                src="./assets/icons/tree_circle.svg"
+              />
+              <p>Introduzca los datos</p>
+              <img
+                className="iconTree-arrow"
+                src="./assets/icons/arrow_right.svg"
+              />
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <div className="d-flex justify-content-center">
+            <Col md={5} className="col-tree">
+              <Form.Group>
+                <Form className="formTree d-flex flex-column">
+                  <Form.Label className="label-tree">
+                    Nombre del árbol
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Ej. Roble"
+                    name="tree_name"
+                    autoComplete="off"
+                    value={newTree.tree_name}
+                    onChange={handleChange}
+                  />
+
+                  <Form.Label className="label-tree mt-3 mb-2">
+                    Nombre en Latín
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Ej. Quercus"
+                    name="latin_name"
+                    autoComplete="off"
+                    value={newTree.latin_name}
+                    onChange={handleChange}
+                  />
+
+                  <Form.Label className="label-tree mt-3 mb-2">
+                    Altura media
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Ej. 40"
+                    name="avg_height_tree"
+                    autoComplete="off"
+                    value={newTree.avg_height_tree}
+                    onChange={handleChange}
+                  />
+
+                  <Form.Label className="label-tree mt-3 mb-2">
+                    Área de copa media
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Ej. 50"
+                    name="avg_crown_area"
+                    autoComplete="off"
+                    value={newTree.avg_crown_area}
+                    onChange={handleChange}
+                  />
+
+                  <Form.Label className="label-tree mt-3 mb-2">
+                    Biomasa promedio
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Ej. 6.03"
+                    name="avg_biomass"
+                    autoComplete="off"
+                    value={newTree.avg_biomass}
+                    onChange={handleChange}
+                  />
+
+                  <Form.Label className="label-tree mt-3 mb-2">
+                    Edad media
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Ej.100"
+                    name="avg_age"
+                    autoComplete="off"
+                    value={newTree.avg_age}
+                    onChange={handleChange}
+                  />
+                </Form>
+              </Form.Group>
             </Col>
-          </Row>
+          </div>
+        </Row>
 
-          <Row>
-            <div className="d-flex justify-content-center">
-              <Col md={5} className="col-tree">
-                <Form.Group>
-                  <Form className="formTree d-flex flex-column">
-                    <Form.Label className="label-tree">
-                      Nombre del árbol
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Roble"
-                      name="tree_name"
-                      autoComplete="off"
-                      value={newTree.tree_name}
-                      onChange={handleChange}
-                    />
-
-                    <Form.Label className="label-tree mt-3 mb-2">
-                      Nombre en Latín
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Quercus"
-                      name="latin_name"
-                      autoComplete="off"
-                      value={newTree.latin_name}
-                      onChange={handleChange}
-                    />
-
-                    <Form.Label className="label-tree mt-3 mb-2">
-                      Altura media
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Ej. 40"
-                      name="avg_height_tree"
-                      autoComplete="off"
-                      value={newTree.avg_height_tree}
-                      onChange={handleChange}
-                    />
-
-                    <Form.Label className="label-tree mt-3 mb-2">
-                      Área de copa media
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Ej. 50"
-                      name="avg_crown_area"
-                      autoComplete="off"
-                      value={newTree.avg_crown_area}
-                      onChange={handleChange}
-                    />
-
-                    <Form.Label className="label-tree mt-3 mb-2">
-                      Biomasa promedio
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="6.03"
-                      name="avg_biomass"
-                      autoComplete="off"
-                      value={newTree.avg_biomass}
-                      onChange={handleChange}
-                    />
-
-                    <Form.Label className="label-tree mt-3 mb-2">
-                      Edad media
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Ej.100"
-                      name="avg_age"
-                      autoComplete="off"
-                      value={newTree.avg_age}
-                      onChange={handleChange}
-                    />
-                  </Form>
-                </Form.Group>
-              </Col>
-            </div>
-          </Row>
-
-          <Row>
-            <div>
-              <Col className="contenedor-boton-tree  mb-5">
-                {!submitButton ? (
-                  <div className="button-send bt-disabled text-center">
-                    Guardar datos
-                  </div>
-                ) : (
-                  <Button
-                    className="button-send show-bt"
-                    onClick={handleSubmit}
-                  >
-                    Guardar datos
-                  </Button>
-                )}
-              </Col>
-            </div>
-          </Row>
-        </Container>
-      </div>
-    </>
+        <Row>
+          <div>
+            <Col className="contenedor-boton-tree  mb-5">
+              {!submitButton ? (
+                <div className="button-send bt-disabled text-center">
+                  Guardar datos
+                </div>
+              ) : (
+                <Button className="button-send show-bt" onClick={handleSubmit}>
+                  Guardar datos
+                </Button>
+              )}
+            </Col>
+          </div>
+        </Row>
+      </Container>
+    </div>
   );
 };

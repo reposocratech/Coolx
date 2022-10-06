@@ -124,7 +124,7 @@ export const Home = () => {
       {/* CUARTO BLOQUE */}
       <Row className="bloqueGarantizarHome">
         <div className="fondoBlur2">
-          <div className="wrapper">
+          <div className="wrapper-low">
             <Col sm={12} className="tituloBloqGarant">
               <h1>Garantizamos</h1>
             </Col>
