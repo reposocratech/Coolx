@@ -32,49 +32,45 @@ export const NavBarMain = ({ setIsLogged, setUser, user }) => {
           <Navbar.Collapse id="responsive-navbar-nav">
             {/* barra versión mobile */}
             <Nav className="ms-auto barraMobile">
-              <Nav.Link className="sasa">
-                <Col md={12}>
-                  <Button className="avatar-btn" onClick={handleNavigate}>
-                    {user && (
-                      <p>
-                        {user.user_name} {user.surname}
-                      </p>
-                    )}
-                  </Button>
-
-                  {!user && (
-                    <Button className="sasa" onClick={() => navigate(`/login`)}>
-                      <p>Iniciar sesión</p>
-                    </Button>
+              {user && (
+                <>
+                  {user.user_type === 0 ? (
+                    <Nav.Link className="sasa" href="/user">
+                      {user.user_name} {user.surname}
+                    </Nav.Link>
+                  ) : (
+                    <Nav.Link className="sasa" href="/admin">
+                      {user.user_name} {user.surname}
+                    </Nav.Link>
                   )}
-                </Col>
-              </Nav.Link>
+                </>
+              )}
+
+              {!user && (
+                <Nav.Link className="sasa" href="/login">
+                  Iniciar sesión
+                </Nav.Link>
+              )}
 
               {user && (
-                <Nav.Link className="sasa">
-                  <Col md={12}>
-                    <Button
-                      onClick={() =>
-                        navigate(`/editusernavbar/${user.user_id}`)
-                      }
-                    >
-                      <p>Editar</p>
-                    </Button>
-                  </Col>
+                <Nav.Link
+                  className="sasa"
+                  href={`/editusernavbar/${user.user_id}`}
+                >
+                  Editar
                 </Nav.Link>
               )}
 
               {user && (
                 <Nav.Link className="sasa">
-                  <Col md={12}>
-                    <Button onClick={handleLogout}>
-                      <p>Logout</p>
-                    </Button>
-                  </Col>
+                  <Button onClick={handleLogout}>
+                    <p>Logout</p>
+                  </Button>
                 </Nav.Link>
               )}
             </Nav>
 
+            {/* NAVBAR PRINCIPAL */}
             <Nav className="ms-auto barraBig">
               {!user ? (
                 <div>

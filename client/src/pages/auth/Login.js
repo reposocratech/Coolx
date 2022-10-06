@@ -40,7 +40,6 @@ export const Login = ({ user, setUser }) => {
         .post("http://localhost:4000/users/login", login)
 
         .then((res) => {
-
           const token = res.data.token;
           window.localStorage.setItem("infocoolx", token);
 
@@ -97,7 +96,7 @@ export const Login = ({ user, setUser }) => {
                 </div>
               </div>
 
-              <Form.Group controlId="loginForm">
+              <Form.Group controlId="loginForm-coolx">
                 <Form className="formAuth-login">
                   <Form.Label className="label-login">
                     Dirección de correo electrónico
