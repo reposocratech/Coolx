@@ -10,7 +10,6 @@ import { AdminStatusModal } from "./AdminStatusModal";
 import { AdminDeleteModal } from "./AdminDeleteModal";
 import { AdminCompany } from "./AdminCompany";
 import { AdminEditModal } from "./AdminEditModal";
-import { Footer } from "../home/Footer";
 
 export const AdminProjectState = ({ setIsLogged, user }) => {
   const [allProjects, setAllProjects] = useState();
@@ -239,8 +238,12 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                     allProjects.map((project, index) => (
                       <tr key={project.project_id}>
                         <td>{project.project_name}</td>
-                        <td className="location-project-table">{project.location}</td>
-                        <td className="id-user-tableproject">{project.user_id}</td>
+                        <td className="location-project-table">
+                          {project.location}
+                        </td>
+                        <td className="id-user-tableproject">
+                          {project.user_id}
+                        </td>
 
                         <td className="status-user-tableproject">
                           <div className="status-col">
@@ -303,7 +306,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                             className="info-project"
                             onClick={() => handleModal(project)}
                           >
-                           <p>Más info</p>
+                            <p>Más info</p>
                           </Button>
                         </td>
 
@@ -377,7 +380,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
           />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

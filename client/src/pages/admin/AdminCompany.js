@@ -1,35 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
-import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
-import "./admincompany.scss"
+import "./admincompany.scss";
 
-
-export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjects, setResetProjects, setModalBuyer }) => {
-
-    const handleCompany = (usuario, projectModal) => {
-        console.log(projectModal.project_id)
-        console.log(usuario.user_id)
+export const AdminCompany = ({
+  onHide,
+  show,
+  allUsers,
+  projectModal,
+  resetProjects,
+  setResetProjects,
+  setModalBuyer,
+}) => {
+  const handleCompany = (usuario, projectModal) => {
+    console.log(projectModal.project_id);
+    console.log(usuario.user_id);
 
     axios
-      .put(`http://localhost:4000/project/changeUser/${projectModal.project_id}/${usuario.user_id}`)
+      .put(
+        `http://localhost:4000/project/changeUser/${projectModal.project_id}/${usuario.user_id}`
+      )
 
       .then((res) => {
         // console.log(res);
         setResetProjects(!resetProjects);
         setModalBuyer(false);
-
-
       })
 
-      .catch((err) => {console.log(err)});
-    }
-
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <Modal show={show} aria-labelledby="contained-modal-title-vcenter" centered>
@@ -40,7 +45,7 @@ export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjec
       </Modal.Header>
       <Modal.Body className="show-grid">
         <Container>
-        <Row>
+          <Row>
             <Table striped>
               <thead>
                 <tr>
@@ -56,10 +61,14 @@ export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjec
                       <td>{index + 1}</td>
                       <td>{usuario.company}</td>
                       <td>
-                        <Button className="assign-company-modal" onClick={()=> {
-                            handleCompany(usuario, projectModal)      
-                        }
-                        }>Asignar empresa</Button>
+                        <Button
+                          className="assign-company-modal"
+                          onClick={() => {
+                            handleCompany(usuario, projectModal);
+                          }}
+                        >
+                          Asignar empresa
+                        </Button>
                       </td>
                     </tr>
                   ))}
@@ -69,7 +78,9 @@ export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjec
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="exit-company-modal" onClick={onHide}>Close</Button>
+        <Button className="exit-company-modal" onClick={onHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

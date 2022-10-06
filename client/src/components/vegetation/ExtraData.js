@@ -11,7 +11,7 @@ export const ExtraData = () => {
 
       {/* TARJETA 1 */}
       <Row className="tarjetas-extra">
-        <Col md={3} className="extra-card-container">
+        <Col xs={12} sm={6} lg={4} xl={3} className="extra-card-container">
           <div className="extra-card">
             <Row className="p-0">
               <Col>
@@ -53,7 +53,7 @@ export const ExtraData = () => {
         </Col>
 
         {/* TARJETA 2 */}
-        <Col md={3} className="extra-card-container">
+        <Col xs={12} sm={6} lg={4} xl={3} className="extra-card-container">
           <div className="extra-card">
             <Row className="p-0">
               <Col>
@@ -95,7 +95,7 @@ export const ExtraData = () => {
         </Col>
 
         {/* TARJETA 3 */}
-        <Col md={3} className="extra-card-container">
+        <Col xs={12} sm={6} lg={4} xl={3} className="extra-card-container">
           <div className="extra-card">
             <Row className="p-0">
               <Col>
@@ -137,7 +137,7 @@ export const ExtraData = () => {
         </Col>
 
         {/* TARJETA 4 */}
-        <Col md={3} className="extra-card-container">
+        <Col xs={12} sm={6} lg={4} xl={3} className="extra-card-container">
           <div className="extra-card">
             <Row className="p-0">
               <Col>

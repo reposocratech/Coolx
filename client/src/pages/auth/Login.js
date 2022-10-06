@@ -4,7 +4,6 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
-import { Footer } from "../home/Footer";
 
 export const Login = ({ user, setUser }) => {
   const [message, setMessage] = useState("");
@@ -59,7 +58,6 @@ export const Login = ({ user, setUser }) => {
             : type === 1
             ? navigate(`/admin`, { replace: true })
             : navigate("/error");
-
         })
         .catch((err) => {
           console.log(err);
@@ -176,7 +174,6 @@ export const Login = ({ user, setUser }) => {
           </Row>
         </Container>
       </div>
-      <Footer />
     </>
   );
 };

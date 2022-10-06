@@ -28,12 +28,12 @@ import { BuyProject } from "../pages/user/BuyProject";
 import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
 import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
+import { Footer } from "../pages/home/Footer";
 
 export const AppRoutes = ({
   user,
   setUser,
   projects,
-  setProjects,
   resetUser,
   setResetUser,
 }) => {
@@ -182,6 +182,8 @@ export const AppRoutes = ({
           />
           {/* <Route path="/pdf" element={<Pdf />} /> */}
         </Routes>
+
+        <Footer user={user} />
       </BrowserRouter>
     </div>
   );
