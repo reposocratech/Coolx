@@ -30,7 +30,6 @@ export const ProjectInfo = ({ projectInfo }) => {
       .get(`http://localhost:4000/project/images/${id}`)
       .then((res) => {
         setImages(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

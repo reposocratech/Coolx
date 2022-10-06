@@ -9,7 +9,6 @@ import "./projectCompleted.scss";
 export const ProjectCompleted = () => {
   const [projectPayed, setProjectPayed] = useState();
   // const [reseteProject, setResetProject] = useState(false);
-
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -22,9 +21,7 @@ export const ProjectCompleted = () => {
     axios
       .get(`http://localhost:4000/project/${id}/info`)
       .then((res) => {
-        // console.log(res, "soy res del projeccompleted");
         setProjectPayed(res.data);
-        // console.log(res.data, "RES PUNTO DATA");
       })
       .catch((err) => {
         console.log(err);

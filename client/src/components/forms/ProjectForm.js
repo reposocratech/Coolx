@@ -29,8 +29,6 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
 
   const navigate = useNavigate();
 
-  // console.log(user?.user_id);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
@@ -68,7 +66,6 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
     // console.log(e.target.files);
 
     setHavePic(true);
-    console.log(havePic);
   };
 
   const handleSubmit = (e) => {
@@ -89,18 +86,16 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
         newFormData
       )
       .then((res) => {
-        console.log("res project FINALLLLL", res);
         navigate(`/succes2/${res.data.insertId}`);
         setResetUser(!resetUser);
       })
       .catch((err) => {
         console.log(err);
-        navigate("/error");
-        // if (err.response.data.error.errno === 1062) {
-        //   alert("El proyecto ya existe");
-        // } else {
-        //   navigate("/error");
-        // }
+        if (err.response.data.error.errno === 1062) {
+          alert("El proyecto ya existe");
+        } else {
+          navigate("/error");
+        }
       });
   };
 

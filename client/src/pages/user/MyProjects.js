@@ -26,8 +26,6 @@ export const MyProjects = ({
     setModalBuy(true);
   };
 
-  console.log(projects, "esto es lo que buscooo");
-
   return (
     <>
       <Container className="h-100">

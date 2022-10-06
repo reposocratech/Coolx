@@ -61,3 +61,4 @@ export const BuyModal = ({ onHide, show }) => {
     </Modal>
   );
 };
+
