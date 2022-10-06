@@ -1,3 +1,5 @@
+
+$azulCoolx: #09427d;
 .bg-error {
   background-image: url("../../../public/images/fondo.jpg");
   background-position: center;
@@ -18,21 +20,18 @@
   border-radius: 24px;
   max-inline-size: 640px !important;
   margin: auto;
-
   img {
     width: 100px;
   }
-
   h1 {
     font-family: "Manrope";
-    color: #09427d;
+    color: $azulCoolx;
     font-weight: bold;
     text-align: center;
   }
-
   h4 {
     font-family: "Manrope";
-    color: #09427d;
+    color: $azulCoolx;
     text-align: center;
   }
 }
@@ -53,15 +52,12 @@
 @media only screen and (max-width: 700px) {
   .bg-error {
     padding-inline: 5px;
-
     .error-container {
       max-inline-size: 95vw !important;
       padding: 3rem !important;
       gap: 1rem !important;
-
       .emoticono {
         text-align: center;
-
         img {
           width: 30%;
         }
@@ -69,3 +65,4 @@
     }
   }
 }
+

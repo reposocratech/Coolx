@@ -90,10 +90,10 @@ class userController {
     const user_id = req.params.user_id;
     // console.log(user_id + " user id");
 
-    let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
-    let sqlProject = `select * from image, project, user
-    where user.user_id = project.user_id and project.project_id = image.project_id
-    and user.user_id = ${user_id} group by project.project_id`;
+    let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} AND is_deleted = 0`;
+    let sqlProject = `SELECT * FROM image, project, user
+    WHERE user.user_id = project.user_id AND project.project_id = image.project_id
+    AND user.user_id = ${user_id} GROUP BY project.project_id`;
     connection.query(sqlUser, (error, resultUser) => {
       if (error) {
         res.status(400).json({ error });
