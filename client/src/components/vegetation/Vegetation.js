@@ -3,7 +3,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./vegetation.scss";
 
 export const Vegetation = ({ projectPayed }) => {
-  // console.log(projectPayed);
 
   return (
     <Container fluid>

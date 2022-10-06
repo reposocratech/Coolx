@@ -21,7 +21,6 @@ export const TreeDeleteModal = ({
             .then((res) => {
               setResetAllTrees(!resetAllTrees);
               setModalDeleteTree(false);
-  
             })
   
             .catch((err) => {

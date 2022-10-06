@@ -20,7 +20,6 @@ export const TreeEditModal = ({
   
   
   const handleChange = (e) => {
-    //   console.log(e);
       const {name, value} = e.target;
       setEditTree({...editTree, [name] : value})
   }

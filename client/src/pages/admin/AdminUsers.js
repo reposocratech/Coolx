@@ -18,11 +18,9 @@ export const AdminUsers = ({ user, setUserModificate }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const AUTH_TOKEN = window.localStorage.getItem("token");
-    // axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
     const token = window.localStorage.getItem("infocoolx");
     if (token) {
-      // setIsLogged(true);
+      
 
       const { id, type } = jwtDecode(token).user;
 
@@ -32,7 +30,6 @@ export const AdminUsers = ({ user, setUserModificate }) => {
 
           .then((res) => {
             setAllUsers(res.data);
-            console.log(res, "BUSQUEDA RES.DATA");
             setTablaBusqueda(res.data);
           })
 

@@ -29,7 +29,6 @@ export const ContactForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target);
     setUser({ ...user, [name]: value });
     setMessage("");
 
@@ -55,7 +54,6 @@ export const ContactForm = () => {
       axios
         .post("http://localhost:4000/contact", user)
         .then((res) => {
-          console.log(res);
           navigate("/succes3");
           setUser({ userName: "", email: "", phone: "", userMessage: "" });
         })

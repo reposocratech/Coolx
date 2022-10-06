@@ -11,7 +11,6 @@ export const Footer = () => {
 
   useEffect(() => {
     let pathname = window.location.pathname;
-    // console.log("path: ", pathname);
 
     if (pathname === "/") {
       setFooterBtn("Panel");

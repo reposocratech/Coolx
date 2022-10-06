@@ -17,7 +17,6 @@ export const BuyModal = ({ onHide, show }) => {
 
   const handleClick2 = () => {
     navigate("/buyproject");
-
 }
 
 

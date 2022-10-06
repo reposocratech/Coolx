@@ -13,8 +13,6 @@ import "./admincompany.scss"
 export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjects, setResetProjects, setModalBuyer }) => {
 
     const handleCompany = (usuario, projectModal) => {
-        console.log(projectModal.project_id)
-        console.log(usuario.user_id)
 
     axios
       .put(`http://localhost:4000/project/changeUser/${projectModal.project_id}/${usuario.user_id}`)
@@ -23,8 +21,6 @@ export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjec
         // console.log(res);
         setResetProjects(!resetProjects);
         setModalBuyer(false);
-
-
       })
 
       .catch((err) => {console.log(err)});

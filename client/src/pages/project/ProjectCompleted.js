@@ -10,8 +10,6 @@ export const ProjectCompleted = () => {
   const [projectPayed, setProjectPayed] = useState();
   const [reseteProject, setResetProject] = useState(false);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     let pathname = window.location.pathname;
     const id = pathname.split("/")[2];
@@ -20,9 +18,7 @@ export const ProjectCompleted = () => {
     axios
       .get(`http://localhost:4000/project/${id}/info`)
       .then((res) => {
-        // console.log(res, "soy res del projeccompleted");
         setProjectPayed(res.data);
-        // console.log(res.data, "RES PUNTO DATA");
       })
       .catch((err) => {
         console.log(err);

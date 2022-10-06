@@ -18,7 +18,6 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
       axios
         .get(`http://localhost:4000/users/oneUser/${user_id}`)
         .then((res) => {
-          console.log("es resss", res.data.resultUser[0]);
           setEditUser(res.data.resultUser[0]);
         })
         .catch((err) => {
@@ -41,7 +40,7 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
       })
 
       .then(() => {
-        //  alert("Cambios guardados exitosamente")
+         alert("Cambios guardados exitosamente")
         setResetUser(!resetUser);
         if (user.user_type === 0) {
           navigate(`/user`);

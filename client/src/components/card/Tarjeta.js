@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
 import { Col, Container, Row, Button } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./tarjeta.scss";
 
 export const Tarjeta = ({ projects, setBuyProject }) => {
@@ -15,7 +14,6 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
       .then((res) => {
         // console.log(res)
         setBuyProject(project);
-        console.log(project, "Buscamos projeeeecctttt");
         navigate(`/project/${project.project_id}`);
       })
       .catch((err) => {
@@ -26,7 +24,7 @@ export const Tarjeta = ({ projects, setBuyProject }) => {
   return (
     <>
       {projects &&
-        projects.map((project, index) => {
+        projects.map((project) => {
           return (
             <Container fluid key={project.project_id}>
               <Row className="project-card-container ">

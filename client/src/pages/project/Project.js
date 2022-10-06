@@ -22,7 +22,6 @@ export const Project = () => {
       .get(`http://localhost:4000/project/${id}`)
       .then((res) => {
         setProjectInfo(res.data);
-        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

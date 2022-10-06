@@ -7,7 +7,6 @@ import jwtDecode from "jwt-decode";
 
 export const Admin = ({ setIsLogged, user }) => {
   const navigate = useNavigate();
-  // console.log("esto es user: ", user?.user_name);
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
