@@ -40,7 +40,6 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
       })
 
       .then(() => {
-         alert("Cambios guardados exitosamente")
         setResetUser(!resetUser);
         if (user.user_type === 0) {
           navigate(`/user`);
@@ -74,7 +73,6 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
           <Row>
             <div className="d-flex justify-content-center">
               <Col md={6} lg={4} className="contPpalEditUser">
-
                 {editUser && (
                   <Form.Group>
                     <Form className="editUserForm d-flex flex-column">
@@ -179,7 +177,6 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
                     </Form>
                   </Form.Group>
                 )}
-
               </Col>
             </div>
           </Row>

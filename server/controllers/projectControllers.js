@@ -5,11 +5,9 @@ require("dotenv").config();
 const puppeteer = require("puppeteer");
 
 class projectControllers {
-
   // Crear nuevo proyecto
   // localhost:4000/project/newProject/:user_id
   createNewProject = (req, res) => {
-
     const data = JSON.parse(req.body.newProject);
     const user_id = req.params.user_id;
     let img = [""];
@@ -40,21 +38,19 @@ class projectControllers {
     });
   };
 
+  //Guardar imágenes de los proyectos (no es una ruta, solo función)
+  saveProjectImages = (images, project_id) => {
+    let img = images;
+    var time = new Date();
+    let date_img = new Date(time);
 
-    //Guardar imágenes de los proyectos (no es una ruta, solo función)
-    saveProjectImages = (images, project_id) => {
-      let img = images;  
-      var time = new Date();  
-      let date_img = new Date(time);
-  
-      img.forEach((img) => {
-        let sql = `INSERT INTO image (file_name, date_img, project_id) VALUES ('${img.filename}','${date_img}','${project_id}')`;
-        connection.query(sql, (error, result) => {
-          consolelog(error);
-        });
+    img.forEach((img) => {
+      let sql = `INSERT INTO image (file_name, date_img, project_id) VALUES ('${img.filename}','${date_img}','${project_id}')`;
+      connection.query(sql, (error, result) => {
+        console.log(error);
       });
-    };
-
+    });
+  };
 
   // Editar proyecto
   // localhost:4000/project/editProject/:project_id
@@ -79,7 +75,6 @@ class projectControllers {
     });
   };
 
-
   //Editar status de proyecto
   //localhost:4000/project/editStatusProject/:project_id
   editStatusProject = (req, res) => {
@@ -92,7 +87,6 @@ class projectControllers {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
-
 
   // Mostrar la infomación de un proyecto
   // localhost:4000/project/:project_id
@@ -107,7 +101,6 @@ class projectControllers {
     });
   };
 
-
   // Eliminar un proyecto
   // localhost:4000/project/deleteProject/:project_id
   deleteProject = (req, res) => {
@@ -120,7 +113,6 @@ class projectControllers {
     });
   };
 
-
   // Cambiar usuario de un proyecto
   // localhost:4000/project/changeUser/:project_id/:user_id
   changeUser = (req, res) => {
@@ -132,7 +124,6 @@ class projectControllers {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
-
 
   //Mostrar informacion del Project_info
   //localhost:4000/project/:project_id/info
@@ -150,11 +141,9 @@ class projectControllers {
     });
   };
 
-
   // Mostrar los proyectos solo de los administradores
   // localhost:4000/project/onlyAdmin
   onlyAdmin = (req, res) => {
-
     let sql = `SELECT * FROM project, user
     WHERE project.user_id = user.user_id
     AND user.user_type = 1 GROUP BY project.project_id`;
@@ -168,11 +157,9 @@ class projectControllers {
     });
   };
 
-  
   //Mostrar todas las imagenes de un proyecto
   // localhost:4000/project/images/:project_id
   getImages = (req, res) => {
-
     let project_id = req.params.project_id;
 
     let sql = `SELECT * FROM image WHERE project_id = ${project_id}`;
@@ -186,7 +173,6 @@ class projectControllers {
       console.log(resultImages);
     });
   };
-
 }
 
 module.exports = new projectControllers();
