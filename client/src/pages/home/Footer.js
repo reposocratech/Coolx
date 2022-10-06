@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { BuyModal } from "../../components/modal/BuyModal";
+import "./footer.scss";
 
-export const Footer = () => {
+export const Footer = ({ user }) => {
   const [modalBuy, setModalBuy] = useState(false);
   const [footerBtn, setFooterBtn] = useState();
 
@@ -12,11 +13,26 @@ export const Footer = () => {
   useEffect(() => {
     let pathname = window.location.pathname;
     // console.log("path: ", pathname);
+    if (user?.user_type === 0) {
+      // console.log(user.user_type);
+      if (pathname === "/") {
+        setFooterBtn("Panel");
+      } else {
+        setFooterBtn("Agregar");
+      }
+    }
 
-    if (pathname === "/") {
-      setFooterBtn("Panel");
-    } else {
-      setFooterBtn("Agregar");
+    if (user?.user_type === 1) {
+      if (pathname === "/admintree") {
+        setFooterBtn("Nuevo");
+      } else if (
+        pathname === "/adminprojectstate" ||
+        pathname === "/treeform"
+      ) {
+        setFooterBtn("Admin");
+      } else {
+        setFooterBtn("Estados");
+      }
     }
   });
 
@@ -25,6 +41,12 @@ export const Footer = () => {
       setModalBuy(true);
     } else if (footerBtn === "Panel") {
       navigate("/user");
+    } else if (footerBtn === "Nuevo") {
+      navigate("/treeform");
+    } else if (footerBtn === "Admin") {
+      navigate("/admin");
+    } else if (footerBtn === "Estados") {
+      navigate("/adminprojectstate");
     }
   };
 
@@ -35,12 +57,17 @@ export const Footer = () => {
         <Row className="footer ">
           <Col>
             <Row>
-              <Col md={4} className="footer_logo">
+              <Col sm={12} md={5} lg={4} className="footer_logo">
                 <img src="/assets/branding/logo_white.svg" />
                 <p>Enviromental Services</p>
               </Col>
 
-              <Col md={4} className="footer_contacto">
+              <Col
+                sm={12}
+                md={5}
+                lg={4}
+                className="footer_contacto text-center"
+              >
                 <h4>Contacta con nosotros</h4>
 
                 <div className="mail">
@@ -54,7 +81,7 @@ export const Footer = () => {
                 </div>
               </Col>
 
-              <Col md={4} className="footer_rrss">
+              <Col sm={12} md={2} lg={4} className="footer_rrss">
                 <div>
                   <a
                     href="https://www.instagram.com/coolx.earth/"

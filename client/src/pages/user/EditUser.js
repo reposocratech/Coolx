@@ -3,7 +3,6 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./edituser.scss";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { Footer } from "../home/Footer";
 import { UserDeleteModal } from "../../components/modal/UserDeleteModal";
 import jwtDecode from "jwt-decode";
 
@@ -246,8 +245,6 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
           </Row>
         </Container>
       </div>
-
-      <Footer />
 
       <UserDeleteModal
         onHide={() => setModalUserDelete(false)}

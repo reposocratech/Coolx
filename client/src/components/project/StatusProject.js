@@ -8,7 +8,7 @@ export const StatusProject = ({ projectInfo }) => {
       <Container fluid>
         <Row>
           <div className="cardStatus p-0">
-            <Col md={4} xs={4}>
+            <Col xs={4}>
               {projectInfo && projectInfo[0].status === 0 ? (
                 <div className="status-on cardRegistrado">
                   <img src="/assets/icons/status1_white.svg" />
@@ -22,7 +22,7 @@ export const StatusProject = ({ projectInfo }) => {
               )}
             </Col>
 
-            <Col md={4} xs={4}>
+            <Col xs={4}>
               {projectInfo && projectInfo[0].status === 1 ? (
                 <div className="status-on cardCalculando">
                   <img src="/assets/icons/status2_white.svg" />
@@ -36,7 +36,7 @@ export const StatusProject = ({ projectInfo }) => {
               )}
             </Col>
 
-            <Col md={4} xs={4}>
+            <Col xs={4}>
               {projectInfo && projectInfo[0].status === 2 ? (
                 <div className="status-on cardCompletado">
                   <img src="/assets/icons/status3_white.svg" />
