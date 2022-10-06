@@ -9,7 +9,6 @@ import { BlockedInfo } from "../../components/project/BlockedInfo";
 import { ProjectCompleted } from "./ProjectCompleted";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { Footer } from "../home/Footer";
 
 export const Project = () => {
   const [projectInfo, setProjectInfo] = useState();
@@ -34,7 +33,7 @@ export const Project = () => {
         <div className="wrapperProject">
           <Container fluid>
             <Row className="mb-3">
-              <Col md={8} className="projectCard">
+              <Col xs={12} className="projectCard">
                 <div className="title-project">
                   <a onClick={() => navigate(-1)}>
                     <img src="/assets/icons/arrow_left.svg" />
@@ -43,14 +42,22 @@ export const Project = () => {
                 </div>
               </Col>
 
-              <Col md={8} className="pt-2">
+              <Col lg={8} className="pt-2">
                 <ProjectInfo projectInfo={projectInfo} />
               </Col>
 
-              <Col md={4} className="pt-2">
-                <CostProfit projectInfo={projectInfo} />
-                <Requirements />
-                <Co2 projectInfo={projectInfo} />
+              <Col lg={4} className="pt-2">
+                <Row>
+                  <Col xs={12} md={4} lg={12}>
+                    <CostProfit projectInfo={projectInfo} />
+                  </Col>
+                  <Col xs={12} md={4} lg={12}>
+                    <Requirements />
+                  </Col>
+                  <Col xs={12} md={4} lg={12}>
+                    <Co2 projectInfo={projectInfo} />
+                  </Col>
+                </Row>
               </Col>
             </Row>
 
@@ -71,7 +78,6 @@ export const Project = () => {
           </Container>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

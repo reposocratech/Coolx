@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Row,
@@ -10,7 +10,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import "./projectform.scss";
 import axios from "axios";
-import { Footer } from "../../pages/home/Footer";
 
 export const ProjectForm = ({ user, resetUser, setResetUser }) => {
   const [projectFiles, setProjectFiles] = useState();
@@ -33,7 +32,6 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
-  
 
     const {
       projectName,
@@ -300,8 +298,6 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
           </Row>
         </Container>
       </div>
-
-      <Footer />
     </>
   );
 };

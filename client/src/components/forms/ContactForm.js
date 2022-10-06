@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../../pages/auth/register.scss";
 import axios from "axios";
 import {
@@ -12,7 +12,6 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import "./contact.scss";
-import { Footer } from "../../pages/home/Footer";
 
 export const ContactForm = () => {
   const [message, setMessage] = useState("");
@@ -147,7 +146,6 @@ export const ContactForm = () => {
           </Row>
         </Container>
       </div>
-      <Footer />
     </>
   );
 };

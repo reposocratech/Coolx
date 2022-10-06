@@ -4,6 +4,7 @@
 
 .tituloEditUser {
   padding-top: 27px;
+
   h1 {
     font-weight: 700;
     font-size: 32px;
@@ -11,6 +12,7 @@
     letter-spacing: -0.02em;
     color: #09427d;
   }
+
   button {
     background-color: transparent;
     border: none;
@@ -19,12 +21,14 @@
   button:hover {
     background-color: transparent !important;
   }
+
   .iconEditUser,
   .iconDeleteUser {
     display: flex;
     align-items: center;
     padding-left: 52px;
     gap: 8px;
+
     .iconEditUser-circle,
     .iconDeleteUser-circle {
       width: 32px;
@@ -42,19 +46,12 @@
       color: #09427d;
       margin: 0px;
     }
+
     .delet-red:hover {
       color: red;
     }
   }
 }
-
-
-// .deleteUser {
-//   padding-top: 1rem;
-//   button {
-//     background-color: dimgray;
-//   }
-// }
 
 
 .deleteUser:hover {
@@ -94,10 +91,12 @@
   background-color: #e0ecf8;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
   border-radius: 24px;
-  padding: 40px;
+  padding: 30px;
+
   .label-edit {
     font-weight: bold;
   }
+
   input {
     border: none !important;
   }
@@ -107,6 +106,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .button-edit {
     border-radius: 80px;
     font-size: 14px;
@@ -119,9 +119,32 @@
     height: 44px;
     background: #70bfcb !important;
   }
+
   .button-edit:hover {
     background-color: white !important;
     color: #09427d !important;
     box-shadow: inset 0 0 0 2px #70bfcb;
+  }
+}
+
+@media screen and (max-width:790px) {
+  .contEditUser {
+    .iconEditUser {
+      display: none;
+    }
+
+    .send-edit-user {
+      .button-edit {
+        margin-top: 20px !important;
+        margin-bottom: 50px !important;
+      }
+
+    }
+
+    .iconDeleteUser {
+      margin-bottom: 16px;
+
+
+    }
   }
 }

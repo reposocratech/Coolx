@@ -25,3 +25,9 @@
     font-weight: bold;
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .wrapperProject {
+    padding-inline: 0px;
+  }
+}

@@ -46,7 +46,7 @@ export const AdminEditModal = ({
 
 
   return (
-    <Modal show={show}  animation={false}>
+    <Modal show={show}  animation={false} centered>
     <Modal.Header closeButton onClick={onHide}>
     <Modal.Title>Edición de proyecto</Modal.Title>
     </Modal.Header>

@@ -3,9 +3,7 @@ import "./register.scss";
 import { Col, Row, Button, Form, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Footer } from "../home/Footer";
-import validator from "validator"
-
+import validator from "validator";
 
 export const Register = () => {
   const [message, setMessage] = useState("");
@@ -13,9 +11,8 @@ export const Register = () => {
   const [checkPass, setCheckPass] = useState({
     pass: "",
   });
-  
- const [messageEmail, setMessageEmail] = useState("");
 
+  const [messageEmail, setMessageEmail] = useState("");
 
   const [newUser, setNewUser] = useState({
     user_name: "",
@@ -37,17 +34,24 @@ export const Register = () => {
     setNewUser({ ...newUser, [name]: value });
     setMessagePassword("");
 
-
-    if(validator.isEmail(newUser.email)) {
-        setMessageEmail("")
+    if (validator.isEmail(newUser.email)) {
+      setMessageEmail("");
     } else {
-      setMessageEmail("")
-    
+      setMessageEmail("");
     }
-   
 
-    const { user_name, surname, email, phone, password, company, nif } = newUser;
-    if (user_name && surname && email && phone && password && company && nif && validator.isEmail(email)) {
+    const { user_name, surname, email, phone, password, company, nif } =
+      newUser;
+    if (
+      user_name &&
+      surname &&
+      email &&
+      phone &&
+      password &&
+      company &&
+      nif &&
+      validator.isEmail(email)
+    ) {
       setSubmitButton(true);
     } else {
       setSubmitButton(false);
@@ -68,14 +72,14 @@ export const Register = () => {
     ) {
       setMessage("Debe completar todos los campos!");
     }
-   
+
     if (newUser.password !== checkPass.pass) {
       setMessagePassword("LAS CONSTRASEÑAS DEBEN SER IGUALES");
-      
     } else {
       axios
         .post("http://localhost:4000/users/registrocoolx", newUser)
         .then((res) => {
+          sendMail(newUser);
           console.log(res);
           setNewUser({
             user_name: "",
@@ -99,13 +103,18 @@ export const Register = () => {
     }
   };
 
+  const sendMail = (user) => {
+    axios
+      .post("http://localhost:4000/users/mailregistrocoolx", user)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   const handleChangePass = (e) => {
     const { name, value } = e.target;
     setCheckPass({ ...checkPass, [name]: value });
-    
   };
 
- 
   // PARA MENSAJE
   // const { name, email, password } = register;
 
@@ -203,7 +212,6 @@ export const Register = () => {
                           autoComplete="off"
                           value={newUser.email}
                           onChange={handleChange}
-                          
                         />
                         <div style={{ color: "darkblue" }}>{messageEmail}</div>
                         <div style={{ color: "darkblue" }}>{message}</div>
@@ -278,7 +286,6 @@ export const Register = () => {
           </Row>
         </Container>
       </div>
-      <Footer />
     </>
   );
 };

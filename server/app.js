@@ -12,6 +12,7 @@ var treeRouter = require("./routes/tree");
 var adminRouter = require("./routes/admin");
 var contactRouter = require("./routes/contact");
 var stripeRouter = require("./routes/stripe");
+var pdfRouter = require("./routes/pdf");
 
 
 
@@ -39,7 +40,9 @@ app.use("/project", projectRouter);
 app.use("/tree", treeRouter);
 app.use("/admin", adminRouter);
 app.use("/contact", contactRouter);
-app.use("/stripe", stripeRouter)
+app.use("/stripe", stripeRouter);
+app.use("/pdf", pdfRouter);
+
 
 
 
