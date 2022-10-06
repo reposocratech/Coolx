@@ -35,7 +35,7 @@ export const Admin = ({ setIsLogged, user }) => {
             </Col>
           </Row>
 
-          <Row>
+          <Row className="small-mobile">
             <Col
               xs={6}
               lg={4}

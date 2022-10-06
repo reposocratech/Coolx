@@ -38,7 +38,6 @@ class projectControllers {
     // console.log("id: " + user_id);
     let sql = `INSERT INTO project (project_name, project_description, location, altitude, latitude, area, profit, project_cost, year_Planting, user_id) VALUES ('${projectName}','${projectDescription}', '${location}', '${altitude}', '${latitude}', "${area}", '${profit}', '${projectCost}', '${yearPlanting}','${user_id}')`;
 
-
     connection.query(sql, (error, result) => {
       if (error) throw error;
 
@@ -182,9 +181,9 @@ class projectControllers {
   onlyAdmin = (req, res) => {
     // let sql = `SELECT * FROM project WHERE user_id = 2`;
 
-    let sql = `select * from project, user
-    where project.user_id = user.user_id
-    and user.user_type = 1 group by project.project_id`;
+    let sql = `SELECT * FROM project, user
+    WHERE project.user_id = user.user_id
+    AND user.user_type = 1 GROUP BY project.project_id`;
 
     connection.query(sql, (error, result) => {
       if (error) {

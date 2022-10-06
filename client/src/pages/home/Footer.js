@@ -11,30 +11,42 @@ export const Footer = ({ user }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let pathname = window.location.pathname;
-    // console.log("path: ", pathname);
-    if (user?.user_type === 0) {
-      // console.log(user.user_type);
-      if (pathname === "/") {
-        setFooterBtn("Panel");
-      } else {
-        setFooterBtn("Agregar");
-      }
-    }
+    const sessionToken = findToken();
 
-    if (user?.user_type === 1) {
-      if (pathname === "/admintree") {
-        setFooterBtn("Nuevo");
-      } else if (
-        pathname === "/adminprojectstate" ||
-        pathname === "/treeform"
-      ) {
-        setFooterBtn("Admin");
-      } else {
-        setFooterBtn("Estados");
+    if (sessionToken !== null) {
+      let pathname = window.location.pathname;
+      // console.log("path: ", pathname);
+      if (user?.user_type === 0) {
+        if (pathname === "/") {
+          setFooterBtn("Panel");
+        } else {
+          setFooterBtn("Agregar");
+        }
+      } else if (user?.user_type === 1) {
+        if (pathname === "/admintree") {
+          setFooterBtn("Nuevo");
+        } else if (
+          pathname === "/adminprojectstate" ||
+          pathname === "/treeform"
+        ) {
+          setFooterBtn("Admin");
+        } else {
+          setFooterBtn("Estados");
+        }
       }
+    } else {
+      setFooterBtn("Login");
     }
   });
+
+  const findToken = () => {
+    try {
+      let sessionToken = localStorage.getItem("infocoolx");
+      return sessionToken;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleCheck = () => {
     if (footerBtn === "Agregar") {
@@ -47,6 +59,8 @@ export const Footer = ({ user }) => {
       navigate("/admin");
     } else if (footerBtn === "Estados") {
       navigate("/adminprojectstate");
+    } else if (footerBtn === "Login") {
+      navigate("/login");
     }
   };
 
@@ -56,60 +70,62 @@ export const Footer = ({ user }) => {
         {/* FOOTER TABLET Y PORTATIL */}
         <Row className="footer ">
           <Col>
-            <Row>
-              <Col sm={12} md={5} lg={4} className="footer_logo">
-                <img src="/assets/branding/logo_white.svg" />
-                <p>Enviromental Services</p>
-              </Col>
+            <div className="wrapper">
+              <Row>
+                <Col sm={12} md={5} lg={4} className="footer_logo">
+                  <img src="/assets/branding/logo_white.svg" />
+                  <p>Enviromental Services</p>
+                </Col>
 
-              <Col
-                sm={12}
-                md={5}
-                lg={4}
-                className="footer_contacto text-center"
-              >
-                <h4>Contacta con nosotros</h4>
+                <Col
+                  sm={12}
+                  md={5}
+                  lg={4}
+                  className="footer_contacto text-center"
+                >
+                  <h4>Contacta con nosotros</h4>
 
-                <div className="mail">
-                  <img src="/assets/icons/mail.svg" />
-                  <p>coolx.earth@gmail.com</p>
-                </div>
+                  <div className="mail">
+                    <img src="/assets/icons/mail.svg" />
+                    <p>coolx.earth@gmail.com</p>
+                  </div>
 
-                <div className="mail">
-                  <img src="/assets/icons/call.svg" />
-                  <p>+ 34 3478543874</p>
-                </div>
-              </Col>
+                  <div className="mail">
+                    <img src="/assets/icons/call.svg" />
+                    <p>+ 34 3478543874</p>
+                  </div>
+                </Col>
 
-              <Col sm={12} md={2} lg={4} className="footer_rrss">
-                <div>
-                  <a
-                    href="https://www.instagram.com/coolx.earth/"
-                    target="_blank"
-                    alt="Instagram icon"
-                  >
-                    <img src="/assets/social/instagram.svg" />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/coolx/"
-                    target="_blank"
-                    alt="LinkedIn icon"
-                  >
-                    <img src="/assets/social/linkedIn.svg" />
-                  </a>
-                </div>
-              </Col>
-            </Row>
+                <Col sm={12} md={2} lg={4} className="footer_rrss">
+                  <div>
+                    <a
+                      href="https://www.instagram.com/coolx.earth/"
+                      target="_blank"
+                      alt="Instagram icon"
+                    >
+                      <img src="/assets/social/instagram.svg" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/coolx/"
+                      target="_blank"
+                      alt="LinkedIn icon"
+                    >
+                      <img src="/assets/social/linkedIn.svg" />
+                    </a>
+                  </div>
+                </Col>
+              </Row>
 
-            <Row>
-              <Col className="legal">
-                <p>© COPYRIGHT 2022 COOLX </p>
-                <p>|</p>
-                <p>TERMS AND CONDITIONS</p>
-                <p>|</p>
-                <p>PRIVACYPOLICY</p>
-              </Col>
-            </Row>
+              <Row>
+                <Col className="legal">
+                  <p>© COPYRIGHT 2022 COOLX </p>
+                  <p>|</p>
+                  <p>TERMS AND CONDITIONS</p>
+                  <p>|</p>
+                  <p>PRIVACYPOLICY</p>
+                </Col>
+              </Row>
+            </div>
           </Col>
         </Row>
 
