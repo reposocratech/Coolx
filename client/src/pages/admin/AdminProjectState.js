@@ -1,15 +1,15 @@
-import axios from "axios";
-import jwtDecode from "jwt-decode";
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import "./adminProjectState.scss";
-import Table from "react-bootstrap/Table";
 import { AdminProjectModal } from "./AdminProjectModal";
 import { AdminStatusModal } from "./AdminStatusModal";
 import { AdminDeleteModal } from "./AdminDeleteModal";
 import { AdminCompany } from "./AdminCompany";
 import { AdminEditModal } from "./AdminEditModal";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import Table from "react-bootstrap/Table";
+import "./adminProjectState.scss";
 
 export const AdminProjectState = ({ setIsLogged, user }) => {
   const [allProjects, setAllProjects] = useState();
@@ -66,7 +66,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
 
           .then((res) => {
             setAllUsers(res.data);
-            console.log(res);
           })
 
           .catch((err) => {
@@ -79,8 +78,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
       alert("Debes iniciar sección como administrador");
     }
   }, []);
-
-  
 
   const handleModal = (project) => {
     setProjectModal(project);

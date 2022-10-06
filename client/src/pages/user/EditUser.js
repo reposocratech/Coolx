@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import "./edituser.scss";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserDeleteModal } from "../../components/modal/UserDeleteModal";
+import axios from "axios";
 import jwtDecode from "jwt-decode";
+import "./edituser.scss";
 
 export const EditUser = ({ userModificate, setIsLogged, user }) => {
   const [editUser, setEditUser] = useState();
@@ -14,7 +14,6 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
   const navigate = useNavigate();
 
   const { user_id } = useParams();
-  
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -39,7 +38,6 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
       axios
         .get(`http://localhost:4000/users/oneUser/${user_id}`)
         .then((res) => {
-          console.log("es resss", res.data.resultUser[0]);
           setEditUser(res.data.resultUser[0]);
         })
         .catch((err) => {
@@ -58,7 +56,7 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
     setEditUser({ ...editUser, [name]: value });
   };
 
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

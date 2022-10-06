@@ -40,12 +40,8 @@ export const Login = ({ user, setUser }) => {
         .post("http://localhost:4000/users/login", login)
 
         .then((res) => {
-          console.log(res);
-
           const token = res.data.token;
           window.localStorage.setItem("infocoolx", token);
-
-          console.log("Esto es la decoficacion del token ", jwtDecode(token));
 
           const id = jwtDecode(token).user.id;
           loadUser(id);
@@ -76,7 +72,7 @@ export const Login = ({ user, setUser }) => {
       .get(`http://localhost:4000/users/oneUser/${id}`)
       .then((res) => {
         setUser(res.data.resultUser[0]);
-  
+
       })
       .catch((err) => {
         console.log(err);
@@ -101,7 +97,7 @@ export const Login = ({ user, setUser }) => {
                 </div>
               </div>
 
-              <Form.Group controlId="loginForm">
+              <Form.Group controlId="loginForm-coolx">
                 <Form className="formAuth-login">
                   <Form.Label className="label-login">
                     Dirección de correo electrónico

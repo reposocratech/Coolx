@@ -17,11 +17,9 @@ export const AdminUsers = ({ user, setUserModificate }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const AUTH_TOKEN = window.localStorage.getItem("token");
-    // axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
     const token = window.localStorage.getItem("infocoolx");
     if (token) {
-      // setIsLogged(true);
+      
 
       const { id, type } = jwtDecode(token).user;
 
@@ -31,7 +29,6 @@ export const AdminUsers = ({ user, setUserModificate }) => {
 
           .then((res) => {
             setAllUsers(res.data);
-            console.log(res, "BUSQUEDA RES.DATA");
             setTablaBusqueda(res.data);
           })
 
@@ -45,8 +42,6 @@ export const AdminUsers = ({ user, setUserModificate }) => {
       alert("Debes iniciar sección como administrador");
     }
   }, []);
-
-  // console.log(allUsers);
 
   const handleModal = (usuario) => {
     setUserInfo(usuario);
@@ -141,7 +136,6 @@ export const AdminUsers = ({ user, setUserModificate }) => {
                           <Button
                             className="edit-users"
                             onClick={() => {
-                              console.log(usuario);
                               setUserModificate(usuario);
                               navigate(`/getEditUser/${usuario.user_id}`);
                               // navigate(`/getEditUser`)
@@ -160,7 +154,7 @@ export const AdminUsers = ({ user, setUserModificate }) => {
                 <p>
                   *Si tiene algun tipo de anomalia en el registro de sus datos
                   por favor, pongase en contacto con nosotros. Le atenderemos de
-                  buena gana...en principio...
+                  buena gana básicamente porque somos increibles.
                 </p>
               </Col>
             </Row>

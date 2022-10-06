@@ -12,24 +12,10 @@ export const BuyProject = ({setBuyProject}) => {
 
   const [allProjects, setAllProjects] = useState();
 
-  const [reset, setReset] = useState(false);
-
 
   const handleBuy = (project) => {
-    console.log(project);
     setBuyProject(project);
-    // navigate(`/stripe/4 `);
     navigate(`/stripe/${project.project_id}`);
-
-    // axios
-    //   .put(`http://localhost:4000/project/changeUser/${project.project_id}/${user.user_id}`)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     setReset(!reset);
-    //   })
-    //   .catch((err)=>{
-    //     console.log(err);
-    //   })
   }
 
 
@@ -45,7 +31,7 @@ export const BuyProject = ({setBuyProject}) => {
         console.log(err);
       })
 
-  },[reset]);
+  },[]);
 
 
 

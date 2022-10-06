@@ -4,8 +4,6 @@ import "./tarjeta.scss";
 
 export const Tarjetamas = ({ projectPayed }) => {
 
-  console.log(projectPayed, "PROJECT PAYED TARJETAMAS");
-
   return (
     <>
       <Container className="bage">

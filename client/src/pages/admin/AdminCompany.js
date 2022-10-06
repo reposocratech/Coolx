@@ -7,18 +7,10 @@ import Table from "react-bootstrap/Table";
 import axios from "axios";
 import "./admincompany.scss";
 
-export const AdminCompany = ({
-  onHide,
-  show,
-  allUsers,
-  projectModal,
-  resetProjects,
-  setResetProjects,
-  setModalBuyer,
-}) => {
-  const handleCompany = (usuario, projectModal) => {
-    console.log(projectModal.project_id);
-    console.log(usuario.user_id);
+export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjects, setResetProjects, setModalBuyer }) => {
+
+    const handleCompany = (usuario, projectModal) => {
+
 
     axios
       .put(

@@ -36,7 +36,6 @@ const CheckoutForm = ({ buyProject, user }) => {
           `http://localhost:4000/project/changeUser/${buyProject.project_id}/${user.user_id}`
         )
         .then((res) => {
-          console.log(res);
           setExito2(true);
         })
         .catch((err) => {
@@ -52,7 +51,6 @@ const CheckoutForm = ({ buyProject, user }) => {
           newState
         )
         .then((res) => {
-          console.log(res);
           navigate("/user");
         })
         .catch((err) => {
@@ -84,8 +82,6 @@ const CheckoutForm = ({ buyProject, user }) => {
           }
         );
 
-        console.log(coste);
-        console.log(data);
         elements.getElement(CardElement).clear();
       } catch (error) {
         console.log(error);
@@ -154,7 +150,6 @@ export const Stripe = ({ buyProject, user }) => {
   const [buyProjectTemporal, setBuyProjectTemporal] = useState();
 
   const {project_id} = useParams();
-  console.log(project_id);
 
   useEffect(()=> {
       if(buyProject){

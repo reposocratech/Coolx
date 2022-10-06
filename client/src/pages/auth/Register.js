@@ -129,7 +129,7 @@ export const Register = () => {
                   </h4>
                 </div>
 
-                <Form.Group controlId="contactForm">
+                <Form.Group controlId="contactForm-coolx">
                   <Form className="d-flex flex-column">
                     <Row>
                       <Col md={6} lg={6}>

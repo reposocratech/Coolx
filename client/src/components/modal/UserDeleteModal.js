@@ -15,6 +15,7 @@ export const UserDeleteModal = ({ sendInfo, show, onHide }) => {
       .then((res) => {
         navigate("/adminusers");
 
+
       })
 
       .catch((err) => {

@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./vegetation.scss";
 
 export const Vegetation = ({ projectPayed }) => {
- 
+
   return (
     <Container fluid>
       <div className="veg-title">
