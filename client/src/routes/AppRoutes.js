@@ -180,7 +180,6 @@ export const AppRoutes = ({
               />
             }
           />
-          {/* <Route path="/pdf" element={<Pdf />} /> */}
         </Routes>
 
         <Footer user={user} />

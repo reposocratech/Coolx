@@ -5,21 +5,17 @@ require("dotenv").config();
 const puppeteer = require("puppeteer");
 
 class projectControllers {
+
   // Crear nuevo proyecto
   // localhost:4000/project/newProject/:user_id
-
   createNewProject = (req, res) => {
-    // console.log(req.body.newProject);
-    console.log(req.params);
+
     const data = JSON.parse(req.body.newProject);
     const user_id = req.params.user_id;
-    console.log(data);
-
     let img = [""];
 
     if (req.files != undefined) {
       img = req.files;
-      // console.log("************************", img);
     }
 
     const {
@@ -34,68 +30,36 @@ class projectControllers {
       yearPlanting,
     } = data;
 
-    // console.log(projectName);
-    // console.log("id: " + user_id);
     let sql = `INSERT INTO project (project_name, project_description, location, altitude, latitude, area, profit, project_cost, year_Planting, user_id) VALUES ('${projectName}','${projectDescription}', '${location}', '${altitude}', '${latitude}', "${area}", '${profit}', '${projectCost}', '${yearPlanting}','${user_id}')`;
-
 
     connection.query(sql, (error, result) => {
       if (error) throw error;
-
       let project_id = result.insertId;
       this.saveProjectImages(img, project_id);
-
-      // console.log("res res res ", result);
-
       res.status(200).json(result);
     });
-
-    // connection.query(sql, (error, result) => {
-    //   // error && res.status(400).json({ error })
-    //   // : res.status(200).json(result);
-    //   if (error) throw error;
-    //   console.log("result: " + result);
-
-    //   let project_id = result.insertId;
-    //   // this.saveProjectImages(img, project_id);
-    //   console.log("projectID: " + project_id);
-
-    //   // connection.query(sqlProject, (err, resultProject) => {
-    //   //   // console.log("resultProject: " + resultProject);
-
-    //   //   if (err) throw err;
-    //   //   // res.status(200).json({ resultProject, result });
-    //   // });
-
-    //   res.status(200).json(result);
-    // });
   };
 
-  //Guardar imágenes de los proyectos (no es una ruta, solo función)
-  saveProjectImages = (images, project_id) => {
-    let img = images;
 
-    var time = new Date();
-
-    let date_img = new Date(time);
-
-    // console.log("Esta es la imagen", img, project_id, date_img);
-
-    img.forEach((img) => {
-      let sql = `INSERT INTO image (file_name, date_img, project_id) VALUES ('${img.filename}','${date_img}','${project_id}')`;
-      connection.query(sql, (error, result) => {
-        if (error) throw error;
-        // console.log(result);
+    //Guardar imágenes de los proyectos (no es una ruta, solo función)
+    saveProjectImages = (images, project_id) => {
+      let img = images;  
+      var time = new Date();  
+      let date_img = new Date(time);
+  
+      img.forEach((img) => {
+        let sql = `INSERT INTO image (file_name, date_img, project_id) VALUES ('${img.filename}','${date_img}','${project_id}')`;
+        connection.query(sql, (error, result) => {
+          consolelog(error);
+        });
       });
-    });
-  };
+    };
+
 
   // Editar proyecto
   // localhost:4000/project/editProject/:project_id
   editProject = (req, res) => {
     let project_id = req.params.project_id;
-    console.log(project_id);
-    console.log(req.body, "ESTO ES EL BODY");
     const {
       project_name,
       project_description,
@@ -108,7 +72,6 @@ class projectControllers {
     } = req.body;
 
     let sql = `UPDATE project SET project_name='${project_name}', project_description='${project_description}', location = '${location}', altitude = '${altitude}', latitude = '${latitude}', area = ${area}, profit = ${profit}, project_cost = ${project_cost}  WHERE project_id = ${project_id}`;
-    console.log(sql);
 
     connection.query(sql, (error, result) => {
       if (error) throw error;
@@ -116,41 +79,47 @@ class projectControllers {
     });
   };
 
+
   //Editar status de proyecto
   //localhost:4000/project/editStatusProject/:project_id
   editStatusProject = (req, res) => {
     const { status } = req.body;
-    console.log("llega status: " + status);
     const project_Id = req.params.project_id;
 
     let sql = `UPDATE project SET status = "${status}" WHERE project_id = ${project_Id}`;
+
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
+
 
   // Mostrar la infomación de un proyecto
   // localhost:4000/project/:project_id
   getProject = (req, res) => {
-    // console.log(req.params);
     let project_id = req.params.project_id;
+
     let sql = `SELECT * FROM project
     WHERE project.project_id = ${project_id}`;
+
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
+
 
   // Eliminar un proyecto
   // localhost:4000/project/deleteProject/:project_id
   deleteProject = (req, res) => {
     let project_id = req.params.project_id;
-    // console.log("id = " + project_id);
+
     let sql = `UPDATE project SET is_deleted = 1 WHERE project_id = "${project_id}"`;
+
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
+
 
   // Cambiar usuario de un proyecto
   // localhost:4000/project/changeUser/:project_id/:user_id
@@ -158,16 +127,20 @@ class projectControllers {
     const { user_id, project_id } = req.params;
 
     let sql = `UPDATE project SET user_id='${user_id}' WHERE project_id = ${project_id}`;
+
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
     });
   };
 
+
   //Mostrar informacion del Project_info
   //localhost:4000/project/:project_id/info
   getProjectInfo = (req, res) => {
     let project_id = req.params.project_id;
+
     let sql = `SELECT * FROM project_info WHERE project_id = ${project_id}`;
+
     connection.query(sql, (error, result) => {
       if (error) {
         res.status(400).json({ error });
@@ -177,10 +150,10 @@ class projectControllers {
     });
   };
 
+
   // Mostrar los proyectos solo de los administradores
   // localhost:4000/project/onlyAdmin
   onlyAdmin = (req, res) => {
-    // let sql = `SELECT * FROM project WHERE user_id = 2`;
 
     let sql = `select * from project, user
     where project.user_id = user.user_id
@@ -195,11 +168,15 @@ class projectControllers {
     });
   };
 
+  
   //Mostrar todas las imagenes de un proyecto
   // localhost:4000/project/images/:project_id
   getImages = (req, res) => {
+
     let project_id = req.params.project_id;
+
     let sql = `SELECT * FROM image WHERE project_id = ${project_id}`;
+
     connection.query(sql, (error, resultImages) => {
       if (error) {
         res.status(400).json({ error });
@@ -210,35 +187,6 @@ class projectControllers {
     });
   };
 
-  // Generar PDF de un proyecto
-  // localhost:4000/project/:project_id/pdf
-  getPdf = async (req, res) => {
-    // Create a browser instance
-    const browser = await puppeteer.launch({ headless: false });
-
-    // Create a new page
-    const page = await browser.newPage();
-
-    // Website URL to export as pdf
-    const website_url = "https://coolx.earth/";
-
-    // Open URL in current page
-    await page.goto(website_url, { waitUntil: "domcontentloaded" });
-
-    //To reflect CSS used for screens instead of print
-    await page.emulateMediaType("screen");
-
-    // Download the PDF
-    const pdf = await page.pdf({
-      path: "result.pdf",
-      margin: { top: "100px", right: "50px", bottom: "100px", left: "50px" },
-      printBackground: true,
-      format: "A4",
-    });
-
-    // Close the browser instance
-    await browser.close();
-  };
 }
 
 module.exports = new projectControllers();

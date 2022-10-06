@@ -1,24 +1,26 @@
 const puppeteer = require('puppeteer');
 
+// Genera un fichero PDF de la URL que recibe
 async function crearPdf(url) {
 
-    // Abrir el navegador
+    // Lanza el navegador
     let navegador = await puppeteer.launch();
 
-    // Creamos una nueva pestaña o pagina
+    // Crea una nueva página
     let pagina = await navegador.newPage();
 
-    // Abrir la url dentro de esta pagina
+    // Abre la url
     await pagina.goto(url);
 
-    // Vamos a crear nuestro PDF
+    // Genera el PDF
     let pdf = await pagina.pdf();
 
-    // Cerrar el navegador
+    // Cierra el navegador
     navegador.close();
 
     return pdf;
 }
+
 
 module.exports = {
 
@@ -26,15 +28,14 @@ module.exports = {
         res.render('pdfs/proyecto', { layout: "pdf" });
     },
 
+    // Descarga el PDF del proyecto cuya id recibe como parámetro
     async descargar(req, res) {
-        console.log("En pupeteer");
         let project_id = req.params.project_id;        
-        console.log(project_id);
-        // Crear nuestro documento
+
+        // Crea el documento
         let pdf = await crearPdf(`http://localhost:3000/project/${project_id}`);
 
-
-        // Devolver el response como PDF
+        // Devuelve el response como PDF
         res.contentType('application/pdf');
         res.send(pdf);
     }

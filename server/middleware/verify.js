@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 
 const verify = (req, res, next) => {
   console.log("estoy en verify")
-  // console.log("esto es el req", req);
 
   console.log("headers",req.headers);
   const header = req.headers.authorization;
