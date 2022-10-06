@@ -44,8 +44,7 @@ export const BlockedInfo = ({ projectInfo }) => {
               (projectInfo[0].status === 0 ? (
                 <Button
                   className="buttonBlock buy-data"
-                  onClick={() =>navigate("/stripe")
-                  // `/projectcompleted/${projectInfo[0].project_id}/info`
+                  onClick={() =>navigate(`/stripe/${projectInfo[0].project_id}`)
                 }
                 >
                   

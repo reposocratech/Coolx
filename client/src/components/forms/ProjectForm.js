@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Row,
@@ -10,7 +10,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import "./projectform.scss";
 import axios from "axios";
-import { Footer } from "../../pages/home/Footer";
 
 export const ProjectForm = ({ user, resetUser, setResetUser }) => {
   const [projectFiles, setProjectFiles] = useState();
@@ -30,12 +29,10 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
 
   const navigate = useNavigate();
 
-  // console.log(user?.user_id);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
-    console.log(e.target);
 
     const {
       projectName,
@@ -67,10 +64,8 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
 
   const handleFiles = (e) => {
     setProjectFiles(e.target.files);
-    // console.log(e.target.files);
 
     setHavePic(true);
-    console.log(havePic);
   };
 
   const handleSubmit = (e) => {
@@ -91,18 +86,18 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
         newFormData
       )
       .then((res) => {
-        console.log("res project FINALLLLL", res);
         navigate(`/succes2/${res.data.insertId}`);
         setResetUser(!resetUser);
       })
       .catch((err) => {
         console.log(err);
-        navigate("/error");
-        // if (err.response.data.error.errno === 1062) {
-        //   alert("El proyecto ya existe");
-        // } else {
-        //   navigate("/error");
-        // }
+
+        if (err.response.data.error.errno === 1062) {
+          alert("El proyecto ya existe");
+        } else {
+          navigate("/error");
+        }
+
       });
   };
 
@@ -287,7 +282,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
 
           <Row>
             <div>
-              <Col className="colocar-create mb-5">
+              <Col className="colocar-create">
                 {submitButton && havePic ? (
                   <Button
                     className="button-create show-bp"
@@ -305,8 +300,6 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
           </Row>
         </Container>
       </div>
-
-      <Footer />
     </>
   );
 };

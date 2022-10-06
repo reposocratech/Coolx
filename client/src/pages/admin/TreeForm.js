@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Col, Row, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./treeform.scss";
-import { Footer } from "../home/Footer";
+import jwtDecode from "jwt-decode";
 
-export const TreeForm = () => {
+export const TreeForm = ({ setIsLogged }) => {
   const [newTree, setNewTree] = useState({
     tree_name: "",
     latin_name: "",
@@ -17,6 +17,22 @@ export const TreeForm = () => {
   const [submitButton, setSubmitButton] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("infocoolx");
+
+    if (token) {
+      setIsLogged(true);
+
+      const { type } = jwtDecode(token).user;
+
+      if (type !== 1) {
+        navigate("/");
+      }
+    } else {
+      alert("Debes iniciar sección como administrador");
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,7 +68,6 @@ export const TreeForm = () => {
 
       .then((res) => {
         console.log(res);
-        alert("Datos registrados correctamente");
         navigate("/admintree");
       })
       .catch((err) => {
@@ -123,7 +138,7 @@ export const TreeForm = () => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Ej. 40m"
+                      placeholder="Ej. 40"
                       name="avg_height_tree"
                       autoComplete="off"
                       value={newTree.avg_height_tree}
@@ -135,7 +150,7 @@ export const TreeForm = () => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Ej. 50m"
+                      placeholder="Ej. 50"
                       name="avg_crown_area"
                       autoComplete="off"
                       value={newTree.avg_crown_area}
@@ -147,7 +162,7 @@ export const TreeForm = () => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="6.03m"
+                      placeholder="6.03"
                       name="avg_biomass"
                       autoComplete="off"
                       value={newTree.avg_biomass}
@@ -159,7 +174,7 @@ export const TreeForm = () => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Ej. 100 años"
+                      placeholder="Ej.100"
                       name="avg_age"
                       autoComplete="off"
                       value={newTree.avg_age}
@@ -191,7 +206,6 @@ export const TreeForm = () => {
           </Row>
         </Container>
       </div>
-      <Footer />
     </>
   );
 };

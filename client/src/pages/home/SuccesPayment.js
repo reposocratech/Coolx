@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import "./errorpage.scss";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import "./succes.scss";
 import { useNavigate } from "react-router-dom";
 
 export const SuccesPayment = ({ projects }) => {
@@ -8,20 +8,20 @@ export const SuccesPayment = ({ projects }) => {
 
   return (
     <div>
-      <Container fluid className="fondo-error">
-        <Row className="error">
-          <Col className="columna pb-5">
-            <div className="emoticono pb-5">
+      <Container fluid className="bg-succes">
+        <Row className="pt-5">
+          <Col className="succes-container">
+            <div className="succes-emoticono">
               <img src="./assets/active_on.svg" />
             </div>
 
-            <h1 className="pb-2">Tu pago se ha realizado con éxito</h1>
-            <h4 className="pb-5">
+            <h1>Tu pago se ha realizado con éxito</h1>
+            <h4>
               Puedes ver, copiar y descargar todos los datos necesarios del proyecto.
             </h4>
-            <button className="button-error" onClick={() => navigate("/")}>
+            <Button className="button-succes" onClick={() => navigate("/")}>
               Ir al proyecto
-            </button>
+            </Button>
           </Col>
         </Row>
       </Container>

@@ -1,3 +1,11 @@
+@mixin h4ProjectInfo {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.01em;
+  margin: 0px;
+}
+
 .cardProjectInfo {
   padding: 15px;
   border-radius: 10px;
@@ -13,27 +21,20 @@
 .descripcionProjectInfo {
   margin-top: 15px;
   h4 {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 140%;
-    letter-spacing: -0.01em;
-    margin: 0px;
+    @include h4ProjectInfo;
   }
   p {
     font-weight: 500;
     font-size: 12px;
     line-height: 140%;
   }
+
   .download-btn {
     display: flex;
     align-items: center;
     justify-content: space-between;
     h4 {
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 140%;
-      letter-spacing: -0.01em;
-      margin: 0px;
+      @include h4ProjectInfo;
     }
     button {
       display: flex;
@@ -60,9 +61,20 @@
   }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 500px) {
   .descripcionProjectInfo {
-    padding-left: 12px;
-    padding-right: 12px;
+    .download-btn {
+      display: flex;
+      flex-direction: column-reverse;
+      h4 {
+        margin-bottom: 1rem;
+      }
+      button {
+        margin-bottom: 1rem;
+      }
+    }
+    hr {
+      display: none;
+    }
   }
 }

@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Footer } from "../../pages/home/Footer";
 
 export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
   const [editUser, setEditUser] = useState();
 
   const navigate = useNavigate();
 
+  const { user_id } = useParams();
+
   useEffect(() => {
     if (user) {
       setEditUser(user);
     } else {
       axios
-        .get(`http://localhost:4000/users/oneUser/${user.user_id}`)
+        .get(`http://localhost:4000/users/oneUser/${user_id}`)
         .then((res) => {
-          console.log("es resss", res.data.resultUser[0]);
           setEditUser(res.data.resultUser[0]);
         })
         .catch((err) => {
@@ -33,12 +35,12 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:4000/users/editUser/${editUser.user_id}`, {
+      .put(`http://localhost:4000/users/editUser/${user_id}`, {
         register: { ...editUser },
       })
 
       .then(() => {
-        //  alert("Cambios guardados exitosamente")
+         alert("Cambios guardados exitosamente")
         setResetUser(!resetUser);
         if (user.user_type === 0) {
           navigate(`/user`);
@@ -193,6 +195,7 @@ export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
           </Row>
         </Container>
       </div>
+      <Footer />
     </>
   );
 };

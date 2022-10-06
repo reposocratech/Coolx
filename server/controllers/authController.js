@@ -48,6 +48,37 @@ class authController {
         });
     }
 
+    sendRegistration = (req, res) => {
+        console.log("Dentro de sendmail");
+        console.log(req.body);
+        const {user_name, email} = req.body;
+        let prueba = `<h3>Bienvenido a coolx.earth</h3>
+        <p>Hola, ${user_name}.</p>
+        <p>Acabas de registrarte con éxito en cool.earth.</p>
+        <p>Si no has sido tú, por favor contacta con nosotros.</p>
+        <img src="cid:img" />
+        `;
+        let maillist = [email];
+    
+         const mailmsg = {
+            from: '"Coolx" <coolx.earthproj@gmail.com>', // Remitente
+            to: maillist,
+            subject: "Usuario registrado", // Asunto
+            html: prueba, // html body
+            attachments: [{
+                filename: 'CoolxLogo.jpg',
+                path: './public/images/CoolxLogo.jpg',
+                cid: 'img' // valor que no se repita
+            }]
+        }; 
+        transporter.sendMail(mailmsg).then((trans) => {
+            res.status(200).send('E-mail enviado con éxito');
+            console.log(trans);
+        }).catch((error) => {
+            res.status(500).send('Algo ha salido mal!: ' + error);
+        });
+    }
+
 
 
 }

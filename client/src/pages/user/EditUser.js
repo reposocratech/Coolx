@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import "./edituser.scss";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { Footer } from "../home/Footer";
 import { UserDeleteModal } from "../../components/modal/UserDeleteModal";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import "./edituser.scss";
 
-export const EditUser = ({ userModificate }) => {
+export const EditUser = ({ userModificate, setIsLogged, user }) => {
   const [editUser, setEditUser] = useState();
   const [modalUserDelete, setModalUserDelete] = useState(false);
   const [sendInfo, setSendInfo] = useState();
@@ -14,7 +14,23 @@ export const EditUser = ({ userModificate }) => {
   const navigate = useNavigate();
 
   const { user_id } = useParams();
-  // console.log(userModificate, "......");
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("infocoolx");
+
+    if (token) {
+      setIsLogged(true);
+
+      const { type } = jwtDecode(token).user;
+
+      if (type !== 1) {
+        navigate("/");
+      }
+    } else {
+      alert("Debes iniciar sección como administrador");
+    }
+  }, [user]);
+
   useEffect(() => {
     if (userModificate) {
       setEditUser(userModificate);
@@ -22,7 +38,6 @@ export const EditUser = ({ userModificate }) => {
       axios
         .get(`http://localhost:4000/users/oneUser/${user_id}`)
         .then((res) => {
-          console.log("es resss", res.data.resultUser[0]);
           setEditUser(res.data.resultUser[0]);
         })
         .catch((err) => {
@@ -41,7 +56,7 @@ export const EditUser = ({ userModificate }) => {
     setEditUser({ ...editUser, [name]: value });
   };
 
-  // console.log(editUser);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -228,8 +243,6 @@ export const EditUser = ({ userModificate }) => {
           </Row>
         </Container>
       </div>
-
-      <Footer />
 
       <UserDeleteModal
         onHide={() => setModalUserDelete(false)}

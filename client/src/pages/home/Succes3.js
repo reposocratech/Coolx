@@ -1,22 +1,28 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import "./errorpage.scss";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import "./succes.scss";
 
 
 export const Succes3 = () => {
 
+  const navigate = useNavigate();
+
+
   return (
     <div>
-      <Container fluid className="fondo-error">
-        <Row className="error">
-          <Col className="columna pb-5">
-            <div className="emoticono pb-5">
+      <Container fluid className="bg-succes">
+        <Row className="pt-5">
+          <Col className="succes-container">
+            <div className="succes-emoticono">
               <img src="./assets/active_on.svg" />
             </div>
 
-            <h1 className="pb-2">Tu correo se ha enviado con éxito</h1>
-            <h4 className="pb-5">Pronto nos pondremos en contacto contigo.</h4>
-            
+            <h1>Tu correo se ha enviado con éxito</h1>
+            <h4>Pronto nos pondremos en contacto contigo.</h4>
+            <Button className="button-succes" onClick={() => navigate("/home")}>
+              Ir al home
+            </Button>
           </Col>
         </Row>
       </Container>

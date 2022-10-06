@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import "./adminstatusmodal.scss"
 
 export const AdminStatusModal = ({
   onHide,
@@ -35,7 +36,7 @@ export const AdminStatusModal = ({
   };
 
   return (
-    <Modal show={show} animation={false}>
+    <Modal show={show} animation={false} centered>
       <Modal.Header>
         <Modal.Title>Cambiar estado del proyecto</Modal.Title>
       </Modal.Header>
@@ -65,11 +66,11 @@ export const AdminStatusModal = ({
         </Form.Select>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onHide}>
+        <Button className="exit-statusproject-modal" onClick={onHide}>
           Cerrar
         </Button>
         <Button
-          variant="primary"
+          className="save-statusproject-modal"
           onClick={() => handleSubmit(projectModal.project_id)}
         >
           Guardar

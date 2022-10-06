@@ -21,7 +21,6 @@ export const TreeDeleteModal = ({
             .then((res) => {
               setResetAllTrees(!resetAllTrees);
               setModalDeleteTree(false);
-  
             })
   
             .catch((err) => {
@@ -30,7 +29,7 @@ export const TreeDeleteModal = ({
     }
 
   return (
-    <Modal show={showModal} animation={false}>
+    <Modal show={showModal} animation={false} className="p-4" centered>
     <Modal.Header>
       <Modal.Title>Eliminar un árbol</Modal.Title>
     </Modal.Header>

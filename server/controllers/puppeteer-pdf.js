@@ -27,9 +27,9 @@ module.exports = {
     },
 
     async descargar(req, res) {
-
+        console.log("En pupeteer");
         let project_id = req.params.project_id;        
-
+        console.log(project_id);
         // Crear nuestro documento
         let pdf = await crearPdf(`http://localhost:3000/project/${project_id}`);
 

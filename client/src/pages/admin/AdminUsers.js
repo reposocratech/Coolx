@@ -5,7 +5,6 @@ import { Col, Container, Row, Button } from "react-bootstrap";
 import "./adminusers.scss";
 import Table from "react-bootstrap/Table";
 import { AdminUsersInfo } from "../../components/modal/AdminUsersInfo";
-import { Footer } from "../home/Footer";
 import jwtDecode from "jwt-decode";
 
 export const AdminUsers = ({ user, setUserModificate }) => {
@@ -18,11 +17,9 @@ export const AdminUsers = ({ user, setUserModificate }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const AUTH_TOKEN = window.localStorage.getItem("token");
-    // axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
     const token = window.localStorage.getItem("infocoolx");
     if (token) {
-      // setIsLogged(true);
+      
 
       const { id, type } = jwtDecode(token).user;
 
@@ -32,7 +29,6 @@ export const AdminUsers = ({ user, setUserModificate }) => {
 
           .then((res) => {
             setAllUsers(res.data);
-            console.log(res, "BUSQUEDA RES.DATA");
             setTablaBusqueda(res.data);
           })
 
@@ -40,14 +36,12 @@ export const AdminUsers = ({ user, setUserModificate }) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");
     }
   }, []);
-
-  // console.log(allUsers);
 
   const handleModal = (usuario) => {
     setUserInfo(usuario);
@@ -75,99 +69,104 @@ export const AdminUsers = ({ user, setUserModificate }) => {
 
   return (
     <>
+      <div className="wrapper">
+        <div className="getdown">
+          <Container fluid>
+            <Row>
+              <Col className="adm-proj-state-header">
+                <Button onClick={() => navigate("/admin")}>
+                  <img src="./assets/icons/arrow_left.svg" />
+                </Button>
+                <h1>Todas nuestras empresas</h1>
+              </Col>
+            </Row>
 
-    <div className="wrapper">
-      <div className="getdown">
-        <Container fluid>
-          <Row>
-            <Col className="adm-proj-state-header">
-              <Button onClick={() => navigate("/admin")}>
-                <img src="./assets/icons/arrow_left.svg" />
-              </Button>
-              <h1>Todas nuestras empresas</h1>
-              
-            </Col>
-          </Row>
-
-          <Row>
-            <Col className="barra-busq-user">
-            <input
-
+            <Row>
+              <Col className="barra-busq-user">
+                <input
                   className="form-control inputBuscar "
                   type="text"
                   placeholder="Buscar usuario"
                   value={busqueda}
                   onChange={handleChange}
-                  />
-                
-            </Col>
-          </Row>
+                />
+              </Col>
+            </Row>
 
-          <Row className="m-0">
-            <Table striped className="table-allusers">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Empresa</th>
-                  <th>Nombre</th>
-                  <th>NIF</th>
-                  <th>País</th>
-                  <th>Teléfono</th>
-                  <th>Email</th>
-                  <th>Más Info</th>
-                  <th>Editar usuario</th>
-                </tr>
-              </thead>
+            <Row className="m-0">
+              <Table striped responsive="sm" className="table-allusers">
+                <thead>
+                  <tr>
+                    <th className="list-item-table">#</th>
+                    <th>Empresa</th>
+                    <th className="name-user-table">Nombre</th>
+                    <th className="nif-user-table">NIF</th>
+                    <th className="country-user-table">País</th>
+                    <th>Teléfono</th>
+                    <th className="email-user-table">Email</th>
+                    <th>Info</th>
+                    <th>Editar</th>
+                  </tr>
+                </thead>
 
-              <tbody>
-                {allUsers && 
-                  allUsers.map((usuario, index) => (
-                    <tr key={usuario.user_id}>
-                      <td>{index + 1}</td>
-                      <td>{usuario.company}</td>
-                      <td>{usuario.user_name}</td>
-                      <td>{usuario.nif}</td>
-                      <td>{usuario.country}</td>
-                      <td>{usuario.phone}</td>
-                      <td>{usuario.email}</td>
-                      <td>
-                        <Button className="info-users" onClick={()=>{
-                            handleModal(usuario);
-                        }
-                          } >Más info</Button>
-                      </td>
-                      <td>
-                        <Button className="edit-users" onClick={()=> {
-                            console.log(usuario);
-                            setUserModificate(usuario)
-                            // navigate(`/getEditUser/${usuario.user_id}`)
-                            navigate(`/getEditUser`)
-                        }  
-                        }>Editar usuario</Button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </Table>
-          </Row>
-          <Row>
-            <Col>
-              <p>
-                *Si tiene algun tipo de anomalia en el registro de sus datos por favor, pongase en contacto con nosotros. Le atenderemos de buena gana...en principio...
-              </p>
-            </Col>
-          </Row>
-        </Container>
+                <tbody>
+                  {allUsers &&
+                    allUsers.map((usuario, index) => (
+                      <tr key={usuario.user_id}>
+                        <td className="list-item-table">{index + 1}</td>
+                        <td>{usuario.company}</td>
+                        <td className="name-user-table">{usuario.user_name}</td>
+                        <td className="nif-user-table">{usuario.nif}</td>
+                        <td className="country-user-table">
+                          {usuario.country}
+                        </td>
+                        <td>{usuario.phone}</td>
+                        <td className="email-user-table">{usuario.email}</td>
+                        <td>
+                          <Button
+                            className="info-users"
+                            onClick={() => {
+                              handleModal(usuario);
+                            }}
+                          >
+                            <p>Más info</p>
+                          </Button>
+                        </td>
+                        <td>
+                          <Button
+                            className="edit-users"
+                            onClick={() => {
+                              setUserModificate(usuario);
+                              navigate(`/getEditUser/${usuario.user_id}`);
+                              // navigate(`/getEditUser`)
+                            }}
+                          >
+                            <p>Editar usuario</p>
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+            </Row>
+            <Row>
+              <Col>
+                <p>
+                  *Si tiene algun tipo de anomalia en el registro de sus datos
+                  por favor, pongase en contacto con nosotros. Le atenderemos de
+                  buena gana básicamente porque somos increibles.
+                </p>
+              </Col>
+            </Row>
+          </Container>
 
-        <AdminUsersInfo
-           onHide={() => setOpenModal(false)}
-           show={openModal}
-           userInfo={userInfo}
-        />
-
+          <AdminUsersInfo
+            onHide={() => setOpenModal(false)}
+            show={openModal}
+            userInfo={userInfo}
+          />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

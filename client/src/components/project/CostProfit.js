@@ -4,11 +4,7 @@ import "./costProfit.scss";
 import { useNavigate } from "react-router-dom";
 
 export const CostProfit = ({ projectInfo }) => {
-  // const [info, setInfo] = useState();
-  // console.log(projectInfo);
-
   const navigate = useNavigate();
-
 
   return (
     <Container>
@@ -24,11 +20,11 @@ export const CostProfit = ({ projectInfo }) => {
           {projectInfo && (
             <>
               <Row className="coste">
-                <Col lg={3} className="p-0">
+                <Col xs={12} lg={3} className="p-0">
                   <img src="/assets/icons/pine_tree.svg" />
                 </Col>
 
-                <Col lg={9} className="p-0 d-flex align-items-end">
+                <Col xs={12} lg={9} className="p-0 d-flex align-items-end">
                   <div className="d-flex flex-column justify-content-center">
                     <p>Coste del proyecto</p>
                     <h4>{projectInfo[0].project_cost} €</h4>
@@ -37,11 +33,11 @@ export const CostProfit = ({ projectInfo }) => {
               </Row>
 
               <Row className="ganancias">
-                <Col lg={3} className="p-0">
+                <Col xs={12} lg={3} className="p-0">
                   <img src="/assets/icons/money.svg" />
                 </Col>
 
-                <Col lg={9} className="p-0 d-flex align-items-end">
+                <Col xs={12} lg={9} className="p-0 d-flex align-items-end">
                   <div>
                     <p>Ganancias Consultoría</p>
                     <h4>{projectInfo[0].profit} €</h4>
@@ -55,11 +51,12 @@ export const CostProfit = ({ projectInfo }) => {
             <Col className="p-0">
               {projectInfo &&
                 (projectInfo[0].status === 0 ? (
-                  <Button className="more-info more-data" onClick={()=>{
-                    navigate("/stripe")
-                  }
-                  
-                  }>
+                  <Button
+                    className="more-info more-data"
+                    onClick={() => {
+                      navigate(`/stripe/${projectInfo[0].project_id}`);
+                    }}
+                  >
                     Acceder a todos los datos
                   </Button>
                 ) : projectInfo[0].status === 1 ? (

@@ -6,29 +6,16 @@ import axios from 'axios'
 import "./buyproject.scss"
 
 
-export const BuyProject = ({user, setBuyProject, buyProject}) => {
+export const BuyProject = ({setBuyProject}) => {
 
   const navigate = useNavigate();
 
   const [allProjects, setAllProjects] = useState();
 
-  const [reset, setReset] = useState(false);
-
 
   const handleBuy = (project) => {
-
     setBuyProject(project);
-    navigate("/stripe");
-
-    // axios
-    //   .put(`http://localhost:4000/project/changeUser/${project.project_id}/${user.user_id}`)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     setReset(!reset);
-    //   })
-    //   .catch((err)=>{
-    //     console.log(err);
-    //   })
+    navigate(`/stripe/${project.project_id}`);
   }
 
 
@@ -44,7 +31,7 @@ export const BuyProject = ({user, setBuyProject, buyProject}) => {
         console.log(err);
       })
 
-  },[reset]);
+  },[]);
 
 
 
@@ -63,11 +50,11 @@ export const BuyProject = ({user, setBuyProject, buyProject}) => {
           </Row>
 
           <Row className='table-buy-project mt-2'>
-            <Table striped>
+            <Table striped responsive="sm">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Id</th>
+                  <th className='id-table-buyproject'>Id</th>
                   <th>Nombre</th>
                   <th>Lugar</th>
                   <th>Comprar proyecto</th>
@@ -79,14 +66,14 @@ export const BuyProject = ({user, setBuyProject, buyProject}) => {
                   allProjects.map((project, index) => (
                     <tr key={project.project_id}>
                       <td>{index + 1}</td>
-                      <td>{project.project_id}</td>
+                      <td className='id-table-buyproject'>{project.project_id}</td>
                       <td>{project.project_name}</td>
                       <td>{project.location}</td>
                       <td>
                         <Button className='buy-project-list'
                         onClick={()=>handleBuy(project)}
                         >
-                          Comprar este proyecto
+                         <p>Comprar</p> 
                         </Button>
                       </td>
                     </tr>

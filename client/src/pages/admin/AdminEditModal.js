@@ -30,7 +30,6 @@ export const AdminEditModal = ({
             .put(`http://localhost:4000/project/editProject/${projectModal.project_id}`, projectModal)
 
             .then((res) => {
-              alert("cambios realizados correctamente")
              setProjectModal({...res})
              setModalEdit(false)
              setResetProjects(!resetProjects)
@@ -46,7 +45,7 @@ export const AdminEditModal = ({
 
 
   return (
-    <Modal show={show}  animation={false}>
+    <Modal show={show}  animation={false} centered>
     <Modal.Header closeButton onClick={onHide}>
     <Modal.Title>Edición de proyecto</Modal.Title>
     </Modal.Header>

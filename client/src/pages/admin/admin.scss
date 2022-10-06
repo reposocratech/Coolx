@@ -1,5 +1,7 @@
+$azulCoolx: #09427d;
+
 .getdown {
-  padding-top: 4rem;
+  padding-top: 60px;
 }
 
 .admin-name {
@@ -7,7 +9,7 @@
   p {
     margin: 0;
     font-size: 24px;
-    color: #09427d;
+    color: $azulCoolx;
     font-weight: bold;
   }
 }
@@ -23,7 +25,7 @@
   .blue-circle {
     width: 162px;
     height: 162px;
-    background: #09427d;
+    background: $azulCoolx;
     border-radius: 50%;
     display: grid;
     place-content: center;
@@ -38,7 +40,7 @@
     font-size: 20px;
     line-height: 140%;
     letter-spacing: -0.01em;
-    color: #09427d;
+    color: $azulCoolx;
     transition: transform 0.5s ease;
   }
   .tool-text {
@@ -48,7 +50,7 @@
       font-size: 14px;
       line-height: 140%;
       text-align: center;
-      color: #09427d;
+      color: $azulCoolx;
       margin: 0px;
       transition: transform 0.5s ease;
     }
@@ -60,5 +62,28 @@
   h4,
   p {
     transform: scale(1.05);
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .small-mobile {
+    margin-bottom: 80px !important;
+  }
+  .admin-tools {
+    padding-bottom: 7px !important;
+    .blue-circle {
+      width: 25vw;
+      height: 25vw;
+      margin-bottom: 1rem;
+      img {
+        height: 15vw;
+      }
+    }
+    h4 {
+      font-size: 1rem;
+    }
+    .tool-text {
+      display: none;
+    }
   }
 }

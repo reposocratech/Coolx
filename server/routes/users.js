@@ -1,4 +1,5 @@
 var express = require("express");
+const authController = require("../controllers/authController");
 const userControllers = require("../controllers/userControllers");
 var router = express.Router();
 const multer = require("../middleware/multer");
@@ -33,6 +34,10 @@ router.delete("/deleteUser/:user_id", userControllers.deleteUser);
 //7 mostrar todos los usuarios
 //localhost:4000/users/allUsers
 router.get("/allUsers", verify, userControllers.selectAllUsers);
+
+//8 Enviar email de confirmación de registro
+//localhost:4000/users/mailregistrocoolx
+router.post("/mailregistrocoolx", authController.sendRegistration);
 
 
 

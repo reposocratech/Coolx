@@ -4,7 +4,6 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./login.scss";
-import { Footer } from "../home/Footer";
 
 export const Login = ({ user, setUser }) => {
   const [message, setMessage] = useState("");
@@ -41,12 +40,8 @@ export const Login = ({ user, setUser }) => {
         .post("http://localhost:4000/users/login", login)
 
         .then((res) => {
-          console.log(res);
-
           const token = res.data.token;
           window.localStorage.setItem("infocoolx", token);
-
-          console.log("Esto es la decoficacion del token ", jwtDecode(token));
 
           const id = jwtDecode(token).user.id;
           loadUser(id);
@@ -57,13 +52,8 @@ export const Login = ({ user, setUser }) => {
           type === 0
             ? navigate("/user", { replace: true })
             : type === 1
-            ? navigate(`/admin/${id}`, { replace: true })
+            ? navigate(`/admin`, { replace: true })
             : navigate("/error");
-
-          //redireccionar a home
-          //evitar login y registro
-          //mostrar el button de logout
-          //guardarlo en localstore
         })
         .catch((err) => {
           console.log(err);
@@ -82,8 +72,7 @@ export const Login = ({ user, setUser }) => {
       .get(`http://localhost:4000/users/oneUser/${id}`)
       .then((res) => {
         setUser(res.data.resultUser[0]);
-        // console.log(res.data.resultUser[0].user_type, "TYPEEEEEEEE");
-        // console.log(typeof res.data.resultUser[0].user_type);
+
       })
       .catch((err) => {
         console.log(err);
@@ -108,7 +97,7 @@ export const Login = ({ user, setUser }) => {
                 </div>
               </div>
 
-              <Form.Group controlId="loginForm">
+              <Form.Group controlId="loginForm-coolx">
                 <Form className="formAuth-login">
                   <Form.Label className="label-login">
                     Dirección de correo electrónico
@@ -180,7 +169,6 @@ export const Login = ({ user, setUser }) => {
           </Row>
         </Container>
       </div>
-      <Footer />
     </>
   );
 };

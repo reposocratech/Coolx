@@ -1,9 +1,10 @@
 .formCreateTree {
-  padding-top: 4rem;
+  padding-top: 60px;
 }
 
 .header-create-tree {
   padding-top: 27px;
+
   h1 {
     font-weight: 700;
     font-size: 32px;
@@ -11,24 +12,30 @@
     letter-spacing: -0.02em;
     color: #09427d;
   }
+
   button {
     background-color: transparent;
     border: none;
   }
+
   button:hover {
     background-color: transparent !important;
   }
+
   .create-icono-tree {
     display: flex;
     align-items: center;
     padding-left: 52px;
     gap: 8px;
+
     .iconTree-circle {
       width: 32px;
     }
+
     .iconTree-arrow {
       width: 1rem;
     }
+
     p {
       font-weight: 700;
       font-size: 14px;
@@ -50,7 +57,7 @@
   background-color: #e0ecf8;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
   border-radius: 24px;
-  padding: 40px;
+  padding: 30px;
 
   .label-tree {
     font-weight: bold;
@@ -73,17 +80,32 @@
     color: white;
     height: 44px;
   }
+
   .bt-disabled {
     background-color: rgb(184, 219, 225) !important;
   }
+
   .show-bt {
     background: #70bfcb !important;
     // overflow: hidden;
     // position: relative;
   }
+
   .show-bt:hover {
     background-color: white !important;
     color: #09427d !important;
     box-shadow: inset 0 0 0 2px #70bfcb;
+  }
+}
+
+@media screen and (max-width:590px) {
+  .create-icono-tree {
+    display: none !important;
+  }
+
+  .contenedor-boton-tree {
+    .button-send {
+      margin-top: 5px !important;
+    }
   }
 }

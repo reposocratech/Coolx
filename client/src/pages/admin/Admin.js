@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
-import { Footer } from "../home/Footer";
+import { useNavigate } from "react-router-dom";
 import "./admin.scss";
-import { AdminUsers } from "./AdminUsers";
+import jwtDecode from "jwt-decode";
 
-export const Admin = ({ user }) => {
+export const Admin = ({ setIsLogged, user }) => {
   const navigate = useNavigate();
-  console.log("esto es user: ", user?.user_name);
 
-  const { admin_id } = useParams();
+  useEffect(() => {
+    const token = window.localStorage.getItem("infocoolx");
+
+    if (token) {
+      setIsLogged(true);
+
+      const { type } = jwtDecode(token).user;
+
+      if (type !== 1) {
+        navigate("/");
+      }
+    } else {
+      alert("Debes iniciar sección como administrador");
+    }
+  }, [user]);
 
   return (
     <>
@@ -18,14 +30,14 @@ export const Admin = ({ user }) => {
           <Row>
             <Col md={12} className="admin-name">
               <p>
-                Administrador {user && user.user_name} {user && user.surname}
+                Admin: {user && user.user_name} {user && user.surname}
               </p>
             </Col>
           </Row>
 
-          <Row>
+          <Row className="small-mobile">
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -50,7 +62,7 @@ export const Admin = ({ user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -72,7 +84,7 @@ export const Admin = ({ user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -94,7 +106,7 @@ export const Admin = ({ user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -119,7 +131,7 @@ export const Admin = ({ user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -142,7 +154,7 @@ export const Admin = ({ user }) => {
             </Col>
 
             <Col
-              md={6}
+              xs={6}
               lg={4}
               className="d-flex flex-column align-items-center"
             >
@@ -166,7 +178,6 @@ export const Admin = ({ user }) => {
           </Row>
         </Container>
       </div>
-      <Footer />
     </>
   );
 };

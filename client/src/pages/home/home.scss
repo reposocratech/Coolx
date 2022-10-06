@@ -1,3 +1,11 @@
+$azulCoolx: #09427d;
+$azulCoolxClaro: #70bfcb;
+
+.navTop {
+  padding-top: 60px;
+}
+
+// PRIMER BLOQUE
 .fondo-home {
   display: flex;
   flex-direction: column;
@@ -17,22 +25,17 @@
   justify-content: center;
   max-width: 70em;
   padding: 20px;
-
   a {
     text-decoration: none;
     color: white;
   }
-
   p {
-    font-family: "Manrope";
-    font-style: normal;
     font-weight: 700;
     font-size: 48px;
     line-height: 110%;
     text-align: center;
     letter-spacing: -0.02em;
   }
-
   button {
     margin-top: 40px;
     color: white;
@@ -43,12 +46,11 @@
     padding: 12px 24px;
     width: 137px;
     height: 44px;
-    background: #70bfcb;
+    background: $azulCoolxClaro;
     border-radius: 80px;
     border: none;
     font-family: "Manrope";
   }
-
   .leerMas {
     display: flex;
     flex-direction: column;
@@ -63,13 +65,18 @@
   }
 }
 
+// SEGUNDO BLOQUE
 .fondoRegProject,
 .bloqueGarantizarHome {
   background-image: url("../../../public/images/bosque1.png");
   background-size: cover;
-  // height: 70vh;
   left: 0px;
   top: 0px;
+}
+
+.separador {
+  background-color: $azulCoolx;
+  height: 1rem;
 }
 
 .fondoBlur1 {
@@ -80,23 +87,12 @@
   padding-left: 0px !important;
 }
 
-.fondoBlur2 {
-  display: flex;
-  flex-direction: column;
-  backdrop-filter: blur(8px);
-  padding-right: 0px !important;
-  padding-left: 0px !important;
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-
 .infoRegProject {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-block: 80px;
   padding: 35px;
 
   p {
@@ -108,8 +104,7 @@
 
   .wrapperRegProject {
     max-width: 1400px;
-    padding-inline-end: 20px;
-    padding-inline-start: 20px;
+    padding-inline: 20px;
     margin: auto;
   }
 }
@@ -121,37 +116,52 @@
   align-items: center;
 }
 
-@media screen and (min-width: 380px) {
-  .topInfo,
-  .bottomInfo {
-    img {
-      height: 200px;
+.bottomInfoRegProject {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+// TERCER BLOQUE
+.iconsProceso {
+  padding-inline: 56px;
+  padding-block: 80px;
+  .text-container {
+    width: 100%;
+    h4 {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 140%;
+      letter-spacing: -0.01em;
+    }
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 140%;
+      margin: 0px;
+    }
+    p,
+    h4 {
+      color: $azulCoolx;
+      text-align: center;
     }
   }
-}
-
-.bottomInfoRegProject {
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-}
-
-.bloqueProcesoHome {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-
-  .tituloProceso {
-    margin: 80px 56px 56px 56px;
+  .bloqueProcesoHome {
+    display: grid;
+    place-content: center;
+    margin-bottom: 56px;
 
     h1 {
+      font-weight: 700;
       font-size: 40px;
-      font-weight: bold;
-      color: #09427d;
+      line-height: 110%;
+      letter-spacing: -0.02em;
+      color: $azulCoolx;
+      margin: 0px;
     }
   }
 }
@@ -171,20 +181,7 @@
   }
 }
 
-.iconsProceso {
-  margin-top: 56px !important;
-  margin-bottom: 80px;
-
-  h4 {
-    font-weight: bold;
-  }
-
-  p,
-  h4 {
-    color: #09427d;
-    text-align: center;
-  }
-}
+// CUARTO BLOQUE
 
 .bloqueGarantizarHome {
   text-align: center;
@@ -192,13 +189,32 @@
 
   .tituloBloqGarant {
     h1 {
+      font-weight: 700;
       font-size: 40px;
-      font-weight: bold;
+      line-height: 110%;
+      text-align: center;
+      letter-spacing: -0.02em;
     }
   }
 
   .iconsGarantizar {
     margin-top: 56px;
+    .text-container2 {
+      width: 100%;
+      h4 {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 140%;
+        text-align: center;
+        letter-spacing: -0.01em;
+      }
+      p {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+        text-align: center;
+      }
+    }
   }
 
   .buttonBloqGarant {
@@ -217,92 +233,178 @@
     padding: 12px 24px;
     width: 137px;
     height: 44px;
-    background: #70bfcb;
+    background: $azulCoolxClaro;
     border-radius: 80px;
     border: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 140%;
+    text-align: center;
   }
 }
 
-.bloqueColabs {
+.fondoBlur2 {
   display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: space-around;
-  padding: 20px;
-  margin: 20px !important;
-
-  h4 {
-    color: #09427d;
-    font-weight: bold;
-  }
+  flex-direction: column;
+  backdrop-filter: blur(8px);
+  padding-inline: 0px !important;
+  padding-inline: 56px;
+  padding-top: 80px;
+  padding-bottom: 40px;
 }
-// .f-position {
-//   width: 100%;
 
-//   position: absolute;
-//   bottom: 0;
-//   left: 0;
-// }
-.footer {
-  display: flex;
-  justify-content: center;
-  background-color: #09427d;
-  padding: 56px;
-
-  .footer_logo {
+// BLOQUE CINCO
+.wrapper-low {
+  max-inline-size: 1400px;
+  margin: auto;
+  position: relative;
+  .bloqueColabs {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
-    font-size: 12px;
-
-    img {
-      width: 153px;
-      margin-bottom: 16px;
-    }
-  }
-
-  .footer_contacto {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    color: white;
-
-    img {
-      height: 20px;
+    text-align: center;
+    justify-content: space-around;
+    padding-block: 56px;
+    h4 {
+      color: $azulCoolx;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 140%;
+      text-align: center;
+      letter-spacing: -0.01em;
     }
+  }
+}
 
-    .mail {
-      display: flex;
-      margin-top: 6px;
+// HOME EN MOBILE
+@media only screen and (max-width: 576px) {
+  // QUINTO BLOQUE
+  .wrapper-low {
+    .bloqueColabs {
+      height: 100vh;
+      padding-block: 2rem !important;
+    }
+  }
+  .bloqueColabs {
+    height: calc(100vh - 140px);
+  }
+}
 
-      p {
-        margin-left: 8px;
-        margin-bottom: 0;
+@media only screen and (max-width: 768px) {
+  // PRIMER BLOQUE
+  .fondo-home,
+  .fondoRegProject,
+  .bloqueGarantizarHome,
+  .iconsProceso {
+    height: calc(100vh - 140px);
+  }
+
+  // SEGUNDO BLOQUE
+  .fondoRegProject {
+    .separador {
+      display: none;
+    }
+    .fondoBlur1 {
+      height: 100%;
+      .infoRegProject {
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        padding: 1.5rem;
+        .wrapperRegProject {
+          padding-inline: 1rem;
+        }
       }
     }
   }
 
-  .footer_rrss {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
+  .topInfoRegProject,
+  .bottomInfoRegProject {
 
     img {
-      height: 24px;
-      margin-left: 6px;
+      width: 40%;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin: 0px;
+      font-size: 1rem;
     }
   }
 
-  .legal {
+  .forMobile {
     display: flex;
-    color: white;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 65.5px;
-    font-size: 10px;
-    font-weight: lighter;
+    flex-direction: column-reverse;
+    margin-top: 4vh !important;
+  }
+
+  // TERCER BLOQUE
+  .iconsProceso {
+    padding-block: 2rem;
+    padding-inline: 0px;
+    .bloqueProcesoHome {
+      margin-bottom: 1rem;
+      h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+    .addProject,
+    .satelite,
+    .carbono {
+      padding: 0px !important;
+      flex-direction: row !important;
+      img {
+        width: 20vw;
+        margin-bottom: 0px;
+        align-items: center;
+      }
+      .text-container {
+        width: 75%;
+      }
+      p {
+        text-align: left;
+      }
+      h4 {
+        font-size: 1rem;
+        margin-bottom: 2px;
+        text-align: left;
+      }
+    }
+  }
+
+  // CUARTO BLOQUE
+  .bloqueGarantizarHome {
+    .fondoBlur2 {
+      height: 100%;
+      padding-block: 2rem;
+      padding-inline: 0px;
+      .tituloBloqGarant {
+        margin-bottom: 1rem;
+        h1 {
+          font-size: 2rem;
+          text-align: center;
+        }
+      }
+      .vision,
+      .sencillex,
+      .medidas {
+        padding: 0px !important;
+        flex-direction: row !important;
+        img {
+          width: 20vw;
+          margin-bottom: 0px;
+          align-items: center;
+        }
+        .text-container2 {
+          width: 75%;
+        }
+        p {
+          text-align: left;
+        }
+        h4 {
+          font-size: 1rem;
+          margin-bottom: 2px;
+          text-align: left;
+        }
+      }
+    }
   }
 }

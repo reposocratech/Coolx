@@ -1,16 +1,15 @@
-import axios from "axios";
-import jwtDecode from "jwt-decode";
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import "./adminProjectState.scss";
-import Table from "react-bootstrap/Table";
 import { AdminProjectModal } from "./AdminProjectModal";
 import { AdminStatusModal } from "./AdminStatusModal";
 import { AdminDeleteModal } from "./AdminDeleteModal";
 import { AdminCompany } from "./AdminCompany";
 import { AdminEditModal } from "./AdminEditModal";
-import { Footer } from "../home/Footer";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import Table from "react-bootstrap/Table";
+import "./adminProjectState.scss";
 
 export const AdminProjectState = ({ setIsLogged, user }) => {
   const [allProjects, setAllProjects] = useState();
@@ -39,7 +38,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
         axios
           .get(`http://localhost:4000/admin/${id}/allProjects`)
           .then((res) => {
-            // console.log(res);
             setAllProjects(res.data);
             setTablaBusqueda(res.data);
           })
@@ -47,7 +45,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");
@@ -68,23 +66,18 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
 
           .then((res) => {
             setAllUsers(res.data);
-            console.log(res);
           })
 
           .catch((err) => {
             console.log(err);
           });
       } else {
-        alert("No tienes permiso de administrador");
+        navigate("/");
       }
     } else {
       alert("Debes iniciar sección como administrador");
     }
   }, []);
-
-  // console.log(allUsers);
-
-  // console.log(allProjects.length);
 
   const handleModal = (project) => {
     setProjectModal(project);
@@ -145,19 +138,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
     setAllProjects(sortedList);
   };
 
-  const handleOrderId = () => {
-    const sortedListId = [...allProjects].sort((a, b) =>
-      Number(a.project_i) > Number(b.project_id)
-        ? 1
-        : Number(a.project_id) < Number(b.project_id)
-        ? -1
-        : 0
-    );
-
-    console.log(sortedListId);
-    setAllProjects(sortedListId);
-  };
-
   const handleOrderLocal = () => {
     const sortedListLocal = [...allProjects].sort((a, b) =>
       a.location.toString().toLowerCase() > b.location.toString().toLowerCase()
@@ -206,50 +186,47 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
             </Row>
 
             <Row className="m-0 mt-3">
-              <Table striped>
+              <Table striped responsive="sm">
                 <thead className="table-projects">
                   <tr>
-                    <th>
-                      Id{" "}
-                      <button onClick={handleOrderId}>
-                        <img src="/assets/icons/arrow_white.svg" />
-                      </button>
-                    </th>
-                    <th>
+                    <th className="name-project-table">
                       Nombre{" "}
                       <button onClick={handleOrderName}>
                         <img src="/assets/icons/arrow_white.svg" />
                       </button>
                     </th>
-                    <th>
+                    <th className="location-project-table">
                       Localización{" "}
                       <button onClick={handleOrderLocal}>
                         <img src="/assets/icons/arrow_white.svg" />
                       </button>
                     </th>
-                    <th>Id Usuario</th>
-                    <th>
+                    <th className="id-user-tableproject">Id Usuario</th>
+                    <th className="status-user-tableproject">
                       Estado{" "}
                       <button onClick={handleOrderStatus}>
                         <img src="/assets/icons/arrow_white.svg" />
                       </button>
                     </th>
                     <th>Borrar</th>
-                    <th>Más información</th>
+                    <th>Info</th>
                     <th>Editar</th>
-                    <th>Asignar proyecto a las empresas</th>
+                    <th>Proyecto</th>
                   </tr>
                 </thead>
                 <tbody className="list-text">
                   {allProjects &&
                     allProjects.map((project, index) => (
                       <tr key={project.project_id}>
-                        <td>{project.project_id}</td>
                         <td>{project.project_name}</td>
-                        <td>{project.location}</td>
-                        <td>{project.user_id}</td>
+                        <td className="location-project-table">
+                          {project.location}
+                        </td>
+                        <td className="id-user-tableproject">
+                          {project.user_id}
+                        </td>
 
-                        <td>
+                        <td className="status-user-tableproject">
                           <div className="status-col">
                             <p>
                               {project.status === 0
@@ -270,6 +247,35 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                               />
                             </Button>
                           </div>
+
+                          <div className="status-col-mobile">
+                            <p>
+                              {project.status === 0
+                                ? "Registrado"
+                                : project.status === 1
+                                ? "Calculando"
+                                : "Completado"}
+                            </p>
+
+                            <div className="status-col-icon">
+                                {project.status === 0
+                                    ? <img src="/assets/icons/check_red.svg"/>
+                                    : project.status === 1
+                                    ? <img src="/assets/icons/check_yellow.svg"/>
+                                    : <img src="/assets/icons/check_green.svg"/>}
+                            </div>
+
+                            <Button
+                              type="button"
+                              className="pen-status"
+                              onClick={() => handleStateModal(project)}
+                            >
+                              <img
+                                src="/assets/icons/pen.svg"
+                                alt="Edit project state"
+                              />
+                            </Button>
+                          </div>
                         </td>
                         <td>
                           <div>
@@ -278,7 +284,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                               className="delete-project"
                               onClick={() => handleDeleteModal(project)}
                             >
-                              Eliminar
+                              <p>Eliminar</p>
                             </Button>
                           </div>
                         </td>
@@ -289,7 +295,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                             className="info-project"
                             onClick={() => handleModal(project)}
                           >
-                            Más info
+                            <p>Más info</p>
                           </Button>
                         </td>
 
@@ -299,7 +305,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                             className="edit-project"
                             onClick={() => handleEditModal(project)}
                           >
-                            Editar
+                            <p>Editar</p>
                           </Button>
                         </td>
                         <td>
@@ -308,14 +314,20 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                             className="assign-project"
                             onClick={() => handleCompany(project)}
                           >
-                            Asignar empresa
+                            <p>Asignar empresa</p>
                           </Button>
                         </td>
                       </tr>
                     ))}
                 </tbody>
               </Table>
-              {/* <h5>Cantidad de proyectos: {allProjects.length}</h5> */}
+              <Row className="cont-leyenda-status">
+                  <Col sm={12} md={12} className="leyenda-status">
+                      <p>Registrado: <img src="/assets/icons/check_red.svg"/></p>
+                      <p>Calculando: <img src="/assets/icons/check_yellow.svg"/></p>
+                      <p>Completado: <img src="/assets/icons/check_green.svg"/></p>
+                  </Col>
+              </Row>
             </Row>
           </Container>
 
@@ -363,7 +375,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
           />
         </div>
       </div>
-      <Footer />
     </>
   );
 };
