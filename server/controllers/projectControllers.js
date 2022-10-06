@@ -155,9 +155,9 @@ class projectControllers {
   // localhost:4000/project/onlyAdmin
   onlyAdmin = (req, res) => {
 
-    let sql = `select * from project, user
-    where project.user_id = user.user_id
-    and user.user_type = 1 group by project.project_id`;
+    let sql = `SELECT * FROM project, user
+    WHERE project.user_id = user.user_id
+    AND user.user_type = 1 GROUP BY project.project_id`;
 
     connection.query(sql, (error, result) => {
       if (error) {

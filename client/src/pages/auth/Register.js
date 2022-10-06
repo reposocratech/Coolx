@@ -93,7 +93,6 @@ export const Register = () => {
           navigate("/succes1");
         })
         .catch((err) => {
-          // console.log(err);
           if (err.response.data.error.errno === 1062) {
             alert("Email or N.I.F already exist");
           } else {
@@ -115,13 +114,6 @@ export const Register = () => {
     setCheckPass({ ...checkPass, [name]: value });
   };
 
-  // PARA MENSAJE
-  // const { name, email, password } = register;
-
-  //   if (name === "" || email === "" || password === "") {
-  //     setMessage(true);
-  //   } else {
-  //     setMessage(false);
 
   return (
     <>
@@ -137,7 +129,7 @@ export const Register = () => {
                   </h4>
                 </div>
 
-                <Form.Group controlId="contactForm">
+                <Form.Group controlId="contactForm-coolx">
                   <Form className="d-flex flex-column">
                     <Row>
                       <Col md={6} lg={6}>

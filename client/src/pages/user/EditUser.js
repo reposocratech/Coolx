@@ -56,6 +56,7 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
     setEditUser({ ...editUser, [name]: value });
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

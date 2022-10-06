@@ -40,7 +40,6 @@ export const Login = ({ user, setUser }) => {
         .post("http://localhost:4000/users/login", login)
 
         .then((res) => {
-
           const token = res.data.token;
           window.localStorage.setItem("infocoolx", token);
 
@@ -73,6 +72,7 @@ export const Login = ({ user, setUser }) => {
       .get(`http://localhost:4000/users/oneUser/${id}`)
       .then((res) => {
         setUser(res.data.resultUser[0]);
+
       })
       .catch((err) => {
         console.log(err);
@@ -97,7 +97,7 @@ export const Login = ({ user, setUser }) => {
                 </div>
               </div>
 
-              <Form.Group controlId="loginForm">
+              <Form.Group controlId="loginForm-coolx">
                 <Form className="formAuth-login">
                   <Form.Label className="label-login">
                     Dirección de correo electrónico
@@ -126,7 +126,14 @@ export const Login = ({ user, setUser }) => {
 
                   <div style={{ color: "darkblue" }}>{message}</div>
 
-                  <p>¿Has olvidado tu contraseña?</p>
+                  <div className="nada-juntos">
+                    <Button
+                      className="nada-nada"
+                      onClick={() => navigate(`/forgotpassword`)}
+                    >
+                      <p aling="right">¿Has olvidado tu contraseña?</p>
+                    </Button>
+                  </div>
                 </Form>
 
                 {["checkbox"].map((type) => (

@@ -66,6 +66,9 @@ $azulCoolx: #09427d;
 }
 
 @media only screen and (max-width: 576px) {
+  .small-mobile {
+    margin-bottom: 80px !important;
+  }
   .admin-tools {
     padding-bottom: 7px !important;
     .blue-circle {

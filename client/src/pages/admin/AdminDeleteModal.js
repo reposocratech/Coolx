@@ -13,7 +13,7 @@ export const AdminDeleteModal = ({
   setResetProjects,
 }) => {
   const handleSubmit = (id) => {
-    
+
     axios
       .delete(`http://localhost:4000/project/deleteProject/${id}`)
       .then((res) => {

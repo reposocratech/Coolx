@@ -138,19 +138,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
     setAllProjects(sortedList);
   };
 
-  const handleOrderId = () => {
-    const sortedListId = [...allProjects].sort((a, b) =>
-      Number(a.project_i) > Number(b.project_id)
-        ? 1
-        : Number(a.project_id) < Number(b.project_id)
-        ? -1
-        : 0
-    );
-
-    console.log(sortedListId);
-    setAllProjects(sortedListId);
-  };
-
   const handleOrderLocal = () => {
     const sortedListLocal = [...allProjects].sort((a, b) =>
       a.location.toString().toLowerCase() > b.location.toString().toLowerCase()
@@ -270,6 +257,14 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                                 : "Completado"}
                             </p>
 
+                            <div className="status-col-icon">
+                                {project.status === 0
+                                    ? <img src="/assets/icons/check_red.svg"/>
+                                    : project.status === 1
+                                    ? <img src="/assets/icons/check_yellow.svg"/>
+                                    : <img src="/assets/icons/check_green.svg"/>}
+                            </div>
+
                             <Button
                               type="button"
                               className="pen-status"
@@ -326,7 +321,13 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                     ))}
                 </tbody>
               </Table>
-              {/* <h5>Cantidad de proyectos: {allProjects.length}</h5> */}
+              <Row className="cont-leyenda-status">
+                  <Col sm={12} md={12} className="leyenda-status">
+                      <p>Registrado: <img src="/assets/icons/check_red.svg"/></p>
+                      <p>Calculando: <img src="/assets/icons/check_yellow.svg"/></p>
+                      <p>Completado: <img src="/assets/icons/check_green.svg"/></p>
+                  </Col>
+              </Row>
             </Row>
           </Container>
 

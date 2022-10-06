@@ -43,8 +43,6 @@ export const AdminUsers = ({ user, setUserModificate }) => {
     }
   }, []);
 
-  // console.log(allUsers);
-
   const handleModal = (usuario) => {
     setUserInfo(usuario);
     setOpenModal(true);
@@ -138,7 +136,6 @@ export const AdminUsers = ({ user, setUserModificate }) => {
                           <Button
                             className="edit-users"
                             onClick={() => {
-                              console.log(usuario);
                               setUserModificate(usuario);
                               navigate(`/getEditUser/${usuario.user_id}`);
                               // navigate(`/getEditUser`)
@@ -157,7 +154,7 @@ export const AdminUsers = ({ user, setUserModificate }) => {
                 <p>
                   *Si tiene algun tipo de anomalia en el registro de sus datos
                   por favor, pongase en contacto con nosotros. Le atenderemos de
-                  buena gana...en principio...
+                  buena gana básicamente porque somos increibles.
                 </p>
               </Col>
             </Row>

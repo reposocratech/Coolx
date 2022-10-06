@@ -29,6 +29,8 @@ import { Stripe } from "../components/stripe/Stripe";
 import { Succes3 } from "../pages/home/Succes3";
 import { EditUserNavbar } from "../components/navBar/EditUserNavbar";
 import { Footer } from "../pages/home/Footer";
+import { ForgorPassword } from "../pages/auth/ForgotPassword";
+
 
 export const AppRoutes = ({
   user,
@@ -59,6 +61,12 @@ export const AppRoutes = ({
           <Route
             path="/login"
             element={<Login user={user} setUser={setUser} />}
+          />
+          <Route path="/forgotpassword" element={<ForgorPassword />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admintree"
+            element={<AdminTree setIsLogged={setIsLogged} />}
           />
           <Route
             path="/adminusers"
