@@ -87,6 +87,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
       )
       .then((res) => {
         navigate(`/succes2/${res.data.insertId}`);
+        console.log("res.data.insertId ", res.data.insertId);
         setResetUser(!resetUser);
       })
       .catch((err) => {
@@ -108,7 +109,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
           <Row>
             <Col className="espacio-create">
               <div className="d-flex align-items-center">
-                <Button onClick={() => navigate("/admin")}>
+                <Button onClick={() => navigate(-1)}>
                   <img src="./assets/icons/arrow_left.svg" />
                 </Button>
 
