@@ -36,7 +36,7 @@ export const AdminStatusModal = ({
   };
 
   return (
-    <Modal show={show} animation={false}>
+    <Modal show={show} animation={false} centered>
       <Modal.Header>
         <Modal.Title>Cambiar estado del proyecto</Modal.Title>
       </Modal.Header>

@@ -107,48 +107,55 @@ export const AdminTree = ({ setIsLogged }) => {
             </Col>
           </Row>
 
-          <Row className="table-all-trees mt-3">
-            <div className="table-tree-container p-0">
-              <Table striped responsive="sm">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th className="latin-tree-name">Nombre en latín</th>
-                    <th>Borrar</th>
-                    <th>Editar</th>
-                  </tr>
-                </thead>
+        <Row className='table-all-trees m-0 mt-3'>
+        
+          <div className="table-tree-container p-0">
+            
+            <Table striped responsive="sm">
+             
 
-                <tbody>
-                  {allTrees &&
-                    allTrees.map((tree, index) => (
-                      <tr key={tree.tree_id}>
-                        <td>{index + 1}</td>
-                        <td>{tree.tree_name}</td>
-                        <td className="latin-tree-name">{tree.latin_name}</td>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nombre</th>
+                  <th className="latin-tree-name">Nombre en latín</th>
+                  <th>Borrar</th>
+                  <th>Editar</th>
+                </tr>
+              </thead>
+           
+           
+              <tbody>
+                {allTrees &&
+                  allTrees.map((tree, index) => (
+                    <tr key={tree.tree_id}>
+                      <td>{index + 1}</td>
+                      <td>{tree.tree_name}</td>
+                      <td className="latin-tree-name">{tree.latin_name}</td>
 
-                        <td>
-                          <Button
-                            onClick={() => handleDeleteTree(tree)}
-                            className="boton-delete-tree"
-                          >
-                            <p>Eliminar</p>
-                          </Button>
-                        </td>
-                        <td>
-                          <Button
-                            onClick={() => handleEditTree(tree)}
-                            className="boton-edit-tree"
-                          >
-                            <p>Editar</p>
-                          </Button>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </Table>
-            </div>
+                      <td>
+                        <Button
+                          onClick={() => handleDeleteTree(tree)}
+                          className="boton-delete-tree"
+                        >
+                          <p>Eliminar</p>
+                        </Button>
+                      </td>
+                      <td>
+                        <Button
+                          onClick={() => handleEditTree(tree)}
+                          className="boton-edit-tree"
+                        >
+                          <p>Editar</p>
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+             
+            </Table>
+          </div>
+
           </Row>
 
           <TreeDeleteModal

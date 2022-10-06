@@ -37,7 +37,7 @@ export const AdminCompany = ({
   };
 
   return (
-    <Modal show={show} aria-labelledby="contained-modal-title-vcenter">
+    <Modal show={show} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
           {"Empresas"}

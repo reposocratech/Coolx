@@ -8,7 +8,7 @@ import "./adminprojectmodal.scss"
 
 export const AdminProjectModal = ({ onHide, show, projectModal }) => {
   return (
-    <Modal show={show} aria-labelledby="contained-modal-title-vcenter">
+    <Modal show={show} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
           {projectModal ? projectModal.project_name : "Cargando"}

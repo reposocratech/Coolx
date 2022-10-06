@@ -230,7 +230,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                     <th>Borrar</th>
                     <th>Info</th>
                     <th>Editar</th>
-                    <th>Asignar proyecto</th>
+                    <th>Proyecto</th>
                   </tr>
                 </thead>
                 <tbody className="list-text">
