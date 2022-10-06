@@ -7,9 +7,9 @@ class adminControllers {
 
     // Admin panel general
     // localhost:4000/admin/:userId
-    showPanel = (req, res) => {
+    // showPanel = (req, res) => {
 
-    };
+    // };
 
     // Mostrar todos los usuarios
     // localhost:4000/admin/:userId/allUsers

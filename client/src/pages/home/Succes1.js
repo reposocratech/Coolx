@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import "./succes.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -8,20 +8,17 @@ export const Succes1 = () => {
 
   return (
     <div>
-      <Container fluid className="fondo-error">
-        <Row className="error">
-          <Col md={12} lg={12} sm={12} className="columna pb-5">
-            <div className="emoticono pb-5">
+      <Container fluid className="bg-succes">
+        <Row className="pt-5">
+          <Col className="succes-container">
+            <div className="succes-emoticono">
               <img src="./assets/active_on.svg" />
             </div>
-
-            <h1 className="pb-2">Tu cuenta ha sido creada con éxito</h1>
-            <h4 className="pb-5">
-              Te hemos enviado un email de confirmación.
-            </h4>
-            <button className="button-error" onClick={() => navigate("/login")}>
+            <h1>Tu cuenta ha sido creada con éxito</h1>
+            <h4>Te hemos enviado un email de confirmación.</h4>
+            <Button className="button-succes" onClick={() => navigate("/login")}>
               Ir a mi cuenta
-            </button>
+            </Button>
           </Col>
         </Row>
       </Container>

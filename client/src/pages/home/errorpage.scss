@@ -1,5 +1,5 @@
-$azulCoolx: #09427d;
 
+$azulCoolx: #09427d;
 .bg-error {
   background-image: url("../../../public/images/fondo.jpg");
   background-position: center;
@@ -49,7 +49,7 @@ $azulCoolx: #09427d;
   text-align: center;
 }
 
-@media only screen and (max-width: 1158px) {
+@media only screen and (max-width: 700px) {
   .bg-error {
     padding-inline: 5px;
     .error-container {
@@ -65,3 +65,4 @@ $azulCoolx: #09427d;
     }
   }
 }
+
