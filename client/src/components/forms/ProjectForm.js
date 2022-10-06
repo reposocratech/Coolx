@@ -29,7 +29,6 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
 
   const navigate = useNavigate();
 
-  // console.log(user?.user_id);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,7 +64,6 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
 
   const handleFiles = (e) => {
     setProjectFiles(e.target.files);
-    // console.log(e.target.files);
 
     setHavePic(true);
     console.log(havePic);
@@ -96,11 +94,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
       .catch((err) => {
         console.log(err);
         navigate("/error");
-        // if (err.response.data.error.errno === 1062) {
-        //   alert("El proyecto ya existe");
-        // } else {
-        //   navigate("/error");
-        // }
+      
       });
   };
 
@@ -285,7 +279,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
 
           <Row>
             <div>
-              <Col className="colocar-create mb-5">
+              <Col className="colocar-create">
                 {submitButton && havePic ? (
                   <Button
                     className="button-create show-bp"

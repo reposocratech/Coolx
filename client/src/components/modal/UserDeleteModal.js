@@ -13,9 +13,8 @@ export const UserDeleteModal = ({ sendInfo, show, onHide }) => {
       .delete(`http://localhost:4000/users/deleteUser/${id}`)
 
       .then((res) => {
-        // alert("Usuario eliminado correctamente");
         navigate("/adminusers");
-        // setIsLogged(true);
+
       })
 
       .catch((err) => {

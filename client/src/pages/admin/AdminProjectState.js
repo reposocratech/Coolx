@@ -38,7 +38,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
         axios
           .get(`http://localhost:4000/admin/${id}/allProjects`)
           .then((res) => {
-            // console.log(res);
             setAllProjects(res.data);
             setTablaBusqueda(res.data);
           })
@@ -81,9 +80,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
     }
   }, []);
 
-  // console.log(allUsers);
-
-  // console.log(allProjects.length);
+  
 
   const handleModal = (project) => {
     setProjectModal(project);
@@ -142,19 +139,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
 
     console.log(sortedList);
     setAllProjects(sortedList);
-  };
-
-  const handleOrderId = () => {
-    const sortedListId = [...allProjects].sort((a, b) =>
-      Number(a.project_i) > Number(b.project_id)
-        ? 1
-        : Number(a.project_id) < Number(b.project_id)
-        ? -1
-        : 0
-    );
-
-    console.log(sortedListId);
-    setAllProjects(sortedListId);
   };
 
   const handleOrderLocal = () => {
@@ -276,6 +260,14 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                                 : "Completado"}
                             </p>
 
+                            <div className="status-col-icon">
+                                {project.status === 0
+                                    ? <img src="/assets/icons/check_red.svg"/>
+                                    : project.status === 1
+                                    ? <img src="/assets/icons/check_yellow.svg"/>
+                                    : <img src="/assets/icons/check_green.svg"/>}
+                            </div>
+
                             <Button
                               type="button"
                               className="pen-status"
@@ -332,7 +324,13 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                     ))}
                 </tbody>
               </Table>
-              {/* <h5>Cantidad de proyectos: {allProjects.length}</h5> */}
+              <Row className="cont-leyenda-status">
+                  <Col sm={12} md={12} className="leyenda-status">
+                      <p>Registrado: <img src="/assets/icons/check_red.svg"/></p>
+                      <p>Calculando: <img src="/assets/icons/check_yellow.svg"/></p>
+                      <p>Completado: <img src="/assets/icons/check_green.svg"/></p>
+                  </Col>
+              </Row>
             </Row>
           </Container>
 

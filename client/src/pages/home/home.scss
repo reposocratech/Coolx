@@ -57,6 +57,7 @@ $azulCoolxClaro: #70bfcb;
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
+
     p {
       font-weight: 700;
       font-size: 14px;
@@ -102,12 +103,14 @@ $azulCoolxClaro: #70bfcb;
   margin-top: 80px;
   margin-bottom: 80px;
   padding: 35px;
+
   p {
     margin-left: 32px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
   }
+
   .wrapperRegProject {
     max-width: 1400px;
     padding-inline: 20px;
@@ -136,8 +139,10 @@ $azulCoolxClaro: #70bfcb;
   flex-direction: column;
   align-items: center;
   text-align: center;
+
   .tituloProceso {
     margin: 80px 56px 56px 56px;
+
     h1 {
       font-size: 40px;
       font-weight: bold;
@@ -155,6 +160,7 @@ $azulCoolxClaro: #70bfcb;
   display: flex;
   flex-direction: column;
   align-items: center;
+
   img {
     margin-bottom: 24px;
   }
@@ -163,9 +169,11 @@ $azulCoolxClaro: #70bfcb;
 .iconsProceso {
   margin-top: 56px !important;
   margin-bottom: 80px;
+
   h4 {
     font-weight: bold;
   }
+
   p,
   h4 {
     color: $azulCoolx;
@@ -176,20 +184,24 @@ $azulCoolxClaro: #70bfcb;
 .bloqueGarantizarHome {
   text-align: center;
   color: white;
+
   .tituloBloqGarant {
     h1 {
       font-size: 40px;
       font-weight: bold;
     }
   }
+
   .iconsGarantizar {
     margin-top: 56px;
   }
+
   .buttonBloqGarant {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .botonBloqGarant {
     margin-top: 40px;
     color: white;
@@ -213,6 +225,7 @@ $azulCoolxClaro: #70bfcb;
   justify-content: space-around;
   padding: 20px;
   margin: 20px !important;
+
   h4 {
     color: $azulCoolx;
     font-weight: bold;
@@ -220,6 +233,7 @@ $azulCoolxClaro: #70bfcb;
 }
 
 @media screen and (min-width: 380px) {
+
   .topInfo,
   .bottomInfo {
     img {

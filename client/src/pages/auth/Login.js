@@ -76,8 +76,7 @@ export const Login = ({ user, setUser }) => {
       .get(`http://localhost:4000/users/oneUser/${id}`)
       .then((res) => {
         setUser(res.data.resultUser[0]);
-        // console.log(res.data.resultUser[0].user_type, "TYPEEEEEEEE");
-        // console.log(typeof res.data.resultUser[0].user_type);
+  
       })
       .catch((err) => {
         console.log(err);

@@ -14,7 +14,7 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
   const navigate = useNavigate();
 
   const { user_id } = useParams();
-  // console.log(userModificate, "......");
+  
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
@@ -58,7 +58,7 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
     setEditUser({ ...editUser, [name]: value });
   };
 
-  // console.log(editUser);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 

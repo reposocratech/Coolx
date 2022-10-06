@@ -26,7 +26,6 @@ export const AdminCompany = ({
       )
 
       .then((res) => {
-        // console.log(res);
         setResetProjects(!resetProjects);
         setModalBuyer(false);
       })

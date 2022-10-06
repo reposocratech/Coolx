@@ -68,7 +68,6 @@ export const TreeForm = ({ setIsLogged }) => {
 
       .then((res) => {
         console.log(res);
-        alert("Datos registrados correctamente");
         navigate("/admintree");
       })
       .catch((err) => {
@@ -139,7 +138,7 @@ export const TreeForm = ({ setIsLogged }) => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Ej. 40m"
+                      placeholder="Ej. 40"
                       name="avg_height_tree"
                       autoComplete="off"
                       value={newTree.avg_height_tree}
@@ -151,7 +150,7 @@ export const TreeForm = ({ setIsLogged }) => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Ej. 50m"
+                      placeholder="Ej. 50"
                       name="avg_crown_area"
                       autoComplete="off"
                       value={newTree.avg_crown_area}
@@ -163,7 +162,7 @@ export const TreeForm = ({ setIsLogged }) => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="6.03m"
+                      placeholder="6.03"
                       name="avg_biomass"
                       autoComplete="off"
                       value={newTree.avg_biomass}
@@ -175,7 +174,7 @@ export const TreeForm = ({ setIsLogged }) => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Ej. 100 años"
+                      placeholder="Ej.100"
                       name="avg_age"
                       autoComplete="off"
                       value={newTree.avg_age}
