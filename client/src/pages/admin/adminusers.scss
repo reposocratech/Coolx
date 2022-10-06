@@ -84,7 +84,7 @@
 
 }
 
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 720px) {
 
   .name-user-table,
   .nif-user-table,
@@ -116,5 +116,22 @@
     p {
       display: none;
     }
+  }
+}
+
+@media only screen and (max-width: 967px) {
+
+  .nif-user-table,
+  .country-user-table,
+  .email-user-table {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+
+  .nif-user-table,
+  .email-user-table {
+    display: none !important;
   }
 }

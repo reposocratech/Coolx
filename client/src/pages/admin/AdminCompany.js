@@ -32,7 +32,7 @@ export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjec
 
 
   return (
-    <Modal show={show} aria-labelledby="contained-modal-title-vcenter">
+    <Modal show={show} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
           {"Empresas"}

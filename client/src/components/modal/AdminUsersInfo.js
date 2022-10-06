@@ -8,7 +8,7 @@ import "./adminuserinfo.scss";
 
 export const AdminUsersInfo = ({ onHide, show, userInfo }) => {
   return (
-    <Modal show={show} aria-labelledby="contained-modal-title-vcenter">
+    <Modal show={show} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
           {userInfo ? userInfo.company : "Rellenar este campo"}

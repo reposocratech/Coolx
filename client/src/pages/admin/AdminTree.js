@@ -105,7 +105,7 @@ export const AdminTree = ({ setIsLogged }) => {
           </Row>
 
 
-        <Row className='table-all-trees mt-3'>
+        <Row className='table-all-trees m-0 mt-3'>
         
           <div className="table-tree-container p-0">
             

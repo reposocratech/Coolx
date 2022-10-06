@@ -24,7 +24,7 @@ export const UserDeleteModal = ({ sendInfo, show, onHide }) => {
   };
 
   return (
-    <Modal show={show} animation={false}>
+    <Modal show={show} animation={false} centered>
       <Modal.Header>
         <Modal.Title>Eliminar un usuario</Modal.Title>
       </Modal.Header>
