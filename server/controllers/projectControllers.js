@@ -49,25 +49,6 @@ class projectControllers {
       res.status(200).json(result);
     });
 
-    // connection.query(sql, (error, result) => {
-    //   // error && res.status(400).json({ error })
-    //   // : res.status(200).json(result);
-    //   if (error) throw error;
-    //   console.log("result: " + result);
-
-    //   let project_id = result.insertId;
-    //   // this.saveProjectImages(img, project_id);
-    //   console.log("projectID: " + project_id);
-
-    //   // connection.query(sqlProject, (err, resultProject) => {
-    //   //   // console.log("resultProject: " + resultProject);
-
-    //   //   if (err) throw err;
-    //   //   // res.status(200).json({ resultProject, result });
-    //   // });
-
-    //   res.status(200).json(result);
-    // });
   };
 
   //Guardar imágenes de los proyectos (no es una ruta, solo función)
@@ -84,7 +65,6 @@ class projectControllers {
       let sql = `INSERT INTO image (file_name, date_img, project_id) VALUES ('${img.filename}','${date_img}','${project_id}')`;
       connection.query(sql, (error, result) => {
         if (error) throw error;
-        // console.log(result);
       });
     });
   };
@@ -131,7 +111,6 @@ class projectControllers {
   // Mostrar la infomación de un proyecto
   // localhost:4000/project/:project_id
   getProject = (req, res) => {
-    // console.log(req.params);
     let project_id = req.params.project_id;
     let sql = `SELECT * FROM project
     WHERE project.project_id = ${project_id}`;
@@ -144,7 +123,6 @@ class projectControllers {
   // localhost:4000/project/deleteProject/:project_id
   deleteProject = (req, res) => {
     let project_id = req.params.project_id;
-    // console.log("id = " + project_id);
     let sql = `UPDATE project SET is_deleted = 1 WHERE project_id = "${project_id}"`;
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
@@ -155,7 +133,6 @@ class projectControllers {
   // localhost:4000/project/changeUser/:project_id/:user_id
   changeUser = (req, res) => {
     const { user_id, project_id } = req.params;
-
     let sql = `UPDATE project SET user_id='${user_id}' WHERE project_id = ${project_id}`;
     connection.query(sql, (error, result) => {
       error ? res.status(400).json({ error }) : res.status(200).json(result);
@@ -179,8 +156,6 @@ class projectControllers {
   // Mostrar los proyectos solo de los administradores
   // localhost:4000/project/onlyAdmin
   onlyAdmin = (req, res) => {
-    // let sql = `SELECT * FROM project WHERE user_id = 2`;
-
     let sql = `SELECT * FROM project, user
     WHERE project.user_id = user.user_id
     AND user.user_type = 1 GROUP BY project.project_id`;

@@ -8,7 +8,6 @@ class userController {
   //localhost:4000/users/registrocoolx
 
   createUser = (req, res) => {
-    // console.log("hola estoy en el controlador");
     console.log(req.body);
 
     const { user_name, email, password, surname, company, nif, phone } =
@@ -88,7 +87,6 @@ class userController {
   selectOneUser = (req, res) => {
     console.log(req.params.user_id, "EL ID ");
     const user_id = req.params.user_id;
-    // console.log(user_id + " user id");
 
     let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} AND is_deleted = 0`;
     let sqlProject = `SELECT * FROM image, project, user
