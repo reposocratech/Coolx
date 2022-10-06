@@ -56,6 +56,7 @@ $azulCoolxClaro: #70bfcb;
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
+
     p {
       font-weight: 700;
       font-size: 14px;
@@ -93,12 +94,14 @@ $azulCoolxClaro: #70bfcb;
   justify-content: center;
   margin-block: 80px;
   padding: 35px;
+
   p {
     margin-left: 32px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
   }
+
   .wrapperRegProject {
     max-width: 1400px;
     padding-inline: 20px;
@@ -121,6 +124,7 @@ $azulCoolxClaro: #70bfcb;
   justify-content: center;
   text-align: center;
 }
+
 
 // TERCER BLOQUE
 .iconsProceso {
@@ -150,6 +154,7 @@ $azulCoolxClaro: #70bfcb;
     display: grid;
     place-content: center;
     margin-bottom: 56px;
+
     h1 {
       font-weight: 700;
       font-size: 40px;
@@ -170,15 +175,18 @@ $azulCoolxClaro: #70bfcb;
   display: flex;
   flex-direction: column;
   align-items: center;
+
   img {
     margin-bottom: 24px;
   }
 }
 
 // CUARTO BLOQUE
+
 .bloqueGarantizarHome {
   text-align: center;
   color: white;
+
   .tituloBloqGarant {
     h1 {
       font-weight: 700;
@@ -188,6 +196,7 @@ $azulCoolxClaro: #70bfcb;
       letter-spacing: -0.02em;
     }
   }
+
   .iconsGarantizar {
     margin-top: 56px;
     .text-container2 {
@@ -207,11 +216,13 @@ $azulCoolxClaro: #70bfcb;
       }
     }
   }
+
   .buttonBloqGarant {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .botonBloqGarant {
     margin-top: 40px;
     color: white;
@@ -307,6 +318,7 @@ $azulCoolxClaro: #70bfcb;
 
   .topInfoRegProject,
   .bottomInfoRegProject {
+
     img {
       width: 40%;
       margin-bottom: 1rem;

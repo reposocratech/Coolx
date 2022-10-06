@@ -50,11 +50,11 @@ export const BuyProject = ({setBuyProject}) => {
           </Row>
 
           <Row className='table-buy-project mt-2'>
-            <Table striped>
+            <Table striped responsive="sm">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Id</th>
+                  <th className='id-table-buyproject'>Id</th>
                   <th>Nombre</th>
                   <th>Lugar</th>
                   <th>Comprar proyecto</th>
@@ -66,14 +66,14 @@ export const BuyProject = ({setBuyProject}) => {
                   allProjects.map((project, index) => (
                     <tr key={project.project_id}>
                       <td>{index + 1}</td>
-                      <td>{project.project_id}</td>
+                      <td className='id-table-buyproject'>{project.project_id}</td>
                       <td>{project.project_name}</td>
                       <td>{project.location}</td>
                       <td>
                         <Button className='buy-project-list'
                         onClick={()=>handleBuy(project)}
                         >
-                          Comprar este proyecto
+                         <p>Comprar</p> 
                         </Button>
                       </td>
                     </tr>

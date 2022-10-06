@@ -18,7 +18,6 @@ export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjec
       )
 
       .then((res) => {
-        // console.log(res);
         setResetProjects(!resetProjects);
         setModalBuyer(false);
       })

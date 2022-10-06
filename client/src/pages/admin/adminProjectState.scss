@@ -55,6 +55,7 @@
   th {
     background-color: #09427D !important;
     color: white;
+    vertical-align: text-top;
 
   }
 
@@ -87,6 +88,25 @@
     color: #09427d !important;
     box-shadow: inset 0 0 0 2px #09427d !important;
 
+  }
+}
+
+.cont-leyenda-status {
+  margin-bottom: 100px;
+}
+
+.leyenda-status {
+  display: flex;
+  margin: 5px;
+
+
+  p {
+    margin: 2px;
+
+    img {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
   }
 }
 
@@ -156,7 +176,9 @@
       display: contents;
       display: flex;
 
-
+      p {
+        display: none;
+      }
 
       .pen-status {
         background-color: transparent !important;
@@ -166,20 +188,32 @@
 
         img {
           height: 18px;
+        }
 
+        .status-col-icon {
+          display: contents;
         }
       }
-
-      // p {
-      //   display: none;
-      // }
     }
   }
 
+  .leyenda-status {
+    display: contents !important;
+
+    p {
+      font-size: 12px;
+    }
+  }
 }
+
+
 
 @media only screen and (max-width:1060px) {
   .id-user-tableproject {
+    display: none;
+  }
+
+  .leyenda-status {
     display: none;
   }
 
@@ -188,5 +222,11 @@
 @media only screen and (max-width: 1920px) {
   .status-col-mobile {
     display: none;
+
   }
+
+  .leyenda-status {
+    display: none;
+  }
+
 }

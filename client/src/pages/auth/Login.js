@@ -72,6 +72,7 @@ export const Login = ({ user, setUser }) => {
       .get(`http://localhost:4000/users/oneUser/${id}`)
       .then((res) => {
         setUser(res.data.resultUser[0]);
+
       })
       .catch((err) => {
         console.log(err);
