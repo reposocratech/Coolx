@@ -30,7 +30,6 @@ export const AdminEditModal = ({
             .put(`http://localhost:4000/project/editProject/${projectModal.project_id}`, projectModal)
 
             .then((res) => {
-              alert("cambios realizados correctamente")
              setProjectModal({...res})
              setModalEdit(false)
              setResetProjects(!resetProjects)

@@ -6,7 +6,6 @@ var router = express.Router();
 
 // Contact form
 // localhost:4000/contact
-//router.post("/contact", contactController.contact);
 
 router.post('/', authController.sendMails);
 router.get('/', (req, res) => {

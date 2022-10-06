@@ -13,8 +13,7 @@ var adminRouter = require("./routes/admin");
 var contactRouter = require("./routes/contact");
 var stripeRouter = require("./routes/stripe");
 var pdfRouter = require("./routes/pdf");
-
-
+var passwordRouter = require("./routes/password");
 
 var app = express();
 app.use(
@@ -33,7 +32,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/project", projectRouter);
@@ -42,28 +40,6 @@ app.use("/admin", adminRouter);
 app.use("/contact", contactRouter);
 app.use("/stripe", stripeRouter);
 app.use("/pdf", pdfRouter);
-
-
-
-
-
-// Santi no lo tiene
-/*
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
-});
-*/
+app.use("/password", passwordRouter);
 
 module.exports = app;

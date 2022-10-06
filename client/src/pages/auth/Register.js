@@ -93,7 +93,6 @@ export const Register = () => {
           navigate("/succes1");
         })
         .catch((err) => {
-          // console.log(err);
           if (err.response.data.error.errno === 1062) {
             alert("Email or N.I.F already exist");
           } else {
@@ -115,13 +114,6 @@ export const Register = () => {
     setCheckPass({ ...checkPass, [name]: value });
   };
 
-  // PARA MENSAJE
-  // const { name, email, password } = register;
-
-  //   if (name === "" || email === "" || password === "") {
-  //     setMessage(true);
-  //   } else {
-  //     setMessage(false);
 
   return (
     <>

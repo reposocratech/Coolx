@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import "./succes.scss";
 
@@ -10,24 +10,24 @@ export const Succes2 = () => {
 
   return (
     <>
-      <Container fluid className="fondo-error">
-        <Row className="error">
-          <Col md={12} lg={12} sm={12} className="columna pb-5">
-            <div className="emoticono pb-5">
+      <Container fluid className="bg-succes">
+        <Row className="pt-5">
+          <Col className="succes-container">
+            <div className="succes-emoticono">
               <img src="/assets/active_on.svg" />
             </div>
 
-            <h1 className="pb-2">Tu proyecto se ha registrado con éxito</h1>
-            <h4 className="pb-5">
+            <h1>Tu proyecto se ha registrado con éxito</h1>
+            <h4>
               Para observar el estado de tu proyecto y obtener todos los datos,
               registrate.
             </h4>
-            <button
-              className="button-error"
+            <Button
+              className="button-succes"
               onClick={() => navigate(`/project/${project_id}`)}
             >
               Acceder al proyecto
-            </button>
+            </Button>
           </Col>
         </Row>
       </Container>
