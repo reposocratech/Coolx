@@ -1,5 +1,7 @@
 # Coolx
-> Este proyecto es una aplicación web realizada para la empresa Coolx. "En Coolx nos encargamos de optimizar el  registro y la evaluación de tus proyectos forestales. Mediante teledetección y big data, disminuimos el tiempo necesario para que tu consultoría medioambiental genere créditos de carbono".
+> Este proyecto es una aplicación web realizada para la empresa Coolx.<br/>
+ "En Coolx nos encargamos de optimizar el  registro y la evaluación de tus proyectos forestales. Mediante teledetección y big data, disminuimos el tiempo necesario para que tu consultoría medioambiental genere créditos de carbono".
+<br/>
 > Vídeo presentación en YouTube: XXXXXXXXXXXXX
 
 
@@ -54,21 +56,21 @@
 <br/>
 2 - Copiar el archivo .env (proporcionado aparte, no disponible en este repositorio) en el directorio /server
 <br/>
-3 - Desde el directorio /server, ejecutar: 
+3 - Desde el directorio /server, ejecutar: <br/>
    npm i
 Esto instalará las dependencias necesarias en el servidor.
 <br/>
-4 - Desde el directorio /client, ejecutar:
+4 - Desde el directorio /client, ejecutar:<br/>
    npm i
 Esto instalará las dependencias necesarias en el cliente.
 <br/>
-5 - Desde el directorio /server, lanzar el servidor mediante el comando:
+5 - Desde el directorio /server, lanzar el servidor mediante el comando:<br/>
    npm run dev
 <br/>
-6 - Desde el directorio /client, ejecutar el cliente mediante el comando:
+6 - Desde el directorio /client, ejecutar el cliente mediante el comando:<br/>
       npm start
 <br/>
-7 - En el navegador, ir a la dirección: 
+7 - En el navegador, ir a la dirección: <br/>
    localhost:3000
 <br/>
 8 - La aplicación web se ejecutará entonces en el navegador.
