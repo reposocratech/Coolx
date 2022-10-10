@@ -18,7 +18,7 @@
 
 ## Información General
 - El administrador puede crear proyectos, modificarlos, cambiar su estado y eliminarlos; también puede buscar y ordenar proyectos por nombre, país y ganancias. Además, puede crear usuarios, ver un listado de los mismos y asignarles proyectos.
-- El usuario puede registrarse, editar su perfil, crear y editar sus propios proyectos y ver un listado de los mismos; también puede ver un listado de los proyectos disponibles para invertir y realizar la compra de los mismos, además de de ponerse en contacto con la empresa.
+- El usuario puede registrarse, editar su perfil, crear y editar sus propios proyectos y ver un listado de los mismos; también puede ver un listado de los proyectos disponibles para invertir y realizar la compra de estos, además de de ponerse en contacto con la empresa.
 
 
 ## Tecnologías utilizadas
