@@ -58,10 +58,12 @@
 <br/>
 3 - Desde el directorio /server, ejecutar: <br/>
    npm i
+<br/>
 Esto instalará las dependencias necesarias en el servidor.
 <br/>
 4 - Desde el directorio /client, ejecutar:<br/>
    npm i
+<br/>
 Esto instalará las dependencias necesarias en el cliente.
 <br/>
 5 - Desde el directorio /server, lanzar el servidor mediante el comando:<br/>
