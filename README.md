@@ -4,14 +4,14 @@
 
 
 ## Tabla de Cotenidos
-* [Información General](https://github.com/reposocratech/Coolx/edit/master/README.md#informaci%C3%B3n-general)
-* [Tecnologías utilizadas](#technologies-used)
-* [Características](#features)
-* [Capturas](#screenshots)
-* [Instalación y configuración](#setup)
-* [Agradecimientos](#acknowledgements)
-* [Contacto](#contact)
-* [Licencia](#license)
+* [Información General](#informacion-general)
+* [Tecnologías utilizadas](#tecnologías-utilizadas)
+* [Características](#características)
+* [Capturas](#capturas)
+* [Instalación y configuración](#instalacion-y-configuracion)
+* [Agradecimientos](#agradecimientos)
+* [Contacto](#contacto)
+* [Licencia](#licencia)
 
 
 ## Información General
