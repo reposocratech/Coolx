@@ -23,7 +23,7 @@
 
 ## Tecnologías utilizadas
 - Front-end: HTML5 - SASS - Bootstrap - JavaScript
-- Back-end: Node.js - Express [  Otras librerías:  MySql  |  Multer  |  Bcrypt  |  Nodemon  |  Nodemail  |  Puppeteer  ]
+- Back-end: Node.js - Express [  Otras librerías:  MySql  |  Multer  |  Bcrypt  |  Nodemon  |  Nodemail  |  Validator  |  Puppeteer  ]
 - Base de datos: MySQL
 
 
@@ -91,3 +91,7 @@ Este proyecto ha sido realizado por un equipo de cinco desarrolladores compuesto
 - [Andrea Sosa](https://www.linkedin.com/in/andrea-sosamolina/)
 - [Jose Antonio Posada](https://www.linkedin.com/in/jose-antonio-posada/)
 - [Bárbara Jiménez](https://www.linkedin.com/in/barbarajg/)
+
+## Licencia
+- El código del proyecto aquí alojado se encuentra bajo licencia <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
+- El nombre "Coolx", los logos y toda información y contenidos relacionados con la empresa es propiedad de [Coolx©](https://coolx.earth/) y no podrán utilizarse sin su consentimiento expreso.
