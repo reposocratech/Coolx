@@ -22,8 +22,8 @@
 
 
 ## Tecnologías utilizadas
-- Front-end: HTML5 - SASS - Bootstrap - JavaScript
-- Back-end: Node.js - Express [  Otras librerías:  MySql  |  Multer  |  Bcrypt  |  Nodemon  |  Nodemail  |  Validator  |  Puppeteer  ]
+- Front-end: HTML5 - SASS - Bootstrap - JavaScript - Validator
+- Back-end: Node.js - Express [  Otras librerías:  MySql  |  Multer  |  Bcrypt  |  Nodemon  |  Nodemail  |  Puppeteer  ]
 - Base de datos: MySQL
 
 
