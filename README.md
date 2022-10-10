@@ -8,7 +8,7 @@
 * [Tecnologías utilizadas](#tecnologías-utilizadas)
 * [Características](#características)
 * [Capturas](#capturas)
-* [Instalación y configuración](#instalacion-y-configuracion)
+* [Instalación y configuración](#instalación-y-configuración)
 * [Agradecimientos](#agradecimientos)
 * [Contacto](#contacto)
 * [Licencia](#licencia)
