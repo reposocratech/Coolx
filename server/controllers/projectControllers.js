@@ -105,7 +105,6 @@ class projectControllers {
   // localhost:4000/project/deleteProject/:project_id
   deleteProject = (req, res) => {
     let project_id = req.params.project_id;
-
     let sql = `UPDATE project SET is_deleted = 1 WHERE project_id = "${project_id}"`;
 
     connection.query(sql, (error, result) => {
@@ -117,7 +116,6 @@ class projectControllers {
   // localhost:4000/project/changeUser/:project_id/:user_id
   changeUser = (req, res) => {
     const { user_id, project_id } = req.params;
-
     let sql = `UPDATE project SET user_id='${user_id}' WHERE project_id = ${project_id}`;
 
     connection.query(sql, (error, result) => {

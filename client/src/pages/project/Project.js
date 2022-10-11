@@ -11,10 +11,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 export const Project = () => {
+
+  // en la constante projectInfo guardaremos toda la información del 
+  // proyecto deseado
+
   const [projectInfo, setProjectInfo] = useState();
   const { id } = useParams();
 
   const navigate = useNavigate();
+
+  // con este useEffect os traemos toda la información del proyecto seleccionado
+  // al coger el id de params (url) se especifica perfectamente el que necesitamos
 
   useEffect(() => {
     axios
@@ -26,6 +33,10 @@ export const Project = () => {
         console.log(err);
       });
   }, []);
+
+  // en este return nos traemos toda la información que queramos pintar de nuestro
+  // proyecto, de querer mostrar otros aspectos este return seria lo que habria
+  // que cambiar
 
   return (
     <>

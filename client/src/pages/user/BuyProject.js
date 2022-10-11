@@ -5,18 +5,34 @@ import Table from "react-bootstrap/Table";
 import axios from 'axios'
 import "./buyproject.scss"
 
+// buyproject es una pagina donde mostramos todos los proyectos que se 
+// pueden comprar por parte del usuario
 
 export const BuyProject = ({setBuyProject}) => {
 
+  // la constante navigate recoge la función que nos permite ir a otras paginas
+
   const navigate = useNavigate();
+
+  // allproject sera la variable donde recogamos toda la información de 
+  // los proyectos de administrador que son solo los que pueden comprar
+  // los usuarios
 
   const [allProjects, setAllProjects] = useState();
 
+
+  // esta constante es la que se activa cuando en la pagina le damos al boton
+  // de comprar. Nos redirecciona a la pantalla de pago con tarjeta. También
+  // introducimos los datos de solo ese proyecto en la variable BuyPROJECT 
+  // para que no haya ningun error.
 
   const handleBuy = (project) => {
     setBuyProject(project);
     navigate(`/stripe/${project.project_id}`);
   }
+
+  // este useEffect trae todos los proyectos del back de los administradores
+  // que son los que se pueden comprar por parte de los usuarios
 
 
   useEffect(() => {
@@ -33,8 +49,7 @@ export const BuyProject = ({setBuyProject}) => {
 
   },[]);
 
-
-
+  // en este return se muestra los proyectos de lso administradores
 
   return (
     <div className="wrapper">

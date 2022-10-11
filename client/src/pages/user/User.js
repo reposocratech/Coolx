@@ -3,11 +3,17 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./myprojects.scss";
 
+
+// En esta pagina se realiza un outlet, dependiendo de en cual de los cuatro
+// apartados esté el usuario, podra ver una información u otra.
 export const User = () => {
+  // aqui recogemos en que pagina quiere estar el usuario.
   const [radioValue, setRadioValue] = useState("1");
 
+  // la constante navigate recoge la función que nos permite ir a otras paginas
   const navigate = useNavigate();
 
+  // aqui recogemos en donde quiere estar el usuario.
   const radios = [
     {
       name: "Mis proyectos",
@@ -20,6 +26,8 @@ export const User = () => {
     { name: "Mi cuenta", value: "4", url: "myaccount", img: "my_account.svg" },
   ];
 
+  // aqui se muestra la pagina de user y en la linea 70 la información de 
+  // mis proyectos o informes o mensajes o mi cuenta. 
   return (
     <div className="user-bg">
       <div className="wrapper">
