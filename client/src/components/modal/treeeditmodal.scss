@@ -1,3 +1,5 @@
+@import "./mixin";
+
 .tree-edit-modal {
     border: 1px solid rgb(206, 212, 218);
     border-radius: 24px;
@@ -6,16 +8,10 @@
 
 .exit-edit-tree,
 .save-edit-tree {
-    background-color: #09427D !important;
-    border-radius: 50px !important;
-    font-weight: bold !important;
-    border: none !important;
-    color: white !important;
+    @include style-button-modal;
 }
 
 .exit-edit-tree:hover,
 .save-edit-tree:hover {
-    background-color: white !important;
-    color: #09427d !important;
-    box-shadow: inset 0 0 0 2px #09427d !important;
+    @include hover-button-modal;
 }

@@ -8,8 +8,10 @@
 }
 
 .wrapper {
-  max-inline-size: 1400px; /*espacio máximo de trabajo*/
-  padding-inline-end: 16px; /*debe mantener esa distancia siempre*/
+  max-inline-size: 1400px;
+  /*espacio máximo de trabajo*/
+  padding-inline-end: 16px;
+  /*debe mantener esa distancia siempre*/
   padding-inline-start: 16px;
   margin: auto;
   // border: 1px solid red;
@@ -21,6 +23,7 @@
 .left-bar {
   height: 88vh;
   margin-bottom: 24px;
+
   .left-bar-content {
     background-color: rgb(191, 209, 227);
     display: flex;
@@ -29,6 +32,7 @@
     padding: 8px;
     // width: auto;
     height: 100%;
+
     .btn-user-container {
       button {
         background-color: transparent;
@@ -45,21 +49,26 @@
         width: 115%;
         height: 52px;
         white-space: normal;
+
         img {
           width: 20px;
           height: 20px;
           color: #09427d;
         }
       }
+
       .selected {
         background: #e0ecf8;
       }
+
       .selected:hover {
         background-color: #e0ecf8 !important;
       }
+
       .unselected {
         background: transparent;
       }
+
       .unselected:hover {
         background-color: #abc2d9 !important;
       }
@@ -79,8 +88,10 @@
     background-image: none !important;
     padding-top: 3.5rem;
   }
+
   .wrapper {
     padding-inline: 0px;
+
     .sheet {
       margin-bottom: 0px !important;
       height: auto;
@@ -95,16 +106,20 @@
     margin-bottom: 0px !important;
     // position: fixed;
     z-index: 98;
+
     .left-bar-content {
       align-items: center;
+
       .btn-user-container {
         padding: 0px;
+
         button {
           width: 100%;
         }
       }
     }
   }
+
   .sheet {
     height: 80vh !important;
   }

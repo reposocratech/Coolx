@@ -1,3 +1,5 @@
+@import "./mixin";
+
 .adm-proj-state-header {
   display: flex;
   align-items: center;
@@ -65,11 +67,9 @@
   .edit-project,
   .info-project,
   .assign-project {
-    background-color: #09427d;
-    border-radius: 50px;
-    font-weight: bold;
-    border: none;
-    color: white;
+  
+    @include buttons-tables;
+
 
     p {
       margin-bottom: 0 !important;
@@ -80,9 +80,10 @@
   .edit-project:hover,
   .info-project:hover,
   .assign-project:hover {
-    background-color: white !important;
-    color: #09427d !important;
-    box-shadow: inset 0 0 0 2px #09427d !important;
+  
+    @include hover-buttons-tables;
+
+
   }
 }
 
@@ -105,6 +106,7 @@
 }
 
 @media only screen and (max-width: 992px) {
+
   .id-user-tableproject,
   .location-project-table {
     display: none !important;

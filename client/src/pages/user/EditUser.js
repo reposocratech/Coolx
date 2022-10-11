@@ -244,6 +244,8 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
         </Container>
       </div>
 
+      {/* EL MODAL SE ENCUENTRA EN LA CARPETA COMPONENTS/MODAL */}
+      
       <UserDeleteModal
         onHide={() => setModalUserDelete(false)}
         show={modalUserDelete}

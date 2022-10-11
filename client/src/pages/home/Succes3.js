@@ -20,7 +20,7 @@ export const Succes3 = () => {
 
             <h1>Tu correo se ha enviado con éxito</h1>
             <h4>Pronto nos pondremos en contacto contigo.</h4>
-            <Button className="button-succes" onClick={() => navigate("/home")}>
+            <Button className="button-succes" onClick={() => navigate("/")}>
               Ir al home
             </Button>
           </Col>

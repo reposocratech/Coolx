@@ -26,7 +26,7 @@ class authController {
         <img src="cid:img" />
         `;
         let maillist = [ // **** Lista de DESTINATARIOS **** 'info@coolx.earth'
-            'basjgamboa@gmail.com'
+            'info@coolx.earth'
           ];
     
          const mailmsg = {
