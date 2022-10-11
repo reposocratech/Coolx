@@ -100,7 +100,7 @@ class userController {
         res.status(400).json({ error });
         return;
       } 
-      console.log("aqui");
+
       connection.query(sqlProject, (error2, resultProject) => {
         if (error2) {
           res.status(400).json({ error2 });

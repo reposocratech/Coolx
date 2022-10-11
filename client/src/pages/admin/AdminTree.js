@@ -91,7 +91,7 @@ export const AdminTree = ({ setIsLogged }) => {
                 onClick={() => navigate("/treeform")}
                 className="boton-register-tree"
               >
-                Registrar nuevo árbol
+                <p>Registrar nuevo árbol</p>
               </Button>
             </Col>
           </Row>
@@ -157,6 +157,8 @@ export const AdminTree = ({ setIsLogged }) => {
           </div>
 
           </Row>
+
+          {/* LOS MODALES SE ENCUENTRAN EN LA CARPETA COMPONENTS/MODAL */}
 
           <TreeDeleteModal
             onHide={() => setModalDeleteTree(false)}

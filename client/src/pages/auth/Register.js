@@ -39,7 +39,7 @@ export const Register = () => {
     } else {
       setMessageEmail("");
     }
-
+    // Validator verifica el correo
     const { user_name, surname, email, phone, password, company, nif } =
       newUser;
     if (
@@ -74,7 +74,7 @@ export const Register = () => {
     }
 
     if (newUser.password !== checkPass.pass) {
-      setMessagePassword("LAS CONSTRASEÑAS DEBEN SER IGUALES");
+      setMessagePassword("Las contraseñas deben ser iguales");
     } else {
       axios
         .post("http://localhost:4000/users/registrocoolx", newUser)

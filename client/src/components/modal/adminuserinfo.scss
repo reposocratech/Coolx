@@ -1,7 +1,9 @@
+@import "./mixin";
+
 .close-modal {
-    background-color: #09427D !important;
-    border-radius: 50px !important;
-    font-weight: bold !important;
-    border: none !important;
-    color: white !important;
+    @include style-button-modal;
+}
+
+.close-modal:hover {
+    @include hover-button-modal;
 }

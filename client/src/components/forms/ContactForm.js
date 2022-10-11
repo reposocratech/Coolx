@@ -22,6 +22,8 @@ export const ContactForm = () => {
     phone: "",
     userMessage: "",
   });
+  // Crea un nuevo objeto con los datos del formulario contacto
+
   const [submitButton, setSubmitButton] = useState(false);
 
   const navigate = useNavigate();
@@ -41,7 +43,7 @@ export const ContactForm = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
-
+    //Si el formulario está incompleto...
     if (
       user.name === "" ||
       user.email === "" ||
@@ -49,12 +51,15 @@ export const ContactForm = () => {
       user.userMessage === ""
     ) {
       setMessage("Los campos deben estar completos");
-    } else {
+
+    } //Sino, se hace la llamada al server para enviar el correo
+    else {
       axios
         .post("http://localhost:4000/contact", user)
         .then((res) => {
           navigate("/succes3");
           setUser({ userName: "", email: "", phone: "", userMessage: "" });
+          //Se envia el correo correctamente
         })
         .catch((err) => console.log(err));
     }

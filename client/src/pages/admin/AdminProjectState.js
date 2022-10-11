@@ -48,7 +48,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
         navigate("/");
       }
     } else {
-      alert("Debes iniciar sección como administrador");
+      alert("Debes iniciar sesión como administrador");
     }
   }, [resetProjects]);
 
@@ -75,7 +75,7 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
         navigate("/");
       }
     } else {
-      alert("Debes iniciar sección como administrador");
+      alert("Debes iniciar sesión como administrador");
     }
   }, []);
 
@@ -134,7 +134,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
         : 0
     );
 
-    console.log(sortedList);
     setAllProjects(sortedList);
   };
 
@@ -157,7 +156,6 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
     );
 
     setAllProjects(sortedListStatus);
-    console.log(sortedListStatus);
   };
 
   return (
