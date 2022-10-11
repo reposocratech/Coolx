@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./login.scss";
+import "./forgopassword.scss";
 import axios from "axios";
 import loading from "../../components/img/loading.svg";
 import Swal from "sweetalert2";
@@ -12,7 +12,6 @@ export const ForgorPassword = () => {
   console.log(email);
 
   const handleSubmit = (e) => {
-    // setIsLoading(true);
     axios
       .post("http://localhost:4000/password", email)
       .then((res) => {
@@ -35,44 +34,39 @@ export const ForgorPassword = () => {
 
   return (
     <>
-      <div>
-        <Container fluid className="fondo-login">
-          <div className="main">
-            <Form.Group controlId="loginForm">
-              <Row className="contAuth-login">
-                <h3 className="titulo-Login">Recuperar cuenta</h3>
-                <Form.Label className="label-login" align="center">
-                  Correo electronico
-                </Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  placeholder="Introduce tu email"
-                  value={email.email}
-                  required
-                  onChange={(e) =>
-                    setEmail({ ...email, email: e.target.value })
-                  }
-                />
-                <div className="nada-juntos">
-                  {isLoading ? (
-                    <div className="loadingImage">
-                      <img src={loading} alt="loading" />
-                    </div>
-                  ) : (
-                    <Button
-                      className="boton-login show-bl"
-                      onClick={handleSubmit}
-                    >
-                      Enviar
-                    </Button>
-                  )}
-                </div>
-              </Row>
-            </Form.Group>
-          </div>
-        </Container>
-      </div>
+      <Container fluid className="fondo-forgo">
+        <div className="main">
+          <Form.Group controlId="loginForm">
+            <Row className="contAuth-forgo">
+              <h3 className="titulo-forgo">Recuperar cuenta</h3>
+              <Form.Label className="label-forgo" align="center">
+                Correo electronico
+              </Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={email.email}
+                required
+                onChange={(e) => setEmail({ ...email, email: e.target.value })}
+              />
+              <div className="nada-juntos-forgo">
+                {isLoading ? (
+                  <div className="loadingImage">
+                    <img src={loading} alt="loading" />
+                  </div>
+                ) : (
+                  <Button
+                    className="boton-login-forgo show-bl"
+                    onClick={handleSubmit}
+                  >
+                    Enviar
+                  </Button>
+                )}
+              </div>
+            </Row>
+          </Form.Group>
+        </div>
+      </Container>
     </>
   );
 };

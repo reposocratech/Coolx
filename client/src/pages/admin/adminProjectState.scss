@@ -46,21 +46,18 @@
 }
 
 .table-projects {
-  background-color: #09427D !important;
+  background-color: #09427d !important;
 
   button {
     background-color: transparent;
     border: none;
   }
 
-
   th {
-    background-color: #09427D !important;
+    background-color: #09427d !important;
     color: white;
     vertical-align: text-top;
-
   }
-
 }
 
 .list-text {
@@ -70,19 +67,22 @@
   .edit-project,
   .info-project,
   .assign-project {
+  
     @include buttons-tables;
+
 
     p {
       margin-bottom: 0 !important;
     }
-
   }
 
   .delete-project:hover,
   .edit-project:hover,
   .info-project:hover,
   .assign-project:hover {
+  
     @include hover-buttons-tables;
+
 
   }
 }
@@ -94,7 +94,6 @@
 .leyenda-status {
   display: flex;
   margin: 5px;
-
 
   p {
     margin: 2px;
@@ -112,7 +111,6 @@
   .location-project-table {
     display: none !important;
   }
-
 
   .edit-project {
     background-image: url("../../../public/assets/icons/edit_white.svg");
@@ -162,7 +160,6 @@
     }
   }
 
-
   .status-user-tableproject {
     .status-col {
       display: none;
@@ -171,21 +168,17 @@
     .status-col-mobile {
       display: contents;
       display: flex;
-
       p {
         display: none;
       }
-
       .pen-status {
         background-color: transparent !important;
         border: none !important;
         padding: 0px;
         margin-left: 3px;
-
         img {
           height: 18px;
         }
-
         .status-col-icon {
           display: contents;
         }
@@ -202,9 +195,7 @@
   }
 }
 
-
-
-@media only screen and (max-width:1060px) {
+@media only screen and (max-width: 1060px) {
   .id-user-tableproject {
     display: none;
   }
@@ -212,17 +203,14 @@
   .leyenda-status {
     display: none;
   }
-
 }
 
 @media only screen and (min-width: 992px) {
   .status-col-mobile {
     display: none;
-
   }
 
   .leyenda-status {
     display: none;
   }
-
 }

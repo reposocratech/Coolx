@@ -14,31 +14,25 @@
     max-width: 424px;
     padding: 40px;
   }
-
   .col-contact {
     width: 100%;
   }
-
   h1 {
     font-size: 32px;
     font-weight: bold;
   }
-
   .message-contact,
   .labels-contact {
     font-size: 14px;
     font-weight: 500;
   }
-
   .message-contact {
-    margin-top: 16px;
+    margin-top: 1rem;
     margin-bottom: 24px;
   }
-
   .textarea-contact {
     padding-top: 10px !important;
   }
-
   .button-contact-form {
     font-size: 14px;
     font-weight: bold;
@@ -48,18 +42,30 @@
     padding-block: 12px;
     border: none;
   }
-
   .b-disabled {
     background-color: rgb(184, 219, 225);
   }
-
   .show-b {
     background: #70bfcb;
 
   }
-
   .show-b:hover {
     background-color: white !important;
     color: #09427d !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .contact-bg {
+    overflow-y: auto;
+  }
+  .contact-form-bg {
+    max-width: 90vw !important;
+    min-height: calc(100vh - 150px);
+    padding-inline: 15px !important;
+    margin-bottom: 6rem;
+    h1 {
+      font-size: 2rem;
+    }
   }
 }
