@@ -1,4 +1,5 @@
 @import "./mixin";
+@import "../variables";
 
 .adm-proj-state-header {
   margin-top: 27px;
@@ -8,7 +9,7 @@
     font-size: 32px;
     line-height: 120%;
     letter-spacing: -0.02em;
-    color: #09427d;
+    color: $azulCoolx;
   }
 }
 
@@ -20,7 +21,7 @@
   border: 1px solid rgb(206, 212, 218) !important;
 
   thead {
-    background-color: #09427d;
+    background-color: $azulCoolx;
   }
 
   th {

@@ -70,7 +70,7 @@ export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjec
       </Modal.Body>
       <Modal.Footer>
         <Button className="exit-company-modal" onClick={onHide}>
-          Close
+          Cerrar
         </Button>
       </Modal.Footer>
     </Modal>
