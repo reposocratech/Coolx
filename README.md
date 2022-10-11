@@ -36,19 +36,22 @@
 
 
 ## Capturas
-![Example screenshot]
+![Vista Home (Inicio)](https://github.com/reposocratech/Coolx/blob/master/screenshots/home.png)
 <br/>
 <br/>
-![Example screenshot]
+![Vista usuario](https://github.com/reposocratech/Coolx/blob/master/screenshots/user_view.png)
 <br/>
 <br/>
-![Example screenshot]
+![Proyecto registrado](https://github.com/reposocratech/Coolx/blob/master/screenshots/registered_project.png)
 <br/>
 <br/>
-![Example screenshot]
+![Proyecto calculando](https://github.com/reposocratech/Coolx/blob/master/screenshots/calculate_project.png)
 <br/>
 <br/>
-![Example screenshot]
+![Proyecto completado](https://github.com/reposocratech/Coolx/blob/master/screenshots/completed_project.png)
+<br/>
+<br/>
+![Vista administrador](https://github.com/reposocratech/Coolx/blob/master/screenshots/admin_view.png)
 
 
 ## Instalación y configuración
@@ -56,26 +59,28 @@
 <br/>
 2 - Copiar el archivo .env (proporcionado aparte, no disponible en este repositorio) en el directorio /server
 <br/>
-3 - Desde el directorio /server, ejecutar: <br/>
+3 - En el archivo /server/authController.js sustituir el email info@coolx.earth por el que vaya a utilizarse para recibir las solicitudes de contacto desde la web.
+<br/>
+4 - Desde el directorio /server, ejecutar: <br/>
    npm i
 <br/>
 Esto instalará las dependencias necesarias en el servidor.
 <br/>
-4 - Desde el directorio /client, ejecutar:<br/>
+5 - Desde el directorio /client, ejecutar:<br/>
    npm i
 <br/>
 Esto instalará las dependencias necesarias en el cliente.
 <br/>
-5 - Desde el directorio /server, lanzar el servidor mediante el comando:<br/>
+6 - Desde el directorio /server, lanzar el servidor mediante el comando:<br/>
    npm run dev
 <br/>
-6 - Desde el directorio /client, ejecutar el cliente mediante el comando:<br/>
+7 - Desde el directorio /client, ejecutar el cliente mediante el comando:<br/>
       npm start
 <br/>
-7 - En el navegador, ir a la dirección: <br/>
+8 - En el navegador, ir a la dirección: <br/>
    localhost:3000
 <br/>
-8 - La aplicación web se ejecutará entonces en el navegador.
+9 - La aplicación web se ejecutará entonces en el navegador.
 
 
 ## Agradecimientos
