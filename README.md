@@ -22,9 +22,14 @@
 
 
 ## Tecnologías utilizadas
-- Front-end: HTML5 - SASS - Bootstrap - JavaScript - Validator
-- Back-end: Node.js - Express [  Otras librerías:  MySql  |  Multer  |  Bcrypt  |  Nodemon  |  Nodemail  |  Puppeteer  ]
-- Base de datos: MySQL
+- Front-end: ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat-square&logo=bootstrap)
+![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)
+- Back-end: ![Nodejs](https://img.shields.io/badge/-Nodejs-black?style=flat-square&logo=Node.js)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+- Base de datos: ![MySQL](https://img.shields.io/badge/-MySQL-black?style=flat-square&logo=mysql)
+[  Otras librerías:  Multer  |  Bcrypt  |  Nodemon  |  Nodemail  |  Puppeteer  |  Validator]
 
 
 ## Características
