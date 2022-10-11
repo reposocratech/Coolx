@@ -39,7 +39,7 @@ export const Register = () => {
     } else {
       setMessageEmail("");
     }
-    // Validator verifica el correo
+    // Se verifica si el correo está escrito correctamente
     const { user_name, surname, email, phone, password, company, nif } =
       newUser;
     if (

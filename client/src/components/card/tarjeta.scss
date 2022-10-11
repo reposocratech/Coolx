@@ -1,3 +1,5 @@
+@import "../variables";
+
 .project-card-container {
   margin-bottom: 24px;
   padding: 15px;
@@ -23,7 +25,6 @@
 
   .card-information {
 
-    // padding-left: 23px;
     .p-card-title {
       padding-left: 23px;
 
@@ -32,7 +33,7 @@
         font-size: 24px;
         line-height: 140%;
         letter-spacing: -0.02em;
-        color: #09427d;
+        color: $azulCoolx;
       }
     }
 
@@ -88,7 +89,7 @@
       width: 100%;
       padding-block: 12px;
       border-radius: 80px;
-      background-color: #70bfcb;
+      background-color: $azulCoolxClaro;
       color: white;
       border: none;
       font-weight: 700;
@@ -99,8 +100,8 @@
 
     .p-card-button:hover {
       background-color: white !important;
-      color: #09427d !important;
-      box-shadow: inset 0 0 0 2px #70bfcb;
+      color: $azulCoolx !important;
+      box-shadow: inset 0 0 0 2px $azulCoolxClaro;
     }
 
     .p-card-status {
@@ -108,7 +109,7 @@
       font-size: 1rem;
       line-height: 140%;
       margin: 0px;
-      color: #09427d;
+      color: $azulCoolx;
     }
   }
 }
@@ -117,7 +118,7 @@
   .project-card-container {
     min-height: auto !important;
 
-    // width: 100% !important;
+
     .card-img {
       display: none !important;
     }

@@ -1,3 +1,5 @@
+@import "../variables";
+
 .bg-succes {
     background-image: url("../../../public/images/fondo.jpg");
     background-position: center;
@@ -25,14 +27,14 @@
 
     h1 {
         font-family: "Manrope";
-        color: #09427d;
+        color: $azulCoolx;
         font-weight: bold;
         text-align: center;
     }
 
     h4 {
         font-family: "Manrope";
-        color: #09427d;
+        color: $azulCoolx;
         text-align: center;
     }
 }
@@ -40,7 +42,7 @@
 .button-succes {
     height: 20%;
     color: #ffffff;
-    background-color: #70bfcb !important;
+    background-color: $azulClaroCoolx !important;
     border-radius: 80px !important;
     border: none !important;
     padding: 12px 24px;

@@ -1,3 +1,5 @@
+@import "../variables";
+
 .fondo-login {
   height: 100vh;
   background-image: url("../../../public/images/fondo.jpg");
@@ -48,9 +50,11 @@
     line-height: 140%;
     margin-bottom: 8px;
   }
+
   .m-2 {
     border-radius: 4px;
   }
+
   p {
     font-weight: 500;
     font-size: 12px;
@@ -58,11 +62,13 @@
     text-align: right;
     margin-bottom: 24px;
   }
+
   .in1,
   .in2 {
     border-radius: 4px;
     border: none;
   }
+
   .in2 {
     margin-bottom: 1rem;
   }
@@ -83,16 +89,16 @@
 }
 
 .bl-disabled {
-  background-color: rgb(184, 219, 225) !important;
+  background-color: $fondoClaro !important;
 }
 
 .show-bl {
-  background: #70bfcb !important;
+  background: $azulClaroCoolx !important;
 }
 
 .show-bl:hover {
   background-color: white !important;
-  color: #09427d !important;
+  color: $azulCoolx !important;
 }
 
 .nada-juntos {
@@ -127,6 +133,7 @@
     min-height: calc(100vh - 150px);
     padding-inline: 15px !important;
     margin-bottom: 6rem;
+
     h1 {
       font-size: 2rem;
     }
