@@ -103,7 +103,7 @@ Esto instalará las dependencias necesarias en el cliente.
 
 ***Cómo pasar manualmente un proyecto a estado "**Completado**" (para realizar pruebas, por ejemplo):***<br/>
 En la tabla **project** de la base de datos, cambiar el campo **status** de uno de los proyectos previamente creados a **2**.<br/>
-En la tabla **project_info**, añadir el proyecto recién modificado rellenando todos los campos.<br/>
+En la tabla **project_info**, añadir el proyecto recién modificado rellenando todos los campos (el **project_id** de esta tabla debe coincidir con el campo project_id correspondiente de la tabla project).<br/>
 
 
 ## Agradecimientos
