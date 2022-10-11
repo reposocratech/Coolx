@@ -36,20 +36,32 @@
 
 
 ## Capturas
+Vista Home (Inicio):
+<br/>
 ![Vista Home (Inicio)](https://github.com/reposocratech/Coolx/blob/master/screenshots/home.png)
 <br/>
+<br/>
+Vista usuario
 <br/>
 ![Vista usuario](https://github.com/reposocratech/Coolx/blob/master/screenshots/user_view.png)
 <br/>
 <br/>
+Proyecto registrado
+<br/>
 ![Proyecto registrado](https://github.com/reposocratech/Coolx/blob/master/screenshots/registered_project.png)
 <br/>
+<br/>
+Proyecto calculando
 <br/>
 ![Proyecto calculando](https://github.com/reposocratech/Coolx/blob/master/screenshots/calculate_project.png)
 <br/>
 <br/>
+Proyecto completado
+<br/>
 ![Proyecto completado](https://github.com/reposocratech/Coolx/blob/master/screenshots/completed_project.png)
 <br/>
+<br/>
+Vista administrador
 <br/>
 ![Vista administrador](https://github.com/reposocratech/Coolx/blob/master/screenshots/admin_view.png)
 
