@@ -29,6 +29,7 @@
 - Back-end: ![Nodejs](https://img.shields.io/badge/-Nodejs-black?style=flat-square&logo=Node.js)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 - Base de datos: ![MySQL](https://img.shields.io/badge/-MySQL-black?style=flat-square&logo=mysql)
+<br/>
 [  Otras librerías:  Multer  |  Bcrypt  |  Nodemon  |  Nodemail  |  Puppeteer  |  Validator]
 
 
