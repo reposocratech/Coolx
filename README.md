@@ -99,6 +99,12 @@ Esto instalará las dependencias necesarias en el cliente.
    localhost:3000
 <br/>
 9 - La aplicación web se ejecutará entonces en el navegador.
+<br/>
+-----
+<br/>
+Cómo pasar manualmente un proyecto a estado **"Completado"** (para realizar pruebas, por ejemplo):<br/>
+En la tabla **project** de la base de datos, cambiar el campo **status** de uno de los proyectos previamente creados a **2**.
+En la tabla **project_info**, añadir el proyecto recién modificado rellenando todos los campos.<br/>
 
 
 ## Agradecimientos
