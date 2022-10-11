@@ -6,15 +6,30 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./edituser.scss";
 
+// Edit user será la pantalla donde se podra modificar la información de 
+// usuarios 
+
 export const EditUser = ({ userModificate, setIsLogged, user }) => {
+
+  // la nueva información que se edite se recogera en edituser que sera la que
+  // se intercambie por la información anterior
   const [editUser, setEditUser] = useState();
+
+  // con este modal indicamos en la pagina cuando aparecera el modal de aviso
   const [modalUserDelete, setModalUserDelete] = useState(false);
+
+
   const [sendInfo, setSendInfo] = useState();
 
+   // la constante navigate recoge la función que nos permite ir a otras paginas
   const navigate = useNavigate();
 
+  // recogemos el id de la url con useParams
   const { user_id } = useParams();
 
+  // con este useEffect generamos un condicional, si hay un usuario logeado cogerá
+  // su información del localstore se editara ese y sino lo hay, tendremos 
+  // nosotros que introducir uno logueandonos con un usuario.
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
 
@@ -31,6 +46,7 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
     }
   }, [user]);
 
+  // Al hacerlo llamaremos al back para recibir toda la información de ese usuario para editarla.
   useEffect(() => {
     if (userModificate) {
       setEditUser(userModificate);
@@ -46,17 +62,21 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
     }
   }, []);
 
+  // al darle en la pagina al boton de eliminar se activa esta constante 
+  // para que se muestra el modal de confirmación
   const handleDeleteModal = () => {
     setSendInfo(userModificate);
     setModalUserDelete(true);
   };
 
+  // esta constante recoger la nueva información editada de usuario
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditUser({ ...editUser, [name]: value });
   };
 
-
+  // Esta constante se activa cuando pulsamos el boton de editar generando un 
+  // axios que modifica la base de datos del usuario con la nueva información
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -74,6 +94,8 @@ export const EditUser = ({ userModificate, setIsLogged, user }) => {
       });
   };
 
+  // en este return mostramos el formulario para poder editar la información 
+  // del usuario
   return (
     <>
       <div className="wrapper">
