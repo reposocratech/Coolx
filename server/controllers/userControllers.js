@@ -4,11 +4,9 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 class userController {
-
   //1.Crear usuario
   //localhost:4000/users/registrocoolx
   createUser = (req, res) => {
-
     const { user_name, email, password, surname, company, nif, phone } =
       req.body;
 
@@ -16,7 +14,6 @@ class userController {
 
     bcrypt.genSalt(saltRounds, function (err, saltRounds) {
       bcrypt.hash(password, saltRounds, function (err, hash) {
-
         let sql = `INSERT INTO user (user_name, password, surname, company, nif, phone, email, position, country, currency) VALUES ('${user_name}', '${hash}', "${surname}", "${company}", "${nif}", "${phone}", '${email}', "", "", "")`;
 
         connection.query(sql, (error, result) => {
@@ -29,11 +26,9 @@ class userController {
     });
   };
 
-
   // 2. User login
   // localhost:4000/users/login
   login = (req, res) => {
-
     let { email, password } = req.body;
 
     let sql = `SELECT * FROM user WHERE email = '${email}'and is_deleted = 0`;
@@ -82,24 +77,22 @@ class userController {
     });
   };
 
-
   //3 traer informacion de un usuario
   //localhost:4000/users/oneUser/:user_id
 
   selectOneUser = (req, res) => {
-
     const user_id = req.params.user_id;
 
     let sqlUser = `SELECT * FROM user WHERE user_id = ${user_id} AND is_deleted = 0`;
     let sqlProject = `SELECT * FROM image, project, user
     WHERE user.user_id = project.user_id AND project.project_id = image.project_id
     AND user.user_id = ${user_id} GROUP BY project.project_id`;
-    
+
     connection.query(sqlUser, (error, resultUser) => {
       if (error) {
         res.status(400).json({ error });
         return;
-      } 
+      }
       console.log("aqui");
       connection.query(sqlProject, (error2, resultProject) => {
         if (error2) {
@@ -112,11 +105,9 @@ class userController {
     });
   };
 
-
   // 4 editar Usuario
   // localhost:4000/users/editUser/:user_id
   editUser = (req, res) => {
-
     let user_id = req.params.user_id;
 
     const {
@@ -140,11 +131,9 @@ class userController {
     });
   };
 
-
   //5 traer informacion de Usuario para editarlo
   //localhost:4000/users/editUser/:user_id
   getEditOneUser = (req, res) => {
-
     let user_id = req.params.user_id;
 
     let sql = `SELECT * FROM user WHERE user_id = "${user_id}"`;
@@ -154,11 +143,9 @@ class userController {
     });
   };
 
-
   //6 Borrado lógico de un usuario
   //localhost:4000/users/deleteUser/:user_id
   deleteUser = (req, res) => {
-
     let user_id = req.params.user_id;
 
     let sql = `UPDATE user SET is_deleted = 1 WHERE user_id = "${user_id}"`;
@@ -180,6 +167,5 @@ class userController {
     });
   };
 }
-
 
 module.exports = new userController();
