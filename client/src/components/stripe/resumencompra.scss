@@ -1,3 +1,5 @@
+@import "../variables";
+
 .card-purchase-summary {
     background-color: white;
     border-radius: 8px;
@@ -17,7 +19,7 @@
     .button-access-data {
         color: white;
         padding: 16px;
-        background: #70bfcb !important;
+        background: $azulCoolxClaro !important;
         border-radius: 80px !important;
         border: none !important;
         font-weight: 700;
@@ -28,7 +30,6 @@
 
     hr {
         margin: 0px !important;
-
     }
 }
 
@@ -43,7 +44,6 @@
 }
 
 .info-summary {
-
 
     .price-summary {
         h4 {
@@ -60,6 +60,5 @@
         font-size: 12px;
         margin-bottom: 0px !important;
     }
-
 
 }

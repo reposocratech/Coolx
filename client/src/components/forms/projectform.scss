@@ -1,3 +1,5 @@
+@import "../variables";
+
 .fondo-create {
   padding-top: 60px;
 }
@@ -10,7 +12,7 @@
     font-size: 32px;
     line-height: 120%;
     letter-spacing: -0.02em;
-    color: #09427d;
+    color: $azulCoolx;
   }
 
   button {
@@ -37,12 +39,11 @@
     }
 
     p {
-      // padding-left: 10px;
-      // padding-top: 10px;
+
       font-weight: 700;
       font-size: 14px;
       line-height: 140%;
-      color: #09427d;
+      color: $azulCoolx;
       margin: 0px;
     }
   }
@@ -93,14 +94,13 @@
   }
 
   .show-bp {
-    background: #70bfcb !important;
-    // overflow: hidden;
-    // position: relative;
+    background: $azulCoolxClaro !important;
+
   }
 
   .show-bp:hover {
     background-color: white !important;
-    color: #09427d !important;
-    box-shadow: inset 0 0 0 2px #70bfcb;
+    color: $azulCoolx !important;
+    box-shadow: inset 0 0 0 2px $azulCoolxClaro;
   }
 }

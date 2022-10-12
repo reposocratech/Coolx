@@ -1,4 +1,4 @@
-$azulCoolx: #09427d;
+@import "../variables";
 
 .veg-title {
   padding-top: 20px;
@@ -12,6 +12,7 @@ $azulCoolx: #09427d;
 .tarjetas-vegetacion {
   .veg-card-container {
     padding: 0.5rem;
+
     .veg-card {
       background-color: #ffffff;
       padding: 10px;
@@ -23,6 +24,7 @@ $azulCoolx: #09427d;
       gap: 20px;
       max-inline-size: 275px;
       height: 100%;
+
       h4 {
         color: $azulCoolx;
         font-weight: 700;
@@ -31,6 +33,7 @@ $azulCoolx: #09427d;
         letter-spacing: -0.01em;
         margin: 0px;
       }
+
       p {
         font-weight: 500;
         font-size: 11px;
@@ -38,11 +41,14 @@ $azulCoolx: #09427d;
         color: #bcc2cc;
         margin: 0px;
       }
+
       .dividir-vegetacion {
         width: 100%;
+
         img {
           max-inline-size: 80px;
         }
+
         h1 {
           font-weight: 700;
           font-size: 32px;
@@ -50,6 +56,7 @@ $azulCoolx: #09427d;
           letter-spacing: -0.02em;
           margin: 0px;
         }
+
         h6 {
           font-weight: 600;
           font-size: 12px;
@@ -58,17 +65,20 @@ $azulCoolx: #09427d;
         }
       }
     }
+
     .sat-text {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
     }
+
     .botones-vegetacion {
       display: flex;
       align-items: center;
       justify-content: space-evenly;
       gap: 1rem;
+
       .buton-1 {
         background: #e0ecf8;
         border-radius: 80px;
@@ -95,6 +105,7 @@ $azulCoolx: #09427d;
         height: 45px;
         display: grid;
         place-content: center;
+
         img {
           width: 98%;
         }
@@ -110,6 +121,7 @@ $azulCoolx: #09427d;
         max-inline-size: 100%;
         width: 100% !important;
         text-align: center;
+
         .dividir-vegetacion {
           div {
             display: flex !important;

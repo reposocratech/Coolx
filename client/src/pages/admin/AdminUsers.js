@@ -39,7 +39,7 @@ export const AdminUsers = ({ user, setUserModificate }) => {
         navigate("/");
       }
     } else {
-      alert("Debes iniciar sección como administrador");
+      alert("Debes iniciar sesión como administrador");
     }
   }, []);
 
@@ -138,7 +138,6 @@ export const AdminUsers = ({ user, setUserModificate }) => {
                             onClick={() => {
                               setUserModificate(usuario);
                               navigate(`/getEditUser/${usuario.user_id}`);
-                              // navigate(`/getEditUser`)
                             }}
                           >
                             <p>Editar usuario</p>

@@ -26,7 +26,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
     projectCost: "",
     yearPlanting: "",
   });
-
+  // Crea un nuevo objeto con los datos del nuevo proyecto
   const navigate = useNavigate();
 
 
@@ -59,6 +59,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
       setSubmitButton(true);
     } else {
       setSubmitButton(false);
+
     }
   };
 
@@ -79,7 +80,7 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
         newFormData.append("file", elem);
       }
     }
-
+    // Se guarda la informacion en la bd
     axios
       .post(
         `http://localhost:4000/project/newProject/${user.user_id}`,
@@ -89,10 +90,10 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
         navigate(`/succes2/${res.data.insertId}`);
         console.log("res.data.insertId ", res.data.insertId);
         setResetUser(!resetUser);
+        // Redirige a ese nuevo proyecto
       })
       .catch((err) => {
         console.log(err);
-
         if (err.response.data.error.errno === 1062) {
           alert("El proyecto ya existe");
         } else {

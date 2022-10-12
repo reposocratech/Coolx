@@ -1,3 +1,6 @@
+@import "./mixin";
+@import "../variables";
+
 .adm-proj-state-header {
   display: flex;
   align-items: center;
@@ -8,7 +11,7 @@
     font-size: 32px;
     line-height: 120%;
     letter-spacing: -0.02em;
-    color: #09427d;
+    color: $azulCoolx;
   }
 
   button {
@@ -44,7 +47,7 @@
 }
 
 .table-projects {
-  background-color: #09427d !important;
+  background-color: $azulCoolx !important;
 
   button {
     background-color: transparent;
@@ -52,7 +55,7 @@
   }
 
   th {
-    background-color: #09427d !important;
+    background-color: $azulCoolx !important;
     color: white;
     vertical-align: text-top;
   }
@@ -65,11 +68,9 @@
   .edit-project,
   .info-project,
   .assign-project {
-    background-color: #09427d;
-    border-radius: 50px;
-    font-weight: bold;
-    border: none;
-    color: white;
+
+    @include buttons-tables;
+
 
     p {
       margin-bottom: 0 !important;
@@ -80,9 +81,10 @@
   .edit-project:hover,
   .info-project:hover,
   .assign-project:hover {
-    background-color: white !important;
-    color: #09427d !important;
-    box-shadow: inset 0 0 0 2px #09427d !important;
+
+    @include hover-buttons-tables;
+
+
   }
 }
 
@@ -105,6 +107,7 @@
 }
 
 @media only screen and (max-width: 992px) {
+
   .id-user-tableproject,
   .location-project-table {
     display: none !important;
@@ -166,17 +169,21 @@
     .status-col-mobile {
       display: contents;
       display: flex;
+
       p {
         display: none;
       }
+
       .pen-status {
         background-color: transparent !important;
         border: none !important;
         padding: 0px;
         margin-left: 3px;
+
         img {
           height: 18px;
         }
+
         .status-col-icon {
           display: contents;
         }

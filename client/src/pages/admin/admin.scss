@@ -1,4 +1,4 @@
-$azulCoolx: #09427d;
+@import "../variables";
 
 .getdown {
   padding-top: 60px;
@@ -6,6 +6,7 @@ $azulCoolx: #09427d;
 
 .admin-name {
   padding: 24px 15px;
+
   p {
     margin: 0;
     font-size: 24px;
@@ -22,6 +23,7 @@ $azulCoolx: #09427d;
   align-items: center !important;
   padding: 7px 0px 50px 0px !important;
   width: 100% !important;
+
   .blue-circle {
     width: 162px;
     height: 162px;
@@ -30,11 +32,13 @@ $azulCoolx: #09427d;
     display: grid;
     place-content: center;
     margin-bottom: 24px;
+
     img {
       width: auto;
       height: 95px;
     }
   }
+
   h4 {
     font-weight: 700;
     font-size: 20px;
@@ -43,8 +47,10 @@ $azulCoolx: #09427d;
     color: $azulCoolx;
     transition: transform 0.5s ease;
   }
+
   .tool-text {
     width: 267px;
+
     p {
       font-weight: 500;
       font-size: 14px;
@@ -59,6 +65,7 @@ $azulCoolx: #09427d;
 
 .admin-tools:hover {
   background: #e0ecf8 !important;
+
   h4,
   p {
     transform: scale(1.05);
@@ -69,19 +76,24 @@ $azulCoolx: #09427d;
   .small-mobile {
     margin-bottom: 80px !important;
   }
+
   .admin-tools {
     padding-bottom: 7px !important;
+
     .blue-circle {
       width: 25vw;
       height: 25vw;
       margin-bottom: 1rem;
+
       img {
         height: 15vw;
       }
     }
+
     h4 {
       font-size: 1rem;
     }
+
     .tool-text {
       display: none;
     }

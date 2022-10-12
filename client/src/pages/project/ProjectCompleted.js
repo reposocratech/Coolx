@@ -7,9 +7,16 @@ import "./projectCompleted.scss";
 import { useParams } from "react-router-dom";
 
 export const ProjectCompleted = () => {
+
+  // en la constante projectPayed guardaremos toda la información de pago
+  // del proyecto 
+
   const [projectPayed, setProjectPayed] = useState();
 
   const { id } = useParams();
+
+  // en ete useEffect al igual que en proyect nos traeremos del back toda la 
+  // información de pago que será la que luego mostremos en el return
 
   useEffect(() => {
     axios
@@ -21,6 +28,8 @@ export const ProjectCompleted = () => {
         console.log(err);
       });
   }, []);
+
+  // aquí pintaremos la información de pago recogida en el back
 
   return (
     <>

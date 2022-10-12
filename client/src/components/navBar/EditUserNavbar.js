@@ -3,9 +3,11 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Footer } from "../../pages/home/Footer";
+// Estilos de edituser.scss
 
 export const EditUserNavbar = ({ user, resetUser, setResetUser }) => {
   const [editUser, setEditUser] = useState();
+  // Edición del usuario logeado
 
   const navigate = useNavigate();
 

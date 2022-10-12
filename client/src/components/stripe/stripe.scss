@@ -1,3 +1,5 @@
+@import "../variables";
+
 .card-body {
     display: flex;
     flex-direction: column;
@@ -10,7 +12,7 @@
     h3,
     h5 {
         font-weight: bold;
-        color: #09427d;
+        color: $azulCoolx;
     }
 
     .title-card-info {
@@ -20,7 +22,7 @@
 }
 
 .buy-projectbutton-card {
-    background-color: #09427D !important;
+    background-color: $azulCoolx !important;
     border-radius: 50px !important;
     font-weight: bold !important;
     border: none !important;
@@ -51,7 +53,7 @@
     h1 {
         font-size: 35px;
         font-weight: bold;
-        color: #09427d;
+        color: $azulCoolx;
         padding-left: 5%;
     }
 }
@@ -61,4 +63,3 @@
         height: 130vh;
     }
 }
-

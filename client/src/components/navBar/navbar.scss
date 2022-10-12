@@ -1,5 +1,7 @@
+@import "../variables";
+
 .nav-color {
-  background-color: #09427d;
+  background-color: $azulCoolx;
   color: white;
   min-block-size: 60px;
   max-block-size: 60px;
@@ -23,7 +25,7 @@
 }
 
 .boton-proyecto {
-  background-color: #70bfcb;
+  background-color: $azulCoolxClaro;
   color: white;
   border: none;
   border-radius: 80px;
@@ -44,7 +46,7 @@
     margin: 0px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    // overflow: hidden;
+
   }
 }
 
@@ -148,7 +150,7 @@
   }
 
   #responsive-navbar-nav {
-    background-color: #09427D !important;
+    background-color: $azulCoolx !important;
     border-radius: 10px;
     padding: 10px;
   }

@@ -6,13 +6,12 @@ import "./tarjeta.scss";
 export const Tarjeta = ({ projects, setBuyProject }) => {
   const navigate = useNavigate();
 
-  // console.log(projects);
+
 
   const handleSend = (project) => {
     axios
       .get(`http://localhost:4000/project/${project.project_id}`)
       .then((res) => {
-        // console.log(res)
         setBuyProject(project);
         navigate(`/project/${project.project_id}`);
       })
