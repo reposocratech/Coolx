@@ -2,8 +2,6 @@ var express = require("express");
 const authController = require("../controllers/authController");
 const userControllers = require("../controllers/userControllers");
 var router = express.Router();
-const multer = require("../middleware/multer");
-const multerSingle = require("../middleware/multerSingle");
 const verify = require("../middleware/verify");
 
 //1 createUser

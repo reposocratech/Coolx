@@ -1,7 +1,4 @@
-const usercontroler = require("./userControllers");
 const nodemailer = require("nodemailer");
-const jwt = require("jsonwebtoken");
-const { response } = require("express");
 require("dotenv").config();
 const connection = require("../config/db");
 const passGenerator = require("../middleware/passGenerator");
@@ -9,14 +6,12 @@ const bcrypt = require("bcrypt");
 
 class PasswordControler {
   sendMail = (req, res) => {
-    console.log("ha entrado");
     if (req.body.email == "") {
       res.status(400).send({
         message: "El email es requerido",
       });
       return;
     }
-    console.log(req.body);
 
     try {
       connection.query(

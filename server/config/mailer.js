@@ -1,8 +1,8 @@
-const nodemailer = require('nodemailer');
-const router = require('express').Router();
+const nodemailer = require("nodemailer");
+const router = require("express").Router();
 
-  transporter.verify().then(() => {
-    console.log("Listo para enviar emails");
-  });
+transporter.verify().then(() => {
+  // console.log("Listo para enviar emails");
+});
 
-module.exports = {transporter};
+module.exports = { transporter };

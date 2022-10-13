@@ -1,8 +1,5 @@
 const connection = require("../config/db");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const puppeteer = require("puppeteer");
 
 class projectControllers {
   // Crear nuevo proyecto
@@ -168,7 +165,6 @@ class projectControllers {
         console.log(error);
       }
       res.status(200).json(resultImages);
-      console.log(resultImages);
     });
   };
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import "./adminusers.scss";
 import Table from "react-bootstrap/Table";
@@ -18,20 +18,17 @@ export const AdminUsers = ({ user, setUserModificate }) => {
 
   useEffect(() => {
     const token = window.localStorage.getItem("infocoolx");
-    if (token) {
-      
 
-      const { id, type } = jwtDecode(token).user;
+    if (token) {
+      const { type } = jwtDecode(token).user;
 
       if (type === 1) {
         axios
           .get(`http://localhost:4000/admin/${user?.user_id}/allUsers`)
-
           .then((res) => {
             setAllUsers(res.data);
             setTablaBusqueda(res.data);
           })
-
           .catch((err) => {
             console.log(err);
           });

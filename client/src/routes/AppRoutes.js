@@ -49,12 +49,7 @@ export const AppRoutes = ({
   return (
     <div>
       <BrowserRouter>
-        <NavBarMain
-          isLogged={isLogged}
-          setIsLogged={setIsLogged}
-          user={user}
-          setUser={setUser}
-        />
+        <NavBarMain setIsLogged={setIsLogged} user={user} setUser={setUser} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
@@ -67,9 +62,7 @@ export const AppRoutes = ({
           />
           <Route
             path="/adminprojectstate"
-            element={
-              <AdminProjectState user={user} setIsLogged={setIsLogged} />
-            }
+            element={<AdminProjectState setIsLogged={setIsLogged} />}
           />
           <Route
             path="/admin"
@@ -84,19 +77,10 @@ export const AppRoutes = ({
             element={<TreeForm setIsLogged={setIsLogged} />}
           />
           <Route path="/*" element={<ErrorPage />} />
-          <Route
-            path="/tarjetamas"
-            element={<Tarjetamas projects={projects} />}
-          />
+          <Route path="/tarjetamas" element={<Tarjetamas />} />
           <Route
             path="/buyproject"
-            element={
-              <BuyProject
-                user={user}
-                buyProject={buyProject}
-                setBuyProject={setBuyProject}
-              />
-            }
+            element={<BuyProject setBuyProject={setBuyProject} />}
           />
           <Route path="/vegetation" element={<Vegetation />} />
           <Route path="/contact" element={<ContactForm />} />
@@ -111,16 +95,10 @@ export const AppRoutes = ({
               />
             }
           />
-          <Route
-            path={`/project/:id`}
-            element={<Project projects={projects} />}
-          />
+          <Route path={`/project/:id`} element={<Project />} />
           <Route path="/succes1" element={<Succes1 />} />
           <Route path="/succes2/:project_id" element={<Succes2 />} />
-          <Route
-            path="/succespayment"
-            element={<SuccesPayment projects={projects} />}
-          />
+          <Route path="/succespayment" element={<SuccesPayment />} />
           <Route path="/succes3" element={<Succes3 />} />
           <Route
             path="/stripe/:project_id"
@@ -163,7 +141,6 @@ export const AppRoutes = ({
             element={
               <EditUser
                 user={user}
-                setUser={setUser}
                 setIsLogged={setIsLogged}
                 userModificate={userModificate}
               />

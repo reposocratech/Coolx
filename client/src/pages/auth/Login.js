@@ -38,14 +38,11 @@ export const Login = ({ setUser }) => {
     } else {
       axios
         .post("http://localhost:4000/users/login", login)
-
         .then((res) => {
           const token = res.data.token;
           window.localStorage.setItem("infocoolx", token);
-
           const id = jwtDecode(token).user.id;
           loadUser(id);
-
           const type = jwtDecode(token).user.type;
 
           // replace:true para evitar volver atrás al estar logueado
@@ -56,7 +53,6 @@ export const Login = ({ setUser }) => {
             : navigate("/error");
         })
         .catch((err) => {
-          console.log(err);
           if (err.response.status === 401) {
             alert("Usuario y/o contraseña incorrecto");
           } else {

@@ -3,11 +3,8 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./succes.scss";
 
-
 export const Succes3 = () => {
-
   const navigate = useNavigate();
-
 
   return (
     <div>

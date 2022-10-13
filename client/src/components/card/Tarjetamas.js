@@ -2,16 +2,13 @@ import React from "react";
 import { Col, Container, Row, Carousel } from "react-bootstrap";
 import "./tarjeta.scss";
 
-export const Tarjetamas = ({ projectPayed }) => {
-
+export const Tarjetamas = () => {
   return (
     <>
       <Container className="bage">
         <Row className="contenedor">
           <Col md={6} className="img">
             <Carousel>
-
-
               <Carousel.Item>
                 <img
                   className="d-block w-100"
@@ -19,8 +16,6 @@ export const Tarjetamas = ({ projectPayed }) => {
                   alt="First slide"
                 />
               </Carousel.Item>
-
-
             </Carousel>
           </Col>
 

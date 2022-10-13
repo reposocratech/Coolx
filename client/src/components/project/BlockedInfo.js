@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -44,10 +43,10 @@ export const BlockedInfo = ({ projectInfo }) => {
               (projectInfo[0].status === 0 ? (
                 <Button
                   className="buttonBlock buy-data"
-                  onClick={() =>navigate(`/stripe/${projectInfo[0].project_id}`)
-                }
+                  onClick={() =>
+                    navigate(`/stripe/${projectInfo[0].project_id}`)
+                  }
                 >
-                  
                   Desbloquear todos los datos
                 </Button>
               ) : projectInfo[0].status === 1 ? (
