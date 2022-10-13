@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import "./adminstatusmodal.scss"
+import "./adminstatusmodal.scss";
 
 export const AdminStatusModal = ({
   onHide,
@@ -17,16 +17,10 @@ export const AdminStatusModal = ({
     status: "",
   });
 
-  // const handleChange = (e) => {
-  //   setNewState({ status: e.target.value });
-  //   // console.log(newState);
-  // };
-
   const handleSubmit = (id) => {
     axios
       .put(`http://localhost:4000/project/editStatusProject/${id}`, newState)
       .then((res) => {
-        console.log(res);
         setModalState(false);
         setResetProjects(!resetProjects);
       })

@@ -11,7 +11,7 @@ import jwtDecode from "jwt-decode";
 import Table from "react-bootstrap/Table";
 import "./adminProjectState.scss";
 
-export const AdminProjectState = ({ setIsLogged, user }) => {
+export const AdminProjectState = ({ setIsLogged }) => {
   const [allProjects, setAllProjects] = useState();
   const [resetProjects, setResetProjects] = useState(false);
   const [projectModal, setProjectModal] = useState();
@@ -63,11 +63,9 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
       if (type === 1) {
         axios
           .get(`http://localhost:4000/admin/${id}/allUsers`)
-
           .then((res) => {
             setAllUsers(res.data);
           })
-
           .catch((err) => {
             console.log(err);
           });
@@ -256,11 +254,13 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                             </p>
 
                             <div className="status-col-icon">
-                                {project.status === 0
-                                    ? <img src="/assets/icons/check_red.svg"/>
-                                    : project.status === 1
-                                    ? <img src="/assets/icons/check_yellow.svg"/>
-                                    : <img src="/assets/icons/check_green.svg"/>}
+                              {project.status === 0 ? (
+                                <img src="/assets/icons/check_red.svg" />
+                              ) : project.status === 1 ? (
+                                <img src="/assets/icons/check_yellow.svg" />
+                              ) : (
+                                <img src="/assets/icons/check_green.svg" />
+                              )}
                             </div>
 
                             <Button
@@ -320,11 +320,17 @@ export const AdminProjectState = ({ setIsLogged, user }) => {
                 </tbody>
               </Table>
               <Row className="cont-leyenda-status">
-                  <Col sm={12} md={12} className="leyenda-status">
-                      <p>Registrado: <img src="/assets/icons/check_red.svg"/></p>
-                      <p>Calculando: <img src="/assets/icons/check_yellow.svg"/></p>
-                      <p>Completado: <img src="/assets/icons/check_green.svg"/></p>
-                  </Col>
+                <Col sm={12} md={12} className="leyenda-status">
+                  <p>
+                    Registrado: <img src="/assets/icons/check_red.svg" />
+                  </p>
+                  <p>
+                    Calculando: <img src="/assets/icons/check_yellow.svg" />
+                  </p>
+                  <p>
+                    Completado: <img src="/assets/icons/check_green.svg" />
+                  </p>
+                </Col>
               </Row>
             </Row>
           </Container>

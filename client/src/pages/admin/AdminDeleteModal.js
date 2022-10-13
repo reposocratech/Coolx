@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import "./admindeletemodal.scss"
+import "./admindeletemodal.scss";
 
 export const AdminDeleteModal = ({
   setModalDelete,
@@ -13,7 +13,6 @@ export const AdminDeleteModal = ({
   setResetProjects,
 }) => {
   const handleSubmit = (id) => {
-
     axios
       .delete(`http://localhost:4000/project/deleteProject/${id}`)
       .then((res) => {

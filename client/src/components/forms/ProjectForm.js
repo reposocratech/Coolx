@@ -29,7 +29,6 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
   // Crea un nuevo objeto con los datos del nuevo proyecto
   const navigate = useNavigate();
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
@@ -59,7 +58,6 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
       setSubmitButton(true);
     } else {
       setSubmitButton(false);
-
     }
   };
 
@@ -88,18 +86,15 @@ export const ProjectForm = ({ user, resetUser, setResetUser }) => {
       )
       .then((res) => {
         navigate(`/succes2/${res.data.insertId}`);
-        console.log("res.data.insertId ", res.data.insertId);
         setResetUser(!resetUser);
         // Redirige a ese nuevo proyecto
       })
       .catch((err) => {
-        console.log(err);
         if (err.response.data.error.errno === 1062) {
           alert("El proyecto ya existe");
         } else {
           navigate("/error");
         }
-
       });
   };
 

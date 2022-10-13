@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Col, Row, Container, Button } from "react-bootstrap";
 import "./costProfit.scss";
 import { useNavigate } from "react-router-dom";

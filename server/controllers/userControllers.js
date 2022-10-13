@@ -43,7 +43,6 @@ class userController {
       } else {
         //en caso de que el mail o user_name sea correcto
         //aqui lo estamos haciendo con el mail
-        console.log(result);
         const [user] = result;
 
         const hash = user.password;
@@ -97,7 +96,6 @@ class userController {
       connection.query(sqlProject, (error2, resultProject) => {
         if (error2) {
           res.status(400).json({ error2 });
-          console.log("error2");
           return;
         }
         res.status(200).json({ resultUser, resultProject });
@@ -158,8 +156,6 @@ class userController {
   //7 mostrar todos los usuarios
   //localhost:4000/users/allUsers
   selectAllUsers = (req, res) => {
-    console.log("headers", req.headers.authorization);
-
     let sql = `SELECT * FROM user WHERE user_id = ${user_id} and is_deleted = 0`;
 
     connection.query(sql, (error, result) => {

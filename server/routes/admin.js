@@ -1,6 +1,5 @@
 var express = require("express");
 const adminControllers = require("../controllers/adminControllers");
-const contactController = require("../controllers/adminControllers");
 var router = express.Router();
 
 // Mostrar todos los usuarios
@@ -16,4 +15,3 @@ router.get("/:userId/allProjects", adminControllers.getAllProjects);
 router.get("/:userId/allTrees", adminControllers.getAllTrees);
 
 module.exports = router;
-

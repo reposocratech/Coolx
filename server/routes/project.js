@@ -2,11 +2,6 @@ var express = require("express");
 const projectControllers = require("../controllers/projectControllers");
 var router = express.Router();
 const multer = require("../middleware/multer");
-const multerSingle = require("../middleware/multerSingle");
-const verify = require("../middleware/verify");
-const puppeteer = require ('puppeteer');
-const pdfController = require('../controllers/puppeteer-pdf');
-const puppeteerPdf = require("../controllers/puppeteer-pdf");
 
 // Crear nuevo proyecto
 // localhost:4000/project/newProject/:user_id
@@ -49,7 +44,6 @@ router.post("/onlyAdmin", projectControllers.onlyAdmin);
 
 // Mostrar todas las imagenes de un proyecto
 // localhost:4000/project/images/:project_id
-router.get("/images/:project_id", projectControllers.getImages)
-
+router.get("/images/:project_id", projectControllers.getImages);
 
 module.exports = router;

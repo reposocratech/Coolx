@@ -7,11 +7,16 @@ import Table from "react-bootstrap/Table";
 import axios from "axios";
 import "./admincompany.scss";
 
-export const AdminCompany = ({ onHide, show, allUsers, projectModal, resetProjects, setResetProjects, setModalBuyer }) => {
-
-    const handleCompany = (usuario, projectModal) => {
-
-
+export const AdminCompany = ({
+  onHide,
+  show,
+  allUsers,
+  projectModal,
+  resetProjects,
+  setResetProjects,
+  setModalBuyer,
+}) => {
+  const handleCompany = (usuario, projectModal) => {
     axios
       .put(
         `http://localhost:4000/project/changeUser/${projectModal.project_id}/${usuario.user_id}`

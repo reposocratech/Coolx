@@ -45,7 +45,6 @@ function App() {
         user={user}
         setUser={setUser}
         projects={projects}
-        setProjects={setProjects}
         resetUser={resetUser}
         setResetUser={setResetUser}
       />

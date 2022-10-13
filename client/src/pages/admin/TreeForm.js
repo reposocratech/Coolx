@@ -67,7 +67,6 @@ export const TreeForm = ({ setIsLogged }) => {
       .post("http://localhost:4000/tree/createTree", newTree)
 
       .then((res) => {
-        console.log(res);
         navigate("/admintree");
       })
       .catch((err) => {

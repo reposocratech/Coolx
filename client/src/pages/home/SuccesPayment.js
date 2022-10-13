@@ -3,7 +3,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import "./succes.scss";
 import { useNavigate } from "react-router-dom";
 
-export const SuccesPayment = ({ projects }) => {
+export const SuccesPayment = () => {
   const navigate = useNavigate();
 
   return (
@@ -17,7 +17,8 @@ export const SuccesPayment = ({ projects }) => {
 
             <h1>Tu pago se ha realizado con éxito</h1>
             <h4>
-              Puedes ver, copiar y descargar todos los datos necesarios del proyecto.
+              Puedes ver, copiar y descargar todos los datos necesarios del
+              proyecto.
             </h4>
             <Button className="button-succes" onClick={() => navigate("/")}>
               Ir al proyecto
