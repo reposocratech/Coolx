@@ -75,7 +75,7 @@ Vista administrador
 ## Instalación y configuración
 1 - Crear la base de datos mediante el script coolx.sql, localizado en el directorio /client/public
 <br/>
-2 - Copiar el archivo .env (proporcionado aparte, no disponible en este repositorio) en el directorio /server
+2 - Crear el archivo .env (no disponible en este repositorio) en el directorio /server y completarlo de la siguiente forma:
 <br/>
 3 - En el archivo /server/authController.js sustituir el email info@coolx.earth por el que vaya a utilizarse para recibir las solicitudes de contacto desde la web.
 <br/>
